@@ -58,3 +58,7 @@ AGENTS.md
 .env
 .env.*
 !.env.example
+
+# ===== 设计对比截图（调试产物，不入库） =====
+# docs/V2/baseline/ 下是改版前后逐页截图，单张最大 1MB+，可随时重截
+docs/V2/baseline/
