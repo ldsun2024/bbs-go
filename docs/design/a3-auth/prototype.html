@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>A3 · 登录注册</title>
+    <link rel="stylesheet" href="../assets/design.css" />
+  </head>
+  <body>
+    <div class="doc">
+      <header class="doc-head">
+        <div>
+          <h1>登录 / 注册</h1>
+          <div class="sub">双栏结构，内边距 32 起，主按钮全宽，第三方登录降为描边。</div>
+        </div>
+        <span class="doc-tag">A3</span>
+      </header>
+
+      <section class="doc-section">
+        <h2>新方案 <span>左栏说明 480 + 右栏表单 420 · 整体 900</span></h2>
+
+        <div class="auth-shell">
+          <aside class="auth-aside">
+            <div>
+              <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 26px">
+                <div
+                  style="
+                    width: 30px;
+                    height: 30px;
+                    border-radius: 6px;
+                    background: var(--brand);
+                  "
+                ></div>
+                <span style="font-family: var(--font-serif); font-size: 16px; font-weight: 600">
+                  禅龙诀
+                </span>
+              </div>
+
+              <h2>把问题问清楚，<br />把答案留下来。</h2>
+              <p>
+                一个面向同学与家长的交流空间。话题、文章、问答三类内容并存，好的回答会被沉淀成可检索的知识。
+              </p>
+
+              <ul>
+                <li>话题讨论：短内容、快反馈</li>
+                <li>文章沉淀：长文与笔记归档</li>
+                <li>问答闭环：提问、悬赏、采纳</li>
+              </ul>
+            </div>
+
+            <div style="font-size: 12px; color: var(--muted); line-height: 1.8">
+              继续即表示同意《社区公约》与《隐私说明》<br />
+              本站不收集与社区无关的个人信息
+            </div>
+          </aside>
+
+          <div class="auth-panel">
+            <div class="auth-tabs">
+              <div class="auth-tab is-on">登录</div>
+              <div class="auth-tab">注册</div>
+            </div>
+
+            <div class="auth-field">
+              <label>邮箱或用户名</label>
+              <input class="auth-input" placeholder="请输入邮箱或用户名" />
+            </div>
+
+            <div class="auth-field">
+              <label>密码</label>
+              <input class="auth-input" type="password" placeholder="请输入密码" />
+            </div>
+
+            <div
+              style="
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                margin: 4px 0 18px;
+                font-size: 12px;
+                color: var(--muted);
+              "
+            >
+              <label style="display: flex; align-items: center; gap: 6px; cursor: pointer">
+                <input type="checkbox" checked style="accent-color: var(--brand)" />
+                30 天内自动登录
+              </label>
+              <a href="#" style="color: var(--brand)">忘记密码？</a>
+            </div>
+
+            <button class="btn btn--primary btn--block">登录</button>
+
+            <div class="auth-divider">或使用第三方账号</div>
+
+            <div class="auth-third">
+              <button class="btn">微信登录</button>
+              <button class="btn">GitHub</button>
+            </div>
+
+            <div class="auth-foot">
+              还没有账号？<a href="#" style="color: var(--brand); font-weight: 500">立即注册</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>规格说明</h2>
+        <div class="grid2">
+          <div class="note note--bad">
+            <strong>现状问题</strong><br />
+            <code>.signin-card { padding: 0.25rem 0.75rem }</code> —— 内边距只有 4px，文字贴边<br />
+            <code>.login-title</code> 带 <code>border-bottom</code>，和卡片边框形成双线<br />
+            第三方登录按钮与主按钮同尺寸同样式，主次不分<br />
+            同文件混用 <code>0.25rem</code> / <code>1rem</code> / <code>1.5rem</code> / <code>16px</code>
+          </div>
+          <div class="note note--good">
+            <strong>新方案</strong><br />
+            内边距 <code>36px 32px</code>，输入框距边缘 ≥ 32<br />
+            标题不再带下划线，靠字号与 26px 下边距分层<br />
+            主按钮全宽 40px，第三方降为 38px 描边并均分<br />
+            分割线统一 11.5px「或」+ 两侧 1px 线<br />
+            <br />
+            所有尺寸用 px，与设计规范一致，不再混用 rem
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

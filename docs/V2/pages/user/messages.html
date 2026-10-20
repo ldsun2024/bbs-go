@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>消息中心</title>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/ui.css">
+</head>
+<body>
+
+<header class="a-topbar">
+  <div class="a-wrap a-topbar-in">
+    <a class="a-logo" href="../content/home.html"><span class="a-logo-mark"></span>BBS</a>
+    <nav class="a-nav">
+      <a class="on" href="../content/home.html">话题</a>
+      <a href="../content/articles.html">文章</a>
+      <a href="../content/search.html">问答</a>
+    </nav>
+    <div class="a-topbar-r">
+      <button class="a-icon-btn" title="消息">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 5 2 6 2 6H4s2-1 2-6"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+      </button>
+      <span class="a-avatar" title="林一">林</span>
+    </div>
+  </div>
+</header>
+
+<main class="a-wrap a-main">
+
+  <nav class="a-breadcrumb a-breadcrumb-top">
+    <a href="profile.html">个人主页</a><span class="sep">/</span>
+    <span class="cur">消息</span>
+  </nav>
+
+  <div class="a-page-head">
+    <div class="a-page-head-l">
+      <div class="a-kicker a-page-kicker">Inbox</div>
+      <h1 class="a-page-title sm">消息中心</h1>
+      <p class="a-page-sub">回复、点赞、关注与系统通知都在这里。未读消息左侧有橙红标记。</p>
+    </div>
+    <div class="a-page-head-r">
+      <div class="a-stats">
+        <div class="a-stat"><b class="a-tnum">5</b><span>Unread</span></div>
+        <div class="a-stat"><b class="a-tnum">128</b><span>Total</span></div>
+        <div class="a-stat"><b class="a-tnum">3</b><span>Today</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="a-msg-layout a-section">
+
+    <!-- 类型导航 -->
+    <aside class="a-msg-nav">
+      <a class="on" href="messages.html">全部<b>5</b></a>
+      <a href="messages.html">回复<b>3</b></a>
+      <a href="messages.html">赞<b>2</b></a>
+      <a href="messages.html">关注</a>
+      <a href="messages.html">系统</a>
+    </aside>
+
+    <!-- 列表 -->
+    <section>
+      <div class="a-list-head">
+        <h2>Today</h2>
+        <div class="a-list-tabs">
+          <span class="on">全部标为已读</span>
+        </div>
+      </div>
+
+      <article class="a-msg-item unread">
+        <span class="a-avatar">周</span>
+        <div>
+          <h4>周舟 回复了你的话题</h4>
+          <p>记两个就够了：a 定开口，-b/2a 定位置。c 只影响上下平移，跟开口没关系。</p>
+        </div>
+        <time>08:56</time>
+      </article>
+
+      <article class="a-msg-item unread">
+        <span class="a-avatar">满</span>
+        <div>
+          <h4>小满 赞了你的回答</h4>
+          <p>在「复合函数求导总是漏掉内层」下：先写外导，再乘内导，最后检查一遍。</p>
+        </div>
+        <time>08:20</time>
+      </article>
+
+      <article class="a-msg-item unread">
+        <span class="a-avatar">陈</span>
+        <div>
+          <h4>陈默 关注了你</h4>
+          <p>对方主页：高三 · 数学 · 86 篇回答</p>
+        </div>
+        <time>07:45</time>
+      </article>
+
+      <div class="a-list-head a-mt-6">
+        <h2>Yesterday</h2>
+        <div class="a-list-tabs"><span>按时间</span></div>
+      </div>
+
+      <article class="a-msg-item">
+        <span class="a-avatar">苏</span>
+        <div>
+          <h4>苏晚 回复了你的话题</h4>
+          <p>我整理过一份类似的笔记，可以看这篇文章：函数与导数的 12 个易错点。</p>
+        </div>
+        <time>14:20</time>
+      </article>
+
+      <article class="a-msg-item">
+        <span class="a-avatar">岚</span>
+        <div>
+          <h4>阿岚 提到了你</h4>
+          <p>@林一 你之前说的那个方法我试了，确实快很多。</p>
+        </div>
+        <time>11:10</time>
+      </article>
+
+      <div class="a-list-head a-mt-6">
+        <h2>Earlier</h2>
+        <div class="a-list-tabs"><span>按时间</span></div>
+      </div>
+
+      <article class="a-msg-item">
+        <span class="a-avatar">系</span>
+        <div>
+          <h4>系统通知</h4>
+          <p>你的文章《错题本到底怎么记才有用》已被推荐到首页。</p>
+        </div>
+        <time>10-18</time>
+      </article>
+
+      <article class="a-msg-item">
+        <span class="a-avatar">系</span>
+        <div>
+          <h4>系统通知</h4>
+          <p>你的回答被采纳，积分 +20。</p>
+        </div>
+        <time>10-17</time>
+      </article>
+
+      <article class="a-msg-item">
+        <span class="a-avatar">周</span>
+        <div>
+          <h4>周舟 回复了你</h4>
+          <p>补个图会更好理解，我画一张传上来。</p>
+        </div>
+        <time>10-16</time>
+      </article>
+
+      <nav class="a-pager a-section">
+        <a href="messages.html" class="on">1</a>
+        <a href="messages.html">2</a>
+        <a href="messages.html">3</a>
+        <span class="sep">…</span>
+        <a href="messages.html">7</a>
+        <span class="a-pager-info">1–20 / 128</span>
+      </nav>
+
+      <!-- 空态示例 -->
+      <div class="a-section-lg">
+        <div class="a-empty">
+          <div class="a-empty-mark">—</div>
+          <div>
+            <h3>暂时没有新消息</h3>
+            <p>有人回复、点赞或关注你时，会出现在这里。</p>
+          </div>
+          <button class="a-btn sm ghost">去社区看看</button>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+</main>
+
+<footer class="a-footer">
+  <div class="a-wrap">
+    <div class="a-footer-btm">
+      <span>BBS-GO V2 — SWISS GRID</span>
+      <span>© 2026</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

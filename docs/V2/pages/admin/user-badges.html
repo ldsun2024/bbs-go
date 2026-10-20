@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>用户徽章 · 后台</title>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/ui.css">
+</head>
+<body>
+
+<div class="a-admin-shell">
+
+  <aside class="a-admin-nav">
+    <div class="a-admin-group">
+      <h3>概览</h3>
+      <a href="dashboard.html">数据看板</a>
+      <a href="content.html">内容概览</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>内容</h3>
+      <a href="topics.html">话题管理</a>
+      <a href="articles.html">文章管理</a>
+      <a href="categories.html">分类管理</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>用户</h3>
+      <a href="users.html">用户管理</a>
+      <a href="roles.html">角色权限</a>
+      <a href="levels.html">等级管理</a>
+      <a href="badges.html">徽章管理</a>
+      <a class="on" href="user-badges.html">用户徽章</a>
+      <a href="user-exp-logs.html">经验日志</a>
+      <a href="user-reports.html">用户举报</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>运营</h3>
+      <a href="tasks.html">任务管理</a>
+      <a href="user-task-logs.html">任务日志</a>
+      <a href="links.html">友链管理</a>
+      <a href="forbidden-words.html">敏感词</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>系统</h3>
+      <a href="settings.html">系统设置</a>
+      <a href="email-logs.html">邮件日志</a>
+    </div>
+  </aside>
+
+  <main class="a-admin-main">
+    <header class="a-admin-top">
+      <a class="a-logo" href="../content/home.html"><span class="a-logo-mark"></span>BBS</a>
+      <span class="a-kicker">Admin / User Badges</span>
+      <span class="a-spacer"></span>
+      <label class="a-search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input type="text" placeholder="搜索用户 / 徽章">
+      </label>
+      <a class="a-btn sm ghost" href="../content/home.html">返回前台</a>
+      <span class="a-avatar" title="管理员">管</span>
+    </header>
+
+    <div class="a-admin-body">
+
+      <div class="a-admin-head">
+        <div>
+          <div class="a-kicker">User Badges</div>
+          <h1>用户徽章</h1>
+          <p>已发放 1,842 次 · 手动授予 64 次 · 今日新增 12</p>
+        </div>
+        <span class="a-spacer"></span>
+        <a class="a-btn sm ghost" href="badges.html">徽章定义</a>
+        <button class="a-btn sm accent" type="button">手动授予</button>
+      </div>
+
+      <div class="a-filters">
+        <div class="a-filters-in">
+          <a class="on" href="user-badges.html">全部</a>
+          <a href="user-badges.html">自动发放</a>
+          <a href="user-badges.html">手动授予</a>
+          <a href="user-badges.html">已收回</a>
+          <span class="a-filters-count">1,842 Records</span>
+        </div>
+      </div>
+
+      <div class="a-action-bar">
+        <span>已选 <b class="a-tnum">1</b> 项</span>
+        <button class="a-btn sm ghost" type="button">批量收回</button>
+        <span class="a-spacer"></span>
+        <span>按发放时间倒序</span>
+      </div>
+
+      <div class="a-table-wrap">
+        <table class="a-table">
+          <thead>
+            <tr>
+              <th class="col-check"><input type="checkbox" aria-label="全选"></th>
+              <th>用户</th>
+              <th>徽章</th>
+              <th>发放方式</th>
+              <th>触发原因</th>
+              <th class="col-num">发放时间</th>
+              <th>状态</th>
+              <th class="col-actions">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="is-selected">
+              <td class="col-check"><input type="checkbox" checked aria-label="1"></td>
+              <td><span class="a-author"><span class="a-avatar xs">林</span>林一</span></td>
+              <td>答疑达人</td>
+              <td>自动</td>
+              <td>回答被采纳 3 次</td>
+              <td class="col-num">2026-09-28</td>
+              <td><span class="a-tag on">有效</span></td>
+              <td class="col-actions">
+                <a class="a-btn text" href="../user/profile-badges.html">查看</a>
+                <button class="a-btn text" type="button">收回</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="2"></td>
+              <td><span class="a-author"><span class="a-avatar xs">林</span>林一</span></td>
+              <td>早期成员</td>
+              <td>自动</td>
+              <td>上线首月注册</td>
+              <td class="col-num">2026-06-14</td>
+              <td><span class="a-tag on">有效</span></td>
+              <td class="col-actions">
+                <a class="a-btn text" href="../user/profile-badges.html">查看</a>
+                <button class="a-btn text" type="button">收回</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="3"></td>
+              <td><span class="a-author"><span class="a-avatar xs">周</span>周舟</span></td>
+              <td>编辑推荐</td>
+              <td>手动</td>
+              <td>管理员授予（内容优质）</td>
+              <td class="col-num">2026-10-12</td>
+              <td><span class="a-tag on">有效</span></td>
+              <td class="col-actions">
+                <a class="a-btn text" href="../user/profile-badges.html">查看</a>
+                <button class="a-btn text" type="button">收回</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="4"></td>
+              <td><span class="a-author"><span class="a-avatar xs">周</span>周舟</span></td>
+              <td>版主</td>
+              <td>手动</td>
+              <td>管理员授予</td>
+              <td class="col-num">2026-07-01</td>
+              <td><span class="a-tag on">有效</span></td>
+              <td class="col-actions">
+                <a class="a-btn text" href="../user/profile-badges.html">查看</a>
+                <button class="a-btn text" type="button">收回</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="5"></td>
+              <td><span class="a-author"><span class="a-avatar xs">苏</span>苏晚</span></td>
+              <td>优质文章</td>
+              <td>自动</td>
+              <td>单篇被收藏 50 次</td>
+              <td class="col-num">2026-09-15</td>
+              <td><span class="a-tag on">有效</span></td>
+              <td class="col-actions">
+                <a class="a-btn text" href="../user/profile-badges.html">查看</a>
+                <button class="a-btn text" type="button">收回</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="6"></td>
+              <td><span class="a-author"><span class="a-avatar xs">?</span>流量号 8821</span></td>
+              <td>破冰者</td>
+              <td>自动</td>
+              <td>发布第一条话题</td>
+              <td class="col-num">2026-10-12</td>
+              <td><span class="a-tag">已收回</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">恢复</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <nav class="a-pager a-section">
+        <a href="user-badges.html" class="on">1</a>
+        <a href="user-badges.html">2</a>
+        <a href="user-badges.html">3</a>
+        <span class="sep">…</span>
+        <a href="user-badges.html">93</a>
+        <span class="a-pager-info">1–20 / 1,842</span>
+      </nav>
+
+      <div class="a-note a-mt-4">
+        收回徽章会同时移除用户主页上的展示。自动发放的徽章在条件再次满足时不会重复发放。
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+</body>
+</html>

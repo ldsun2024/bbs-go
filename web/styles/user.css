@@ -1,9 +1,10 @@
 @layer components {
+  /* A2：高度改比例自适应，头像贴头图下沿，信息条渐变改用主题色（修暗色露白） */
   .profile {
     display: flex;
     position: relative;
-    height: 220px;
-    margin-bottom: 10px;
+    height: clamp(184px, 20vw, 240px);
+    margin-bottom: 12px;
     border-top-left-radius: var(--radius);
     border-top-right-radius: var(--radius);
     background-color: var(--muted);
@@ -13,14 +14,14 @@
 
   .profile .profile-avatar {
     position: absolute;
-    top: 100px;
-    left: 10px;
+    bottom: 10px;
+    left: 20px;
   }
 
   .profile .change-bg {
     position: absolute;
-    top: 10px;
-    right: 10px;
+    top: 12px;
+    right: 12px;
     opacity: 0.5;
   }
 
@@ -33,13 +34,13 @@
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    margin-top: 150px;
-    padding: 10px 10px 10px 120px;
+    margin-top: auto;
+    padding: 12px 20px 12px 132px;
     background-image: linear-gradient(
       90deg,
-      #ffffffff,
-      rgba(255, 255, 255, 0.5),
-      #dce9f200
+      color-mix(in oklch, var(--card) 94%, transparent) 0%,
+      color-mix(in oklch, var(--card) 62%, transparent) 55%,
+      transparent 100%
     );
   }
 
@@ -59,8 +60,10 @@
   }
 
   .profile .nickname {
-    font-size: 18px;
-    font-weight: 500;
+    font-family: var(--font-serif);
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 1.4;
   }
 
   .profile .level-badge {
@@ -96,6 +99,11 @@
   ul.extra-info li {
     width: 100%;
     text-align: center;
+  }
+
+  /* 统计项之间加竖分隔线（A2） */
+  ul.extra-info li + li {
+    border-left: 1px solid var(--border);
   }
 
   ul.extra-info li span {

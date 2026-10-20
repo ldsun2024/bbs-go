@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>邮件日志 · 后台</title>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/ui.css">
+</head>
+<body>
+
+<div class="a-admin-shell">
+
+  <aside class="a-admin-nav">
+    <div class="a-admin-group">
+      <h3>概览</h3>
+      <a href="dashboard.html">数据看板</a>
+      <a href="content.html">内容概览</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>内容</h3>
+      <a href="topics.html">话题管理</a>
+      <a href="articles.html">文章管理</a>
+      <a href="categories.html">分类管理</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>用户</h3>
+      <a href="users.html">用户管理</a>
+      <a href="roles.html">角色权限</a>
+      <a href="levels.html">等级管理</a>
+      <a href="badges.html">徽章管理</a>
+      <a href="user-badges.html">用户徽章</a>
+      <a href="user-exp-logs.html">经验日志</a>
+      <a href="user-reports.html">用户举报</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>运营</h3>
+      <a href="tasks.html">任务管理</a>
+      <a href="user-task-logs.html">任务日志</a>
+      <a href="links.html">友链管理</a>
+      <a href="forbidden-words.html">敏感词</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>系统</h3>
+      <a href="settings.html">系统设置</a>
+      <a class="on" href="email-logs.html">邮件日志</a>
+    </div>
+  </aside>
+
+  <main class="a-admin-main">
+    <header class="a-admin-top">
+      <a class="a-logo" href="../content/home.html"><span class="a-logo-mark"></span>BBS</a>
+      <span class="a-kicker">Admin / Email</span>
+      <span class="a-spacer"></span>
+      <label class="a-search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input type="text" placeholder="搜索收件人 / 主题">
+      </label>
+      <a class="a-btn sm ghost" href="settings.html">邮件配置</a>
+      <span class="a-avatar" title="管理员">管</span>
+    </header>
+
+    <div class="a-admin-body">
+
+      <div class="a-admin-head">
+        <div>
+          <div class="a-kicker">Email Logs</div>
+          <h1>邮件日志</h1>
+          <p>今日发送 128 封 · 失败 3 封 · 退信 1 封 · 保留 30 天</p>
+        </div>
+        <span class="a-spacer"></span>
+        <button class="a-btn sm ghost" type="button">导出 CSV</button>
+        <button class="a-btn sm" type="button">重发失败</button>
+      </div>
+
+      <div class="a-kpi-grid">
+        <div class="a-kpi">
+          <span>今日发送</span>
+          <b>128</b>
+          <em class="up">送达率 97.7%</em>
+        </div>
+        <div class="a-kpi">
+          <span>失败</span>
+          <b>3</b>
+          <em>SMTP 超时 2 · 地址无效 1</em>
+        </div>
+        <div class="a-kpi">
+          <span>退信</span>
+          <b>1</b>
+          <em>邮箱不存在，已标记</em>
+        </div>
+        <div class="a-kpi">
+          <span>队列积压</span>
+          <b>0</b>
+          <em>无待发送任务</em>
+        </div>
+      </div>
+
+      <div class="a-filters a-mt-6">
+        <div class="a-filters-in">
+          <a class="on" href="email-logs.html">全部</a>
+          <a href="email-logs.html">已送达</a>
+          <a href="email-logs.html">失败</a>
+          <a href="email-logs.html">退信</a>
+          <span class="a-filters-count">3,842 Records</span>
+        </div>
+      </div>
+
+      <div class="a-table-wrap">
+        <table class="a-table">
+          <thead>
+            <tr>
+              <th class="col-num">时间</th>
+              <th>收件人</th>
+              <th>主题</th>
+              <th>模板</th>
+              <th>状态</th>
+              <th>说明</th>
+              <th class="col-actions">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-num">10-20 08:42</td>
+              <td>linyi@example.com</td>
+              <td>你的回答被采纳了</td>
+              <td>answer-accepted</td>
+              <td><span class="a-tag on">已送达</span></td>
+              <td>—</td>
+              <td class="col-actions"><button class="a-btn text" type="button">查看</button></td>
+            </tr>
+            <tr>
+              <td class="col-num">10-20 08:12</td>
+              <td>zhouzhou@example.com</td>
+              <td>有人回复了你关注的话题</td>
+              <td>topic-reply</td>
+              <td><span class="a-tag on">已送达</span></td>
+              <td>—</td>
+              <td class="col-actions"><button class="a-btn text" type="button">查看</button></td>
+            </tr>
+            <tr>
+              <td class="col-num">10-20 07:30</td>
+              <td>chenmo@example.com</td>
+              <td>请验证你的邮箱</td>
+              <td>email-verify</td>
+              <td><span class="a-tag">失败</span></td>
+              <td>SMTP 超时（30s）</td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">重发</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">10-20 07:02</td>
+              <td>suwan@example.com</td>
+              <td>每周摘要 · 10 月第 3 周</td>
+              <td>weekly-digest</td>
+              <td><span class="a-tag on">已送达</span></td>
+              <td>—</td>
+              <td class="col-actions"><button class="a-btn text" type="button">查看</button></td>
+            </tr>
+            <tr>
+              <td class="col-num">10-19 22:40</td>
+              <td>spam8821@example.com</td>
+              <td>账号已被限制</td>
+              <td>account-banned</td>
+              <td><span class="a-tag">退信</span></td>
+              <td>邮箱不存在（550）</td>
+              <td class="col-actions"><button class="a-btn text" type="button">查看</button></td>
+            </tr>
+            <tr>
+              <td class="col-num">10-19 21:02</td>
+              <td>xiaoman@example.com</td>
+              <td>重置密码</td>
+              <td>password-reset</td>
+              <td><span class="a-tag on">已送达</span></td>
+              <td>—</td>
+              <td class="col-actions"><button class="a-btn text" type="button">查看</button></td>
+            </tr>
+            <tr>
+              <td class="col-num">10-19 18:35</td>
+              <td>alan@example.com</td>
+              <td>友链申请已通过</td>
+              <td>link-approved</td>
+              <td><span class="a-tag">失败</span></td>
+              <td>SMTP 连接被拒</td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">重发</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <nav class="a-pager a-section">
+        <a href="email-logs.html" class="on">1</a>
+        <a href="email-logs.html">2</a>
+        <a href="email-logs.html">3</a>
+        <span class="sep">…</span>
+        <a href="email-logs.html">193</a>
+        <span class="a-pager-info">1–20 / 3,842</span>
+      </nav>
+
+      <div class="a-note a-mt-4">
+        日志保留 30 天，不记录邮件正文。失败重发最多 3 次，超过后需要联系收件人确认地址。
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+</body>
+</html>

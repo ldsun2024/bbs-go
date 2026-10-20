@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>写文章</title>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/ui.css">
+</head>
+<body>
+
+<header class="a-topbar">
+  <div class="a-wrap a-topbar-in">
+    <a class="a-logo" href="home.html"><span class="a-logo-mark"></span>BBS</a>
+    <nav class="a-nav">
+      <a href="topics.html">话题</a>
+      <a class="on" href="articles.html">文章</a>
+      <a href="search.html">问答</a>
+      <a href="category.html">公告</a>
+    </nav>
+    <div class="a-topbar-r">
+      <span class="a-kicker">Draft · 自动保存</span>
+      <button class="a-btn sm ghost" type="button">存草稿</button>
+      <button class="a-btn sm accent" type="button">发布</button>
+    </div>
+  </div>
+</header>
+
+<main class="a-wrap a-main">
+
+  <nav class="a-breadcrumb a-breadcrumb-top">
+    <a href="home.html">首页</a><span class="sep">/</span>
+    <a href="articles.html">文章</a><span class="sep">/</span>
+    <span class="cur">写文章</span>
+  </nav>
+
+  <div class="a-two-col">
+    <!-- 左：正文 -->
+    <section class="a-form-page">
+
+      <div class="a-upload">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3" y="4" width="18" height="16"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 16l-5-5-6 6"/></svg>
+        <span>上传封面图 · 建议 1200 × 480，不超过 2 MB</span>
+      </div>
+
+      <div class="a-mt-5">
+        <label class="a-form-label" for="atitle">标题</label>
+        <input class="a-title-input" id="atitle" type="text" placeholder="一个具体、能搜索到的标题">
+        <div class="a-setting-desc">不超过 60 字。避免「分享」「记录」这类没有信息的词。</div>
+      </div>
+
+      <div class="a-mt-4">
+        <label class="a-form-label" for="summary">摘要</label>
+        <textarea class="a-textarea" id="summary" placeholder="一到两句话说明这篇文章解决什么问题，会显示在列表与分享卡片里。"></textarea>
+        <div class="a-setting-desc">0 / 120 字</div>
+      </div>
+
+      <div class="a-mt-4">
+        <div class="a-form-label">分类</div>
+        <div class="a-filters-in">
+          <span class="a-chip">学习方法</span>
+          <span class="a-chip on">数学</span>
+          <span class="a-chip">英语</span>
+          <span class="a-chip">物理</span>
+          <span class="a-chip">经验</span>
+        </div>
+      </div>
+
+      <div class="a-mt-4">
+        <div class="a-form-label">标签（最多 5 个）</div>
+        <div class="a-filters-in">
+          <span class="a-tag on">错题本</span>
+          <span class="a-tag">函数</span>
+          <span class="a-tag">一轮复习</span>
+          <span class="a-tag">+ 添加标签</span>
+        </div>
+      </div>
+
+      <div class="a-editor">
+        <div class="a-editor-toolbar">
+          <button class="a-editor-btn" type="button" title="加粗">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 5h6a4 4 0 0 1 0 8H7z"/><path d="M7 13h7a4 4 0 0 1 0 8H7z"/></svg>
+          </button>
+          <button class="a-editor-btn" type="button" title="斜体">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5h-5M14 19H9M14 5l-4 14"/></svg>
+          </button>
+          <span class="a-editor-div"></span>
+          <button class="a-editor-btn" type="button" title="一级标题">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 5v14M18 5v14M6 12h12"/></svg>
+          </button>
+          <button class="a-editor-btn" type="button" title="无序列表">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="5" cy="6" r="1"/><circle cx="5" cy="12" r="1"/><circle cx="5" cy="18" r="1"/></svg>
+          </button>
+          <button class="a-editor-btn" type="button" title="有序列表">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10 6h10M10 12h10M10 18h10"/><path d="M4 6h2M4 12h2M4 18h2"/></svg>
+          </button>
+          <button class="a-editor-btn" type="button" title="引用">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 5v14"/><path d="M10 8h8M10 12h8M10 16h5"/></svg>
+          </button>
+          <span class="a-editor-div"></span>
+          <button class="a-editor-btn" type="button" title="代码块">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 8l-4 4 4 4M15 8l4 4-4 4"/></svg>
+          </button>
+          <button class="a-editor-btn" type="button" title="图片">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 17l-5-5-6 6"/></svg>
+          </button>
+          <button class="a-editor-btn" type="button" title="表格">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14"/><path d="M3 10h18M3 15h18M9 5v14M15 5v14"/></svg>
+          </button>
+        </div>
+        <div class="a-editor-body" contenteditable="true" data-placeholder="正文。支持 Markdown，公式用 $ 包裹。">
+          <h2>一、我试过的四种记法</h2>
+          <p>刚开始我是把整道题抄下来，包括题干和所有选项。坚持了两周就放弃了，因为抄题本身就是负担。</p>
+          <p>后来改成只贴题目、不抄。快了很多，但复习时看不出来当时为什么错。</p>
+          <h2>二、转折点</h2>
+          <p>真正有效的是第三步：只记「错因」一句话。比如「配方时忘了提公因式」，而不是「这题不会」。</p>
+        </div>
+      </div>
+
+      <div class="a-compose-foot">
+        <span>已自动保存 · <span class="a-tnum">1,204</span> 字 · 预计阅读 4 分钟</span>
+        <span class="a-spacer"></span>
+        <button class="a-btn sm ghost" type="button">预览</button>
+        <button class="a-btn sm" type="button">发布</button>
+      </div>
+
+    </section>
+
+    <!-- 右：发布设置 -->
+    <aside class="a-aside">
+      <div>
+        <div class="a-box-h">发布设置</div>
+        <div class="a-form-label">可见性</div>
+        <select class="a-select">
+          <option>所有人可见</option>
+          <option>仅登录用户</option>
+          <option>仅自己可见</option>
+        </select>
+      </div>
+
+      <div>
+        <div class="a-form-label">评论</div>
+        <label class="a-check"><input type="checkbox" checked> 允许评论</label>
+        <div class="a-mt-3"><label class="a-check"><input type="checkbox"> 置顶到分类首页</label></div>
+      </div>
+
+      <div>
+        <div class="a-form-label">发布时间</div>
+        <label class="a-check"><input type="radio" name="pt" checked> 立即发布</label>
+        <div class="a-mt-3"><label class="a-check"><input type="radio" name="pt"> 定时发布</label></div>
+        <div class="a-mt-3">
+          <input class="a-input" type="text" placeholder="2026-10-21 09:00">
+        </div>
+      </div>
+
+      <div>
+        <div class="a-box-h">写作提示</div>
+        <ul>
+          <li class="a-kv"><span>标题</span><b>≤ 60 字</b></li>
+          <li class="a-kv"><span>摘要</span><b>≤ 120 字</b></li>
+          <li class="a-kv"><span>封面</span><b>1200 × 480</b></li>
+        </ul>
+        <p class="a-setting-desc">正文超过 3000 字时，建议拆成小节并加小标题，手机端更容易读。</p>
+      </div>
+    </aside>
+  </div>
+
+</main>
+
+</body>
+</html>

@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>方向 C · 高对比杂志 — bbs-go V2</title>
+<style>
+/* ============================================================
+   方向 C · 高对比杂志（Poster / Newspaper Front Page）
+   原则：标题即主角、3px 黑线切版、零圆角、栏目标签方块
+   ============================================================ */
+:root{
+  /* 颜色 */
+  --c-bg:#F5F0E8;
+  --c-paper:#FBF7F0;
+  --c-ink:#0A0A0A;
+  --c-ink-2:#5C5347;
+  --c-ink-3:#8A8070;
+  --c-rule:#0A0A0A;
+  --c-rule-l:#D8CFC0;
+  --c-red:#B3202E;
+  --c-red-soft:rgba(179,32,46,.08);
+
+  /* 字号阶：64 / 48 / 34 / 22 / 18 / 15 / 13 / 12 / 11 */
+  --c-fs-hero:64px;
+  --c-fs-display:48px;
+  --c-fs-h1:34px;
+  --c-fs-h2:22px;
+  --c-fs-h3:18px;
+  --c-fs-body:15px;
+  --c-fs-sm:13px;
+  --c-fs-xs:12px;
+  --c-fs-micro:11px;
+
+  /* 间距阶 */
+  --c-sp-1:4px;  --c-sp-2:8px;  --c-sp-3:12px; --c-sp-4:16px;
+  --c-sp-5:24px; --c-sp-6:32px; --c-sp-7:48px; --c-sp-8:64px;
+
+  /* 布局 */
+  --c-w:1240px;
+  --c-side:260px;
+
+  /* 字族 */
+  --c-display:"Oswald","Impact","Haettenschweiler","Arial Narrow","PingFang SC","Microsoft YaHei",sans-serif;
+  --c-sans:"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Helvetica Neue",Arial,sans-serif;
+  --c-mono:"SFMono-Regular","Roboto Mono",Consolas,monospace;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--c-bg);
+  color:var(--c-ink);
+  font-family:var(--c-sans);
+  font-size:var(--c-fs-body);
+  line-height:1.75;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+button,input{font:inherit;color:inherit}
+img{max-width:100%;display:block}
+
+.c-wrap{width:100%;max-width:var(--c-w);margin:0 auto;padding:0 var(--c-sp-5)}
+.c-tnum{font-variant-numeric:tabular-nums}
+
+/* ============ 报头：三层叠 ============ */
+.c-topbar{
+  border-bottom:1px solid var(--c-rule-l);
+  background:var(--c-bg);
+}
+.c-topbar-in{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:var(--c-sp-4);
+  height:34px;
+  font-family:var(--c-mono);
+  font-size:var(--c-fs-micro);
+  letter-spacing:0.08em;
+  color:var(--c-ink-3);
+  text-transform:uppercase;
+}
+.c-topbar-in .c-tb-r{display:flex;gap:var(--c-sp-4)}
+.c-topbar-in .c-tb-r a:hover{color:var(--c-ink)}
+
+.c-masthead{
+  background:var(--c-bg);
+  border-bottom:3px solid var(--c-rule);
+}
+.c-masthead-in{
+  padding:var(--c-sp-5) 0 var(--c-sp-3);
+  text-align:center;
+  position:relative;
+}
+.c-brand{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  font-family:var(--c-display);
+  font-size:52px;
+  font-weight:900;
+  line-height:1;
+  letter-spacing:-0.02em;
+  text-transform:uppercase;
+}
+.c-brand-mark{
+  display:inline-block;
+  width:34px;height:34px;
+  background:var(--c-red);
+}
+.c-brand small{
+  display:block;
+  font-family:var(--c-sans);
+  font-size:var(--c-fs-micro);
+  font-weight:400;
+  letter-spacing:0.34em;
+  color:var(--c-ink-2);
+  margin-top:9px;
+  text-transform:uppercase;
+}
+.c-brand-sub{
+  position:absolute;
+  right:0;bottom:var(--c-sp-3);
+  font-family:var(--c-mono);
+  font-size:var(--c-fs-micro);
+  letter-spacing:0.1em;
+  color:var(--c-ink-3);
+  text-align:right;
+  line-height:1.6;
+}
+.c-nav{
+  border-bottom:1px solid var(--c-rule);
+  background:var(--c-bg);
+}
+.c-nav-in{
+  display:flex;
+  align-items:center;
+  height:44px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.c-nav-in::-webkit-scrollbar{display:none}
+.c-nav-in a{
+  flex:0 0 auto;
+  padding:0 var(--c-sp-4);
+  font-size:var(--c-fs-sm);
+  font-weight:600;
+  letter-spacing:0.04em;
+  color:var(--c-ink-2);
+  white-space:nowrap;
+  border-right:1px solid var(--c-rule-l);
+  line-height:44px;
+  transition:color .12s ease,background-color .12s ease;
+}
+.c-nav-in a:first-child{padding-left:0}
+.c-nav-in a:hover{color:var(--c-ink)}
+.c-nav-in a.on{
+  color:var(--c-ink);
+  background:var(--c-red-soft);
+  border-bottom:3px solid var(--c-red);
+}
+.c-nav-in .c-search{
+  margin-left:auto;
+  flex:0 0 auto;
+  display:flex;
+  align-items:center;
+  gap:7px;
+  padding-left:var(--c-sp-4);
+  border-left:1px solid var(--c-rule-l);
+  border-right:0;
+  color:var(--c-ink-3);
+}
+
+/* ============ 版头 ============ */
+.c-main{padding:var(--c-sp-6) 0 var(--c-sp-8)}
+.c-flag{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:var(--c-sp-4);
+  padding-bottom:10px;
+  border-bottom:3px solid var(--c-rule);
+}
+.c-flag h1{
+  font-family:var(--c-display);
+  font-size:var(--c-fs-h1);
+  font-weight:900;
+  line-height:1;
+  letter-spacing:-0.02em;
+  text-transform:uppercase;
+}
+.c-flag .c-flag-r{
+  display:flex;
+  gap:var(--c-sp-4);
+  font-family:var(--c-mono);
+  font-size:var(--c-fs-micro);
+  letter-spacing:0.1em;
+  color:var(--c-ink-3);
+  text-transform:uppercase;
+}
+
+/* ============ 头版 ============ */
+.c-front{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) var(--c-side);
+  gap:var(--c-sp-6);
+  margin-top:var(--c-sp-5);
+}
+.c-lead-wrap{min-width:0}
+
+/* 头条：2/3 文字 + 1/3 图位 */
+.c-lead{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 300px;
+  gap:var(--c-sp-5);
+  padding-bottom:var(--c-sp-5);
+  border-bottom:3px solid var(--c-rule);
+}
+.c-lead-txt{min-width:0}
+.c-kicker{
+  display:inline-block;
+  background:var(--c-ink);
+  color:var(--c-bg);
+  font-family:var(--c-mono);
+  font-size:var(--c-fs-micro);
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  padding:3px 8px;
+  margin-bottom:var(--c-sp-3);
+}
+.c-kicker.red{background:var(--c-red);color:#fff}
+.c-lead h2{
+  font-family:var(--c-display);
+  font-size:var(--c-fs-hero);
+  font-weight:900;
+  line-height:1.04;
+  letter-spacing:-0.03em;
+  overflow-wrap:anywhere;
+  transition:color .12s ease;
+}
+.c-lead h2:hover{color:var(--c-red)}
+.c-lead p{
+  margin-top:var(--c-sp-4);
+  font-size:16px;
+  line-height:1.7;
+  color:var(--c-ink-2);
+  max-width:34em;
+}
+.c-lead-meta{
+  margin-top:var(--c-sp-4);
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:var(--c-sp-4);
+  padding-top:var(--c-sp-3);
+  border-top:1px solid var(--c-rule-l);
+  font-family:var(--c-mono);
+  font-size:var(--c-fs-micro);
+  letter-spacing:0.06em;
+  color:var(--c-ink-3);
+  text-transform:uppercase;
+}
+.c-lead-meta b{color:var(--c-ink)}
+.c-lead-meta .c-au{
+  font-family:var(--c-sans);
+  font-size:var(--c-fs-sm);
+  letter-spacing:0;
+  text-transform:none;
+  color:var(--c-ink);
+  font-weight:600;
+}
+
+/* 图位：不用外链图片，用几何块保证离线可看 */
+.c-lead-fig{
+  position:relative;
+  background:var(--c-ink);
+  aspect-ratio:4/5;
+  overflow:hidden;
+}
+.c-lead-fig::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:
+    linear-gradient(135deg,transparent 46%,var(--c-bg) 46%,var(--c-bg) 48%,transparent 48%),
+    linear-gradient(45deg,transparent 62%,var(--c-red) 62%,var(--c-red) 64%,transparent 64%),
+    radial-gradient(circle at 76% 24%,var(--c-red) 0 7%,transparent 7.5%);
+}
+.c-lead-fig span{
+  position:absolute;
+  left:14px;bottom:12px;
+  color:var(--c-bg);
+  font-family:var(--c-mono);
+  font-size:var(--c-fs-micro);
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  opacity:.8;
+}
+
+/* ============ 其余条目：两栏紧凑 ============ */
+.c-grid{
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:0 var(--c-sp-6);
+  margin-top:var(--c-sp-5);
+}
+.c-card{
+  padding:var(--c-sp-4) 0 var(--c-sp-5);
+  border-bottom:2px solid var(--c-rule);
+  animation:c-fade .18s ease backwards;
+}
+.c-card:nth-child(1){animation-delay:0s}
+.c-card:nth-child(2){animation-delay:.03s}
+.c-card:nth-child(3){animation-delay:.06s}
+.c-card:nth-child(4){animation-delay:.09s}
+.c-card:nth-child(5){animation-delay:.12s}
+.c-card:nth-child(6){animation-delay:.15s}
+.c-card-h{
+  display:flex;
+  align-items:center;
+  gap:var(--c-sp-3);
+  margin-bottom:10px;
+}
+.c-tagbox{
+  display:inline-block;
+  background:var(--c-ink);
+  color:var(--c-bg);
+  font-size:var(--c-fs-micro);
+  font-weight:600;
+  letter-spacing:0.06em;
+  padding:2px 7px;
+  line-height:1.5;
+}
+.c-tagbox.qa{background:var(--c-red);color:#fff}
+.c-card-h time{
+  margin-left:auto;
+  font-family:var(--c-mono);
+  font-size:var(--c-fs-micro);
+  letter-spacing:0.06em;
+  color:var(--c-ink-3);
+}
+.c-card h3{
+  font-family:var(--c-display);
+  font-size:var(--c-fs-h2);
+  font-weight:800;
+  line-height:1.22;
+  letter-spacing:-0.015em;
+  overflow-wrap:anywhere;
+  transition:color .12s ease,box-shadow .12s ease;
+  display:inline;
+  box-shadow:inset 0 -2px 0 transparent;
+}
+.c-card h3:hover{
+  color:var(--c-ink);
+  box-shadow:inset 0 -2px 0 var(--c-red);
+}
+.c-card p{
+  margin-top:var(--c-sp-2);
+  font-size:var(--c-fs-sm);
+  line-height:1.7;
+  color:var(--c-ink-2);
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  overflow-wrap:anywhere;
+}
+.c-card-m{
+  margin-top:var(--c-sp-3);
+  display:flex;
+  gap:var(--c-sp-4);
+  font-family:var(--c-mono);
+  font-size:var(--c-fs-micro);
+  letter-spacing:0.06em;
+  color:var(--c-ink-3);
+  text-transform:uppercase;
+}
+.c-card-m b{color:var(--c-ink)}
+.c-card-m .c-au{
+  font-family:var(--c-sans);
+  letter-spacing:0;
+  text-transform:none;
+  color:var(--c-ink-2);
+  font-size:var(--c-fs-xs);
+}
+
+/* 空态 */
+.c-empty{
+  margin-top:var(--c-sp-5);
+  border:3px solid var(--c-rule);
+  padding:var(--c-sp-6) var(--c-sp-5);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:var(--c-sp-5);
+  flex-wrap:wrap;
+}
+.c-empty h3{
+  font-family:var(--c-display);
+  font-size:var(--c-fs-h2);
+  font-weight:800;
+  letter-spacing:-0.01em;
+}
+.c-empty p{
+  margin-top:4px;
+  font-size:var(--c-fs-sm);
+  color:var(--c-ink-2);
+}
+
+/* 分页 */
+.c-pager{
+  display:flex;
+  align-items:center;
+  gap:0;
+  margin-top:var(--c-sp-5);
+  border:1px solid var(--c-rule);
+  width:fit-content;
+}
+.c-pager a{
+  min-width:34px;height:34px;
+  padding:0 10px;
+  display:grid;place-items:center;
+  font-family:var(--c-mono);
+  font-size:var(--c-fs-xs);
+  color:var(--c-ink-2);
+  border-right:1px solid var(--c-rule-l);
+  transition:background-color .12s ease,color .12s ease;
+}
+.c-pager a:last-child{border-right:0}
+.c-pager a:hover{background:rgba(10,10,10,.05);color:var(--c-ink)}
+.c-pager a.on{background:var(--c-ink);color:var(--c-bg)}
+
+/* ============ 右侧窄栏 ============ */
+.c-side{display:flex;flex-direction:column;gap:var(--c-sp-5)}
+.c-side-box{
+  border-top:3px solid var(--c-rule);
+  padding-top:var(--c-sp-3);
+}
+.c-side-h{
+  font-family:var(--c-display);
+  font-size:var(--c-fs-h3);
+  font-weight:900;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+  margin-bottom:var(--c-sp-3);
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.c-side-h::after{
+  content:"";
+  flex:1;
+  height:2px;
+  background:var(--c-rule);
+}
+.c-rank li{
+  display:grid;
+  grid-template-columns:26px minmax(0,1fr);
+  gap:10px;
+  padding:9px 0;
+  border-bottom:1px solid var(--c-rule-l);
+  align-items:baseline;
+}
+.c-rank li:last-child{border-bottom:0}
+.c-rank b{
+  font-family:var(--c-display);
+  font-size:var(--c-fs-h3);
+  font-weight:900;
+  color:var(--c-red);
+  line-height:1;
+}
+.c-rank a{
+  font-size:var(--c-fs-sm);
+  line-height:1.55;
+  color:var(--c-ink);
+  overflow-wrap:anywhere;
+  transition:color .12s ease;
+}
+.c-rank a:hover{color:var(--c-red)}
+.c-rank span{
+  display:block;
+  margin-top:2px;
+  font-family:var(--c-mono);
+  font-size:var(--c-fs-micro);
+  color:var(--c-ink-3);
+  letter-spacing:0.06em;
+}
+.c-bulletin li{
+  padding:9px 0;
+  border-bottom:1px solid var(--c-rule-l);
+  font-size:var(--c-fs-sm);
+  line-height:1.6;
+}
+.c-bulletin li:last-child{border-bottom:0}
+.c-bulletin time{
+  display:block;
+  font-family:var(--c-mono);
+  font-size:var(--c-fs-micro);
+  color:var(--c-ink-3);
+  margin-top:3px;
+}
+.c-stat{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:1px;
+  background:var(--c-rule-l);
+  border:1px solid var(--c-rule-l);
+}
+.c-stat div{
+  background:var(--c-bg);
+  padding:11px 12px;
+}
+.c-stat b{
+  display:block;
+  font-family:var(--c-display);
+  font-size:var(--c-fs-h2);
+  font-weight:900;
+  line-height:1;
+  font-variant-numeric:tabular-nums;
+}
+.c-stat span{
+  display:block;
+  margin-top:5px;
+  font-family:var(--c-mono);
+  font-size:var(--c-fs-micro);
+  letter-spacing:0.08em;
+  color:var(--c-ink-3);
+  text-transform:uppercase;
+}
+
+/* ============ 组件样本 ============ */
+.c-kit{
+  margin-top:var(--c-sp-7);
+  border-top:3px solid var(--c-rule);
+  padding-top:var(--c-sp-4);
+}
+.c-kit-h{
+  display:flex;align-items:baseline;gap:12px;
+  margin-bottom:var(--c-sp-4);
+}
+.c-kit-h h2{
+  font-family:var(--c-display);
+  font-size:var(--c-fs-h3);
+  font-weight:900;
+  letter-spacing:0.04em;
+  text-transform:uppercase;
+}
+.c-kit-h span{
+  font-family:var(--c-mono);
+  font-size:var(--c-fs-micro);
+  color:var(--c-ink-3);
+  letter-spacing:0.08em;
+}
+.c-kit-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:var(--c-sp-5);
+}
+.c-kit-cell h3{
+  font-family:var(--c-mono);
+  font-size:var(--c-fs-micro);
+  letter-spacing:0.14em;
+  color:var(--c-ink-3);
+  margin-bottom:10px;
+  padding-bottom:6px;
+  border-bottom:1px solid var(--c-rule-l);
+  text-transform:uppercase;
+}
+.c-kit-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+
+/* 按钮 */
+.c-btn{
+  display:inline-flex;align-items:center;justify-content:center;
+  height:42px;
+  padding:0 22px;
+  background:var(--c-red);
+  color:#fff;
+  border:2px solid var(--c-red);
+  font-size:var(--c-fs-sm);
+  font-weight:700;
+  letter-spacing:0.04em;
+  cursor:pointer;
+  transition:background-color .12s ease,color .12s ease;
+}
+.c-btn:hover{background:transparent;color:var(--c-red)}
+.c-btn.sm{height:32px;padding:0 14px;font-size:var(--c-fs-micro)}
+.c-btn.dark{background:var(--c-ink);border-color:var(--c-ink)}
+.c-btn.dark:hover{background:transparent;color:var(--c-ink)}
+.c-btn.ghost{
+  background:transparent;
+  color:var(--c-ink);
+  border-color:var(--c-ink);
+}
+.c-btn.ghost:hover{background:var(--c-ink);color:var(--c-bg)}
+.c-btn.text{
+  height:auto;padding:0;
+  background:transparent;border:0;
+  color:var(--c-ink);
+  font-weight:700;
+  border-bottom:2px solid var(--c-ink);
+}
+.c-btn.text:hover{color:var(--c-red);border-bottom-color:var(--c-red);background:transparent}
+
+/* 标签 */
+.c-tag{
+  display:inline-flex;align-items:center;
+  height:24px;padding:0 8px;
+  border:1px solid var(--c-ink);
+  font-size:var(--c-fs-micro);
+  font-weight:600;
+  color:var(--c-ink);
+}
+.c-tag.on{background:var(--c-ink);color:var(--c-bg)}
+
+/* 输入 */
+.c-input{
+  height:38px;
+  width:100%;max-width:220px;
+  padding:0 10px;
+  background:var(--c-paper);
+  border:2px solid var(--c-ink);
+  font-size:var(--c-fs-sm);
+  outline:0;
+  transition:border-color .12s ease;
+}
+.c-input:focus{border-color:var(--c-red)}
+.c-input::placeholder{color:var(--c-ink-3)}
+
+/* 页脚 */
+.c-foot{
+  background:var(--c-ink);
+  color:var(--c-bg);
+  margin-top:var(--c-sp-7);
+}
+.c-foot-in{
+  padding:var(--c-sp-6) 0 var(--c-sp-5);
+  display:grid;
+  grid-template-columns:1.4fr repeat(3,1fr);
+  gap:var(--c-sp-5);
+}
+.c-foot-brand{
+  font-family:var(--c-display);
+  font-size:26px;
+  font-weight:900;
+  letter-spacing:-0.01em;
+  line-height:1.1;
+}
+.c-foot-brand small{
+  display:block;
+  margin-top:8px;
+  font-family:var(--c-mono);
+  font-size:var(--c-fs-micro);
+  font-weight:400;
+  letter-spacing:0.12em;
+  color:rgba(245,240,232,.6);
+}
+.c-foot-col h4{
+  font-family:var(--c-mono);
+  font-size:var(--c-fs-micro);
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:rgba(245,240,232,.55);
+  margin-bottom:10px;
+  font-weight:400;
+}
+.c-foot-col li{margin-bottom:6px}
+.c-foot-col a{
+  font-size:var(--c-fs-sm);
+  color:rgba(245,240,232,.85);
+  transition:color .12s ease;
+}
+.c-foot-col a:hover{color:var(--c-red)}
+.c-foot-btm{
+  border-top:1px solid rgba(245,240,232,.18);
+  padding:var(--c-sp-3) 0;
+  display:flex;
+  justify-content:space-between;
+  gap:var(--c-sp-4);
+  font-family:var(--c-mono);
+  font-size:var(--c-fs-micro);
+  letter-spacing:0.1em;
+  color:rgba(245,240,232,.5);
+  text-transform:uppercase;
+}
+
+@keyframes c-fade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+
+/* 响应式 */
+@media (max-width:1159px){
+  .c-front{grid-template-columns:minmax(0,1fr)}
+  .c-side{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:var(--c-sp-5);
+    padding-top:var(--c-sp-5);
+    border-top:3px solid var(--c-rule);
+  }
+  .c-kit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:899px){
+  .c-lead{grid-template-columns:minmax(0,1fr)}
+  .c-lead-fig{aspect-ratio:16/9;order:-1}
+  .c-lead h2{font-size:44px}
+  .c-grid{grid-template-columns:minmax(0,1fr)}
+  .c-brand{font-size:38px}
+  .c-brand-sub{display:none}
+  .c-foot-in{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:639px){
+  .c-wrap{padding:0 var(--c-sp-4)}
+  .c-topbar-in{font-size:10px}
+  .c-topbar-in .c-tb-r{display:none}
+  .c-masthead-in{padding:var(--c-sp-4) 0 var(--c-sp-3);text-align:left}
+  .c-brand{font-size:30px;gap:10px}
+  .c-brand-mark{width:24px;height:24px}
+  .c-brand small{letter-spacing:0.24em}
+  .c-lead h2{font-size:34px;letter-spacing:-0.02em}
+  .c-lead p{font-size:14px}
+  .c-card h3{font-size:19px}
+  .c-side{grid-template-columns:minmax(0,1fr)}
+  .c-kit-grid{grid-template-columns:minmax(0,1fr)}
+  .c-empty{flex-direction:column;align-items:flex-start}
+  .c-foot-in{grid-template-columns:minmax(0,1fr);gap:var(--c-sp-4)}
+  .c-foot-btm{flex-direction:column;gap:6px}
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== 报头 ==================== -->
+<div class="c-topbar">
+  <div class="c-wrap c-topbar-in">
+    <span>2026年10月20日 · 星期二 · 第 1284 期</span>
+    <span class="c-tb-r">
+      <a href="#">订阅</a>
+      <a href="#">关于</a>
+      <a href="#">登录</a>
+    </span>
+  </div>
+</div>
+
+<header class="c-masthead">
+  <div class="c-wrap c-masthead-in">
+    <a class="c-brand" href="#">
+      <span class="c-brand-mark"></span>
+      校园日报
+    </a>
+    <div style="margin-top:8px">
+      <span class="c-brand-sub" style="position:static;text-align:center;display:inline-block">把问题问清楚，把答案留下来</span>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== 导航 ==================== -->
+<div class="c-nav">
+  <div class="c-wrap c-nav-in">
+    <a class="on" href="#">话题</a>
+    <a href="#">文章</a>
+    <a href="#">问答</a>
+    <a href="#">公告</a>
+    <a href="#">热榜</a>
+    <a href="#">作业</a>
+    <a href="#">奖惩</a>
+    <a class="c-search" href="#">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path>
+      </svg>
+      搜索
+    </a>
+  </div>
+</div>
+
+<!-- ==================== 主体 ==================== -->
+<main class="c-main">
+  <div class="c-wrap">
+
+    <!-- 版头 -->
+    <div class="c-flag">
+      <h1>头版 · 社区</h1>
+      <div class="c-flag-r">
+        <span>1284 Topics</span>
+        <span>326 Members</span>
+        <span>18 Today</span>
+      </div>
+    </div>
+
+    <!-- 头版：头条 + 两栏 -->
+    <div class="c-front">
+      <div class="c-lead-wrap">
+
+        <!-- 头条 -->
+        <article class="c-lead">
+          <div class="c-lead-txt">
+            <span class="c-kicker red">头条 · 问答</span>
+            <h2>二次函数图像怎么快速判断开口方向？有没有口诀</h2>
+            <p>老师上课讲的是看 a 的正负，但我做题时经常把顶点和开口搞混。想问问大家有没有更直观的记法，或者有没有推荐的练习。</p>
+            <div class="c-lead-meta">
+              <span class="c-au">林一</span>
+              <span><b>128</b> 浏览</span>
+              <span><b>24</b> 回复</span>
+              <span>2 小时前</span>
+            </div>
+          </div>
+          <div class="c-lead-fig">
+            <span>Fig. 01 / Quadratic</span>
+          </div>
+        </article>
+
+        <!-- 其余条目两栏 -->
+        <div class="c-grid">
+          <article class="c-card">
+            <div class="c-card-h">
+              <span class="c-tagbox">文章</span>
+              <time>5 小时前</time>
+            </div>
+            <h3><a href="#">高三数学一轮复习：函数与导数的 12 个易错点整理</a></h3>
+            <p>整理了近三年模拟卷里反复出现的 12 个坑，每个都配了原始题目和我自己的错因分析。</p>
+            <div class="c-card-m">
+              <span class="c-au">周舟</span>
+              <span><b>842</b> 浏览</span>
+              <span><b>36</b> 回复</span>
+            </div>
+          </article>
+
+          <article class="c-card">
+            <div class="c-card-h">
+              <span class="c-tagbox">动态</span>
+              <time>8 小时前</time>
+            </div>
+            <h3><a href="#">今天物理实验课的电路图，有人拍到了吗</a></h3>
+            <p>第三节做的是串并联那块，老师说最后那张图会考。我坐后排没拍清楚，有的同学麻烦发一下。</p>
+            <div class="c-card-m">
+              <span class="c-au">小满</span>
+              <span><b>96</b> 浏览</span>
+              <span><b>12</b> 回复</span>
+            </div>
+          </article>
+
+          <article class="c-card">
+            <div class="c-card-h">
+              <span class="c-tagbox qa">问答</span>
+              <time>昨天</time>
+            </div>
+            <h3><a href="#">英语阅读理解总是做不完，想请教下大家的做题顺序</a></h3>
+            <p>每次都是先把文章通读一遍再做题，结果时间不够。是应该先看题干再看文章吗？</p>
+            <div class="c-card-m">
+              <span class="c-au">陈默</span>
+              <span><b>240</b> 浏览</span>
+              <span><b>31</b> 回复</span>
+            </div>
+          </article>
+
+          <article class="c-card">
+            <div class="c-card-h">
+              <span class="c-tagbox">动态</span>
+              <time>昨天</time>
+            </div>
+            <h3><a href="#">图书馆四楼靠窗的位置真的太好用了</a></h3>
+            <p>下午三点以后阳光会斜过来，正好照在桌面上，不刺眼。那一片特别安静。</p>
+            <div class="c-card-m">
+              <span class="c-au">阿岚</span>
+              <span><b>512</b> 浏览</span>
+              <span><b>45</b> 回复</span>
+            </div>
+          </article>
+
+          <article class="c-card">
+            <div class="c-card-h">
+              <span class="c-tagbox">文章</span>
+              <time>2 天前</time>
+            </div>
+            <h3><a href="#">从 60 分到 92 分：我的化学提分笔记（附错题本模板）</a></h3>
+            <p>花了两个月把必修二的错题重做了一遍，核心就三件事：分类、归因、限时重做。</p>
+            <div class="c-card-m">
+              <span class="c-au">苏晚</span>
+              <span><b>1.2k</b> 浏览</span>
+              <span><b>88</b> 回复</span>
+            </div>
+          </article>
+
+          <article class="c-card">
+            <div class="c-card-h">
+              <span class="c-tagbox">公告</span>
+              <time>2 天前</time>
+            </div>
+            <h3><a href="#">关于期中考试期间社区发帖规则的说明</a></h3>
+            <p>考试周期间答疑区优先展示，重复提问会合并；发帖请带上科目标签，便于检索。</p>
+            <div class="c-card-m">
+              <span class="c-au">管理员</span>
+              <span><b>1.8k</b> 浏览</span>
+              <span><b>22</b> 回复</span>
+            </div>
+          </article>
+        </div>
+
+        <!-- 空态 -->
+        <div class="c-empty">
+          <div>
+            <h3>这里还没有内容</h3>
+            <p>成为第一个发布的人，一条清晰的开场会带来更多回复。</p>
+          </div>
+          <button class="c-btn sm">发布第一条</button>
+        </div>
+
+        <!-- 分页 -->
+        <nav class="c-pager">
+          <a href="#" class="on">1</a>
+          <a href="#">2</a>
+          <a href="#">3</a>
+          <a href="#">…</a>
+          <a href="#">43</a>
+          <a href="#">下一页 →</a>
+        </nav>
+
+      </div>
+
+      <!-- 右侧窄栏 -->
+      <aside class="c-side">
+
+        <div class="c-side-box">
+          <div class="c-side-h">热榜</div>
+          <ol class="c-rank">
+            <li><b>01</b><div><a href="#">二次函数图像怎么快速判断开口方向</a><span>128 浏览</span></div></li>
+            <li><b>02</b><div><a href="#">高三数学一轮复习：12 个易错点</a><span>842 浏览</span></div></li>
+            <li><b>03</b><div><a href="#">今天物理实验课的电路图</a><span>96 浏览</span></div></li>
+            <li><b>04</b><div><a href="#">英语阅读理解总是做不完</a><span>240 浏览</span></div></li>
+            <li><b>05</b><div><a href="#">图书馆四楼靠窗的位置</a><span>512 浏览</span></div></li>
+          </ol>
+        </div>
+
+        <div class="c-side-box">
+          <div class="c-side-h">公告</div>
+          <ul class="c-bulletin">
+            <li><a href="#">关于期中考试期间社区发帖规则的说明</a><time>2026-10-18</time></li>
+            <li><a href="#">新版本上线：支持 Markdown 公式与附件预览</a><time>2026-10-15</time></li>
+          </ul>
+        </div>
+
+        <div class="c-side-box">
+          <div class="c-side-h">数据</div>
+          <div class="c-stat">
+            <div><b>1,284</b><span>话题</span></div>
+            <div><b>326</b><span>成员</span></div>
+            <div><b>18</b><span>今日</span></div>
+            <div><b>42</b><span>在线</span></div>
+          </div>
+        </div>
+
+      </aside>
+    </div>
+
+    <!-- 组件样本 -->
+    <section class="c-kit">
+      <div class="c-kit-h">
+        <h2>Components</h2>
+        <span>button / tag / input / type</span>
+      </div>
+      <div class="c-kit-grid">
+        <div class="c-kit-cell">
+          <h3>Button · 42</h3>
+          <div class="c-kit-row">
+            <button class="c-btn">发布话题</button>
+            <button class="c-btn ghost">取消</button>
+          </div>
+        </div>
+        <div class="c-kit-cell">
+          <h3>Button · 32</h3>
+          <div class="c-kit-row">
+            <button class="c-btn sm">关注</button>
+            <button class="c-btn sm dark">采纳</button>
+            <button class="c-btn sm ghost">举报</button>
+          </div>
+        </div>
+        <div class="c-kit-cell">
+          <h3>Text Button</h3>
+          <div class="c-kit-row">
+            <button class="c-btn text">查看更多</button>
+            <button class="c-btn text">全部标为已读</button>
+          </div>
+        </div>
+        <div class="c-kit-cell">
+          <h3>Tag</h3>
+          <div class="c-kit-row">
+            <span class="c-tag on">数学</span>
+            <span class="c-tag">函数</span>
+            <span class="c-tag">高三</span>
+          </div>
+        </div>
+        <div class="c-kit-cell">
+          <h3>Input · 38</h3>
+          <input class="c-input" type="text" placeholder="输入标题">
+        </div>
+        <div class="c-kit-cell">
+          <h3>Type Box</h3>
+          <div class="c-kit-row">
+            <span class="c-tagbox">话题</span>
+            <span class="c-tagbox">动态</span>
+            <span class="c-tagbox qa">问答</span>
+          </div>
+        </div>
+        <div class="c-kit-cell">
+          <h3>Emphasis</h3>
+          <div class="c-kit-row" style="gap:14px">
+            <span style="font-family:var(--c-display);font-size:30px;font-weight:900;letter-spacing:-0.02em">Aa</span>
+            <span style="font-size:13px;color:#5C5347">正文 15 / 1.75</span>
+          </div>
+        </div>
+        <div class="c-kit-cell">
+          <h3>Palette</h3>
+          <div class="c-kit-row" style="gap:0">
+            <span style="width:26px;height:26px;background:#B3202E;display:inline-block"></span>
+            <span style="width:26px;height:26px;background:#0A0A0A;display:inline-block;margin-left:4px"></span>
+            <span style="width:26px;height:26px;background:#5C5347;display:inline-block;margin-left:4px"></span>
+            <span style="width:26px;height:26px;background:#F5F0E8;border:1px solid #D8CFC0;display:inline-block;margin-left:4px"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- ==================== 页脚 ==================== -->
+<footer class="c-foot">
+  <div class="c-wrap">
+    <div class="c-foot-in">
+      <div>
+        <div class="c-foot-brand">
+          校园日报
+          <small>BBS-GO V2 / POSTER MAGAZINE</small>
+        </div>
+      </div>
+      <div class="c-foot-col">
+        <h4>栏目</h4>
+        <ul>
+          <li><a href="#">话题</a></li>
+          <li><a href="#">文章</a></li>
+          <li><a href="#">问答</a></li>
+        </ul>
+      </div>
+      <div class="c-foot-col">
+        <h4>关于</h4>
+        <ul>
+          <li><a href="#">关于本站</a></li>
+          <li><a href="#">社区规范</a></li>
+          <li><a href="#">联系方式</a></li>
+        </ul>
+      </div>
+      <div class="c-foot-col">
+        <h4>条款</h4>
+        <ul>
+          <li><a href="#">隐私政策</a></li>
+          <li><a href="#">服务条款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="c-foot-btm">
+      <span>Direction C / Poster Magazine</span>
+      <span>© 2026</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

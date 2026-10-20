@@ -1,3 +1,5 @@
+import * as React from "react"
+
 import Link from "@/components/common/link"
 import { ChevronRight, MessageSquareQuote, Trophy } from "lucide-react"
 
@@ -58,6 +60,25 @@ export function FavoriteList({
   )
 }
 
+/* B5：时间分组，把上百条消息拆成「今天 / 昨天 / 更早」三段 */
+const MESSAGE_DAY_KEYS = ["today", "yesterday", "earlier"] as const
+type MessageDayKey = (typeof MESSAGE_DAY_KEYS)[number]
+
+function messageDayKey(createTime?: number): MessageDayKey {
+  if (!createTime) return "earlier"
+  const now = new Date()
+  const startOfToday = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate()
+  ).getTime()
+  // createTime 为秒级时间戳，兼容毫秒
+  const timestamp = createTime < 1e12 ? createTime * 1000 : createTime
+  if (timestamp >= startOfToday) return "today"
+  if (timestamp >= startOfToday - 86_400_000) return "yesterday"
+  return "earlier"
+}
+
 export function MessageList({
   messages,
   t,
@@ -66,22 +87,33 @@ export function MessageList({
   t: TFunction
 }) {
   if (!messages.length) {
-    return (
-      <div className="rounded-xl border border-dashed border-border bg-muted px-4 py-9 text-center text-sm text-muted-foreground">
-        {t("common.noData")}
-      </div>
-    )
+    return <EmptyState title={t("common.noData")} />
   }
+
+  const dayLabels: Record<MessageDayKey, string> = {
+    today: t("user.messages.today"),
+    yesterday: t("user.messages.yesterday"),
+    earlier: t("user.messages.earlier"),
+  }
+  let lastDayKey: MessageDayKey | null = null
 
   return (
     <ul className="flex w-full list-none flex-col gap-3">
-      {messages.map((message) => (
-        <li
-          key={message.id}
-          className="box-border w-full rounded-lg border border-border bg-background p-3 sm:p-3.5"
-        >
+      {messages.map((message) => {
+        const dayKey = messageDayKey(message.createTime)
+        const showDayHeader = dayKey !== lastDayKey
+        lastDayKey = dayKey
+
+        return (
+          <React.Fragment key={message.id}>
+            {showDayHeader ? (
+              <li className="list-none select-none px-1 pt-3 pb-1 text-[11px] font-medium tracking-wide text-muted-foreground">
+                {dayLabels[dayKey]}
+              </li>
+            ) : null}
+            <li className="box-border w-full rounded-lg border border-border bg-card px-4 py-3.5 sm:px-5">
           <div className="flex min-w-0 flex-wrap items-center gap-x-2 gap-y-1">
-            <UserAvatar user={message.from} size={36} />
+            <UserAvatar user={message.from} size={32} />
             {message.from?.id ? (
               <Link
                 href={`/user/${message.from.id}`}
@@ -111,7 +143,7 @@ export function MessageList({
           </div>
           <div className="mt-2 space-y-2">
             {message.content ? (
-              <div className="text-sm leading-6 break-words whitespace-pre-line text-foreground">
+              <div className="text-[13px] leading-7 break-words whitespace-pre-line text-foreground">
                 {message.content}
               </div>
             ) : null}
@@ -138,8 +170,10 @@ export function MessageList({
               </a>
             ) : null}
           </div>
-        </li>
-      ))}
+            </li>
+          </React.Fragment>
+        )
+      })}
     </ul>
   )
 }

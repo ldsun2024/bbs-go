@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>系统设置 · 后台</title>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/ui.css">
+</head>
+<body>
+
+<div class="a-admin-shell">
+
+  <aside class="a-admin-nav">
+    <div class="a-admin-group">
+      <h3>概览</h3>
+      <a href="dashboard.html">数据看板</a>
+      <a href="content.html">内容概览</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>内容</h3>
+      <a href="topics.html">话题管理</a>
+      <a href="articles.html">文章管理</a>
+      <a href="categories.html">分类管理</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>用户</h3>
+      <a href="users.html">用户管理</a>
+      <a href="roles.html">角色权限</a>
+      <a href="levels.html">等级管理</a>
+      <a href="badges.html">徽章管理</a>
+      <a href="user-badges.html">用户徽章</a>
+      <a href="user-exp-logs.html">经验日志</a>
+      <a href="user-reports.html">用户举报</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>运营</h3>
+      <a href="tasks.html">任务管理</a>
+      <a href="user-task-logs.html">任务日志</a>
+      <a href="links.html">友链管理</a>
+      <a href="forbidden-words.html">敏感词</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>系统</h3>
+      <a class="on" href="settings.html">系统设置</a>
+      <a href="email-logs.html">邮件日志</a>
+    </div>
+  </aside>
+
+  <main class="a-admin-main">
+    <header class="a-admin-top">
+      <a class="a-logo" href="../content/home.html"><span class="a-logo-mark"></span>BBS</a>
+      <span class="a-kicker">Admin / Settings</span>
+      <span class="a-spacer"></span>
+      <a class="a-btn sm ghost" href="../content/home.html">返回前台</a>
+      <span class="a-avatar" title="管理员">管</span>
+    </header>
+
+    <div class="a-admin-body">
+
+      <div class="a-admin-head">
+        <div>
+          <div class="a-kicker">System</div>
+          <h1>系统设置</h1>
+          <p>修改后立即生效。涉及邮件的配置需先发送测试邮件验证。</p>
+        </div>
+        <span class="a-spacer"></span>
+        <button class="a-btn sm ghost" type="button">恢复默认</button>
+      </div>
+
+      <nav class="a-tabbar">
+        <a class="on" href="settings.html">基本</a>
+        <a href="settings.html">注册与登录</a>
+        <a href="settings.html">内容审核</a>
+        <a href="settings.html">邮件</a>
+        <a href="settings.html">接口</a>
+      </nav>
+
+      <div class="a-form-page a-section">
+
+        <div class="a-box-h">站点信息</div>
+        <dl>
+          <div class="a-setting-row">
+            <dt>站点名称</dt>
+            <dd>
+              <input class="a-input" type="text" value="BBS-GO 校园社区">
+              <div class="a-setting-desc">显示在浏览器标题、邮件抬头与页脚。</div>
+            </dd>
+          </div>
+          <div class="a-setting-row">
+            <dt>站点简介</dt>
+            <dd>
+              <textarea class="a-textarea">一个以文字为主的校园社区，话题、文章、答疑都在这儿。</textarea>
+              <div class="a-setting-desc">最多 80 字，用于首页描述与分享卡片。</div>
+            </dd>
+          </div>
+          <div class="a-setting-row">
+            <dt>站点地址</dt>
+            <dd>
+              <input class="a-input" type="text" value="https://bbs.example.com">
+              <div class="a-setting-desc">用于生成邮件链接与绝对地址，结尾不要带斜杠。</div>
+            </dd>
+          </div>
+          <div class="a-setting-row">
+            <dt>备案号</dt>
+            <dd>
+              <input class="a-input" type="text" value="沪 ICP 备 2026000000 号">
+              <div class="a-setting-desc">留空则不显示页脚备案信息。</div>
+            </dd>
+          </div>
+          <div class="a-setting-row">
+            <dt>站点图标</dt>
+            <dd>
+              <span class="a-avatar xl">B</span>
+              <div class="a-setting-desc">建议 512×512 的 PNG 或 SVG，未上传时显示站点名首字。</div>
+              <div class="a-mt-3">
+                <button class="a-btn sm ghost" type="button">上传</button>
+                <button class="a-btn sm text" type="button">移除</button>
+              </div>
+            </dd>
+          </div>
+        </dl>
+
+        <div class="a-box-h a-mt-6">注册与登录</div>
+        <dl>
+          <div class="a-setting-row">
+            <dt>开放注册</dt>
+            <dd>
+              <label class="a-check"><input type="checkbox" checked> 允许访客自助注册</label>
+              <div class="a-setting-desc">关闭后只能由管理员在用户管理中邀请。</div>
+            </dd>
+          </div>
+          <div class="a-setting-row">
+            <dt>邮箱验证</dt>
+            <dd>
+              <select class="a-select">
+                <option>注册后必须验证邮箱</option>
+                <option>注册后可发帖，但部分功能需验证</option>
+                <option>不验证</option>
+              </select>
+            </dd>
+          </div>
+          <div class="a-setting-row">
+            <dt>邀请码</dt>
+            <dd>
+              <label class="a-check"><input type="checkbox"> 注册时需填写邀请码</label>
+              <div class="a-setting-desc">适合小范围试用，开启后需在下方生成邀请码。</div>
+            </dd>
+          </div>
+          <div class="a-setting-row">
+            <dt>密码强度</dt>
+            <dd>
+              <select class="a-select">
+                <option>至少 8 位，含字母与数字</option>
+                <option>至少 6 位</option>
+                <option>不限制</option>
+              </select>
+            </dd>
+          </div>
+        </dl>
+
+        <div class="a-box-h a-mt-6">内容审核</div>
+        <dl>
+          <div class="a-setting-row">
+            <dt>先审后发</dt>
+            <dd>
+              <label class="a-check"><input type="checkbox" checked> 新用户前 3 条内容进入审核队列</label>
+            </dd>
+          </div>
+          <div class="a-setting-row">
+            <dt>敏感词</dt>
+            <dd>
+              <textarea class="a-textarea">加微信
+免费领取
+代写作业
+刷单</textarea>
+              <div class="a-setting-desc">每行一个词。命中后自动进入审核队列，不直接删除。</div>
+            </dd>
+          </div>
+          <div class="a-setting-row">
+            <dt>附件大小上限</dt>
+            <dd>
+              <select class="a-select">
+                <option>5 MB</option>
+                <option>10 MB</option>
+                <option>20 MB</option>
+              </select>
+            </dd>
+          </div>
+          <div class="a-setting-row">
+            <dt>允许的附件类型</dt>
+            <dd>
+              <label class="a-check"><input type="checkbox" checked> 图片（JPG / PNG / WebP）</label>
+              <div class="a-mt-3"><label class="a-check"><input type="checkbox" checked> 文档（PDF）</label></div>
+              <div class="a-mt-3"><label class="a-check"><input type="checkbox"> 压缩包（ZIP）</label></div>
+            </dd>
+          </div>
+        </dl>
+
+        <div class="a-box-h a-mt-6">邮件</div>
+        <dl>
+          <div class="a-setting-row">
+            <dt>SMTP 服务器</dt>
+            <dd>
+              <input class="a-input" type="text" value="smtp.example.com:465">
+            </dd>
+          </div>
+          <div class="a-setting-row">
+            <dt>发件人</dt>
+            <dd>
+              <input class="a-input" type="text" value="BBS-GO &lt;noreply@example.com&gt;">
+            </dd>
+          </div>
+          <div class="a-setting-row">
+            <dt>测试邮件</dt>
+            <dd>
+              <div class="a-setting-desc">保存配置后发送一封测试邮件，确认能正常收到再启用。</div>
+              <div class="a-mt-3">
+                <input class="a-input" type="email" placeholder="收件邮箱">
+              </div>
+            </dd>
+          </div>
+        </dl>
+
+      </div>
+
+      <div class="a-action-bar">
+        <span>最后保存：2026-10-19 22:04 · 管理员</span>
+        <span class="a-spacer"></span>
+        <button class="a-btn sm ghost" type="button">取消</button>
+        <button class="a-btn sm accent" type="button">保存设置</button>
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+</body>
+</html>

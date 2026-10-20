@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>敏感词 · 后台</title>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/ui.css">
+</head>
+<body>
+
+<div class="a-admin-shell">
+
+  <aside class="a-admin-nav">
+    <div class="a-admin-group">
+      <h3>概览</h3>
+      <a href="dashboard.html">数据看板</a>
+      <a href="content.html">内容概览</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>内容</h3>
+      <a href="topics.html">话题管理</a>
+      <a href="articles.html">文章管理</a>
+      <a href="categories.html">分类管理</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>用户</h3>
+      <a href="users.html">用户管理</a>
+      <a href="roles.html">角色权限</a>
+      <a href="levels.html">等级管理</a>
+      <a href="badges.html">徽章管理</a>
+      <a href="user-badges.html">用户徽章</a>
+      <a href="user-exp-logs.html">经验日志</a>
+      <a href="user-reports.html">用户举报</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>运营</h3>
+      <a href="tasks.html">任务管理</a>
+      <a href="user-task-logs.html">任务日志</a>
+      <a href="links.html">友链管理</a>
+      <a class="on" href="forbidden-words.html">敏感词</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>系统</h3>
+      <a href="settings.html">系统设置</a>
+      <a href="email-logs.html">邮件日志</a>
+    </div>
+  </aside>
+
+  <main class="a-admin-main">
+    <header class="a-admin-top">
+      <a class="a-logo" href="../content/home.html"><span class="a-logo-mark"></span>BBS</a>
+      <span class="a-kicker">Admin / Words</span>
+      <span class="a-spacer"></span>
+      <label class="a-search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input type="text" placeholder="搜索词条">
+      </label>
+      <a class="a-btn sm ghost" href="../content/home.html">返回前台</a>
+      <span class="a-avatar" title="管理员">管</span>
+    </header>
+
+    <div class="a-admin-body">
+
+      <div class="a-admin-head">
+        <div>
+          <div class="a-kicker">Forbidden Words</div>
+          <h1>敏感词</h1>
+          <p>共 42 条规则 · 屏蔽 30 · 仅提醒 10 · 正则 2 · 本周命中 128 次</p>
+        </div>
+        <span class="a-spacer"></span>
+        <button class="a-btn sm ghost" type="button">导出</button>
+        <button class="a-btn sm accent" type="button">添加词条</button>
+      </div>
+
+      <div class="a-filters">
+        <div class="a-filters-in">
+          <a class="on" href="forbidden-words.html">全部</a>
+          <a href="forbidden-words.html">屏蔽</a>
+          <a href="forbidden-words.html">仅提醒</a>
+          <a href="forbidden-words.html">正则</a>
+          <a href="forbidden-words.html">已停用</a>
+          <span class="a-filters-count">42 Records</span>
+        </div>
+      </div>
+
+      <div class="a-action-bar">
+        <span>命中后自动进入审核队列，不直接删除</span>
+        <span class="a-spacer"></span>
+        <button class="a-btn sm ghost" type="button">批量停用</button>
+      </div>
+
+      <div class="a-table-wrap">
+        <table class="a-table">
+          <thead>
+            <tr>
+              <th class="col-check"><input type="checkbox" aria-label="全选"></th>
+              <th>词条</th>
+              <th>类型</th>
+              <th>处理方式</th>
+              <th>替换为</th>
+              <th class="col-num">本周命中</th>
+              <th>状态</th>
+              <th class="col-actions">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="1"></td>
+              <td>加微信</td>
+              <td><span class="a-tag">关键词</span></td>
+              <td>进入审核</td>
+              <td>***</td>
+              <td class="col-num">42</td>
+              <td><span class="a-tag on">启用</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">停用</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="2"></td>
+              <td>免费领取</td>
+              <td><span class="a-tag">关键词</span></td>
+              <td>进入审核</td>
+              <td>***</td>
+              <td class="col-num">36</td>
+              <td><span class="a-tag on">启用</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">停用</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="3"></td>
+              <td>代写作业</td>
+              <td><span class="a-tag">关键词</span></td>
+              <td>进入审核</td>
+              <td>***</td>
+              <td class="col-num">22</td>
+              <td><span class="a-tag on">启用</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">停用</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="4"></td>
+              <td>刷单</td>
+              <td><span class="a-tag">关键词</span></td>
+              <td>进入审核</td>
+              <td>***</td>
+              <td class="col-num">16</td>
+              <td><span class="a-tag on">启用</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">停用</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="5"></td>
+              <td>1[3-9]\d{9}</td>
+              <td><span class="a-tag on">正则</span></td>
+              <td>自动屏蔽</td>
+              <td>***</td>
+              <td class="col-num">8</td>
+              <td><span class="a-tag on">启用</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">停用</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="6"></td>
+              <td>[\w.-]+@[\w.-]+</td>
+              <td><span class="a-tag on">正则</span></td>
+              <td>仅提醒</td>
+              <td>—</td>
+              <td class="col-num">4</td>
+              <td><span class="a-tag on">启用</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">停用</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="7"></td>
+              <td>包过</td>
+              <td><span class="a-tag">关键词</span></td>
+              <td>仅提醒</td>
+              <td>—</td>
+              <td class="col-num">0</td>
+              <td><span class="a-tag">已停用</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">启用</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 批量导入 -->
+      <div class="a-section-lg">
+        <div class="a-box-h">批量导入</div>
+        <div class="a-two-col a-mt-4">
+          <section class="a-form-page">
+            <textarea class="a-textarea" placeholder="每行一个词条，最多 500 行"></textarea>
+            <div class="a-setting-desc">导入的词条默认「进入审核」+「启用」，导入后可以逐条修改。</div>
+            <div class="a-mt-4">
+              <button class="a-btn sm" type="button">开始导入</button>
+              <button class="a-btn sm ghost" type="button">下载模板</button>
+            </div>
+          </section>
+          <aside class="a-aside">
+            <div>
+              <div class="a-box-h">处理方式说明</div>
+              <ul>
+                <li class="a-kv"><span>进入审核</span><b>不删内容</b></li>
+                <li class="a-kv"><span>自动屏蔽</span><b>替换为 ***</b></li>
+                <li class="a-kv"><span>仅提醒</span><b>只记录不处理</b></li>
+              </ul>
+              <p class="a-setting-desc">建议默认用「进入审核」，避免误伤正常讨论。</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+</body>
+</html>

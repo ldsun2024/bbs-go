@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>文章管理 · 后台</title>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/ui.css">
+</head>
+<body>
+
+<div class="a-admin-shell">
+
+  <aside class="a-admin-nav">
+    <div class="a-admin-group">
+      <h3>概览</h3>
+      <a href="dashboard.html">数据看板</a>
+      <a href="content.html">内容概览</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>内容</h3>
+      <a href="topics.html">话题管理</a>
+      <a class="on" href="articles.html">文章管理</a>
+      <a href="categories.html">分类管理</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>用户</h3>
+      <a href="users.html">用户管理</a>
+      <a href="roles.html">角色权限</a>
+      <a href="levels.html">等级管理</a>
+      <a href="badges.html">徽章管理</a>
+      <a href="user-badges.html">用户徽章</a>
+      <a href="user-exp-logs.html">经验日志</a>
+      <a href="user-reports.html">用户举报</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>运营</h3>
+      <a href="tasks.html">任务管理</a>
+      <a href="user-task-logs.html">任务日志</a>
+      <a href="links.html">友链管理</a>
+      <a href="forbidden-words.html">敏感词</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>系统</h3>
+      <a href="settings.html">系统设置</a>
+      <a href="email-logs.html">邮件日志</a>
+    </div>
+  </aside>
+
+  <main class="a-admin-main">
+    <header class="a-admin-top">
+      <a class="a-logo" href="../content/home.html"><span class="a-logo-mark"></span>BBS</a>
+      <span class="a-kicker">Admin / Articles</span>
+      <span class="a-spacer"></span>
+      <label class="a-search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input type="text" placeholder="搜索标题 / 作者">
+      </label>
+      <a class="a-btn sm ghost" href="../content/home.html">返回前台</a>
+      <span class="a-avatar" title="管理员">管</span>
+    </header>
+
+    <div class="a-admin-body">
+
+      <div class="a-admin-head">
+        <div>
+          <div class="a-kicker">Articles</div>
+          <h1>文章管理</h1>
+          <p>共 216 篇 · 已发布 192 · 草稿 8 · 待审 16</p>
+        </div>
+        <span class="a-spacer"></span>
+        <button class="a-btn sm ghost" type="button">导出</button>
+        <a class="a-btn sm accent" href="../content/article-create.html">新建文章</a>
+      </div>
+
+      <div class="a-filters">
+        <div class="a-filters-in">
+          <a class="on" href="articles.html">全部</a>
+          <a href="articles.html">已发布</a>
+          <a href="articles.html">草稿</a>
+          <a href="articles.html">待审</a>
+          <a href="articles.html">已下架</a>
+          <span class="a-filters-count">216 Records</span>
+        </div>
+      </div>
+
+      <div class="a-action-bar">
+        <span>已选 <b class="a-tnum">2</b> 项</span>
+        <button class="a-btn sm ghost" type="button">批量推荐</button>
+        <button class="a-btn sm ghost" type="button">批量下架</button>
+        <button class="a-btn sm danger" type="button">批量删除</button>
+        <span class="a-spacer"></span>
+        <span>按发布时间倒序</span>
+      </div>
+
+      <div class="a-table-wrap">
+        <table class="a-table">
+          <thead>
+            <tr>
+              <th class="col-check"><input type="checkbox" aria-label="全选"></th>
+              <th class="col-num">ID</th>
+              <th>标题</th>
+              <th>作者</th>
+              <th>分类</th>
+              <th>状态</th>
+              <th class="col-num">浏览</th>
+              <th class="col-num">收藏</th>
+              <th class="col-num">发布时间</th>
+              <th class="col-actions">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="is-selected">
+              <td class="col-check"><input type="checkbox" checked aria-label="选择 1284"></td>
+              <td class="col-num">1284</td>
+              <td>错题本到底怎么记才有用？我试过四种格式后的结论</td>
+              <td>林一</td>
+              <td>学习方法</td>
+              <td><span class="a-tag on">已推荐</span></td>
+              <td class="col-num">1,520</td>
+              <td class="col-num">42</td>
+              <td class="col-num">10-15 20:12</td>
+              <td class="col-actions">
+                <a class="a-btn text" href="../content/article-edit.html">编辑</a>
+                <button class="a-btn text" type="button">下架</button>
+              </td>
+            </tr>
+            <tr class="is-selected">
+              <td class="col-check"><input type="checkbox" checked aria-label="选择 1283"></td>
+              <td class="col-num">1283</td>
+              <td>高三数学一轮复习：函数与导数的 12 个易错点整理</td>
+              <td>周舟</td>
+              <td>数学</td>
+              <td><span class="a-tag on">已发布</span></td>
+              <td class="col-num">842</td>
+              <td class="col-num">36</td>
+              <td class="col-num">10-14 19:40</td>
+              <td class="col-actions">
+                <a class="a-btn text" href="../content/article-edit.html">编辑</a>
+                <button class="a-btn text" type="button">下架</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="选择 1282"></td>
+              <td class="col-num">1282</td>
+              <td>英语阅读理解的三遍法：先题干、再段落、最后定位</td>
+              <td>陈默</td>
+              <td>英语</td>
+              <td><span class="a-tag">待审核</span></td>
+              <td class="col-num">0</td>
+              <td class="col-num">0</td>
+              <td class="col-num">10-20 07:30</td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">通过</button>
+                <button class="a-btn text" type="button">拒绝</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="选择 1281"></td>
+              <td class="col-num">1281</td>
+              <td>物理实验报告的误差分析该怎么写</td>
+              <td>苏晚</td>
+              <td>物理</td>
+              <td><span class="a-tag on">已发布</span></td>
+              <td class="col-num">620</td>
+              <td class="col-num">28</td>
+              <td class="col-num">10-13 16:20</td>
+              <td class="col-actions">
+                <a class="a-btn text" href="../content/article-edit.html">编辑</a>
+                <button class="a-btn text" type="button">下架</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="选择 1280"></td>
+              <td class="col-num">1280</td>
+              <td>用一张 A4 纸管住整学期的错题</td>
+              <td>苏晚</td>
+              <td>学习方法</td>
+              <td><span class="a-tag on">已发布</span></td>
+              <td class="col-num">486</td>
+              <td class="col-num">18</td>
+              <td class="col-num">10-11 21:04</td>
+              <td class="col-actions">
+                <a class="a-btn text" href="../content/article-edit.html">编辑</a>
+                <button class="a-btn text" type="button">下架</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="选择 1279"></td>
+              <td class="col-num">1279</td>
+              <td>（草稿）我为什么不再抄题了</td>
+              <td>林一</td>
+              <td>学习方法</td>
+              <td><span class="a-tag">草稿</span></td>
+              <td class="col-num">0</td>
+              <td class="col-num">0</td>
+              <td class="col-num">10-10 18:44</td>
+              <td class="col-actions">
+                <a class="a-btn text" href="../content/article-edit.html">编辑</a>
+                <button class="a-btn text" type="button">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="选择 1278"></td>
+              <td class="col-num">1278</td>
+              <td>这条内容已被作者删除</td>
+              <td>—</td>
+              <td>英语</td>
+              <td><span class="a-tag">已下架</span></td>
+              <td class="col-num">64</td>
+              <td class="col-num">2</td>
+              <td class="col-num">10-09 11:12</td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">恢复</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <nav class="a-pager a-section">
+        <a href="articles.html" class="on">1</a>
+        <a href="articles.html">2</a>
+        <a href="articles.html">3</a>
+        <span class="sep">…</span>
+        <a href="articles.html">11</a>
+        <span class="a-pager-info">1–20 / 216</span>
+      </nav>
+
+    </div>
+  </main>
+
+</div>
+
+</body>
+</html>

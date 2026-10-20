@@ -1,8 +1,10 @@
 @layer components {
+  /* A4：发布表单内外边距与卡片面统一 */
   .publish-form {
+    border: 1px solid var(--border);
     border-radius: var(--radius);
-    background: var(--background);
-    padding: 10px 18px 18px;
+    background: var(--card);
+    padding: 20px 24px 24px;
   }
 
   .publish-form .form-title {
@@ -15,8 +17,9 @@
   }
 
   .publish-form .form-title-name {
-    font-size: 18px;
-    font-weight: 500;
+    font-family: var(--font-serif);
+    font-size: 16px;
+    font-weight: 600;
   }
 
   .publish-form .form-title-switch {
@@ -70,8 +73,8 @@
 
   .publish-form .field input {
     border: 1px solid var(--border);
-    border-radius: 3px;
-    background-color: var(--background);
+    border-radius: var(--radius);
+    background-color: var(--card);
   }
 
   .publish-form .field input:focus,
@@ -98,13 +101,13 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 24px;
+    min-height: 26px;
     padding: 0 12px;
-    border-radius: 3px;
+    border-radius: var(--radius-sm);
     background: var(--muted);
     color: var(--muted-foreground);
-    font-size: 14px;
-    line-height: 24px;
+    font-size: 13px;
+    line-height: 26px;
   }
 
   .publish-form .topic-tag:hover {
@@ -125,9 +128,9 @@
       transform 0.18s ease;
   }
 
+  /* 去掉彩色投影（规范禁止带色 box-shadow） */
   .publish-form .topic-tag-level1.selected {
-    transform: translateY(-1px);
-    box-shadow: 0 6px 14px color-mix(in srgb, var(--primary) 18%, transparent);
+    box-shadow: none;
   }
 
   .publish-form .topic-tag-level1-muted {
@@ -294,7 +297,7 @@
     height: 24px;
     flex-shrink: 0;
     border-radius: 4px;
-    background-color: #fff;
+    background-color: var(--card);
     background-position: center;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -537,5 +540,69 @@
     .topics-mobile-category-item .node-logo-placeholder {
       background: color-mix(in srgb, var(--primary) 14%, var(--background));
     }
+  }
+}
+
+/* ============ A5 · 内容类型区分 ============ */
+@layer components {
+  .topic-type-mark {
+    position: relative;
+  }
+
+  .topic-type-mark::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 12px;
+    bottom: 12px;
+    width: 3px;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    background: var(--type-topic);
+  }
+
+  .topic-type-mark[data-topic-type="0"]::before {
+    background: var(--type-topic);
+  }
+
+  .topic-type-mark[data-topic-type="1"]::before {
+    background: var(--type-tweet);
+  }
+
+  .topic-type-mark[data-topic-type="2"]::before {
+    background: var(--type-qa);
+  }
+
+  .topic-type-mark[data-topic-type="3"]::before {
+    background: var(--type-article);
+  }
+}
+
+/* ============ B4 · 分类兜底图标 ============ */
+@layer components {
+  .node-logo-icon svg,
+  .node-logo-placeholder svg,
+  .node-logo-fallback svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .node-logo-placeholder,
+  .node-logo-fallback {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3px;
+    background-color: color-mix(in srgb, var(--primary) 8%, var(--card));
+    color: var(--muted-foreground);
+  }
+
+  .dock-nav li.active .node-logo-placeholder,
+  .dock-nav li:hover .node-logo-placeholder {
+    color: var(--topics-nav-active-foreground);
+  }
+
+  .topics-mobile-category-item.active .node-logo-placeholder {
+    background-color: transparent;
+    color: var(--primary-foreground);
   }
 }

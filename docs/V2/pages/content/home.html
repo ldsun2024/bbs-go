@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>首页 · 话题列表</title>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/ui.css">
+</head>
+<body>
+
+<!-- ========== 顶栏 ========== -->
+<header class="a-topbar">
+  <div class="a-wrap a-topbar-in">
+    <a class="a-logo" href="home.html"><span class="a-logo-mark"></span>BBS</a>
+    <nav class="a-nav">
+      <a class="on" href="home.html">话题</a>
+      <a href="articles.html">文章</a>
+      <a href="search.html">问答</a>
+      <a href="category.html">公告</a>
+    </nav>
+    <div class="a-topbar-r">
+      <label class="a-search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input type="text" placeholder="搜索话题、文章、用户">
+      </label>
+      <button class="a-icon-btn" title="消息">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 8a6 6 0 1 1 12 0c0 5 2 6 2 6H4s2-1 2-6"/><path d="M10 20a2 2 0 0 0 4 0"/></svg>
+      </button>
+      <span class="a-avatar" title="林一">林</span>
+    </div>
+  </div>
+</header>
+
+<!-- ========== 筛选条 ========== -->
+<div class="a-filters">
+  <div class="a-wrap a-filters-in">
+    <a class="on" href="home.html">全部</a>
+    <a href="category.html">数学</a>
+    <a href="category.html">语文</a>
+    <a href="category.html">英语</a>
+    <a href="category.html">物理</a>
+    <a href="category.html">化学</a>
+    <a href="category.html">答疑</a>
+    <a href="category.html">公告</a>
+    <span class="a-filters-count">1284 Topics / 326 Members</span>
+  </div>
+</div>
+
+<main class="a-wrap a-main">
+
+  <!-- ========== 页头 ========== -->
+  <div class="a-page-head">
+    <div class="a-page-head-l">
+      <div class="a-kicker a-page-kicker">Section 01 — Community</div>
+      <h1 class="a-page-title">把问题问清楚，<br>把答案留下来。</h1>
+      <p class="a-page-sub">一个以文字为主的校园社区。话题、文章、答疑与公告都在这里，按时间与热度排布。</p>
+    </div>
+    <div class="a-page-head-r">
+      <div class="a-stats">
+        <div class="a-stat"><b class="a-tnum">1,284</b><span>Topics</span></div>
+        <div class="a-stat"><b class="a-tnum">326</b><span>Members</span></div>
+        <div class="a-stat"><b class="a-tnum">18</b><span>Today</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ========== 列表 + 侧栏 ========== -->
+  <div class="a-two-col a-section">
+    <section>
+      <div class="a-list-head">
+        <h2>Latest</h2>
+        <div class="a-list-tabs">
+          <span class="on">最新</span>
+          <span>热门</span>
+          <span>未回复</span>
+        </div>
+      </div>
+
+      <article class="a-item">
+        <div class="a-no">01</div>
+        <div class="a-item-c">
+          <span class="a-type">QA</span>
+          <a class="a-item-t" href="topic-detail.html">二次函数图像怎么快速判断开口方向？有没有口诀</a>
+          <p class="a-item-d">老师上课讲的是看 a 的正负，但我做题时经常把顶点和开口搞混。想问问大家有没有更直观的记法，或者有没有推荐的练习。</p>
+        </div>
+        <div class="a-item-m">
+          <div class="a-author"><span class="a-avatar xs">林</span>林一</div>
+          <div class="a-nums"><span><b>128</b> VIEW</span><span><b>24</b> REPLY</span><span>2H</span></div>
+        </div>
+      </article>
+
+      <article class="a-item">
+        <div class="a-no">02</div>
+        <div class="a-item-c">
+          <span class="a-type">ARTICLE</span>
+          <a class="a-item-t" href="article-detail.html">高三数学一轮复习：函数与导数的 12 个易错点整理</a>
+          <p class="a-item-d">整理了近三年模拟卷里反复出现的 12 个坑，每个都配了原始题目和我自己的错因分析，希望对一轮复习的同学有用。</p>
+        </div>
+        <div class="a-item-m">
+          <div class="a-author"><span class="a-avatar xs">周</span>周舟</div>
+          <div class="a-nums"><span><b>842</b> VIEW</span><span><b>36</b> REPLY</span><span>5H</span></div>
+        </div>
+      </article>
+
+      <article class="a-item">
+        <div class="a-no">03</div>
+        <div class="a-item-c">
+          <span class="a-type">MOMENT</span>
+          <a class="a-item-t" href="topic-detail.html">今天物理实验课的电路图，有人拍到了吗</a>
+          <p class="a-item-d">第三节做的是串并联那块，老师说最后那张图会考。我坐后排没拍清楚，有的同学麻烦发一下。</p>
+        </div>
+        <div class="a-item-m">
+          <div class="a-author"><span class="a-avatar xs">满</span>小满</div>
+          <div class="a-nums"><span><b>96</b> VIEW</span><span><b>12</b> REPLY</span><span>8H</span></div>
+        </div>
+      </article>
+
+      <article class="a-item">
+        <div class="a-no">04</div>
+        <div class="a-item-c">
+          <span class="a-type">QA</span>
+          <a class="a-item-t" href="topic-detail.html">英语阅读理解总是做不完，想请教下大家的做题顺序</a>
+          <p class="a-item-d">每次都是先把文章通读一遍再做题，结果时间不够。是应该先看题干再看文章吗？还是按题型分优先级？</p>
+        </div>
+        <div class="a-item-m">
+          <div class="a-author"><span class="a-avatar xs">陈</span>陈默</div>
+          <div class="a-nums"><span><b>240</b> VIEW</span><span><b>31</b> REPLY</span><span>1D</span></div>
+        </div>
+      </article>
+
+      <article class="a-item">
+        <div class="a-no">05</div>
+        <div class="a-item-c">
+          <span class="a-type">MOMENT</span>
+          <a class="a-item-t" href="topic-detail.html">图书馆四楼靠窗的位置真的太好用了</a>
+          <p class="a-item-d">下午三点以后阳光会斜过来，正好照在桌面上，不刺眼。而且那一片特别安静，推荐给需要长时间自习的同学。</p>
+        </div>
+        <div class="a-item-m">
+          <div class="a-author"><span class="a-avatar xs">岚</span>阿岚</div>
+          <div class="a-nums"><span><b>512</b> VIEW</span><span><b>45</b> REPLY</span><span>1D</span></div>
+        </div>
+      </article>
+
+      <article class="a-item">
+        <div class="a-no">06</div>
+        <div class="a-item-c">
+          <span class="a-type">ARTICLE</span>
+          <a class="a-item-t" href="article-detail.html">从 60 分到 92 分：我的化学提分笔记（附错题本模板）</a>
+          <p class="a-item-d">花了两个月把必修二的错题重做了一遍，核心就三件事：分类、归因、限时重做。文末给了我用 Excel 做的错题本模板。</p>
+        </div>
+        <div class="a-item-m">
+          <div class="a-author"><span class="a-avatar xs">苏</span>苏晚</div>
+          <div class="a-nums"><span><b>1.2K</b> VIEW</span><span><b>88</b> REPLY</span><span>2D</span></div>
+        </div>
+      </article>
+
+      <nav class="a-pager a-section">
+        <a href="home.html" class="on">1</a>
+        <a href="home.html">2</a>
+        <a href="home.html">3</a>
+        <span class="sep">…</span>
+        <a href="home.html">43</a>
+        <span class="a-pager-info">1–20 / 1,284</span>
+      </nav>
+    </section>
+
+    <!-- 侧栏 -->
+    <aside class="a-aside">
+      <div>
+        <div class="a-box-h">Overview</div>
+        <ul>
+          <li class="a-kv"><span>话题</span><b>1,284</b></li>
+          <li class="a-kv"><span>成员</span><b>326</b></li>
+          <li class="a-kv"><span>今日新增</span><b>18</b></li>
+          <li class="a-kv"><span>当前在线</span><b>42</b></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="a-box-h">Active</div>
+        <ul>
+          <li class="a-user-row"><span class="a-avatar sm">林</span><span>林一</span><b>24</b></li>
+          <li class="a-user-row"><span class="a-avatar sm">周</span><span>周舟</span><b>19</b></li>
+          <li class="a-user-row"><span class="a-avatar sm">满</span><span>小满</span><b>16</b></li>
+          <li class="a-user-row"><span class="a-avatar sm">陈</span><span>陈默</span><b>12</b></li>
+          <li class="a-user-row"><span class="a-avatar sm">苏</span><span>苏晚</span><b>9</b></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="a-box-h">Notice</div>
+        <ul>
+          <li><a class="a-notice-item" href="topic-detail.html">关于期中考试期间社区发帖规则的说明<time>10-18</time></a></li>
+          <li><a class="a-notice-item" href="topic-detail.html">新版本上线：支持 Markdown 公式与附件预览<time>10-15</time></a></li>
+        </ul>
+      </div>
+    </aside>
+  </div>
+
+</main>
+
+<!-- ========== 页脚 ========== -->
+<footer class="a-footer">
+  <div class="a-wrap">
+    <div class="a-footer-in">
+      <div>
+        <h4>Community</h4>
+        <ul>
+          <li><a href="home.html">话题</a></li>
+          <li><a href="articles.html">文章</a></li>
+          <li><a href="search.html">问答</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="category.html">数学</a></li>
+          <li><a href="category.html">语文</a></li>
+          <li><a href="category.html">英语</a></li>
+          <li><a href="category.html">物理</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="topic-detail.html">关于本站</a></li>
+          <li><a href="topic-detail.html">社区规范</a></li>
+          <li><a href="topic-detail.html">联系方式</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="topic-detail.html">隐私政策</a></li>
+          <li><a href="topic-detail.html">服务条款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="a-footer-btm">
+      <span>BBS-GO V2 — SWISS GRID</span>
+      <span>© 2026</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

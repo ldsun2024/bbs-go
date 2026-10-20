@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>C5 · 骨架屏</title>
+    <link rel="stylesheet" href="../assets/design.css" />
+    <style>
+      .sk {
+        background: var(--bg-subtle);
+        border-radius: var(--radius-sm);
+        animation: breathe 1.4s ease-in-out infinite;
+      }
+      @keyframes breathe {
+        0%, 100% { opacity: 0.65; }
+        50% { opacity: 1; }
+      }
+      .sk-list-item {
+        display: grid;
+        grid-template-columns: 64px minmax(0, 1fr) 108px;
+        gap: 16px;
+        padding: 18px 20px;
+        border-bottom: 1px solid var(--line);
+      }
+      .sk-list-item:last-child {
+        border-bottom: 0;
+      }
+      .sk-date {
+        width: 40px;
+        height: 40px;
+        margin-left: auto;
+      }
+      .sk-lines {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .sk-stats {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: flex-end;
+      }
+      .sk-pane {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+      }
+      .pane-title {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        color: var(--text-2);
+        margin-bottom: 10px;
+      }
+      .pane-title code {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .sk-table-row {
+        display: grid;
+        grid-template-columns: 40px 1.4fr 0.6fr 0.6fr 0.5fr;
+        gap: 14px;
+        padding: 12px 16px;
+        border-bottom: 1px solid var(--line);
+        align-items: center;
+      }
+      .sk-table-row:last-child {
+        border-bottom: 0;
+      }
+      .sk-table-row.head {
+        background: var(--bg-subtle);
+        padding: 10px 16px;
+      }
+      .grid3sk {
+        display: grid;
+        grid-template-columns: 1.5fr 1fr;
+        gap: 16px;
+      }
+      .stack-sk {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+      .prose-sk {
+        padding: 22px 24px 26px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="doc">
+      <header class="doc-head">
+        <div>
+          <h1>骨架屏统一</h1>
+          <div class="sub">三类骨架：列表、详情、表格。形状与真实内容对齐，数据到达不跳动。</div>
+        </div>
+        <span class="doc-tag">C5</span>
+      </header>
+
+      <div class="grid3sk">
+        <section class="doc-section" style="margin-bottom: 0">
+          <h2>列表页 <span>4 条 · 沿用 .topic-item 栅格</span></h2>
+          <div class="sk-pane">
+            <div class="sk-list-item">
+              <div class="sk sk-date"></div>
+              <div class="sk-lines">
+                <div class="sk" style="height: 16px; width: 92%"></div>
+                <div class="sk" style="height: 12px; width: 100%"></div>
+                <div class="sk" style="height: 12px; width: 72%"></div>
+                <div class="sk" style="height: 10px; width: 40%"></div>
+              </div>
+              <div class="sk-stats">
+                <div class="sk" style="height: 10px; width: 60px"></div>
+                <div class="sk" style="height: 10px; width: 44px"></div>
+              </div>
+            </div>
+
+            <div class="sk-list-item">
+              <div class="sk sk-date"></div>
+              <div class="sk-lines">
+                <div class="sk" style="height: 16px; width: 78%"></div>
+                <div class="sk" style="height: 12px; width: 96%"></div>
+                <div class="sk" style="height: 12px; width: 64%"></div>
+                <div class="sk" style="height: 10px; width: 36%"></div>
+              </div>
+              <div class="sk-stats">
+                <div class="sk" style="height: 10px; width: 60px"></div>
+                <div class="sk" style="height: 10px; width: 44px"></div>
+              </div>
+            </div>
+
+            <div class="sk-list-item">
+              <div class="sk sk-date"></div>
+              <div class="sk-lines">
+                <div class="sk" style="height: 16px; width: 86%"></div>
+                <div class="sk" style="height: 12px; width: 100%"></div>
+                <div class="sk" style="height: 12px; width: 58%"></div>
+                <div class="sk" style="height: 10px; width: 42%"></div>
+              </div>
+              <div class="sk-stats">
+                <div class="sk" style="height: 10px; width: 60px"></div>
+                <div class="sk" style="height: 10px; width: 44px"></div>
+              </div>
+            </div>
+
+            <div class="sk-list-item">
+              <div class="sk sk-date"></div>
+              <div class="sk-lines">
+                <div class="sk" style="height: 16px; width: 70%"></div>
+                <div class="sk" style="height: 12px; width: 92%"></div>
+                <div class="sk" style="height: 12px; width: 50%"></div>
+                <div class="sk" style="height: 10px; width: 38%"></div>
+              </div>
+              <div class="sk-stats">
+                <div class="sk" style="height: 10px; width: 60px"></div>
+                <div class="sk" style="height: 10px; width: 44px"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="stack-sk">
+          <section class="doc-section" style="margin-bottom: 0">
+            <h2>详情页 <span>标题 + 6 行正文</span></h2>
+            <div class="sk-pane">
+              <div class="prose-sk">
+                <div class="sk" style="height: 28px; width: 92%"></div>
+                <div class="sk" style="height: 28px; width: 62%; margin-bottom: 6px"></div>
+                <div class="sk" style="height: 10px; width: 46%; margin-bottom: 12px"></div>
+                <div class="sk" style="height: 12px; width: 100%"></div>
+                <div class="sk" style="height: 12px; width: 95%"></div>
+                <div class="sk" style="height: 12px; width: 88%"></div>
+                <div class="sk" style="height: 12px; width: 100%"></div>
+                <div class="sk" style="height: 12px; width: 72%"></div>
+                <div class="sk" style="height: 12px; width: 45%"></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="doc-section" style="margin-bottom: 0">
+            <h2>后台表格 <span>表头 + 6 行</span></h2>
+            <div class="sk-pane">
+              <div class="sk-table-row head">
+                <div class="sk" style="height: 10px; width: 14px"></div>
+                <div class="sk" style="height: 10px; width: 60%"></div>
+                <div class="sk" style="height: 10px; width: 70%"></div>
+                <div class="sk" style="height: 10px; width: 60%"></div>
+                <div class="sk" style="height: 10px; width: 40%"></div>
+              </div>
+              <div class="sk-table-row">
+                <div class="sk" style="height: 12px; width: 14px"></div>
+                <div class="sk" style="height: 12px; width: 88%"></div>
+                <div class="sk" style="height: 12px; width: 60%"></div>
+                <div class="sk" style="height: 12px; width: 50%"></div>
+                <div class="sk" style="height: 12px; width: 40%"></div>
+              </div>
+              <div class="sk-table-row">
+                <div class="sk" style="height: 12px; width: 14px"></div>
+                <div class="sk" style="height: 12px; width: 72%"></div>
+                <div class="sk" style="height: 12px; width: 60%"></div>
+                <div class="sk" style="height: 12px; width: 50%"></div>
+                <div class="sk" style="height: 12px; width: 40%"></div>
+              </div>
+              <div class="sk-table-row">
+                <div class="sk" style="height: 12px; width: 14px"></div>
+                <div class="sk" style="height: 12px; width: 94%"></div>
+                <div class="sk" style="height: 12px; width: 60%"></div>
+                <div class="sk" style="height: 12px; width: 50%"></div>
+                <div class="sk" style="height: 12px; width: 40%"></div>
+              </div>
+              <div class="sk-table-row">
+                <div class="sk" style="height: 12px; width: 14px"></div>
+                <div class="sk" style="height: 12px; width: 66%"></div>
+                <div class="sk" style="height: 12px; width: 60%"></div>
+                <div class="sk" style="height: 12px; width: 50%"></div>
+                <div class="sk" style="height: 12px; width: 40%"></div>
+              </div>
+              <div class="sk-table-row">
+                <div class="sk" style="height: 12px; width: 14px"></div>
+                <div class="sk" style="height: 12px; width: 80%"></div>
+                <div class="sk" style="height: 12px; width: 60%"></div>
+                <div class="sk" style="height: 12px; width: 50%"></div>
+                <div class="sk" style="height: 12px; width: 40%"></div>
+              </div>
+              <div class="sk-table-row">
+                <div class="sk" style="height: 12px; width: 14px"></div>
+                <div class="sk" style="height: 12px; width: 76%"></div>
+                <div class="sk" style="height: 12px; width: 60%"></div>
+                <div class="sk" style="height: 12px; width: 50%"></div>
+                <div class="sk" style="height: 12px; width: 40%"></div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <section class="doc-section" style="margin-top: 22px">
+        <h2>规格与禁用</h2>
+        <div class="grid2">
+          <div class="note note--good">
+            <strong>规格</strong><br />
+            块高：标题 16 / 正文 12 / 元信息 10 / 方块 40×40<br />
+            圆角 3，底色 <code>--bg-subtle</code><br />
+            呼吸 1.4s ease-in-out，透明度 0.65 → 1<br />
+            宽度递减 100 / 95 / 88 / 72 / 45%，模拟自然段长<br />
+            列表 4 条、正文 6 行、表格 6 行，都不超过首屏
+          </div>
+          <div class="note note--bad">
+            <strong>禁用</strong><br />
+            全屏转圈（除表单提交）<br />
+            文字「加载中...」<br />
+            骨架持续超过 3 秒仍不消失 —— 应转为「加载较慢，请检查网络」+ 重试<br />
+            <br />
+            <strong>关键</strong>：骨架必须与真实内容同高同列宽，否则数据到达时页面会跳（CLS）。
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

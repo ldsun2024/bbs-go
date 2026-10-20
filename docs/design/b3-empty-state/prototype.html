@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>B3 · 空态与错误页</title>
+    <link rel="stylesheet" href="../assets/design.css" />
+    <style>
+      .empty-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+      .empty-box {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 28px;
+        min-height: 300px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .empty-box.center {
+        align-items: center;
+        text-align: center;
+      }
+      .empty-box h3 {
+        font-family: var(--font-serif);
+        font-size: 20px;
+        font-weight: 600;
+        margin-top: 16px;
+      }
+      .empty-box p {
+        margin-top: 8px;
+        font-size: 13px;
+        line-height: 1.8;
+        color: var(--text-2);
+        max-width: 340px;
+      }
+      .empty-box .acts {
+        margin-top: 18px;
+        display: flex;
+        gap: 10px;
+      }
+      .ink {
+        width: 120px;
+        height: 120px;
+        stroke: var(--line-strong);
+        stroke-width: 2;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+      }
+      .cap {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--muted);
+        margin-bottom: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="doc">
+      <header class="doc-head">
+        <div>
+          <h1>空态与错误页</h1>
+          <div class="sub">一套结构、两种对齐、四种文案。线稿只用 --line-strong 单色。</div>
+        </div>
+        <span class="doc-tag">B3</span>
+      </header>
+
+      <section class="doc-section">
+        <h2>四种场景 <span>列表空 / 搜索无结果 / 404 / 500</span></h2>
+
+        <div class="empty-grid">
+          <div class="empty-box">
+            <div class="cap">列表空 · 左对齐</div>
+            <svg class="ink" viewBox="0 0 120 120" aria-hidden="true">
+              <path d="M20 44h80v52a4 4 0 0 1-4 4H24a4 4 0 0 1-4-4V44z" />
+              <path d="M20 44l8-16h64l8 16" />
+              <path d="M48 64h24" />
+            </svg>
+            <h3>这里还没有内容</h3>
+            <p>成为第一个发布的人，一条清晰的开场会带来更多回复。</p>
+            <div class="acts">
+              <button class="btn btn--primary">发布第一条</button>
+            </div>
+          </div>
+
+          <div class="empty-box">
+            <div class="cap">搜索无结果 · 左对齐</div>
+            <svg class="ink" viewBox="0 0 120 120" aria-hidden="true">
+              <circle cx="52" cy="52" r="24" />
+              <path d="M70 70l20 20" />
+              <path d="M44 52h16" />
+            </svg>
+            <h3>没有找到相关内容</h3>
+            <p>试试更短的关键词，或换个说法。也可以直接在问答区提问。</p>
+            <div class="acts">
+              <button class="btn btn--primary">清空筛选</button>
+              <button class="btn">去提问</button>
+            </div>
+          </div>
+
+          <div class="empty-box center">
+            <div class="cap">404 · 居中</div>
+            <svg class="ink" viewBox="0 0 120 120" aria-hidden="true">
+              <path d="M24 88c12-20 20-28 30-28" />
+              <path d="M74 60c10 0 16-8 22-24" />
+              <circle cx="54" cy="60" r="3" />
+              <circle cx="64" cy="60" r="3" />
+            </svg>
+            <h3>页面不存在</h3>
+            <p>链接可能已失效，或者内容已被作者删除。</p>
+            <div class="acts">
+              <button class="btn btn--primary">回到首页</button>
+            </div>
+          </div>
+
+          <div class="empty-box center">
+            <div class="cap">500 · 居中</div>
+            <svg class="ink" viewBox="0 0 120 120" aria-hidden="true">
+              <path d="M60 22a38 38 0 0 1 34 55" />
+              <path d="M86 88a38 38 0 0 1-52-4" />
+              <path d="M26 60a38 38 0 0 1 8-24" />
+              <path d="M56 56l10 10M66 56l-10 10" />
+            </svg>
+            <h3>服务出了点问题</h3>
+            <p>已经记录这次异常，稍后重试通常能恢复。</p>
+            <div class="acts">
+              <button class="btn btn--primary">重新加载</button>
+              <button class="btn">返回首页</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>规格</h2>
+        <div class="grid2">
+          <div class="note note--good">
+            <strong>结构</strong><br />
+            线稿 120×120 → 间距 16 → 标题 18px 衬线 600 → 间距 8 → 说明 13.5px（最多两行）→ 间距 18 → 主操作 + 次操作<br />
+            线稿只用 <code>--line-strong</code>，线宽 2，圆角端点，不加阴影与渐变
+          </div>
+          <div class="note">
+            <strong>为什么两种对齐</strong><br />
+            列表空态左对齐：与内容左边界对齐，读起来像"提示"而不是"报错"，不会打断浏览节奏。<br />
+            404 / 500 居中：整页级中断，需要一个明确的视觉中心告诉用户"到这里为止了"。<br /><br />
+            后台表格空态也用左对齐，但高度压到 200，避免整页只有一块空白。
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

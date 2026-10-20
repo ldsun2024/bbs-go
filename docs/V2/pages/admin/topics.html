@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>话题管理 · 后台</title>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/ui.css">
+</head>
+<body>
+
+<div class="a-admin-shell">
+
+  <aside class="a-admin-nav">
+    <div class="a-admin-group">
+      <h3>概览</h3>
+      <a href="dashboard.html">数据看板</a>
+      <a href="content.html">内容概览</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>内容</h3>
+      <a class="on" href="topics.html">话题管理</a>
+      <a href="articles.html">文章管理</a>
+      <a href="categories.html">分类管理</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>用户</h3>
+      <a href="users.html">用户管理</a>
+      <a href="roles.html">角色权限</a>
+      <a href="levels.html">等级管理</a>
+      <a href="badges.html">徽章管理</a>
+      <a href="user-badges.html">用户徽章</a>
+      <a href="user-exp-logs.html">经验日志</a>
+      <a href="user-reports.html">用户举报</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>运营</h3>
+      <a href="tasks.html">任务管理</a>
+      <a href="user-task-logs.html">任务日志</a>
+      <a href="links.html">友链管理</a>
+      <a href="forbidden-words.html">敏感词</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>系统</h3>
+      <a href="settings.html">系统设置</a>
+      <a href="email-logs.html">邮件日志</a>
+    </div>
+  </aside>
+
+  <main class="a-admin-main">
+    <header class="a-admin-top">
+      <a class="a-logo" href="../content/home.html"><span class="a-logo-mark"></span>BBS</a>
+      <span class="a-kicker">Admin / Content</span>
+      <span class="a-spacer"></span>
+      <label class="a-search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input type="text" placeholder="搜索标题 / 作者">
+      </label>
+      <a class="a-btn sm ghost" href="../content/home.html">返回前台</a>
+      <span class="a-avatar" title="管理员">管</span>
+    </header>
+
+    <div class="a-admin-body">
+
+      <div class="a-admin-head">
+        <div>
+          <div class="a-kicker">Content</div>
+          <h1>话题管理</h1>
+          <p>共 1,284 条话题 · 今日新增 18 · 待审核 12</p>
+        </div>
+        <span class="a-spacer"></span>
+        <button class="a-btn sm ghost" type="button">导出</button>
+        <button class="a-btn sm accent" type="button">新建话题</button>
+      </div>
+
+      <!-- 筛选 -->
+      <div class="a-filters">
+        <div class="a-filters-in">
+          <a class="on" href="topics.html">全部</a>
+          <a href="topics.html">已发布</a>
+          <a href="topics.html">草稿</a>
+          <a href="topics.html">已置顶</a>
+          <a href="topics.html">已删除</a>
+          <span class="a-filters-count">1,284 Records</span>
+        </div>
+      </div>
+
+      <!-- 批量操作条 -->
+      <div class="a-action-bar">
+        <span>已选 <b class="a-tnum">2</b> 项</span>
+        <button class="a-btn sm ghost" type="button">批量置顶</button>
+        <button class="a-btn sm ghost" type="button">批量关闭</button>
+        <button class="a-btn sm danger" type="button">批量删除</button>
+        <span class="a-spacer"></span>
+        <span>每页 20 条</span>
+      </div>
+
+      <!-- 表格 -->
+      <div class="a-table-wrap">
+        <table class="a-table">
+          <thead>
+            <tr>
+              <th class="col-check"><input type="checkbox" aria-label="全选"></th>
+              <th class="col-num">ID</th>
+              <th>标题</th>
+              <th>作者</th>
+              <th>分类</th>
+              <th>状态</th>
+              <th class="col-num">浏览</th>
+              <th class="col-num">回复</th>
+              <th class="col-num">发布时间</th>
+              <th class="col-actions">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="is-selected">
+              <td class="col-check"><input type="checkbox" checked aria-label="选择 4821"></td>
+              <td class="col-num">4821</td>
+              <td>期中考试时间安排已经公布</td>
+              <td>林一</td>
+              <td>公告</td>
+              <td><span class="a-tag on">已置顶</span></td>
+              <td class="col-num">2,480</td>
+              <td class="col-num">86</td>
+              <td class="col-num">10-20 08:12</td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">删除</button>
+              </td>
+            </tr>
+            <tr class="is-selected">
+              <td class="col-check"><input type="checkbox" checked aria-label="选择 4820"></td>
+              <td class="col-num">4820</td>
+              <td>二次函数图像怎么快速判断开口方向？有没有口诀</td>
+              <td>林一</td>
+              <td>数学</td>
+              <td><span class="a-tag">待审核</span></td>
+              <td class="col-num">128</td>
+              <td class="col-num">24</td>
+              <td class="col-num">10-20 07:56</td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="选择 4819"></td>
+              <td class="col-num">4819</td>
+              <td>复合函数求导总是漏掉内层，有什么检查方法</td>
+              <td>周舟</td>
+              <td>数学</td>
+              <td><span class="a-tag on">已发布</span></td>
+              <td class="col-num">164</td>
+              <td class="col-num">16</td>
+              <td class="col-num">10-19 22:40</td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="选择 4818"></td>
+              <td class="col-num">4818</td>
+              <td>英语阅读理解总是做不完，想请教下大家的做题顺序</td>
+              <td>陈默</td>
+              <td>英语</td>
+              <td><span class="a-tag on">已发布</span></td>
+              <td class="col-num">240</td>
+              <td class="col-num">31</td>
+              <td class="col-num">10-19 21:02</td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="选择 4817"></td>
+              <td class="col-num">4817</td>
+              <td>物理实验报告怎么写才不空洞？附我的模板</td>
+              <td>苏晚</td>
+              <td>物理</td>
+              <td><span class="a-tag on">已发布</span></td>
+              <td class="col-num">312</td>
+              <td class="col-num">42</td>
+              <td class="col-num">10-19 18:35</td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="选择 4816"></td>
+              <td class="col-num">4816</td>
+              <td>今天把错题本按「错因」重排了一遍</td>
+              <td>林一</td>
+              <td>学习方法</td>
+              <td><span class="a-tag">草稿</span></td>
+              <td class="col-num">0</td>
+              <td class="col-num">0</td>
+              <td class="col-num">10-19 16:20</td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="选择 4815"></td>
+              <td class="col-num">4815</td>
+              <td>求推荐适合高一的英语听力材料</td>
+              <td>阿岚</td>
+              <td>英语</td>
+              <td><span class="a-tag on">已发布</span></td>
+              <td class="col-num">186</td>
+              <td class="col-num">22</td>
+              <td class="col-num">10-19 14:08</td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="选择 4814"></td>
+              <td class="col-num">4814</td>
+              <td>这条内容已被作者删除</td>
+              <td>—</td>
+              <td>数学</td>
+              <td><span class="a-tag">已删除</span></td>
+              <td class="col-num">64</td>
+              <td class="col-num">3</td>
+              <td class="col-num">10-19 11:44</td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">恢复</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <nav class="a-pager a-section">
+        <a href="topics.html" class="on">1</a>
+        <a href="topics.html">2</a>
+        <a href="topics.html">3</a>
+        <span class="sep">…</span>
+        <a href="topics.html">65</a>
+        <span class="a-pager-info">1–20 / 1,284</span>
+      </nav>
+
+    </div>
+  </main>
+
+</div>
+
+</body>
+</html>

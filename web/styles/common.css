@@ -6,7 +6,11 @@
   body {
     min-height: 100%;
     overflow-y: scroll;
-    background: var(--body-background);
+
+    /* 暖白底 + 细颗粒（UI设计规范 4.7）：简写无法携带 blend-mode，故拆成三层 */
+    background-color: var(--body-background);
+    background-image: var(--paper-grain);
+    background-blend-mode: multiply;
   }
 
   body[data-scroll-locked] {
@@ -30,7 +34,8 @@
 @layer components {
   .main {
     width: 100%;
-    padding: 1rem 1rem;
+    /* UI设计规范 4.8：≥1080 时 上 32 / 左右 24 / 下 64 */
+    padding: 32px 24px 64px;
   }
 
   .main .container {
@@ -39,8 +44,8 @@
 
   .main-body,
   .main-aside {
-    background: var(--background);
-    padding: 10px;
+    background: var(--card);
+    padding: 16px;
   }
 
   .main-body.no-bg,
@@ -50,7 +55,7 @@
 
   .main-container {
     width: 100%;
-    max-width: 1280px;
+    max-width: 1180px;
   }
 
   .main-container.left-main {
@@ -151,33 +156,21 @@
     font-weight: 700;
   }
 
-  @media screen and (max-width: 1279px) {
-    .main-container.left-main .left-container {
-      width: 100% !important;
-      margin-right: 0 !important;
-    }
-
-    .main-container.left-main .right-container {
-      display: none;
-    }
-
-    .main-container.right-main .right-container {
-      width: 100% !important;
-      margin-left: 0 !important;
-    }
-
-    .main-container.right-main .left-container {
-      display: none;
-    }
-  }
-
-  @media screen and (max-width: 1024px) {
+  /* UI设计规范 4.8 三档断点：1080 / 860（不再用 1279 / 1024 / 768） */
+  @media screen and (max-width: 1079px) {
     .main {
-      padding: 1rem 0.5rem 0 !important;
+      padding: 24px 20px 48px !important;
     }
 
     .main .container {
-      max-width: 1024px;
+      max-width: 100%;
+    }
+
+    /* 860~1079：主区 + 260 侧栏，gap 24，仍是双栏 */
+    .main-container.left-main .right-container,
+    .main-container.right-main .left-container {
+      min-width: 260px;
+      max-width: 260px;
     }
 
     .profile-edit-tabs-mobile {
@@ -189,9 +182,32 @@
     }
   }
 
-  @media screen and (max-width: 768px) {
+  /* < 860：单栏，侧栏下沉到内容下方而不是隐藏 */
+  @media screen and (max-width: 859px) {
     .main {
-      padding: 0.5rem 0.5rem 0 !important;
+      padding: 20px 16px 40px !important;
+    }
+
+    .main-container.left-main,
+    .main-container.right-main {
+      flex-direction: column;
+    }
+
+    .main-container.left-main .left-container,
+    .main-container.right-main .right-container {
+      width: 100% !important;
+      margin-right: 0 !important;
+      margin-left: 0 !important;
+    }
+
+    .main-container.left-main .right-container,
+    .main-container.right-main .left-container {
+      display: block;
+      width: 100%;
+      min-width: 0;
+      max-width: none;
+      margin: 16px 0 0 !important;
+      padding: 0;
     }
 
     .topics-nav,

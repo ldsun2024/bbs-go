@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>编辑话题</title>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/ui.css">
+</head>
+<body>
+
+<header class="a-topbar">
+  <div class="a-wrap a-topbar-in">
+    <a class="a-logo" href="home.html"><span class="a-logo-mark"></span>BBS</a>
+    <nav class="a-nav">
+      <a class="on" href="topics.html">话题</a>
+      <a href="articles.html">文章</a>
+      <a href="search.html">问答</a>
+      <a href="category.html">公告</a>
+    </nav>
+    <div class="a-topbar-r">
+      <a class="a-btn sm ghost" href="topic-detail.html">查看原帖</a>
+      <span class="a-avatar" title="林一">林</span>
+    </div>
+  </div>
+</header>
+
+<main class="a-wrap a-main">
+  <div class="a-form-page">
+
+    <nav class="a-breadcrumb a-breadcrumb-top">
+      <a href="home.html">首页</a><span class="sep">/</span>
+      <a href="topics.html">话题</a><span class="sep">/</span>
+      <span class="cur">编辑</span>
+    </nav>
+
+    <!-- 编辑状态条 -->
+    <div class="a-action-bar">
+      <span>编辑中 · 最后一次保存 <b class="a-tnum">2</b> 分钟前</span>
+      <span class="a-spacer"></span>
+      <span>已发布 3 天 · 24 条回复</span>
+    </div>
+
+    <div class="a-mt-5">
+      <label class="a-form-label" for="title">标题</label>
+      <input class="a-title-input" id="title" type="text" value="二次函数图像怎么快速判断开口方向？有没有口诀">
+    </div>
+
+    <div class="a-mt-4">
+      <div class="a-form-label">所属节点</div>
+      <div class="a-filters-in">
+        <span class="a-chip">全部</span>
+        <span class="a-chip on">数学</span>
+        <span class="a-chip">语文</span>
+        <span class="a-chip">英语</span>
+        <span class="a-chip">物理</span>
+        <span class="a-chip">化学</span>
+        <span class="a-chip">答疑</span>
+      </div>
+    </div>
+
+    <div class="a-mt-4">
+      <div class="a-form-label">标签（最多 5 个）</div>
+      <div class="a-filters-in">
+        <span class="a-tag on">函数</span>
+        <span class="a-tag on">二次函数</span>
+        <span class="a-tag">对称轴</span>
+        <span class="a-tag">+ 添加标签</span>
+      </div>
+    </div>
+
+    <div class="a-editor">
+      <div class="a-editor-toolbar">
+        <button class="a-editor-btn" type="button" title="加粗">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 5h6a4 4 0 0 1 0 8H7z"/><path d="M7 13h7a4 4 0 0 1 0 8H7z"/></svg>
+        </button>
+        <button class="a-editor-btn" type="button" title="斜体">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5h-5M14 19H9M14 5l-4 14"/></svg>
+        </button>
+        <button class="a-editor-btn" type="button" title="删除线">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14"/><path d="M8 7a3 3 0 0 1 3-3h3a3 3 0 0 1 3 3"/><path d="M8 17a3 3 0 0 0 3 3h3a3 3 0 0 0 3-3"/></svg>
+        </button>
+        <span class="a-editor-div"></span>
+        <button class="a-editor-btn" type="button" title="标题">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 5v14M18 5v14M6 12h12"/></svg>
+        </button>
+        <button class="a-editor-btn" type="button" title="无序列表">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="5" cy="6" r="1"/><circle cx="5" cy="12" r="1"/><circle cx="5" cy="18" r="1"/></svg>
+        </button>
+        <button class="a-editor-btn" type="button" title="引用">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 5v14"/><path d="M10 8h8M10 12h8M10 16h5"/></svg>
+        </button>
+        <span class="a-editor-div"></span>
+        <button class="a-editor-btn" type="button" title="代码">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 8l-4 4 4 4M15 8l4 4-4 4"/></svg>
+        </button>
+        <button class="a-editor-btn" type="button" title="图片">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 17l-5-5-6 6"/></svg>
+        </button>
+      </div>
+      <div class="a-editor-body" contenteditable="true" data-placeholder="补充说明你的问题。">
+        <p>老师上课讲的是看 a 的正负：a &gt; 0 开口向上，a &lt; 0 开口向下。但我做题的时候经常把「顶点在 y 轴哪一侧」和「开口方向」搞混。</p>
+        <p>对称轴是 x = -b / 2a，这个没问题。问题是判断完对称轴之后，还要不要再看别的？</p>
+        <p>有没有那种一眼就能看出来的记法？或者有没有推荐的练习册专项？</p>
+      </div>
+    </div>
+
+    <div class="a-compose-foot">
+      <span>已自动保存 · <span class="a-tnum">248</span> 字</span>
+      <span class="a-spacer"></span>
+      <a class="a-btn sm ghost" href="topic-detail.html">取消</a>
+      <button class="a-btn sm" type="button">保存修改</button>
+      <button class="a-btn sm danger" type="button">删除话题</button>
+    </div>
+
+    <div class="a-section">
+      <div class="a-empty">
+        <div class="a-empty-mark">i</div>
+        <div>
+          <h3>编辑会保留修改记录</h3>
+          <p>发布 30 分钟后修改，原帖底部会显示「已编辑」与修改时间。删除后 7 天内可联系管理员恢复。</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+</body>
+</html>

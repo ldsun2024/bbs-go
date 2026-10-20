@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>角色权限 · 后台</title>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/ui.css">
+</head>
+<body>
+
+<div class="a-admin-shell">
+
+  <aside class="a-admin-nav">
+    <div class="a-admin-group">
+      <h3>概览</h3>
+      <a href="dashboard.html">数据看板</a>
+      <a href="content.html">内容概览</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>内容</h3>
+      <a href="topics.html">话题管理</a>
+      <a href="articles.html">文章管理</a>
+      <a href="categories.html">分类管理</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>用户</h3>
+      <a href="users.html">用户管理</a>
+      <a class="on" href="roles.html">角色权限</a>
+      <a href="levels.html">等级管理</a>
+      <a href="badges.html">徽章管理</a>
+      <a href="user-badges.html">用户徽章</a>
+      <a href="user-exp-logs.html">经验日志</a>
+      <a href="user-reports.html">用户举报</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>运营</h3>
+      <a href="tasks.html">任务管理</a>
+      <a href="user-task-logs.html">任务日志</a>
+      <a href="links.html">友链管理</a>
+      <a href="forbidden-words.html">敏感词</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>系统</h3>
+      <a href="settings.html">系统设置</a>
+      <a href="email-logs.html">邮件日志</a>
+    </div>
+  </aside>
+
+  <main class="a-admin-main">
+    <header class="a-admin-top">
+      <a class="a-logo" href="../content/home.html"><span class="a-logo-mark"></span>BBS</a>
+      <span class="a-kicker">Admin / Roles</span>
+      <span class="a-spacer"></span>
+      <a class="a-btn sm ghost" href="../content/home.html">返回前台</a>
+      <span class="a-avatar" title="管理员">管</span>
+    </header>
+
+    <div class="a-admin-body">
+
+      <div class="a-admin-head">
+        <div>
+          <div class="a-kicker">Roles</div>
+          <h1>角色权限</h1>
+          <p>4 个内置角色，不可删除。权限按最小必要原则分配，改动会立即生效。</p>
+        </div>
+        <span class="a-spacer"></span>
+        <button class="a-btn sm accent" type="button">新建角色</button>
+      </div>
+
+      <div class="a-table-wrap">
+        <table class="a-table">
+          <thead>
+            <tr>
+              <th>角色</th>
+              <th>标识</th>
+              <th class="col-num">成员数</th>
+              <th>主要权限</th>
+              <th>类型</th>
+              <th class="col-actions">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>超级管理员</td>
+              <td>owner</td>
+              <td class="col-num">1</td>
+              <td>全部权限，含站点设置与数据导出</td>
+              <td><span class="a-tag on">内置</span></td>
+              <td class="col-actions"><button class="a-btn text" type="button">查看</button></td>
+            </tr>
+            <tr>
+              <td>管理员</td>
+              <td>admin</td>
+              <td class="col-num">3</td>
+              <td>内容管理、用户管理、审核、任务配置</td>
+              <td><span class="a-tag on">内置</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <a class="a-btn text" href="users.html">成员</a>
+              </td>
+            </tr>
+            <tr>
+              <td>版主</td>
+              <td>moderator</td>
+              <td class="col-num">8</td>
+              <td>审核、举报处理、置顶、关闭回复</td>
+              <td><span class="a-tag on">内置</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <a class="a-btn text" href="users.html">成员</a>
+              </td>
+            </tr>
+            <tr>
+              <td>普通用户</td>
+              <td>user</td>
+              <td class="col-num">314</td>
+              <td>发帖、回复、收藏、举报</td>
+              <td><span class="a-tag on">内置</span></td>
+              <td class="col-actions"><button class="a-btn text" type="button">查看</button></td>
+            </tr>
+            <tr>
+              <td>只读审核</td>
+              <td>auditor</td>
+              <td class="col-num">0</td>
+              <td>只能查看审核队列与日志，不能操作</td>
+              <td><span class="a-tag">自定义</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">删除</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 权限矩阵 -->
+      <div class="a-list-head a-mt-6">
+        <h2>权限矩阵</h2>
+        <div class="a-list-tabs">
+          <span class="on">按模块</span>
+        </div>
+      </div>
+
+      <div class="a-table-wrap">
+        <table class="a-table">
+          <thead>
+            <tr>
+              <th>模块</th>
+              <th>权限</th>
+              <th class="col-num">owner</th>
+              <th class="col-num">admin</th>
+              <th class="col-num">moderator</th>
+              <th class="col-num">user</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>话题</td>
+              <td>删除 / 置顶 / 关闭</td>
+              <td class="col-num">✓</td>
+              <td class="col-num">✓</td>
+              <td class="col-num">✓</td>
+              <td class="col-num">—</td>
+            </tr>
+            <tr>
+              <td>文章</td>
+              <td>审核 / 下架</td>
+              <td class="col-num">✓</td>
+              <td class="col-num">✓</td>
+              <td class="col-num">✓</td>
+              <td class="col-num">—</td>
+            </tr>
+            <tr>
+              <td>用户</td>
+              <td>封禁 / 改角色</td>
+              <td class="col-num">✓</td>
+              <td class="col-num">✓</td>
+              <td class="col-num">—</td>
+              <td class="col-num">—</td>
+            </tr>
+            <tr>
+              <td>举报</td>
+              <td>处理 / 忽略</td>
+              <td class="col-num">✓</td>
+              <td class="col-num">✓</td>
+              <td class="col-num">✓</td>
+              <td class="col-num">提交</td>
+            </tr>
+            <tr>
+              <td>系统</td>
+              <td>站点设置 / 数据导出</td>
+              <td class="col-num">✓</td>
+              <td class="col-num">—</td>
+              <td class="col-num">—</td>
+              <td class="col-num">—</td>
+            </tr>
+            <tr>
+              <td>内容</td>
+              <td>发帖 / 回复 / 收藏</td>
+              <td class="col-num">✓</td>
+              <td class="col-num">✓</td>
+              <td class="col-num">✓</td>
+              <td class="col-num">✓</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="a-note a-mt-4">
+        内置角色只能调整权限，不能删除。删除自定义角色前，需要先把该角色下的成员迁移到其他角色。
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>B2 · 后台信息密度</title>
+    <link rel="stylesheet" href="../assets/design.css" />
+    <style>
+      .admin {
+        display: grid;
+        grid-template-columns: 200px minmax(0, 1fr);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: var(--surface);
+      }
+      .side {
+        background: var(--bg-subtle);
+        border-right: 1px solid var(--line);
+        padding: 14px 10px;
+      }
+      .side-g {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        color: var(--muted);
+        padding: 12px 10px 5px;
+        text-transform: uppercase;
+      }
+      .side-i {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 7px 10px;
+        border-radius: var(--radius-sm);
+        font-size: 13px;
+        color: var(--text-2);
+        margin-bottom: 2px;
+      }
+      .side-i.is-on {
+        background: var(--brand-soft);
+        color: var(--brand);
+        font-weight: 600;
+      }
+      .main {
+        min-width: 0;
+      }
+      .a-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 16px 20px 14px;
+      }
+      .a-head h2 {
+        font-size: 16px;
+        font-weight: 600;
+      }
+      .a-head p {
+        font-size: 12px;
+        color: var(--muted);
+        margin-top: 3px;
+      }
+      .filters {
+        height: 48px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 0 20px;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: var(--surface);
+      }
+      .ctl {
+        height: 32px;
+        padding: 0 10px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius-sm);
+        background: var(--surface);
+        font-size: 13px;
+        color: var(--text-2);
+        display: inline-flex;
+        align-items: center;
+        font-family: inherit;
+      }
+      .ctl input {
+        border: 0;
+        outline: none;
+        background: none;
+        font-family: inherit;
+        font-size: 13px;
+        color: var(--text);
+        width: 150px;
+      }
+      .bulk {
+        height: 44px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 0 20px;
+        background: var(--brand-soft);
+        border-bottom: 1px solid var(--line);
+        font-size: 13px;
+        color: var(--brand);
+      }
+      .tb-wrap {
+        max-height: 330px;
+        overflow-y: auto;
+      }
+      table.tb {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        font-size: 13px;
+      }
+      table.tb thead th {
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        background: var(--bg-subtle);
+        text-align: left;
+        font-size: 12px;
+        font-weight: 600;
+        color: var(--muted);
+        height: 38px;
+        padding: 0 12px;
+        border-bottom: 1px solid var(--line);
+        white-space: nowrap;
+      }
+      table.tb td {
+        height: 44px;
+        padding: 0 12px;
+        border-bottom: 1px solid var(--line);
+        color: var(--text-2);
+        vertical-align: middle;
+      }
+      table.tb tbody tr:hover td {
+        background: var(--surface-hover);
+      }
+      table.tb tr.is-sel td {
+        background: var(--brand-soft);
+      }
+      table.tb .num {
+        text-align: right;
+        font-family: var(--font-mono);
+        font-variant-numeric: tabular-nums;
+      }
+      table.tb .ttl {
+        max-width: 340px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        color: var(--text);
+      }
+      .cb {
+        width: 14px;
+        height: 14px;
+        accent-color: var(--brand);
+        vertical-align: -2px;
+      }
+      .foot {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 12px 20px;
+        border-top: 1px solid var(--line);
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .pager {
+        display: flex;
+        gap: 6px;
+      }
+      .pager .btn {
+        width: 32px;
+        height: 32px;
+        padding: 0;
+        font-size: 13px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="doc">
+      <header class="doc-head">
+        <div>
+          <h1>后台信息密度</h1>
+          <div class="sub">筛选栏 48、批量条 44、表格行 44、sticky 表头、数字右对齐。</div>
+        </div>
+        <span class="doc-tag">B2</span>
+      </header>
+
+      <section class="doc-section">
+        <h2>新方案 <span>已选 2 项，批量条已展开</span></h2>
+
+        <div class="admin">
+          <aside class="side">
+            <div class="side-g">内容</div>
+            <div class="side-i is-on">话题管理</div>
+            <div class="side-i">文章管理</div>
+            <div class="side-i">分类节点</div>
+            <div class="side-i">公告通知</div>
+            <div class="side-i">友链管理</div>
+            <div class="side-g">社区</div>
+            <div class="side-i">用户列表</div>
+            <div class="side-i">用户举报</div>
+            <div class="side-g">系统</div>
+            <div class="side-i">站点设置</div>
+            <div class="side-i">角色权限</div>
+          </aside>
+
+          <div class="main">
+            <div class="a-head">
+              <div>
+                <h2>话题管理</h2>
+                <p>共 3,672 条 · 待审核 12 条</p>
+              </div>
+              <div style="display: flex; gap: 8px">
+                <button class="btn">导出</button>
+                <button class="btn btn--primary">新建话题</button>
+              </div>
+            </div>
+
+            <div class="filters">
+              <div class="ctl"><input placeholder="搜索标题或作者" /></div>
+              <div class="ctl">分类：全部 ▾</div>
+              <div class="ctl">状态：全部 ▾</div>
+              <div class="ctl">排序：最新 ▾</div>
+              <div style="flex: 1"></div>
+              <button class="btn" style="height: 32px">重置</button>
+              <button class="btn btn--primary" style="height: 32px">查询</button>
+            </div>
+
+            <div class="bulk">
+              <span>已选 2 项</span>
+              <div style="flex: 1"></div>
+              <button class="btn" style="height: 26px; font-size: 12px">批量推荐</button>
+              <button
+                class="btn"
+                style="height: 26px; font-size: 12px; color: var(--danger); border-color: rgba(178,58,46,.3)"
+              >
+                批量删除
+              </button>
+            </div>
+
+            <div class="tb-wrap">
+              <table class="tb">
+                <thead>
+                  <tr>
+                    <th style="width: 40px; text-align: center"><input class="cb" type="checkbox" /></th>
+                    <th style="width: 64px">ID</th>
+                    <th>标题</th>
+                    <th style="width: 90px">分类</th>
+                    <th style="width: 80px">状态</th>
+                    <th class="num" style="width: 80px">浏览</th>
+                    <th class="num" style="width: 70px">评论</th>
+                    <th style="width: 110px">操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="is-sel">
+                    <td style="text-align: center"><input class="cb" type="checkbox" checked /></td>
+                    <td style="font-family: var(--font-mono)">1024</td>
+                    <td class="ttl">二次函数图像怎么快速判断开口方向？有没有口诀</td>
+                    <td><span class="tag tag--brand">数学</span></td>
+                    <td><span class="tag tag--success">正常</span></td>
+                    <td class="num">3,842</td>
+                    <td class="num">96</td>
+                    <td>
+                      <button class="btn" style="height: 26px; padding: 0 8px; font-size: 12px">编辑</button>
+                    </td>
+                  </tr>
+                  <tr class="is-sel">
+                    <td style="text-align: center"><input class="cb" type="checkbox" checked /></td>
+                    <td style="font-family: var(--font-mono)">1025</td>
+                    <td class="ttl">重仓持有，心理受不了怎么办</td>
+                    <td><span class="tag tag--brand">心理</span></td>
+                    <td><span class="tag tag--warm">待审核</span></td>
+                    <td class="num">2,540</td>
+                    <td class="num">63</td>
+                    <td>
+                      <button class="btn" style="height: 26px; padding: 0 8px; font-size: 12px">编辑</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: center"><input class="cb" type="checkbox" /></td>
+                    <td style="font-family: var(--font-mono)">1026</td>
+                    <td class="ttl">有没有适合初中生读的英语原版书推荐</td>
+                    <td><span class="tag tag--brand">英语</span></td>
+                    <td><span class="tag tag--success">正常</span></td>
+                    <td class="num">3,106</td>
+                    <td class="num">88</td>
+                    <td>
+                      <button class="btn" style="height: 26px; padding: 0 8px; font-size: 12px">编辑</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: center"><input class="cb" type="checkbox" /></td>
+                    <td style="font-family: var(--font-mono)">1027</td>
+                    <td class="ttl">每天跑步 5 公里，膝盖开始疼了该怎么办</td>
+                    <td><span class="tag tag--brand">心理</span></td>
+                    <td><span class="tag tag--success">正常</span></td>
+                    <td class="num">2,318</td>
+                    <td class="num">57</td>
+                    <td>
+                      <button class="btn" style="height: 26px; padding: 0 8px; font-size: 12px">编辑</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: center"><input class="cb" type="checkbox" /></td>
+                    <td style="font-family: var(--font-mono)">1028</td>
+                    <td class="ttl">《背影》里父亲买橘子那段到底好在哪里</td>
+                    <td><span class="tag tag--brand">语文</span></td>
+                    <td><span class="tag tag--success">正常</span></td>
+                    <td class="num">1,874</td>
+                    <td class="num">39</td>
+                    <td>
+                      <button class="btn" style="height: 26px; padding: 0 8px; font-size: 12px">编辑</button>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td style="text-align: center"><input class="cb" type="checkbox" /></td>
+                    <td style="font-family: var(--font-mono)">1029</td>
+                    <td class="ttl">印度的高温有没有利处？能不能想办法加以利用</td>
+                    <td><span class="tag tag--brand">默认节点</span></td>
+                    <td><span class="tag tag--success">正常</span></td>
+                    <td class="num">2,874</td>
+                    <td class="num">74</td>
+                    <td>
+                      <button class="btn" style="height: 26px; padding: 0 8px; font-size: 12px">编辑</button>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="foot">
+              <span>第 1 - 20 条，共 3,672 条</span>
+              <div class="pager">
+                <button class="btn">‹</button>
+                <button class="btn btn--primary">1</button>
+                <button class="btn">2</button>
+                <button class="btn">3</button>
+                <button class="btn btn--ghost">…</button>
+                <button class="btn">184</button>
+                <button class="btn">›</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>七个改动点</h2>
+        <div class="grid2">
+          <div class="note note--bad">
+            <strong>现状</strong><br />
+            筛选栏与表格之间无分隔线<br />
+            表头不固定，滚动后列名消失<br />
+            无行选择与批量操作<br />
+            行高随内容变化，长标题把行撑高<br />
+            数字左对齐，位数不同无法比较<br />
+            分页样式与前台不一致
+          </div>
+          <div class="note note--good">
+            <strong>新方案</strong><br />
+            筛选栏固定 48 高 + 底部 1px 分隔<br />
+            表头 <code>position: sticky; top: 0</code><br />
+            首列复选框，选中后批量条展开<br />
+            行高固定 44，标题列单行省略<br />
+            数字列右对齐 + <code>tabular-nums</code><br />
+            分页 32×32 方形，与前台统一
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>编辑文章</title>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/ui.css">
+</head>
+<body>
+
+<header class="a-topbar">
+  <div class="a-wrap a-topbar-in">
+    <a class="a-logo" href="home.html"><span class="a-logo-mark"></span>BBS</a>
+    <nav class="a-nav">
+      <a href="topics.html">话题</a>
+      <a class="on" href="articles.html">文章</a>
+      <a href="search.html">问答</a>
+      <a href="category.html">公告</a>
+    </nav>
+    <div class="a-topbar-r">
+      <a class="a-btn sm ghost" href="article-detail.html">查看原文</a>
+      <span class="a-avatar" title="林一">林</span>
+    </div>
+  </div>
+</header>
+
+<main class="a-wrap a-main">
+  <div class="a-form-page">
+
+    <nav class="a-breadcrumb a-breadcrumb-top">
+      <a href="home.html">首页</a><span class="sep">/</span>
+      <a href="articles.html">文章</a><span class="sep">/</span>
+      <span class="cur">编辑</span>
+    </nav>
+
+    <!-- 状态条 -->
+    <div class="a-action-bar">
+      <span><span class="a-tag on">已发布</span> 2026-10-15 20:12</span>
+      <span class="a-spacer"></span>
+      <span>1.5K 浏览 · 102 回复 · 42 收藏</span>
+    </div>
+
+    <div class="a-mt-5">
+      <div class="a-form-label">封面</div>
+      <div class="a-upload">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="3" y="4" width="18" height="16"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 16l-5-5-6 6"/></svg>
+        <span>已上传 cover-1284.jpg · 点击更换</span>
+      </div>
+    </div>
+
+    <div class="a-mt-4">
+      <label class="a-form-label" for="atitle">标题</label>
+      <input class="a-title-input" id="atitle" type="text" value="错题本到底怎么记才有用？我试过四种格式后的结论">
+    </div>
+
+    <div class="a-mt-4">
+      <label class="a-form-label" for="summary">摘要</label>
+      <textarea class="a-textarea" id="summary">抄题目、贴题目、只记错因、记错因加同类题，四种都试过。最后留下的是最简单的那一种。</textarea>
+      <div class="a-setting-desc">42 / 120 字</div>
+    </div>
+
+    <div class="a-mt-4">
+      <div class="a-form-label">分类</div>
+      <div class="a-filters-in">
+        <span class="a-chip">学习方法</span>
+        <span class="a-chip on">数学</span>
+        <span class="a-chip">英语</span>
+        <span class="a-chip">物理</span>
+      </div>
+    </div>
+
+    <div class="a-mt-4">
+      <div class="a-form-label">标签（最多 5 个）</div>
+      <div class="a-filters-in">
+        <span class="a-tag on">错题本</span>
+        <span class="a-tag on">一轮复习</span>
+        <span class="a-tag">函数</span>
+        <span class="a-tag">+ 添加标签</span>
+      </div>
+    </div>
+
+    <div class="a-editor">
+      <div class="a-editor-toolbar">
+        <button class="a-editor-btn" type="button" title="加粗">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M7 5h6a4 4 0 0 1 0 8H7z"/><path d="M7 13h7a4 4 0 0 1 0 8H7z"/></svg>
+        </button>
+        <button class="a-editor-btn" type="button" title="斜体">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M15 5h-5M14 19H9M14 5l-4 14"/></svg>
+        </button>
+        <span class="a-editor-div"></span>
+        <button class="a-editor-btn" type="button" title="标题">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 5v14M18 5v14M6 12h12"/></svg>
+        </button>
+        <button class="a-editor-btn" type="button" title="无序列表">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 6h11M9 12h11M9 18h11"/><circle cx="5" cy="6" r="1"/><circle cx="5" cy="12" r="1"/><circle cx="5" cy="18" r="1"/></svg>
+        </button>
+        <button class="a-editor-btn" type="button" title="引用">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M6 5v14"/><path d="M10 8h8M10 12h8M10 16h5"/></svg>
+        </button>
+        <span class="a-editor-div"></span>
+        <button class="a-editor-btn" type="button" title="图片">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14"/><circle cx="8.5" cy="10" r="1.5"/><path d="M21 17l-5-5-6 6"/></svg>
+        </button>
+        <button class="a-editor-btn" type="button" title="表格">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="5" width="18" height="14"/><path d="M3 10h18M3 15h18M9 5v14M15 5v14"/></svg>
+        </button>
+      </div>
+      <div class="a-editor-body" contenteditable="true" data-placeholder="正文。">
+        <h2>一、我试过的四种记法</h2>
+        <p>刚开始我是把整道题抄下来，包括题干和所有选项。坚持了两周就放弃了，因为抄题本身就是负担。</p>
+        <p>后来改成只贴题目、不抄。快了很多，但复习时看不出来当时为什么错。</p>
+        <h2>二、转折点</h2>
+        <p>真正有效的是第三步：只记「错因」一句话。比如「配方时忘了提公因式」，而不是「这题不会」。</p>
+        <h2>三、最后的格式</h2>
+        <p>现在我的本子上每道题只有三行：题目编号、错因一句话、同类题一道。写一道题不到一分钟。</p>
+      </div>
+    </div>
+
+    <div class="a-compose-foot">
+      <span>最后更新 2 小时前 · <span class="a-tnum">1,204</span> 字</span>
+      <span class="a-spacer"></span>
+      <a class="a-btn sm ghost" href="article-detail.html">取消</a>
+      <button class="a-btn sm ghost" type="button">撤回为草稿</button>
+      <button class="a-btn sm" type="button">保存并更新</button>
+    </div>
+
+    <div class="a-section">
+      <div class="a-empty">
+        <div class="a-empty-mark">i</div>
+        <div>
+          <h3>重大修改会通知收藏者</h3>
+          <p>修改超过全文 30% 时，收藏过这篇文章的人会收到一条提醒。小范围改错别字不会触发。</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+</body>
+</html>

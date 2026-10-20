@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>任务与积分</title>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/ui.css">
+</head>
+<body>
+
+<header class="a-topbar">
+  <div class="a-wrap a-topbar-in">
+    <a class="a-logo" href="home.html"><span class="a-logo-mark"></span>BBS</a>
+    <nav class="a-nav">
+      <a href="topics.html">话题</a>
+      <a href="articles.html">文章</a>
+      <a href="search.html">问答</a>
+      <a class="on" href="tasks.html">任务</a>
+    </nav>
+    <div class="a-topbar-r">
+      <span class="a-kicker"><span class="a-tnum">1,240</span> 积分</span>
+      <a class="a-btn sm ghost" href="../user/scores.html">明细</a>
+      <span class="a-avatar" title="林一">林</span>
+    </div>
+  </div>
+</header>
+
+<main class="a-wrap a-main">
+
+  <nav class="a-breadcrumb a-breadcrumb-top">
+    <a href="home.html">首页</a><span class="sep">/</span>
+    <span class="cur">任务</span>
+  </nav>
+
+  <div class="a-page-head">
+    <div class="a-page-head-l">
+      <div class="a-kicker a-page-kicker">Tasks</div>
+      <h1 class="a-page-title sm">任务与积分</h1>
+      <p class="a-page-sub">
+        每日任务每天 00:00 重置，成长任务只完成一次。积分可以用于悬赏提问、下载附件与兑换徽章。
+      </p>
+    </div>
+    <div class="a-page-head-r">
+      <div class="a-stats">
+        <div class="a-stat"><b class="a-tnum">1,240</b><span>Score</span></div>
+        <div class="a-stat"><b class="a-tnum">18</b><span>Streak</span></div>
+        <div class="a-stat"><b class="a-tnum">3</b><span>Claimable</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="a-two-col a-section">
+    <section>
+
+      <!-- 签到 -->
+      <div class="a-box-h">每日签到</div>
+      <div class="a-checkin a-mt-3">
+        <span class="on"><b>一</b>已签</span>
+        <span class="on"><b>二</b>已签</span>
+        <span class="on"><b>三</b>已签</span>
+        <span class="on"><b>四</b>已签</span>
+        <span class="on"><b>五</b>已签</span>
+        <span class="today"><b>六</b>今天</span>
+        <span><b>日</b>+8</span>
+      </div>
+      <div class="a-action-bar a-mt-4">
+        <span>连续签到 <b class="a-tnum">18</b> 天 · 第 21 天额外奖励 <b class="a-tnum">50</b> 分</span>
+        <span class="a-spacer"></span>
+        <button class="a-btn sm" type="button">签到 +8</button>
+      </div>
+
+      <!-- 每日任务 -->
+      <div class="a-list-head a-mt-6">
+        <h2>每日任务</h2>
+        <div class="a-list-tabs">
+          <span class="on">进行中 2</span>
+          <span>已完成 2</span>
+        </div>
+      </div>
+
+      <div class="a-task-list">
+
+        <div class="a-task">
+          <div class="a-task-ico">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </div>
+          <div>
+            <h4>发布一条话题</h4>
+            <p>每天一次。提问请写清背景与卡点，否则可能被折叠。</p>
+            <div class="a-progress"><i class="w10"></i></div>
+          </div>
+          <div class="a-task-reward"><b>+5</b><br>已领取</div>
+          <button class="a-btn sm ghost is-disabled" type="button" disabled>已完成</button>
+        </div>
+
+        <div class="a-task">
+          <div class="a-task-ico">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M21 12a8 8 0 0 1-8 8H7l-4 3V12a8 8 0 0 1 8-8h2a8 8 0 0 1 8 8z"/></svg>
+          </div>
+          <div>
+            <h4>回复 3 个问题</h4>
+            <p>回复需对题，只有一个「顶」不算。被采纳额外加 20 分。</p>
+            <div class="a-progress"><i class="w6"></i></div>
+          </div>
+          <div class="a-task-reward"><b>+10</b><br>2 / 3</div>
+          <button class="a-btn sm ghost" type="button">去回复</button>
+        </div>
+
+        <div class="a-task">
+          <div class="a-task-ico">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 4h12v16l-6-4-6 4z"/></svg>
+          </div>
+          <div>
+            <h4>收藏 3 篇内容</h4>
+            <p>收藏会进入「我的收藏」，可以在那里按分类翻看。</p>
+            <div class="a-progress"><i class="w3"></i></div>
+          </div>
+          <div class="a-task-reward"><b>+10</b><br>1 / 3</div>
+          <button class="a-btn sm ghost" type="button">去浏览</button>
+        </div>
+
+        <div class="a-task">
+          <div class="a-task-ico">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg>
+          </div>
+          <div>
+            <h4>浏览 5 个新话题</h4>
+            <p>只算今天发布的话题，重复浏览不计数。</p>
+            <div class="a-progress"><i class="w10"></i></div>
+          </div>
+          <div class="a-task-reward"><b>+3</b><br>已领取</div>
+          <button class="a-btn sm ghost is-disabled" type="button" disabled>已完成</button>
+        </div>
+
+      </div>
+
+      <!-- 成长任务 -->
+      <div class="a-list-head a-mt-6">
+        <h2>成长任务</h2>
+        <div class="a-list-tabs">
+          <span class="on">可领取 3</span>
+        </div>
+      </div>
+
+      <div class="a-task-list">
+
+        <div class="a-task">
+          <div class="a-task-ico">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 3l2.6 5.6 6.1.8-4.5 4.2 1.2 6-5.4-3-5.4 3 1.2-6L3.3 9.4l6.1-.8z"/></svg>
+          </div>
+          <div>
+            <h4>连续签到 7 天</h4>
+            <p>中断后从第 1 天重新计算。</p>
+            <div class="a-progress"><i class="w10"></i></div>
+          </div>
+          <div class="a-task-reward"><b>+50</b><br>7 / 7</div>
+          <button class="a-btn sm accent" type="button">领取</button>
+        </div>
+
+        <div class="a-task">
+          <div class="a-task-ico">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 4v16M4 8l8-4 8 4"/></svg>
+          </div>
+          <div>
+            <h4>完善个人资料</h4>
+            <p>上传头像、填写简介与所在地，完成后可获得「早期成员」徽章。</p>
+            <div class="a-progress"><i class="w7"></i></div>
+          </div>
+          <div class="a-task-reward"><b>+20</b><br>2 / 3 项</div>
+          <a class="a-btn sm ghost" href="../user/settings.html">去完善</a>
+        </div>
+
+        <div class="a-task">
+          <div class="a-task-ico">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+          </div>
+          <div>
+            <h4>发布第一篇长文</h4>
+            <p>正文超过 1500 字，且含至少两个小标题。</p>
+            <div class="a-progress"><i class="w10"></i></div>
+          </div>
+          <div class="a-task-reward"><b>+30</b><br>1 / 1</div>
+          <button class="a-btn sm accent" type="button">领取</button>
+        </div>
+
+        <div class="a-task">
+          <div class="a-task-ico">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="9" cy="8" r="3"/><circle cx="17" cy="10" r="2.4"/><path d="M3 20a6 6 0 0 1 12 0M15 20a5 5 0 0 1 6-2.5"/></svg>
+          </div>
+          <div>
+            <h4>邀请一位同学加入</h4>
+            <p>对方用你的邀请链接注册并完成一次发帖后才计数。</p>
+            <div class="a-progress"><i class="w1"></i></div>
+          </div>
+          <div class="a-task-reward"><b>+30</b><br>0 / 1</div>
+          <button class="a-btn sm ghost" type="button">复制链接</button>
+        </div>
+
+        <div class="a-task">
+          <div class="a-task-ico">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>
+          </div>
+          <div>
+            <h4>回答被采纳 3 次</h4>
+            <p>采纳后额外加 20 分，累计 3 次解锁「答疑达人」徽章。</p>
+            <div class="a-progress"><i class="w7"></i></div>
+          </div>
+          <div class="a-task-reward"><b>+60</b><br>2 / 3</div>
+          <a class="a-btn sm ghost" href="search.html">去答疑</a>
+        </div>
+
+      </div>
+
+    </section>
+
+    <aside class="a-aside">
+      <div>
+        <div class="a-box-h">积分用途</div>
+        <ul>
+          <li class="a-kv"><span>悬赏提问</span><b>20 起</b></li>
+          <li class="a-kv"><span>下载附件</span><b>5 / 次</b></li>
+          <li class="a-kv"><span>兑换徽章</span><b>200 起</b></li>
+          <li class="a-kv"><span>修改昵称</span><b>100 / 次</b></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="a-box-h">如何获得</div>
+        <ul>
+          <li class="a-kv"><span>发话题</span><b>+5</b></li>
+          <li class="a-kv"><span>回答被采纳</span><b>+20</b></li>
+          <li class="a-kv"><span>文章被收藏</span><b>+2 / 次</b></li>
+          <li class="a-kv"><span>每日签到</span><b>+8</b></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="a-box-h">注意</div>
+        <p class="a-setting-desc">
+          积分不可转让、不可兑换现金。发现刷分行为会清空积分并限制发帖。
+          积分记录可在 <a class="a-link-u" href="../user/scores.html">积分明细</a> 查看。
+        </p>
+      </div>
+    </aside>
+  </div>
+
+</main>
+
+<footer class="a-footer">
+  <div class="a-wrap">
+    <div class="a-footer-btm">
+      <span>BBS-GO V2 — SWISS GRID</span>
+      <span>© 2026</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

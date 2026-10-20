@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>错误页 · 404 / 500 / 403</title>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/ui.css">
+</head>
+<body>
+
+<header class="a-topbar">
+  <div class="a-wrap a-topbar-in">
+    <a class="a-logo" href="../content/home.html"><span class="a-logo-mark"></span>BBS</a>
+    <nav class="a-nav">
+      <a class="on" href="../content/home.html">话题</a>
+      <a href="../content/articles.html">文章</a>
+      <a href="../content/search.html">问答</a>
+    </nav>
+    <div class="a-topbar-r">
+      <a class="a-btn sm ghost" href="../content/home.html">回首页</a>
+    </div>
+  </div>
+</header>
+
+<main class="a-wrap a-main">
+
+  <div class="a-kicker a-page-kicker">Error Pages</div>
+
+  <!-- 404 -->
+  <section class="a-error">
+    <div class="a-error-code">404</div>
+    <div class="a-error-body">
+      <h1>这个页面不存在</h1>
+      <p>
+        链接可能已经失效，或者内容被作者删除了。也可能是地址里多了一个字符。
+        你可以回到首页，或者搜一下你原本想找的东西。
+      </p>
+      <span class="a-error-path">/topics/4821-not-found</span>
+      <div class="a-error-actions">
+        <a class="a-btn sm accent" href="../content/home.html">回首页</a>
+        <a class="a-btn sm ghost" href="../content/search.html">搜索内容</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="a-hr-strong"></div>
+
+  <!-- 500 -->
+  <section class="a-error">
+    <div class="a-error-code">500</div>
+    <div class="a-error-body">
+      <h1>服务器出了点问题</h1>
+      <p>
+        请求已经发出，但服务端没能正确处理。这个错误已被自动记录，我们能看到。
+        刷新通常有效；如果反复出现，请稍后再试。
+      </p>
+      <span class="a-error-path">request-id: 8f3c-2b71-a90e</span>
+      <div class="a-error-actions">
+        <button class="a-btn sm accent" type="button">重新加载</button>
+        <a class="a-btn sm ghost" href="../content/home.html">回首页</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="a-hr-strong"></div>
+
+  <!-- 403 -->
+  <section class="a-error">
+    <div class="a-error-code">403</div>
+    <div class="a-error-body">
+      <h1>没有访问权限</h1>
+      <p>
+        这个页面需要更高的权限，或者需要先登录。如果你确认自己应该有权限，
+        请联系管理员，并提供下面的路径。
+      </p>
+      <span class="a-error-path">/dashboard/settings</span>
+      <div class="a-error-actions">
+        <a class="a-btn sm accent" href="../user/signin.html">切换账号</a>
+        <a class="a-btn sm ghost" href="../content/home.html">回首页</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="a-footer">
+  <div class="a-wrap">
+    <div class="a-footer-btm">
+      <span>BBS-GO V2 — SWISS GRID</span>
+      <span>© 2026</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

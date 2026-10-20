@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>任务管理 · 后台</title>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/ui.css">
+</head>
+<body>
+
+<div class="a-admin-shell">
+
+  <aside class="a-admin-nav">
+    <div class="a-admin-group">
+      <h3>概览</h3>
+      <a href="dashboard.html">数据看板</a>
+      <a href="content.html">内容概览</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>内容</h3>
+      <a href="topics.html">话题管理</a>
+      <a href="articles.html">文章管理</a>
+      <a href="categories.html">分类管理</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>用户</h3>
+      <a href="users.html">用户管理</a>
+      <a href="roles.html">角色权限</a>
+      <a href="levels.html">等级管理</a>
+      <a href="badges.html">徽章管理</a>
+      <a href="user-badges.html">用户徽章</a>
+      <a href="user-exp-logs.html">经验日志</a>
+      <a href="user-reports.html">用户举报</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>运营</h3>
+      <a class="on" href="tasks.html">任务管理</a>
+      <a href="user-task-logs.html">任务日志</a>
+      <a href="links.html">友链管理</a>
+      <a href="forbidden-words.html">敏感词</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>系统</h3>
+      <a href="settings.html">系统设置</a>
+      <a href="email-logs.html">邮件日志</a>
+    </div>
+  </aside>
+
+  <main class="a-admin-main">
+    <header class="a-admin-top">
+      <a class="a-logo" href="../content/home.html"><span class="a-logo-mark"></span>BBS</a>
+      <span class="a-kicker">Admin / Tasks</span>
+      <span class="a-spacer"></span>
+      <label class="a-search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input type="text" placeholder="搜索任务名称">
+      </label>
+      <a class="a-btn sm ghost" href="../content/tasks.html">查看前台</a>
+      <span class="a-avatar" title="管理员">管</span>
+    </header>
+
+    <div class="a-admin-body">
+
+      <div class="a-admin-head">
+        <div>
+          <div class="a-kicker">Tasks</div>
+          <h1>任务管理</h1>
+          <p>9 个任务 · 每日 4 · 成长 5 · 今日领取 128 次</p>
+        </div>
+        <span class="a-spacer"></span>
+        <a class="a-btn sm ghost" href="user-task-logs.html">任务日志</a>
+        <button class="a-btn sm accent" type="button">新建任务</button>
+      </div>
+
+      <div class="a-filters">
+        <div class="a-filters-in">
+          <a class="on" href="tasks.html">全部</a>
+          <a href="tasks.html">每日任务</a>
+          <a href="tasks.html">成长任务</a>
+          <a href="tasks.html">已停用</a>
+          <span class="a-filters-count">9 Records</span>
+        </div>
+      </div>
+
+      <div class="a-table-wrap">
+        <table class="a-table">
+          <thead>
+            <tr>
+              <th class="col-check"><input type="checkbox" aria-label="全选"></th>
+              <th>任务</th>
+              <th>类型</th>
+              <th>完成条件</th>
+              <th class="col-num">奖励积分</th>
+              <th class="col-num">今日完成</th>
+              <th>状态</th>
+              <th class="col-actions">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="1"></td>
+              <td>发布一条话题</td>
+              <td><span class="a-tag">每日</span></td>
+              <td>发帖 1 次</td>
+              <td class="col-num">+5</td>
+              <td class="col-num">18</td>
+              <td><span class="a-tag on">启用</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">停用</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="2"></td>
+              <td>回复 3 个问题</td>
+              <td><span class="a-tag">每日</span></td>
+              <td>有效回复 ≥ 3</td>
+              <td class="col-num">+10</td>
+              <td class="col-num">42</td>
+              <td><span class="a-tag on">启用</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">停用</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="3"></td>
+              <td>收藏 3 篇内容</td>
+              <td><span class="a-tag">每日</span></td>
+              <td>收藏 ≥ 3</td>
+              <td class="col-num">+10</td>
+              <td class="col-num">36</td>
+              <td><span class="a-tag on">启用</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">停用</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="4"></td>
+              <td>浏览 5 个新话题</td>
+              <td><span class="a-tag">每日</span></td>
+              <td>浏览 ≥ 5</td>
+              <td class="col-num">+3</td>
+              <td class="col-num">64</td>
+              <td><span class="a-tag on">启用</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">停用</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="5"></td>
+              <td>连续签到 7 天</td>
+              <td><span class="a-tag">成长</span></td>
+              <td>连续 7 天</td>
+              <td class="col-num">+50</td>
+              <td class="col-num">—</td>
+              <td><span class="a-tag on">启用</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">停用</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="6"></td>
+              <td>完善个人资料</td>
+              <td><span class="a-tag">成长</span></td>
+              <td>头像 + 简介 + 地区</td>
+              <td class="col-num">+20</td>
+              <td class="col-num">—</td>
+              <td><span class="a-tag on">启用</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">停用</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="7"></td>
+              <td>发布第一篇长文</td>
+              <td><span class="a-tag">成长</span></td>
+              <td>正文 ≥ 1500 字</td>
+              <td class="col-num">+30</td>
+              <td class="col-num">—</td>
+              <td><span class="a-tag on">启用</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">停用</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="8"></td>
+              <td>邀请一位同学</td>
+              <td><span class="a-tag">成长</span></td>
+              <td>被邀请人完成首次发帖</td>
+              <td class="col-num">+30</td>
+              <td class="col-num">—</td>
+              <td><span class="a-tag on">启用</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">停用</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-check"><input type="checkbox" aria-label="9"></td>
+              <td>回答被采纳 3 次</td>
+              <td><span class="a-tag">成长</span></td>
+              <td>采纳 ≥ 3</td>
+              <td class="col-num">+60</td>
+              <td class="col-num">—</td>
+              <td><span class="a-tag">已停用</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">启用</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="a-note a-mt-4">
+        每日任务在北京时间 00:00 重置。修改奖励金额只影响之后领取的记录，已发放的积分不会回滚。
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+</body>
+</html>

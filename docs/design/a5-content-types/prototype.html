@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>A5 · 内容类型区分</title>
+    <link rel="stylesheet" href="../assets/design.css" />
+  </head>
+  <body>
+    <div class="doc">
+      <header class="doc-head">
+        <div>
+          <h1>内容类型区分</h1>
+          <div class="sub">左侧 3px 色条 + 标题前类型徽标。两个信号叠加，不依赖单一颜色。</div>
+        </div>
+        <span class="doc-tag">A5</span>
+      </header>
+
+      <section class="doc-section">
+        <h2>图例 <span>话题 / 动态 / 问答 / 文章</span></h2>
+        <div class="type-legend">
+          <span><i style="background: var(--brand)"></i>话题 · 讨论与分享</span>
+          <span><i style="background: var(--slate)"></i>动态 · 短内容</span>
+          <span><i style="background: var(--warm)"></i>问答 · 提问与采纳</span>
+          <span><i style="background: var(--indigo)"></i>文章 · 长文与笔记</span>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>混排效果 <span>同一列表里四种类型交替出现</span></h2>
+
+        <div class="card" style="overflow: hidden">
+          <article class="type-item" data-type="qa">
+            <div class="type-date"><b>10-19</b>周二</div>
+            <div style="min-width: 0">
+              <div style="display: flex; align-items: center; gap: 8px">
+                <span class="type-badge" data-type="qa">问答</span>
+                <a class="type-title" href="#">二次函数图像怎么快速判断开口方向？有没有口诀</a>
+              </div>
+              <p class="type-excerpt">
+                做题时总是要在草稿纸上画一下才敢确定，考试来不及。老师提过「a
+                正开口向上」，但遇到顶点式和交点式就乱了。
+              </p>
+              <div class="type-meta">
+                <span class="tag tag--success">已解决</span>
+                <span class="tag tag--warm">悬赏 50 分</span>
+                <span>小满</span>
+                <span>·</span>
+                <span>3 小时前</span>
+              </div>
+            </div>
+            <div class="type-stats"><b>96</b> 回答<br /><b>3,842</b> 浏览</div>
+          </article>
+
+          <article class="type-item" data-type="topic">
+            <div class="type-date"><b>10-19</b>周二</div>
+            <div style="min-width: 0">
+              <div style="display: flex; align-items: center; gap: 8px">
+                <span class="type-badge" data-type="topic">话题</span>
+                <a class="type-title" href="#">关于校园食堂新菜单，大家觉得值这个价吗</a>
+              </div>
+              <p class="type-excerpt">
+                这学期换了两家档口，价格普遍涨了 2 到 3 块，分量看起来差不多。想听听大家的感受，也欢迎提改进建议。
+              </p>
+              <div class="type-meta">
+                <span class="tag tag--brand">校园生活</span>
+                <span>语桐</span>
+                <span>·</span>
+                <span>5 小时前</span>
+              </div>
+            </div>
+            <div class="type-stats"><b>56</b> 评论<br /><b>1,632</b> 浏览</div>
+          </article>
+
+          <article class="type-item" data-type="tweet">
+            <div class="type-date"><b>10-18</b>周一</div>
+            <div style="min-width: 0">
+              <div style="display: flex; align-items: center; gap: 8px">
+                <span class="type-badge" data-type="tweet">动态</span>
+                <a class="type-title" href="#">今天把错题本按知识点重新分了一遍，清爽多了</a>
+              </div>
+              <p class="type-excerpt">
+                之前按时间顺序记，复习时翻得很痛苦。改成按「知识点 + 错因」两维分类，找同类题快了很多。
+              </p>
+              <div class="type-meta">
+                <span>知远</span>
+                <span>·</span>
+                <span>昨天 21:10</span>
+              </div>
+            </div>
+            <div class="type-stats"><b>24</b> 评论<br /><b>486</b> 浏览</div>
+          </article>
+
+          <article class="type-item" data-type="article">
+            <div class="type-date"><b>10-17</b>周日</div>
+            <div style="min-width: 0">
+              <div style="display: flex; align-items: center; gap: 8px">
+                <span class="type-badge" data-type="article">文章</span>
+                <a class="type-title" href="#">二次函数与几何综合题的十二种辅助线思路</a>
+              </div>
+              <p class="type-excerpt">
+                把近三年的压轴题按「切线型 / 垂径型 / 相似型 / 旋转型」四类归档，每类给一个判断入口和三道例题。
+              </p>
+              <div class="type-meta">
+                <span class="tag tag--brand">数学</span>
+                <span>小满</span>
+                <span>·</span>
+                <span>2 天前</span>
+                <span>·</span>
+                <span>长文 12 分钟</span>
+              </div>
+            </div>
+            <div class="type-stats"><b>41</b> 评论<br /><b>2,106</b> 浏览</div>
+          </article>
+
+          <article class="type-item" data-type="qa">
+            <div class="type-date"><b>10-17</b>周日</div>
+            <div style="min-width: 0">
+              <div style="display: flex; align-items: center; gap: 8px">
+                <span class="type-badge" data-type="qa">问答</span>
+                <a class="type-title" href="#">每天跑步 5 公里，膝盖开始疼了该怎么办</a>
+              </div>
+              <p class="type-excerpt">
+                坚持了三个多月，最近上下楼梯膝盖外侧有刺痛感，休息两天会好一些。是不是跑量加太快了？
+              </p>
+              <div class="type-meta">
+                <span class="tag tag--warm">待解决</span>
+                <span>南风</span>
+                <span>·</span>
+                <span>2 天前</span>
+              </div>
+            </div>
+            <div class="type-stats"><b>57</b> 回答<br /><b>2,318</b> 浏览</div>
+          </article>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>规格与理由</h2>
+        <div class="grid2">
+          <div class="note note--good">
+            <strong>为什么用两个信号</strong><br />
+            色条解决"整列扫视"，徽标解决"精确识别"。<br />
+            只靠色条：色弱用户无法区分；只靠徽标：需要读字，扫视效率低。<br />
+            两者叠加后，去色截图仍可辨（徽标带文字），正常浏览时 0.5 秒可辨（色条）。
+          </div>
+          <div class="note">
+            <strong>规格</strong><br />
+            色条：宽 3，距上下 16，右侧圆角 3<br />
+            徽标：高 19，内边距 0 6，字号 10.5，字重 600<br />
+            列表项左内边距由 20 增至 24<br />
+            由前端按 <code>topic.type</code> 注入 <code>data-type</code>，<b>不改后端</b>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

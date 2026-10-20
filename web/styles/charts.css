@@ -1,0 +1,56 @@
+/* ============ C4 · 图表默认样式 ============
+   目标：不依赖每个图表单独配置，recharts 默认元素一律退到背景层。
+   系列色由 ChartConfig 传 var(--chart-1..5)，这里只处理非数据元素。 */
+@layer components {
+  /* 网格：仅横向、虚线、极淡 */
+  [data-slot="chart"] .recharts-cartesian-grid line {
+    stroke: var(--border);
+    stroke-width: 1;
+    stroke-dasharray: 2 2;
+  }
+
+  [data-slot="chart"] .recharts-cartesian-grid-vertical line {
+    stroke: transparent;
+  }
+
+  /* 坐标轴：去掉轴线与刻度线，只留文字 */
+  [data-slot="chart"] .recharts-cartesian-axis-line,
+  [data-slot="chart"] .recharts-cartesian-axis-tick-line {
+    stroke: transparent;
+  }
+
+  [data-slot="chart"] .recharts-cartesian-axis-tick-value {
+    fill: var(--muted-foreground);
+    font-size: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* 图例：去掉彩色方块，只留文字 */
+  [data-slot="chart"] .recharts-legend-item-text {
+    color: var(--muted-foreground) !important;
+    font-size: 12px;
+  }
+
+  [data-slot="chart"] .recharts-legend-icon {
+    display: none;
+  }
+
+  /* Tooltip：与站点浮层同款 */
+  [data-slot="chart"] .recharts-default-tooltip {
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+    background: var(--card) !important;
+    box-shadow: 0 8px 24px -8px rgb(28 26 23 / 16%);
+    font-size: 12px;
+  }
+
+  [data-slot="chart"] .recharts-tooltip-item,
+  [data-slot="chart"] .recharts-tooltip-item-value {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* 面积图渐变由使用方通过 linearGradient 提供，这里只保证填充不过重 */
+  [data-slot="chart"] .recharts-area-area {
+    fill-opacity: 0.18;
+  }
+}

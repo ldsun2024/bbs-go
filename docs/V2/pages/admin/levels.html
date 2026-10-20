@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>等级管理 · 后台</title>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/ui.css">
+</head>
+<body>
+
+<div class="a-admin-shell">
+
+  <aside class="a-admin-nav">
+    <div class="a-admin-group">
+      <h3>概览</h3>
+      <a href="dashboard.html">数据看板</a>
+      <a href="content.html">内容概览</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>内容</h3>
+      <a href="topics.html">话题管理</a>
+      <a href="articles.html">文章管理</a>
+      <a href="categories.html">分类管理</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>用户</h3>
+      <a href="users.html">用户管理</a>
+      <a href="roles.html">角色权限</a>
+      <a class="on" href="levels.html">等级管理</a>
+      <a href="badges.html">徽章管理</a>
+      <a href="user-badges.html">用户徽章</a>
+      <a href="user-exp-logs.html">经验日志</a>
+      <a href="user-reports.html">用户举报</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>运营</h3>
+      <a href="tasks.html">任务管理</a>
+      <a href="user-task-logs.html">任务日志</a>
+      <a href="links.html">友链管理</a>
+      <a href="forbidden-words.html">敏感词</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>系统</h3>
+      <a href="settings.html">系统设置</a>
+      <a href="email-logs.html">邮件日志</a>
+    </div>
+  </aside>
+
+  <main class="a-admin-main">
+    <header class="a-admin-top">
+      <a class="a-logo" href="../content/home.html"><span class="a-logo-mark"></span>BBS</a>
+      <span class="a-kicker">Admin / Levels</span>
+      <span class="a-spacer"></span>
+      <label class="a-search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input type="text" placeholder="搜索等级">
+      </label>
+      <a class="a-btn sm ghost" href="../content/home.html">返回前台</a>
+      <span class="a-avatar" title="管理员">管</span>
+    </header>
+
+    <div class="a-admin-body">
+
+      <div class="a-admin-head">
+        <div>
+          <div class="a-kicker">Levels</div>
+          <h1>等级管理</h1>
+          <p>9 个等级，按累计经验自动升级，不会降级。经验来源见「经验日志」。</p>
+        </div>
+        <span class="a-spacer"></span>
+        <a class="a-btn sm ghost" href="user-exp-logs.html">经验日志</a>
+        <button class="a-btn sm accent" type="button">调整规则</button>
+      </div>
+
+      <div class="a-kpi-grid">
+        <div class="a-kpi">
+          <span>平均等级</span>
+          <b>4.2</b>
+          <em>共 326 位用户</em>
+        </div>
+        <div class="a-kpi">
+          <span>最高等级</span>
+          <b>Lv8</b>
+          <em>2 位用户达到</em>
+        </div>
+        <div class="a-kpi">
+          <span>今日升级</span>
+          <b>6</b>
+          <em class="up">+2 较昨日</em>
+        </div>
+        <div class="a-kpi">
+          <span>经验总量</span>
+          <b>184K</b>
+          <em>本周新增 8.6K</em>
+        </div>
+      </div>
+
+      <div class="a-table-wrap a-mt-6">
+        <table class="a-table">
+          <thead>
+            <tr>
+              <th class="col-num">等级</th>
+              <th>名称</th>
+              <th class="col-num">所需经验</th>
+              <th>解锁特权</th>
+              <th class="col-num">当前人数</th>
+              <th>状态</th>
+              <th class="col-actions">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-num">Lv1</td>
+              <td>新人</td>
+              <td class="col-num">0</td>
+              <td>发话题、回复</td>
+              <td class="col-num">48</td>
+              <td><span class="a-tag on">启用</span></td>
+              <td class="col-actions"><button class="a-btn text" type="button">编辑</button></td>
+            </tr>
+            <tr>
+              <td class="col-num">Lv2</td>
+              <td>常客</td>
+              <td class="col-num">100</td>
+              <td>上传附件</td>
+              <td class="col-num">86</td>
+              <td><span class="a-tag on">启用</span></td>
+              <td class="col-actions"><button class="a-btn text" type="button">编辑</button></td>
+            </tr>
+            <tr>
+              <td class="col-num">Lv3</td>
+              <td>熟手</td>
+              <td class="col-num">300</td>
+              <td>发起悬赏</td>
+              <td class="col-num">72</td>
+              <td><span class="a-tag on">启用</span></td>
+              <td class="col-actions"><button class="a-btn text" type="button">编辑</button></td>
+            </tr>
+            <tr>
+              <td class="col-num">Lv4</td>
+              <td>老手</td>
+              <td class="col-num">600</td>
+              <td>自定义头图</td>
+              <td class="col-num">54</td>
+              <td><span class="a-tag on">启用</span></td>
+              <td class="col-actions"><button class="a-btn text" type="button">编辑</button></td>
+            </tr>
+            <tr>
+              <td class="col-num">Lv5</td>
+              <td>活跃</td>
+              <td class="col-num">1200</td>
+              <td>修改昵称免积分</td>
+              <td class="col-num">32</td>
+              <td><span class="a-tag on">启用</span></td>
+              <td class="col-actions"><button class="a-btn text" type="button">编辑</button></td>
+            </tr>
+            <tr>
+              <td class="col-num">Lv6</td>
+              <td>资深</td>
+              <td class="col-num">2400</td>
+              <td>申请版主</td>
+              <td class="col-num">18</td>
+              <td><span class="a-tag on">启用</span></td>
+              <td class="col-actions"><button class="a-btn text" type="button">编辑</button></td>
+            </tr>
+            <tr>
+              <td class="col-num">Lv7</td>
+              <td>达人</td>
+              <td class="col-num">4800</td>
+              <td>内容优先审核</td>
+              <td class="col-num">8</td>
+              <td><span class="a-tag on">启用</span></td>
+              <td class="col-actions"><button class="a-btn text" type="button">编辑</button></td>
+            </tr>
+            <tr>
+              <td class="col-num">Lv8</td>
+              <td>元老</td>
+              <td class="col-num">9600</td>
+              <td>专属徽章、置顶一次/月</td>
+              <td class="col-num">2</td>
+              <td><span class="a-tag on">启用</span></td>
+              <td class="col-actions"><button class="a-btn text" type="button">编辑</button></td>
+            </tr>
+            <tr>
+              <td class="col-num">Lv9</td>
+              <td>传奇</td>
+              <td class="col-num">19200</td>
+              <td>预留</td>
+              <td class="col-num">0</td>
+              <td><span class="a-tag">未启用</span></td>
+              <td class="col-actions"><button class="a-btn text" type="button">编辑</button></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="a-note a-mt-4">
+        调整所需经验只影响之后的升级判断，不会改变用户已有等级。Lv9 为预留档，当前没有用户能达到。
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+</body>
+</html>

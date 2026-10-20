@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>A4 · 发布页</title>
+    <link rel="stylesheet" href="../assets/design.css" />
+  </head>
+  <body>
+    <div class="doc">
+      <header class="doc-head">
+        <div>
+          <h1>发布页 / 编辑器</h1>
+          <div class="sub">标题用 24px 衬线加底边线，工具栏独立成条，底部固定字数与草稿状态。</div>
+        </div>
+        <span class="doc-tag">A4</span>
+      </header>
+
+      <section class="doc-section">
+        <h2>新方案 <span>760 居中 · 四个清晰的功能带</span></h2>
+
+        <div class="card" style="padding: 24px">
+          <div class="composer">
+            <input class="composer-title" value="二次函数图像怎么快速判断开口方向？" />
+
+            <div class="composer-meta">
+              <span style="font-size: 12px; color: var(--muted)">发布到</span>
+              <span class="chip is-on">数学</span>
+              <span class="chip">语文</span>
+              <span class="chip">英语</span>
+              <span class="chip">问答</span>
+              <span style="width: 1px; height: 16px; background: var(--line); margin: 0 4px"></span>
+              <span class="tag tag--brand">二次函数</span>
+              <span class="tag">初中</span>
+              <span class="tag" style="border: 1px dashed var(--line-strong); background: none; cursor: pointer"
+                >+ 标签</span
+              >
+            </div>
+
+            <div class="editor">
+              <div class="editor-bar">
+                <div class="editor-tool" style="font-weight: 600">B</div>
+                <div class="editor-tool" style="font-style: italic">I</div>
+                <div class="editor-tool" style="text-decoration: underline">U</div>
+                <div class="editor-sep"></div>
+                <div class="editor-tool">H2</div>
+                <div class="editor-tool is-on">≡</div>
+                <div class="editor-tool">❝</div>
+                <div class="editor-tool">&lt;/&gt;</div>
+                <div class="editor-sep"></div>
+                <div class="editor-tool">🔗</div>
+                <div class="editor-tool">🖼</div>
+                <div style="flex: 1"></div>
+                <div class="editor-tool" title="切换 Markdown">M↓</div>
+              </div>
+
+              <div class="editor-body">
+                <p style="margin-bottom: 12px">
+                  做题时总是要在草稿纸上画一下才敢确定，考试来不及。老师提过「a
+                  正开口向上」，但遇到顶点式和交点式就乱了。
+                </p>
+                <p style="margin-bottom: 12px">
+                  我的做法是先把式子化成一般式，看 a 的符号，再求对称轴。问题是化简本身要花时间，而且容易算错。
+                </p>
+                <ul style="margin-left: 20px; line-height: 1.9">
+                  <li>y = 2(x − 1)² − 3，能直接看出开口向上吗</li>
+                  <li>y = −0.5(x + 2)(x − 4)，a 是 −0.5 还是别的值</li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="editor-foot">
+              <div style="display: flex; align-items: center; gap: 12px">
+                <span class="editor-hint">已保存草稿 · 186 字</span>
+                <span style="width: 1px; height: 12px; background: var(--line)"></span>
+                <span class="editor-hint">支持 Markdown 与富文本切换</span>
+              </div>
+              <div style="display: flex; gap: 8px">
+                <button class="btn">预览</button>
+                <button class="btn btn--primary" style="padding: 0 22px">发布</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>四个功能带 <span>标题 / 元信息 / 编辑器 / 操作</span></h2>
+        <div class="grid2">
+          <div class="note note--good">
+            <strong>1. 标题带</strong><br />
+            24px 衬线，无边框只留 1px 底边线，focus 变墨绿。占位文字 400 字重、`--muted` 色，与已输入内容形成对比。
+          </div>
+          <div class="note note--good">
+            <strong>2. 元信息带</strong><br />
+            分类 chip 单选 + 标签 chip 多选，上下 14px。虚线边框的「+ 标签」明确表达"可添加"。
+          </div>
+          <div class="note note--good">
+            <strong>3. 编辑器</strong><br />
+            工具栏 40 高、浅底、下边线，与正文区彻底分开。正文 260 高起，行高 1.9 与 A1 一致。
+          </div>
+          <div class="note note--good">
+            <strong>4. 操作带</strong><br />
+            左侧常驻草稿状态与字数，右侧预览 + 发布。状态用文字而非 Toast，写作时不被打断。
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>对比现状</h2>
+        <div class="note note--bad">
+          <code>.publish-form { padding: 10px 18px 18px }</code> —— 标题几乎贴住上边框<br />
+          <code>.form-title-name { font-size: 18px; font-weight: 500 }</code> —— 与正文标题无法区分<br />
+          <code>.field input { border-radius: 3px }</code> —— 卡片 10px 圆角里嵌着 3px 锐角<br />
+          标题下边框 + 容器边框 + 编辑器边框 = 三条平行线，页面被切碎<br />
+          底部只有 <code>text-align: right</code> 的一个按钮，没有字数与草稿反馈
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

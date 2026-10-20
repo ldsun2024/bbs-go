@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>C4 · 图表配色</title>
+    <link rel="stylesheet" href="../assets/design.css" />
+    <style>
+      .chart-card {
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 18px 20px 14px;
+      }
+      .chart-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        margin-bottom: 4px;
+      }
+      .chart-head h3 {
+        font-size: 13px;
+        font-weight: 600;
+      }
+      .chart-head span {
+        font-size: 12px;
+        color: var(--muted);
+      }
+      .legend {
+        display: flex;
+        gap: 16px;
+        margin: 8px 0 4px;
+        font-size: 12px;
+        color: var(--text-2);
+      }
+      .legend i {
+        display: inline-block;
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        margin-right: 6px;
+        vertical-align: 0px;
+      }
+      .grid-line {
+        stroke: var(--line);
+        stroke-width: 1;
+        stroke-dasharray: 2 2;
+      }
+      .axis-text {
+        font-size: 11px;
+        fill: var(--muted);
+        font-family: var(--font-mono);
+      }
+      .bars {
+        display: flex;
+        align-items: flex-end;
+        gap: 22px;
+        height: 170px;
+        padding: 10px 4px 0;
+        border-bottom: 1px solid var(--line);
+      }
+      .bar-col {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 6px;
+        height: 100%;
+      }
+      .bar {
+        width: 26px;
+        border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+        background: var(--brand);
+      }
+      .bar-val {
+        font-family: var(--font-mono);
+        font-size: 11px;
+        color: var(--muted);
+        font-variant-numeric: tabular-nums;
+      }
+      .col-labels {
+        display: flex;
+        gap: 22px;
+        padding: 8px 4px 0;
+      }
+      .col-labels span {
+        flex: 1;
+        text-align: center;
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .tooltip-demo {
+        position: relative;
+        margin-top: 12px;
+        display: inline-block;
+        padding: 8px 12px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        box-shadow: 0 8px 24px -8px rgba(28, 26, 23, 0.16);
+        font-size: 12px;
+      }
+      .tooltip-demo b {
+        font-family: var(--font-mono);
+        font-variant-numeric: tabular-nums;
+      }
+      .tooltip-demo .row {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-top: 4px;
+        color: var(--text-2);
+      }
+      .tooltip-demo .row i {
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="doc">
+      <header class="doc-head">
+        <div>
+          <h1>图表配色</h1>
+          <div class="sub">墨绿 / 赤陶 / 深靛三色序列，网格虚线极淡，坐标轴去线只留文字。</div>
+        </div>
+        <span class="doc-tag">C4</span>
+      </header>
+
+      <section class="doc-section">
+        <h2>折线图 <span>近 7 天浏览与评论</span></h2>
+
+        <div class="chart-card">
+          <div class="chart-head">
+            <h3>内容表现</h3>
+            <span>近 7 天</span>
+          </div>
+          <div class="legend">
+            <span><i style="background: #14665a"></i>浏览量</span>
+            <span><i style="background: #c4552b"></i>评论数</span>
+          </div>
+
+          <svg viewBox="0 0 540 200" style="width: 100%; height: auto">
+            <!-- 网格 -->
+            <line class="grid-line" x1="40" y1="20" x2="520" y2="20" />
+            <line class="grid-line" x1="40" y1="57" x2="520" y2="57" />
+            <line class="grid-line" x1="40" y1="95" x2="520" y2="95" />
+            <line class="grid-line" x1="40" y1="132" x2="520" y2="132" />
+            <line class="grid-line" x1="40" y1="170" x2="520" y2="170" />
+
+            <!-- Y 轴刻度 -->
+            <text class="axis-text" x="32" y="24" text-anchor="end">1.6k</text>
+            <text class="axis-text" x="32" y="61" text-anchor="end">1.2k</text>
+            <text class="axis-text" x="32" y="99" text-anchor="end">800</text>
+            <text class="axis-text" x="32" y="136" text-anchor="end">400</text>
+            <text class="axis-text" x="32" y="174" text-anchor="end">0</text>
+
+            <!-- 浏览量面积 -->
+            <path
+              d="M40,93 L117,83 L193,85 L270,49 L347,45 L423,65 L520,37 L520,170 L40,170 Z"
+              fill="#14665a"
+              opacity="0.1"
+            />
+            <!-- 浏览量线 -->
+            <path
+              d="M40,93 L117,83 L193,85 L270,49 L347,45 L423,65 L520,37"
+              stroke="#14665a"
+              stroke-width="2"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+            <!-- 评论线 -->
+            <path
+              d="M40,149 L117,144 L193,143 L270,139 L347,133 L423,139 L520,131"
+              stroke="#c4552b"
+              stroke-width="2"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            />
+
+            <!-- 端点 -->
+            <circle cx="520" cy="37" r="3.5" fill="#14665a" />
+            <circle cx="520" cy="131" r="3.5" fill="#c4552b" />
+
+            <!-- X 轴 -->
+            <text class="axis-text" x="40" y="190" text-anchor="middle">10-14</text>
+            <text class="axis-text" x="117" y="190" text-anchor="middle">10-15</text>
+            <text class="axis-text" x="193" y="190" text-anchor="middle">10-16</text>
+            <text class="axis-text" x="270" y="190" text-anchor="middle">10-17</text>
+            <text class="axis-text" x="347" y="190" text-anchor="middle">10-18</text>
+            <text class="axis-text" x="423" y="190" text-anchor="middle">10-19</text>
+            <text class="axis-text" x="520" y="190" text-anchor="middle">10-20</text>
+          </svg>
+
+          <div class="tooltip-demo">
+            <div style="font-size: 11px; color: var(--muted)">10-20</div>
+            <div class="row"><i style="background: #14665a"></i>浏览量 <b>1,420</b></div>
+            <div class="row"><i style="background: #c4552b"></i>评论数 <b>420</b></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>柱状图 <span>各分类内容量</span></h2>
+
+        <div class="chart-card">
+          <div class="chart-head">
+            <h3>分类分布</h3>
+            <span>全部时间</span>
+          </div>
+
+          <div class="bars">
+            <div class="bar-col">
+              <span class="bar-val">1,240</span>
+              <div class="bar" style="height: 88%"></div>
+            </div>
+            <div class="bar-col">
+              <span class="bar-val">860</span>
+              <div class="bar" style="height: 61%"></div>
+            </div>
+            <div class="bar-col">
+              <span class="bar-val">640</span>
+              <div class="bar" style="height: 45%"></div>
+            </div>
+            <div class="bar-col">
+              <span class="bar-val">420</span>
+              <div class="bar" style="height: 30%"></div>
+            </div>
+            <div class="bar-col">
+              <span class="bar-val">310</span>
+              <div class="bar" style="height: 22%"></div>
+            </div>
+          </div>
+          <div class="col-labels">
+            <span>默认节点</span><span>数学</span><span>语文</span><span>心理</span><span>英语</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>配色与非数据元素</h2>
+        <div class="grid2">
+          <div class="note note--bad">
+            <strong>现状（recharts 默认）</strong><br />
+            系列色 <code>#8884d8</code> / <code>#82ca9d</code> 等紫蓝绿，与墨绿主色冲突<br />
+            网格 <code>#ccc</code> 实线，比数据线还显眼<br />
+            图例带描边方块，像贴纸<br />
+            Tooltip 白底黑边 1px，和站点浮层不统一<br />
+            轴刻度 12px，未开等宽数字
+          </div>
+          <div class="note note--good">
+            <strong>新方案</strong><br />
+            序列色：墨绿 <code>#14665A</code> → 赤陶 <code>#C4552B</code> → 深靛 <code>#3B4A6B</code> → 橄榄 → 灰蓝<br />
+            网格仅横向、<code>2 2</code> 虚线、<code>--line</code> 色<br />
+            坐标轴去轴线，只留 10.5px 刻度文字<br />
+            图例无边框，8px 圆点<br />
+            Tooltip 与站点浮层同款：<code>radius 6</code> + <code>shadow-pop</code>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

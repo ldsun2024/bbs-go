@@ -154,8 +154,8 @@ type ThirdUser struct {
 type OIDCIdentity struct {
 	Model
 	ProviderKey string `gorm:"size:64;not null;uniqueIndex:uk_oidc_issuer_subject" json:"providerKey"`
-	Issuer      string `gorm:"size:512;not null;uniqueIndex:uk_oidc_issuer_subject" json:"issuer"`
-	Subject     string `gorm:"size:512;not null;uniqueIndex:uk_oidc_issuer_subject" json:"subject"`
+	Issuer      string `gorm:"size:512;not null;uniqueIndex:uk_oidc_issuer_subject,length:300" json:"issuer"`
+	Subject     string `gorm:"size:512;not null;uniqueIndex:uk_oidc_issuer_subject,length:300" json:"subject"`
 	UserId      int64  `gorm:"not null;uniqueIndex:uk_oidc_user_provider" json:"userId"`
 	Email       string `gorm:"size:128" json:"email"`
 	Nickname    string `gorm:"size:64" json:"nickname"`

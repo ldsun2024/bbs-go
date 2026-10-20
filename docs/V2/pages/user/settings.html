@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>账号设置</title>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/ui.css">
+</head>
+<body>
+
+<header class="a-topbar">
+  <div class="a-wrap a-topbar-in">
+    <a class="a-logo" href="../content/home.html"><span class="a-logo-mark"></span>BBS</a>
+    <nav class="a-nav">
+      <a class="on" href="../content/home.html">话题</a>
+      <a href="../content/articles.html">文章</a>
+      <a href="../content/search.html">问答</a>
+    </nav>
+    <div class="a-topbar-r">
+      <span class="a-avatar" title="林一">林</span>
+    </div>
+  </div>
+</header>
+
+<main class="a-wrap a-main">
+
+  <nav class="a-breadcrumb a-breadcrumb-top">
+    <a href="profile.html">个人主页</a><span class="sep">/</span>
+    <span class="cur">设置</span>
+  </nav>
+
+  <div class="a-page-head">
+    <div class="a-page-head-l">
+      <div class="a-kicker a-page-kicker">Settings</div>
+      <h1 class="a-page-title sm">账号设置</h1>
+      <p class="a-page-sub">修改资料、通知偏好与隐私选项。改动即时生效，不需要手动保存。</p>
+    </div>
+    <div class="a-page-head-r">
+      <div class="a-stats">
+        <div class="a-stat"><b class="a-tnum">18</b><span>Streak</span></div>
+        <div class="a-stat"><b class="a-tnum">1,240</b><span>Score</span></div>
+        <div class="a-stat"><b class="a-tnum">128</b><span>Days</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="a-form-page a-section">
+
+    <!-- 资料 -->
+    <div class="a-box-h">资料</div>
+    <dl>
+      <div class="a-setting-row">
+        <dt>昵称</dt>
+        <dd>
+          <input class="a-input" type="text" value="林一">
+          <div class="a-setting-desc">2–16 个字符，每 30 天可修改一次。</div>
+        </dd>
+      </div>
+      <div class="a-setting-row">
+        <dt>头像</dt>
+        <dd>
+          <span class="a-avatar xl">林</span>
+          <div class="a-setting-desc">支持 JPG / PNG，建议 200×200 以上。未上传时显示昵称首字。</div>
+          <div class="a-mt-3">
+            <button class="a-btn sm ghost" type="button">上传</button>
+            <button class="a-btn sm text" type="button">移除</button>
+          </div>
+        </dd>
+      </div>
+      <div class="a-setting-row">
+        <dt>个人简介</dt>
+        <dd>
+          <textarea class="a-textarea" placeholder="一句话介绍你自己">每天做十道函数题，做错的抄进本子。</textarea>
+          <div class="a-setting-desc">最多 120 字，会显示在个人主页。</div>
+        </dd>
+      </div>
+      <div class="a-setting-row">
+        <dt>所在地</dt>
+        <dd>
+          <select class="a-select">
+            <option>上海</option>
+            <option>北京</option>
+            <option>广州</option>
+            <option>不公开</option>
+          </select>
+        </dd>
+      </div>
+    </dl>
+
+    <!-- 通知 -->
+    <div class="a-box-h a-mt-6">通知</div>
+    <dl>
+      <div class="a-setting-row">
+        <dt>回复提醒</dt>
+        <dd>
+          <label class="a-check"><input type="checkbox" checked> 有人回复我的话题时，发邮件提醒</label>
+          <div class="a-setting-desc">站内消息始终会收到，邮件可以关闭。</div>
+        </dd>
+      </div>
+      <div class="a-setting-row">
+        <dt>每周摘要</dt>
+        <dd>
+          <label class="a-check"><input type="checkbox" checked> 每周一发送上周热门内容</label>
+        </dd>
+      </div>
+      <div class="a-setting-row">
+        <dt>被 @ 时</dt>
+        <dd>
+          <label class="a-check"><input type="checkbox" checked> 立即提醒</label>
+        </dd>
+      </div>
+    </dl>
+
+    <!-- 隐私 -->
+    <div class="a-box-h a-mt-6">隐私</div>
+    <dl>
+      <div class="a-setting-row">
+        <dt>个人主页可见性</dt>
+        <dd>
+          <select class="a-select">
+            <option>所有人可见</option>
+            <option>仅登录用户可见</option>
+            <option>仅自己可见</option>
+          </select>
+        </dd>
+      </div>
+      <div class="a-setting-row">
+        <dt>在线状态</dt>
+        <dd>
+          <label class="a-check"><input type="checkbox" checked> 显示我的在线状态</label>
+        </dd>
+      </div>
+    </dl>
+
+    <!-- 危险区 -->
+    <div class="a-box-h a-mt-6">危险操作</div>
+    <dl>
+      <div class="a-setting-row">
+        <dt>导出数据</dt>
+        <dd>
+          <div class="a-setting-desc">导出你的全部话题、回复、收藏，格式为 JSON。</div>
+          <div class="a-mt-3"><button class="a-btn sm ghost" type="button">申请导出</button></div>
+        </dd>
+      </div>
+      <div class="a-setting-row">
+        <dt>注销账号</dt>
+        <dd>
+          <div class="a-setting-desc">注销后 30 天内可撤销，超期内容将被永久删除，无法恢复。</div>
+          <div class="a-mt-3"><button class="a-btn danger sm" type="button">注销账号</button></div>
+        </dd>
+      </div>
+    </dl>
+
+  </div>
+
+</main>
+
+<footer class="a-footer">
+  <div class="a-wrap">
+    <div class="a-footer-btm">
+      <span>BBS-GO V2 — SWISS GRID</span>
+      <span>© 2026</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

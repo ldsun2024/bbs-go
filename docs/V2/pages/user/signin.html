@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>登录</title>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/ui.css">
+</head>
+<body>
+
+<header class="a-topbar">
+  <div class="a-wrap a-topbar-in">
+    <a class="a-logo" href="../content/home.html"><span class="a-logo-mark"></span>BBS</a>
+    <nav class="a-nav">
+      <a href="../content/home.html">话题</a>
+      <a href="../content/articles.html">文章</a>
+      <a href="../content/search.html">问答</a>
+    </nav>
+    <div class="a-topbar-r">
+      <a class="a-btn sm ghost" href="signup.html">注册</a>
+    </div>
+  </div>
+</header>
+
+<main class="a-wrap">
+
+  <div class="a-auth">
+    <!-- 左栏：品牌与说明 -->
+    <div class="a-auth-l">
+      <div class="a-kicker">BBS · Community</div>
+      <h2 class="a-mt-4">把问题问清楚，<br>把答案留下来。</h2>
+      <p>一个以文字为主的校园社区。登录后可以发帖、回复、收藏，也能收到有人回复你的提醒。</p>
+      <ul>
+        <li>1,284 个话题 · 326 位成员</li>
+        <li>今日 18 条新帖</li>
+        <li>所有内容永久保存，支持导出</li>
+      </ul>
+    </div>
+
+    <!-- 右栏：表单 -->
+    <div class="a-auth-r">
+      <div class="a-seg">
+        <a class="on" href="signin.html">登录</a>
+        <a href="signup.html">注册</a>
+      </div>
+
+      <div class="a-form-row">
+        <label class="a-form-label" for="account">邮箱或用户名</label>
+        <input class="a-input" id="account" type="text" placeholder="you@example.com">
+      </div>
+
+      <div class="a-form-row">
+        <label class="a-form-label" for="password">密码</label>
+        <input class="a-input" id="password" type="password" placeholder="至少 8 位">
+        <div class="a-field-error">密码错误，还可以尝试 4 次</div>
+      </div>
+
+      <div class="a-form-between">
+        <label class="a-check"><input type="checkbox" checked> 记住我</label>
+        <a class="a-btn text" href="signin.html">忘记密码</a>
+      </div>
+
+      <button class="a-btn block" type="button">登 录</button>
+
+      <div class="a-hr-text">或</div>
+
+      <div class="a-social">
+        <button class="a-btn ghost" type="button">微信登录</button>
+        <button class="a-btn ghost" type="button">GitHub</button>
+      </div>
+
+      <p class="a-note a-mt-6">
+        还没有账号？<a class="a-link-u" href="signup.html">立即注册</a>。登录即表示同意
+        <a class="a-link-u" href="../content/topic-detail.html">服务条款</a> 与
+        <a class="a-link-u" href="../content/topic-detail.html">隐私政策</a>。
+      </p>
+    </div>
+  </div>
+
+</main>
+
+<footer class="a-footer">
+  <div class="a-wrap">
+    <div class="a-footer-btm">
+      <span>BBS-GO V2 — SWISS GRID</span>
+      <span>© 2026</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>C1 · 分享卡片</title>
+    <link rel="stylesheet" href="../assets/design.css" />
+    <style>
+      .og-wrap {
+        width: 600px;
+        height: 315px;
+        overflow: hidden;
+        border: 1px solid var(--line-strong);
+        border-radius: var(--radius);
+        position: relative;
+        margin-bottom: 22px;
+      }
+      .og {
+        width: 1200px;
+        height: 630px;
+        transform: scale(0.5);
+        transform-origin: top left;
+        background-color: #faf7f2;
+        background-image: var(--paper-grain);
+        background-blend-mode: multiply;
+        color: #1c1a17;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        padding: 72px;
+        font-family: var(--font-sans);
+        box-sizing: border-box;
+      }
+      .og-bar {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 8px;
+        background: #14665a;
+      }
+      .og-top {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 40px;
+      }
+      .og-logo {
+        width: 56px;
+        height: 56px;
+        border-radius: 10px;
+        background: #14665a;
+        position: relative;
+      }
+      .og-logo::after {
+        content: "";
+        position: absolute;
+        inset: 16px 14px auto 14px;
+        height: 4px;
+        background: #f7fbf9;
+        box-shadow: 0 10px 0 #f7fbf9, 0 20px 0 #f7fbf9;
+        opacity: 0.9;
+      }
+      .og-site {
+        font-family: var(--font-serif);
+        font-size: 28px;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+      .og-body {
+        flex: 1;
+        display: flex;
+        gap: 56px;
+        min-height: 0;
+      }
+      .og-text {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        min-width: 0;
+      }
+      .og-kicker {
+        font-size: 24px;
+        color: #14665a;
+        font-weight: 600;
+        margin-bottom: 20px;
+        letter-spacing: 1px;
+      }
+      .og-title {
+        font-family: var(--font-serif);
+        font-size: 52px;
+        font-weight: 600;
+        line-height: 1.34;
+        letter-spacing: 0.5px;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .og-desc {
+        margin-top: 22px;
+        font-size: 24px;
+        line-height: 1.65;
+        color: #5c564d;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .og-cover {
+        width: 380px;
+        flex-shrink: 0;
+        border-radius: 12px;
+        object-fit: cover;
+        height: 100%;
+      }
+      .og-foot {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-top: 36px;
+        font-size: 22px;
+        color: #928b80;
+      }
+      .og-av {
+        width: 48px;
+        height: 48px;
+        border-radius: 999px;
+        background: #e6f1ee;
+        color: #14665a;
+        display: grid;
+        place-items: center;
+        font-family: var(--font-serif);
+        font-size: 22px;
+        font-weight: 600;
+      }
+      .og-tag {
+        display: inline-flex;
+        align-items: center;
+        height: 46px;
+        padding: 0 20px;
+        border-radius: 8px;
+        background: #faeee8;
+        color: #c4552b;
+        font-size: 22px;
+        font-weight: 600;
+        margin-bottom: 22px;
+      }
+      .og-tag--brand {
+        background: #e6f1ee;
+        color: #14665a;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="doc">
+      <header class="doc-head">
+        <div>
+          <h1>分享卡片（OG 图）</h1>
+          <div class="sub">1200×630，此处按 50% 缩放展示。三种模板覆盖话题、问答、文章。</div>
+        </div>
+        <span class="doc-tag">C1</span>
+      </header>
+
+      <section class="doc-section">
+        <h2>模板一 · 文章 <span>左文右图，有封面时最饱满</span></h2>
+        <div class="og-wrap">
+          <div class="og">
+            <div class="og-top">
+              <div class="og-logo"></div>
+              <div class="og-site">禅龙诀</div>
+            </div>
+            <div class="og-body">
+              <div class="og-text">
+                <div class="og-kicker">文章</div>
+                <div class="og-title">二次函数与几何综合题的十二种辅助线思路</div>
+                <div class="og-desc">
+                  把近三年的压轴题按「切线型 / 垂径型 / 相似型 / 旋转型」四类归档，每类给一个判断入口。
+                </div>
+              </div>
+              <img class="og-cover" src="../../prototype/assets/covers/c2.jpg" alt="封面" />
+            </div>
+            <div class="og-foot">
+              <div class="og-av">满</div>
+              <span>小满 · 12 分钟阅读</span>
+            </div>
+            <div class="og-bar"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>模板二 · 话题 <span>全宽排版，无图也饱满</span></h2>
+        <div class="og-wrap">
+          <div class="og">
+            <div class="og-top">
+              <div class="og-logo"></div>
+              <div class="og-site">禅龙诀</div>
+            </div>
+            <div class="og-body">
+              <div class="og-text">
+                <div class="og-tag og-tag--brand">数学</div>
+                <div class="og-title">关于校园食堂新菜单，大家觉得值这个价吗</div>
+                <div class="og-desc">
+                  这学期换了两家档口，价格普遍涨了 2 到 3 块，分量看起来差不多。想听听大家的感受。
+                </div>
+              </div>
+            </div>
+            <div class="og-foot">
+              <div class="og-av">桐</div>
+              <span>语桐 · 56 条评论</span>
+            </div>
+            <div class="og-bar"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>模板三 · 问答 <span>赤陶强调，与话题区分</span></h2>
+        <div class="og-wrap">
+          <div class="og">
+            <div class="og-top">
+              <div class="og-logo"></div>
+              <div class="og-site">禅龙诀</div>
+            </div>
+            <div class="og-body">
+              <div class="og-text">
+                <div class="og-tag">悬赏 50 分 · 待解决</div>
+                <div class="og-title">二次函数图像怎么快速判断开口方向？有没有口诀</div>
+                <div class="og-desc">
+                  做题时总是要在草稿纸上画一下才敢确定，考试来不及。遇到顶点式和交点式就乱了。
+                </div>
+              </div>
+            </div>
+            <div class="og-foot">
+              <div class="og-av">满</div>
+              <span>小满 · 96 个回答</span>
+            </div>
+            <div class="og-bar"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>规格</h2>
+        <div class="grid2">
+          <div class="note note--good">
+            <strong>尺寸与安全区</strong><br />
+            1200 × 630（1.91:1），四周 72px 安全区<br />
+            底部 8px 墨绿横条作为品牌锚点<br />
+            标题 52px 衬线、最多 3 行；说明 24px、最多 2 行<br />
+            页脚作者头像 48 + 昵称 22<br />
+            无封面时退化为全宽排版，不留空洞
+          </div>
+          <div class="note">
+            <strong>生成方式</strong><br />
+            推荐 <code>satori</code> / <code>@vercel/og</code> 在 Node 端把 JSX 渲染为 PNG，无需真实浏览器；<br />
+            首次请求生成后存 <code>res/og/{type}-{id}.png</code>，之后直接命中；<br />
+            失败回退站点默认图，不影响页面打开。<br /><br />
+            meta 需同时给 <code>og:image:width/height</code> 与 <code>twitter:card=summary_large_image</code>。
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

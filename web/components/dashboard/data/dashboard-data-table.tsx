@@ -16,6 +16,8 @@ import {
 import type { AdminRecord } from "@/lib/api/admin"
 import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
+import { EmptyState } from "@/components/common/empty-state"
+import { TableRowsSkeleton } from "@/components/common/skeletons"
 import { DashboardPagination } from "@/components/dashboard/pagination-controls"
 
 import type { DashboardDataPageConfig } from "./dashboard-data-types"
@@ -103,15 +105,16 @@ export function DashboardDataTable({
 
   return (
     <div className="overflow-hidden rounded-lg border bg-[var(--dashboard-panel)] shadow-xs">
-      <div className="overflow-x-auto">
+      {/* B2：吸顶表头需要可纵向滚动的祖先，这里给容器封顶高度 */}
+      <div className="max-h-[calc(100vh-15rem)] overflow-auto">
         <table className="w-full min-w-[980px] text-sm">
-          <thead className="bg-[var(--dashboard-panel-muted)] text-muted-foreground">
+          <thead className="sticky top-0 z-10 bg-[var(--dashboard-panel-muted)] text-muted-foreground">
             <tr>
               {config.columns.map((column) => (
                 <th
                   key={column.key}
                   className={cn(
-                    "h-10 px-3 text-left text-xs font-semibold tracking-wide uppercase",
+                    "h-[38px] px-3 text-left text-xs font-semibold tracking-wide uppercase",
                     column.className
                   )}
                 >
@@ -119,7 +122,7 @@ export function DashboardDataTable({
                 </th>
               ))}
               {hasActions ? (
-                <th className="h-10 w-48 px-3 text-right text-xs font-semibold tracking-wide uppercase">
+                <th className="h-[38px] w-48 px-3 text-right text-xs font-semibold tracking-wide uppercase">
                   {labels.actions}
                 </th>
               ) : null}
@@ -127,14 +130,7 @@ export function DashboardDataTable({
           </thead>
           <tbody>
             {loading ? (
-              <tr>
-                <td
-                  colSpan={colSpan}
-                  className="px-3 py-10 text-center text-muted-foreground"
-                >
-                  {labels.loading}
-                </td>
-              </tr>
+              <TableRowsSkeleton rows={6} columns={colSpan} />
             ) : records.length ? (
               records.map((record, index) => (
                 <tr
@@ -165,9 +161,10 @@ export function DashboardDataTable({
                   {config.columns.map((column) => {
                     const isTreeIndentColumn =
                       config.treeIndentKey === column.key
+                    const rawValue = getDashboardDataValue(record, column.key)
                     const content = column.render
                       ? column.render(record)
-                      : textValue(getDashboardDataValue(record, column.key))
+                      : textValue(rawValue)
                     const depth = Number(record[DASHBOARD_DATA_DEPTH_KEY] || 0)
                     const hasChildren = Boolean(
                       record[DASHBOARD_DATA_HAS_CHILDREN_KEY]
@@ -180,7 +177,11 @@ export function DashboardDataTable({
                         className={cn(
                           "h-11 px-3 align-middle",
                           column.className,
-                          isTreeIndentColumn && "font-medium"
+                          isTreeIndentColumn && "font-medium",
+                          // B2：数字列右对齐 + 等宽，位数不同时也能纵向比较
+                          typeof rawValue === "number" &&
+                            !column.render &&
+                            "text-right tabular-nums"
                         )}
                         style={
                           isTreeIndentColumn
@@ -325,11 +326,8 @@ export function DashboardDataTable({
               ))
             ) : (
               <tr>
-                <td
-                  colSpan={colSpan}
-                  className="px-3 py-10 text-center text-muted-foreground"
-                >
-                  {labels.noData}
+                <td colSpan={colSpan}>
+                  <EmptyState title={labels.noData} className="py-8" />
                 </td>
               </tr>
             )}

@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>B1 · 移动端</title>
+    <link rel="stylesheet" href="../assets/design.css" />
+    <style>
+      .stage {
+        display: flex;
+        gap: 32px;
+        align-items: flex-start;
+        flex-wrap: wrap;
+      }
+      .phone {
+        width: 375px;
+        height: 760px;
+        border: 9px solid #1c1a17;
+        border-radius: 34px;
+        overflow: hidden;
+        background: var(--bg);
+        position: relative;
+        box-shadow: 0 24px 50px -24px rgba(28, 26, 23, 0.45);
+        flex-shrink: 0;
+      }
+      .screen {
+        height: 100%;
+        overflow-y: auto;
+        padding-bottom: 72px;
+        scrollbar-width: none;
+      }
+      .screen::-webkit-scrollbar {
+        display: none;
+      }
+      .m-head {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        height: 52px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        padding: 0 16px;
+        background: rgba(250, 247, 242, 0.94);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid var(--line);
+      }
+      .m-logo {
+        font-family: var(--font-serif);
+        font-size: 15px;
+        font-weight: 600;
+        flex: 1;
+      }
+      .m-icon {
+        width: 32px;
+        height: 32px;
+        display: grid;
+        place-items: center;
+        border-radius: var(--radius-sm);
+        font-size: 15px;
+        color: var(--text-2);
+      }
+      .m-chips {
+        position: relative;
+        display: flex;
+        gap: 8px;
+        overflow-x: auto;
+        padding: 12px 16px;
+        scrollbar-width: none;
+        border-bottom: 1px solid var(--line);
+        background: var(--surface);
+      }
+      .m-chips::-webkit-scrollbar {
+        display: none;
+      }
+      .m-chip {
+        flex: 0 0 auto;
+        height: 32px;
+        padding: 0 14px;
+        display: inline-flex;
+        align-items: center;
+        border-radius: var(--radius-sm);
+        background: var(--bg-subtle);
+        color: var(--text-2);
+        font-size: 13px;
+      }
+      .m-chip.is-on {
+        background: var(--brand);
+        color: var(--brand-on);
+        font-weight: 500;
+      }
+      .m-fade {
+        position: absolute;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        width: 28px;
+        background: linear-gradient(90deg, transparent, var(--surface));
+        pointer-events: none;
+      }
+      .m-item {
+        position: relative;
+        padding: 14px 16px 14px 20px;
+        border-bottom: 1px solid var(--line);
+        background: var(--surface);
+      }
+      .m-item::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 14px;
+        bottom: 14px;
+        width: 3px;
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        background: var(--brand);
+      }
+      .m-item[data-type="tweet"]::before { background: var(--slate); }
+      .m-item[data-type="qa"]::before { background: var(--warm); }
+      .m-item[data-type="article"]::before { background: var(--indigo); }
+      .m-brand {
+        display: inline-flex;
+        align-items: center;
+        height: 20px;
+        padding: 0 6px;
+        border-radius: var(--radius-sm);
+        font-size: 11px;
+        font-weight: 600;
+        margin-right: 6px;
+        vertical-align: 1px;
+      }
+      .m-brand[data-type="topic"] { background: var(--brand-soft); color: var(--brand); }
+      .m-brand[data-type="tweet"] { background: var(--slate-soft); color: var(--slate); }
+      .m-brand[data-type="qa"] { background: var(--warm-soft); color: var(--warm); }
+      .m-brand[data-type="article"] { background: #eceef4; color: var(--indigo); }
+      .m-title {
+        font-family: var(--font-serif);
+        font-size: 15px;
+        font-weight: 600;
+        line-height: 1.55;
+        color: var(--text);
+      }
+      .m-excerpt {
+        margin-top: 4px;
+        font-size: 13px;
+        line-height: 1.65;
+        color: var(--text-2);
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+      }
+      .m-meta {
+        margin-top: 7px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        color: var(--muted);
+        flex-wrap: wrap;
+      }
+      .bottom-nav {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        height: 58px;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        background: var(--surface);
+        border-top: 1px solid var(--line);
+      }
+      .bn-item {
+        width: 88px;
+        height: 58px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2px;
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .bn-item.is-on {
+        color: var(--brand);
+        font-weight: 600;
+      }
+      .bn-icon {
+        font-size: 16px;
+        line-height: 1;
+      }
+      .bn-publish {
+        width: 44px;
+        height: 44px;
+        border-radius: 999px;
+        background: var(--brand);
+        color: var(--brand-on);
+        display: grid;
+        place-items: center;
+        font-size: 20px;
+        margin-top: -20px;
+        box-shadow: 0 6px 16px -6px rgba(20, 102, 90, 0.7);
+      }
+      .bn-label {
+        font-size: 11px;
+        color: var(--brand);
+        margin-top: 2px;
+        font-weight: 600;
+      }
+      .bn-dot {
+        position: absolute;
+        top: 12px;
+        right: 26px;
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: var(--danger);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="doc">
+      <header class="doc-head">
+        <div>
+          <h1>移动端专项</h1>
+          <div class="sub">375px 视口。分类条改横向滚动，列表改两行式，底部常驻三项操作。</div>
+        </div>
+        <span class="doc-tag">B1</span>
+      </header>
+
+      <div class="stage">
+        <div class="phone">
+          <div class="screen">
+            <div class="m-head">
+              <div class="m-logo">禅龙诀</div>
+              <div class="m-icon">⌕</div>
+              <div class="avatar" style="width: 28px; height: 28px; font-size: 12px">龙</div>
+            </div>
+
+            <div class="m-chips">
+              <span class="m-chip is-on">全部</span>
+              <span class="m-chip">默认节点</span>
+              <span class="m-chip">划线</span>
+              <span class="m-chip">心理</span>
+              <span class="m-chip">问答</span>
+              <span class="m-chip">数学</span>
+              <div class="m-fade"></div>
+            </div>
+
+            <article class="m-item" data-type="qa">
+              <div class="m-title">
+                <span class="m-brand" data-type="qa">问答</span>二次函数图像怎么快速判断开口方向？有没有口诀
+              </div>
+              <p class="m-excerpt">
+                做题时总是要在草稿纸上画一下才敢确定，考试来不及。老师提过「a
+                正开口向上」，但遇到顶点式就乱了。
+              </p>
+              <div class="m-meta">
+                <span class="tag tag--success" style="height: 17px; font-size: 11px">已解决</span>
+                <span>小满</span><span>·</span><span>96 回答</span><span>·</span><span>10-19</span>
+              </div>
+            </article>
+
+            <article class="m-item" data-type="topic">
+              <div class="m-title">
+                <span class="m-brand" data-type="topic">话题</span>关于校园食堂新菜单，大家觉得值这个价吗
+              </div>
+              <p class="m-excerpt">
+                这学期换了两家档口，价格普遍涨了 2 到 3 块，分量看起来差不多。想听听大家的感受。
+              </p>
+              <div class="m-meta">
+                <span>语桐</span><span>·</span><span>56 评论</span><span>·</span><span>10-19</span>
+              </div>
+            </article>
+
+            <article class="m-item" data-type="tweet">
+              <div class="m-title">
+                <span class="m-brand" data-type="tweet">动态</span>今天把错题本按知识点重新分了一遍，清爽多了
+              </div>
+              <p class="m-excerpt">
+                之前按时间顺序记，复习时翻得很痛苦。改成按「知识点 + 错因」两维分类，找同类题快了很多。
+              </p>
+              <div class="m-meta">
+                <span>知远</span><span>·</span><span>24 评论</span><span>·</span><span>10-18</span>
+              </div>
+            </article>
+
+            <article class="m-item" data-type="article">
+              <div class="m-title">
+                <span class="m-brand" data-type="article">文章</span>二次函数与几何综合题的十二种辅助线思路
+              </div>
+              <p class="m-excerpt">
+                把近三年的压轴题按「切线型 / 垂径型 / 相似型 / 旋转型」四类归档，每类给一个判断入口。
+              </p>
+              <div class="m-meta">
+                <span>小满</span><span>·</span><span>长文 12 分钟</span><span>·</span><span>10-17</span>
+              </div>
+            </article>
+
+            <article class="m-item" data-type="qa">
+              <div class="m-title">
+                <span class="m-brand" data-type="qa">问答</span>每天跑步 5 公里，膝盖开始疼了该怎么办
+              </div>
+              <p class="m-excerpt">
+                坚持了三个多月，最近上下楼梯膝盖外侧有刺痛感，休息两天会好一些。是不是跑量加太快了？
+              </p>
+              <div class="m-meta">
+                <span>南风</span><span>·</span><span>57 回答</span><span>·</span><span>10-17</span>
+              </div>
+            </article>
+          </div>
+
+          <nav class="bottom-nav">
+            <div class="bn-item is-on">
+              <span class="bn-icon">◫</span>
+              <span>首页</span>
+            </div>
+            <div class="bn-item">
+              <div class="bn-publish">＋</div>
+              <div class="bn-label">发布</div>
+            </div>
+            <div class="bn-item" style="position: relative">
+              <span class="bn-icon">◔</span>
+              <span>我的</span>
+              <span class="bn-dot"></span>
+            </div>
+          </nav>
+        </div>
+
+        <div style="flex: 1; min-width: 300px">
+          <div class="note note--bad" style="margin-bottom: 14px">
+            <strong>现状</strong><br />
+            768px 以下 <code>.topics-nav { display: none }</code>，分类条直接消失，用户只能看"全部"<br />
+            左右 padding 缩到 0.5rem，内容贴边<br />
+            没有底部导航，换页要点右上角抽屉<br />
+            chip 高 26px，触控目标偏小<br />
+            列表三列 grid 在窄屏挤压，标题只剩一半宽
+          </div>
+
+          <div class="note note--good">
+            <strong>新方案</strong><br />
+            分类条横向滚动 + 右侧 28px 渐隐，32px 高（含 padding 触控区 56）<br />
+            列表改两行式：日期与统计并入元信息行<br />
+            底部导航 58px，中间发布按钮 44px 圆心上凸 20<br />
+            适配 <code>env(safe-area-inset-bottom)</code><br />
+            所有可点元素触控区 ≥ 44×44
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

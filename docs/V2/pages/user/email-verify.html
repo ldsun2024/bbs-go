@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>邮箱验证</title>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/ui.css">
+</head>
+<body>
+
+<header class="a-topbar">
+  <div class="a-wrap a-topbar-in">
+    <a class="a-logo" href="../content/home.html"><span class="a-logo-mark"></span>BBS</a>
+    <nav class="a-nav">
+      <a href="../content/topics.html">话题</a>
+      <a href="../content/articles.html">文章</a>
+      <a href="../content/search.html">问答</a>
+    </nav>
+    <div class="a-topbar-r">
+      <a class="a-btn sm ghost" href="signin.html">登录</a>
+    </div>
+  </div>
+</header>
+
+<main class="a-wrap a-main">
+  <div class="a-form-page">
+
+    <nav class="a-breadcrumb a-breadcrumb-top">
+      <a href="../content/home.html">首页</a><span class="sep">/</span>
+      <span class="cur">邮箱验证</span>
+    </nav>
+
+    <!-- 成功态（主展示） -->
+    <div class="a-kicker">Verify</div>
+    <h1 class="a-page-title sm a-mt-3">邮箱已验证</h1>
+    <p class="a-page-sub">
+      lin****@example.com 已绑定到你的账号。现在可以正常发帖、回复与接收回复提醒。
+    </p>
+
+    <div class="a-mt-6">
+      <ul>
+        <li class="a-kv"><span>账号</span><b>linyi</b></li>
+        <li class="a-kv"><span>邮箱</span><b>lin****@example.com</b></li>
+        <li class="a-kv"><span>验证时间</span><b>2026-10-20 08:42</b></li>
+      </ul>
+    </div>
+
+    <div class="a-error-actions a-mt-6">
+      <a class="a-btn accent" href="../content/topics.html">去社区看看</a>
+      <a class="a-btn ghost" href="profile-edit.html">完善资料</a>
+    </div>
+
+    <div class="a-hr-strong a-mt-7"></div>
+
+    <!-- 三种状态说明 -->
+    <div class="a-kicker a-mt-5">其他状态</div>
+
+    <div class="a-section">
+      <div class="a-empty">
+        <div class="a-empty-mark">…</div>
+        <div>
+          <h3>正在验证</h3>
+          <p>正在校验链接，通常 1 秒内完成。如果长时间停在这里，刷新页面即可。</p>
+        </div>
+        <button class="a-btn sm ghost" type="button">刷新</button>
+      </div>
+    </div>
+
+    <div class="a-section">
+      <div class="a-empty">
+        <div class="a-empty-mark">!</div>
+        <div>
+          <h3>链接已过期</h3>
+          <p>验证链接 24 小时内有效。过期后需要重新发送，同一邮箱 10 分钟内只能发一次。</p>
+        </div>
+        <button class="a-btn sm" type="button">重新发送</button>
+      </div>
+    </div>
+
+    <div class="a-section">
+      <div class="a-empty">
+        <div class="a-empty-mark">×</div>
+        <div>
+          <h3>链接无效</h3>
+          <p>链接可能被邮件客户端截断，或者这个邮箱已经验证过。请检查地址栏是否完整。</p>
+        </div>
+        <a class="a-btn sm ghost" href="signin.html">直接登录</a>
+      </div>
+    </div>
+
+    <div class="a-section">
+      <div class="a-empty">
+        <div class="a-empty-mark">i</div>
+        <div>
+          <h3>验证前能做什么</h3>
+          <p>未验证邮箱只能浏览与收藏，不能发帖与回复。验证后所有功能立即可用。</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+</body>
+</html>

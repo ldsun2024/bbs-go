@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>方向 A · 瑞士网格 — bbs-go V2</title>
+<style>
+/* ============================================================
+   方向 A · 瑞士网格（Swiss / International Typographic Style）
+   原则：零圆角、零阴影、单一强调色、12 栏硬网格、大留白
+   ============================================================ */
+:root{
+  /* 颜色 */
+  --a-bg:#FFFFFF;
+  --a-ink:#111111;
+  --a-ink-2:#6B6B6B;
+  --a-ink-3:#9B9B9B;
+  --a-ink-4:#C9C9C9;
+  --a-line:#E3E3E3;
+  --a-line-hard:#111111;
+  --a-accent:#FF3B00;
+
+  /* 字号阶：56 / 40 / 28 / 20 / 16 / 14 / 12 / 11 */
+  --a-fs-display:56px;
+  --a-fs-h1:40px;
+  --a-fs-h2:28px;
+  --a-fs-h3:20px;
+  --a-fs-body:16px;
+  --a-fs-sm:14px;
+  --a-fs-xs:12px;
+  --a-fs-micro:11px;
+
+  /* 间距阶：4 8 12 16 24 32 48 64 96 */
+  --a-sp-1:4px;  --a-sp-2:8px;  --a-sp-3:12px; --a-sp-4:16px;
+  --a-sp-5:24px; --a-sp-6:32px; --a-sp-7:48px; --a-sp-8:64px;
+  --a-sp-9:96px;
+
+  /* 布局 */
+  --a-w:1200px;
+  --a-gap:24px;
+  --a-top-h:64px;
+
+  /* 字族 */
+  --a-font:"Helvetica Neue","Helvetica","Inter","PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;
+  --a-mono:"SFMono-Regular","JetBrains Mono","Roboto Mono",Consolas,"PingFang SC",monospace;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--a-bg);
+  color:var(--a-ink);
+  font-family:var(--a-font);
+  font-size:var(--a-fs-body);
+  line-height:1.7;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+ul{list-style:none}
+button,input{font:inherit;color:inherit}
+img{max-width:100%;display:block}
+
+/* 通用：网格容器 */
+.a-wrap{
+  width:100%;
+  max-width:var(--a-w);
+  margin:0 auto;
+  padding:0 var(--a-sp-5);
+}
+.a-tnum{font-variant-numeric:tabular-nums}
+
+/* ============ 顶栏 ============ */
+.a-top{
+  position:sticky;
+  top:0;
+  z-index:20;
+  height:var(--a-top-h);
+  background:var(--a-bg);
+  border-bottom:1px solid var(--a-line);
+}
+.a-top-in{
+  height:100%;
+  display:grid;
+  grid-template-columns:220px minmax(0,1fr) auto;
+  align-items:center;
+  gap:var(--a-gap);
+}
+.a-logo{
+  display:flex;
+  align-items:baseline;
+  gap:8px;
+  font-size:19px;
+  font-weight:700;
+  letter-spacing:-0.03em;
+}
+.a-logo b{
+  display:inline-block;
+  width:12px;height:12px;
+  background:var(--a-accent);
+  margin-right:2px;
+}
+.a-logo span{
+  font-size:var(--a-fs-micro);
+  font-weight:400;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--a-ink-2);
+  font-family:var(--a-mono);
+}
+.a-nav{
+  display:flex;
+  align-items:center;
+  gap:var(--a-sp-6);
+  font-size:var(--a-fs-sm);
+  letter-spacing:0.01em;
+}
+.a-nav a{
+  position:relative;
+  padding:6px 0;
+  color:var(--a-ink-2);
+  transition:color .12s ease;
+}
+.a-nav a:hover{color:var(--a-ink)}
+.a-nav a.on{
+  color:var(--a-ink);
+  font-weight:600;
+}
+.a-nav a.on::after{
+  content:"";
+  position:absolute;
+  left:0;right:0;bottom:0;
+  height:2px;
+  background:var(--a-accent);
+}
+.a-top-r{
+  display:flex;
+  align-items:center;
+  gap:var(--a-sp-4);
+}
+.a-search{
+  display:flex;
+  align-items:center;
+  height:36px;
+  width:200px;
+  border:1px solid var(--a-line);
+  padding:0 10px;
+  gap:8px;
+  color:var(--a-ink-3);
+  transition:border-color .12s ease;
+}
+.a-search:focus-within{border-color:var(--a-ink)}
+.a-search input{
+  border:0;outline:0;
+  background:transparent;
+  width:100%;
+  font-size:var(--a-fs-sm);
+  color:var(--a-ink);
+}
+.a-search input::placeholder{color:var(--a-ink-3)}
+.a-avatar{
+  width:32px;height:32px;
+  background:var(--a-ink);
+  color:#fff;
+  display:grid;place-items:center;
+  font-size:var(--a-fs-xs);
+  font-weight:600;
+  letter-spacing:0.02em;
+  cursor:pointer;
+}
+.a-bell{
+  position:relative;
+  width:32px;height:32px;
+  display:grid;place-items:center;
+  border:1px solid var(--a-line);
+  cursor:pointer;
+  transition:border-color .12s ease;
+}
+.a-bell:hover{border-color:var(--a-ink)}
+.a-bell i{
+  position:absolute;
+  top:-1px;right:-1px;
+  min-width:15px;height:15px;
+  background:var(--a-accent);
+  color:#fff;
+  font-size:9px;
+  font-style:normal;
+  line-height:15px;
+  text-align:center;
+  padding:0 3px;
+  font-family:var(--a-mono);
+}
+
+/* ============ 分类筛选条 ============ */
+.a-filters{
+  border-bottom:1px solid var(--a-line);
+}
+.a-filters-in{
+  display:flex;
+  align-items:center;
+  gap:var(--a-sp-6);
+  height:52px;
+  overflow-x:auto;
+  scrollbar-width:none;
+}
+.a-filters-in::-webkit-scrollbar{display:none}
+.a-filters a{
+  flex:0 0 auto;
+  font-size:var(--a-fs-sm);
+  color:var(--a-ink-2);
+  padding:4px 0;
+  border-bottom:2px solid transparent;
+  white-space:nowrap;
+  transition:color .12s ease,border-color .12s ease;
+}
+.a-filters a:hover{color:var(--a-ink)}
+.a-filters a.on{
+  color:var(--a-ink);
+  font-weight:600;
+  border-bottom-color:var(--a-ink);
+}
+.a-filters .a-count{
+  margin-left:auto;
+  flex:0 0 auto;
+  font-family:var(--a-mono);
+  font-size:var(--a-fs-micro);
+  letter-spacing:0.06em;
+  color:var(--a-ink-3);
+  text-transform:uppercase;
+}
+
+/* ============ 页面主体 ============ */
+.a-main{padding:var(--a-sp-8) 0 var(--a-sp-9)}
+
+/* 页头：超大标题 + 右侧统计 */
+.a-head{
+  display:grid;
+  grid-template-columns:repeat(12,minmax(0,1fr));
+  gap:var(--a-gap);
+  align-items:end;
+  padding-bottom:var(--a-sp-6);
+  border-bottom:2px solid var(--a-line-hard);
+}
+.a-head-l{grid-column:span 8}
+.a-head-r{grid-column:span 4}
+.a-kicker{
+  font-family:var(--a-mono);
+  font-size:var(--a-fs-micro);
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--a-ink-3);
+  margin-bottom:var(--a-sp-3);
+}
+.a-title{
+  font-size:var(--a-fs-display);
+  line-height:1.02;
+  font-weight:700;
+  letter-spacing:-0.035em;
+  max-width:14em;
+}
+.a-title em{
+  font-style:normal;
+  color:var(--a-accent);
+}
+.a-sub{
+  margin-top:var(--a-sp-4);
+  font-size:var(--a-fs-sm);
+  color:var(--a-ink-2);
+  max-width:34em;
+  line-height:1.75;
+}
+.a-stats{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:var(--a-sp-4);
+  padding-bottom:6px;
+}
+.a-stat b{
+  display:block;
+  font-size:var(--a-fs-h2);
+  font-weight:700;
+  letter-spacing:-0.02em;
+  font-variant-numeric:tabular-nums;
+  line-height:1.1;
+}
+.a-stat span{
+  display:block;
+  margin-top:6px;
+  font-family:var(--a-mono);
+  font-size:var(--a-fs-micro);
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--a-ink-3);
+}
+
+/* 两栏布局：列表 + 侧栏 */
+.a-body{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) 280px;
+  gap:var(--a-sp-8);
+  margin-top:var(--a-sp-6);
+}
+
+/* ============ 列表 ============ */
+.a-listhead{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  gap:var(--a-sp-4);
+  padding-bottom:var(--a-sp-3);
+  border-bottom:1px solid var(--a-line);
+}
+.a-listhead h2{
+  font-size:var(--a-fs-xs);
+  font-weight:600;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+}
+.a-listhead .a-sort{
+  display:flex;
+  gap:var(--a-sp-4);
+  font-size:var(--a-fs-xs);
+  color:var(--a-ink-3);
+}
+.a-listhead .a-sort span{cursor:pointer}
+.a-listhead .a-sort span.on{color:var(--a-ink);font-weight:600}
+
+/* 列表项：序号 60 + 内容 1fr + 元信息 240 */
+.a-item{
+  display:grid;
+  grid-template-columns:60px minmax(0,1fr) 240px;
+  gap:var(--a-gap);
+  padding:var(--a-sp-5) 0;
+  border-bottom:1px solid var(--a-line);
+  animation:a-fade .18s ease backwards;
+  transition:background-color .12s ease;
+}
+.a-item:nth-child(1){animation-delay:0s}
+.a-item:nth-child(2){animation-delay:.03s}
+.a-item:nth-child(3){animation-delay:.06s}
+.a-item:nth-child(4){animation-delay:.09s}
+.a-item:nth-child(5){animation-delay:.12s}
+.a-item:nth-child(6){animation-delay:.15s}
+.a-item:hover{background:#FAFAFA}
+.a-no{
+  font-family:var(--a-mono);
+  font-size:var(--a-fs-h2);
+  font-weight:400;
+  line-height:1.1;
+  color:var(--a-ink-4);
+  letter-spacing:-0.02em;
+  transition:color .12s ease;
+}
+.a-item:hover .a-no{color:var(--a-accent)}
+
+.a-item-c{min-width:0}
+.a-type{
+  display:inline-block;
+  font-family:var(--a-mono);
+  font-size:var(--a-fs-micro);
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--a-ink-2);
+  border-bottom:1px solid var(--a-ink-4);
+  padding-bottom:1px;
+  margin-bottom:10px;
+}
+.a-item-t{
+  display:block;
+  font-size:22px;
+  line-height:1.35;
+  font-weight:600;
+  letter-spacing:-0.015em;
+  overflow-wrap:anywhere;
+  transition:color .12s ease;
+}
+.a-item-t:hover{color:var(--a-accent)}
+.a-item-d{
+  margin-top:var(--a-sp-2);
+  font-size:var(--a-fs-sm);
+  line-height:1.7;
+  color:var(--a-ink-2);
+  display:-webkit-box;
+  -webkit-line-clamp:2;
+  -webkit-box-orient:vertical;
+  overflow:hidden;
+  overflow-wrap:anywhere;
+}
+
+/* 元信息列：上下两段，硬线分隔 */
+.a-item-m{
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+  gap:var(--a-sp-2);
+  font-size:var(--a-fs-xs);
+  color:var(--a-ink-2);
+  border-left:1px solid var(--a-line);
+  padding-left:var(--a-sp-4);
+}
+.a-item-m .a-author{display:flex;align-items:center;gap:8px}
+.a-item-m .a-dot{
+  width:20px;height:20px;
+  background:var(--a-ink);
+  color:#fff;
+  display:grid;place-items:center;
+  font-size:9px;
+  font-weight:600;
+  flex:0 0 auto;
+}
+.a-item-m .a-nums{
+  display:flex;
+  gap:var(--a-sp-4);
+  font-family:var(--a-mono);
+  font-size:var(--a-fs-micro);
+  color:var(--a-ink-3);
+  letter-spacing:0.04em;
+}
+.a-item-m .a-nums b{color:var(--a-ink);font-weight:600}
+
+/* 空态小样 */
+.a-empty{
+  margin-top:var(--a-sp-6);
+  border:1px solid var(--a-line);
+  padding:var(--a-sp-8) var(--a-sp-6);
+  display:grid;
+  grid-template-columns:60px minmax(0,1fr) auto;
+  gap:var(--a-gap);
+  align-items:center;
+}
+.a-empty-mark{
+  font-family:var(--a-mono);
+  font-size:var(--a-fs-h2);
+  color:var(--a-ink-4);
+  line-height:1;
+}
+.a-empty h3{
+  font-size:var(--a-fs-sm);
+  font-weight:600;
+  letter-spacing:0.02em;
+}
+.a-empty p{
+  margin-top:4px;
+  font-size:var(--a-fs-xs);
+  color:var(--a-ink-2);
+}
+
+/* 分页 */
+.a-pager{
+  display:flex;
+  align-items:center;
+  gap:var(--a-sp-2);
+  margin-top:var(--a-sp-6);
+  font-family:var(--a-mono);
+  font-size:var(--a-fs-xs);
+}
+.a-pager a{
+  min-width:32px;height:32px;
+  display:grid;place-items:center;
+  border:1px solid var(--a-line);
+  padding:0 8px;
+  color:var(--a-ink-2);
+  transition:border-color .12s ease,color .12s ease;
+}
+.a-pager a:hover{border-color:var(--a-ink);color:var(--a-ink)}
+.a-pager a.on{
+  background:var(--a-ink);
+  border-color:var(--a-ink);
+  color:#fff;
+}
+.a-pager .a-pager-info{
+  margin-left:auto;
+  color:var(--a-ink-3);
+  letter-spacing:0.06em;
+}
+
+/* ============ 侧栏 ============ */
+.a-aside{
+  display:flex;
+  flex-direction:column;
+  gap:var(--a-sp-7);
+}
+.a-box-h{
+  font-family:var(--a-mono);
+  font-size:var(--a-fs-micro);
+  letter-spacing:0.16em;
+  text-transform:uppercase;
+  color:var(--a-ink-3);
+  padding-bottom:var(--a-sp-2);
+  border-bottom:1px solid var(--a-line-hard);
+  margin-bottom:var(--a-sp-4);
+}
+.a-about dl{
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:10px 12px;
+  font-size:var(--a-fs-sm);
+}
+.a-about dt{color:var(--a-ink-2)}
+.a-about dd{
+  font-family:var(--a-mono);
+  font-weight:600;
+  font-variant-numeric:tabular-nums;
+}
+.a-users{display:flex;flex-direction:column;gap:10px}
+.a-user{
+  display:grid;
+  grid-template-columns:24px minmax(0,1fr) auto;
+  align-items:center;
+  gap:10px;
+  font-size:var(--a-fs-sm);
+}
+.a-user .a-dot{
+  width:24px;height:24px;
+  background:var(--a-ink);
+  color:#fff;
+  display:grid;place-items:center;
+  font-size:10px;font-weight:600;
+}
+.a-user .a-u-n{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.a-user .a-u-c{
+  font-family:var(--a-mono);
+  font-size:var(--a-fs-micro);
+  color:var(--a-ink-3);
+}
+.a-notice{display:flex;flex-direction:column;gap:var(--a-sp-3)}
+.a-notice a{
+  display:block;
+  font-size:var(--a-fs-sm);
+  line-height:1.6;
+  padding-left:var(--a-sp-3);
+  border-left:2px solid var(--a-line);
+  transition:border-color .12s ease;
+}
+.a-notice a:hover{border-left-color:var(--a-accent)}
+.a-notice time{
+  display:block;
+  margin-top:2px;
+  font-family:var(--a-mono);
+  font-size:var(--a-fs-micro);
+  color:var(--a-ink-3);
+}
+
+/* ============ 组件样本 ============ */
+.a-kit{
+  margin-top:var(--a-sp-9);
+  padding-top:var(--a-sp-6);
+  border-top:2px solid var(--a-line-hard);
+}
+.a-kit-h{
+  display:flex;
+  align-items:baseline;
+  gap:12px;
+  margin-bottom:var(--a-sp-6);
+}
+.a-kit-h h2{
+  font-size:var(--a-fs-xs);
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  font-weight:600;
+}
+.a-kit-h span{
+  font-family:var(--a-mono);
+  font-size:var(--a-fs-micro);
+  color:var(--a-ink-3);
+}
+.a-kit-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:var(--a-gap) var(--a-sp-6);
+}
+.a-kit-cell h3{
+  font-family:var(--a-mono);
+  font-size:var(--a-fs-micro);
+  letter-spacing:0.12em;
+  text-transform:uppercase;
+  color:var(--a-ink-3);
+  margin-bottom:var(--a-sp-3);
+  padding-bottom:6px;
+  border-bottom:1px solid var(--a-line);
+}
+.a-kit-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+
+/* 按钮三尺寸 */
+.a-btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  border:1px solid var(--a-ink);
+  background:var(--a-ink);
+  color:#fff;
+  font-size:var(--a-fs-sm);
+  font-weight:600;
+  letter-spacing:0.02em;
+  height:40px;
+  padding:0 20px;
+  cursor:pointer;
+  transition:background-color .12s ease,color .12s ease;
+}
+.a-btn:hover{background:transparent;color:var(--a-ink)}
+.a-btn.sm{height:32px;padding:0 14px;font-size:var(--a-fs-xs)}
+.a-btn.ghost{
+  background:transparent;
+  color:var(--a-ink);
+  border-color:var(--a-line);
+}
+.a-btn.ghost:hover{border-color:var(--a-ink)}
+.a-btn.text{
+  background:transparent;
+  border:0;
+  padding:0;
+  height:auto;
+  font-size:var(--a-fs-sm);
+  color:var(--a-ink);
+  border-bottom:1px solid var(--a-ink);
+}
+.a-btn.accent{background:var(--a-accent);border-color:var(--a-accent)}
+.a-btn.accent:hover{background:transparent;color:var(--a-accent)}
+
+/* 标签 */
+.a-tag{
+  display:inline-flex;
+  align-items:center;
+  height:24px;
+  padding:0 8px;
+  border:1px solid var(--a-line);
+  font-size:var(--a-fs-xs);
+  color:var(--a-ink-2);
+}
+.a-tag.on{
+  border-color:var(--a-ink);
+  color:var(--a-ink);
+  font-weight:600;
+}
+
+/* 输入框 */
+.a-input{
+  height:36px;
+  border:1px solid var(--a-line);
+  padding:0 10px;
+  width:100%;
+  max-width:220px;
+  font-size:var(--a-fs-sm);
+  outline:0;
+  transition:border-color .12s ease;
+}
+.a-input:focus{border-color:var(--a-ink)}
+.a-input::placeholder{color:var(--a-ink-3)}
+
+/* ============ 页脚 ============ */
+.a-foot{
+  border-top:1px solid var(--a-line);
+  padding:var(--a-sp-7) 0;
+}
+.a-foot-in{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:var(--a-gap);
+  font-size:var(--a-fs-xs);
+  color:var(--a-ink-2);
+}
+.a-foot-in h4{
+  font-family:var(--a-mono);
+  font-size:var(--a-fs-micro);
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--a-ink-3);
+  margin-bottom:var(--a-sp-3);
+  font-weight:400;
+}
+.a-foot-in li{margin-bottom:6px}
+.a-foot-in a:hover{color:var(--a-ink);text-decoration:underline;text-underline-offset:2px}
+.a-foot-btm{
+  margin-top:var(--a-sp-6);
+  padding-top:var(--a-sp-4);
+  border-top:1px solid var(--a-line);
+  display:flex;
+  justify-content:space-between;
+  gap:var(--a-sp-4);
+  font-family:var(--a-mono);
+  font-size:var(--a-fs-micro);
+  color:var(--a-ink-3);
+  letter-spacing:0.06em;
+}
+
+/* 动效 */
+@keyframes a-fade{from{opacity:0}to{opacity:1}}
+@media (prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+}
+
+/* ============ 响应式 ============ */
+@media (max-width:1199px){
+  .a-body{grid-template-columns:minmax(0,1fr);gap:var(--a-sp-7)}
+  .a-aside{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:var(--a-sp-6);
+    padding-top:var(--a-sp-6);
+    border-top:1px solid var(--a-line);
+  }
+  .a-kit-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:900px){
+  .a-head-l{grid-column:span 12}
+  .a-head-r{grid-column:span 12;margin-top:var(--a-sp-5)}
+  .a-item{grid-template-columns:44px minmax(0,1fr);gap:var(--a-sp-4)}
+  .a-item-m{
+    grid-column:1/-1;
+    flex-direction:row;
+    align-items:center;
+    justify-content:flex-start;
+    gap:var(--a-sp-4);
+    border-left:0;
+    padding-left:0;
+    border-top:1px solid var(--a-line);
+    padding-top:10px;
+    margin-top:2px;
+  }
+  .a-no{font-size:22px}
+  .a-aside{grid-template-columns:minmax(0,1fr)}
+  .a-foot-in{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:640px){
+  .a-wrap{padding:0 var(--a-sp-4)}
+  .a-top-in{grid-template-columns:auto 1fr;gap:var(--a-sp-3)}
+  .a-nav{display:none}
+  .a-search{display:none}
+  .a-title{font-size:34px;letter-spacing:-0.03em}
+  .a-main{padding:var(--a-sp-6) 0 var(--a-sp-8)}
+  .a-stats{gap:var(--a-sp-3)}
+  .a-item-t{font-size:18px}
+  .a-kit-grid{grid-template-columns:minmax(0,1fr)}
+  .a-empty{grid-template-columns:1fr;gap:var(--a-sp-4);text-align:left}
+  .a-pager .a-pager-info{display:none}
+}
+</style>
+</head>
+<body>
+
+<!-- ==================== 顶栏 ==================== -->
+<header class="a-top">
+  <div class="a-wrap a-top-in">
+    <a class="a-logo" href="#">
+      <b></b>BBS<span>Community</span>
+    </a>
+    <nav class="a-nav">
+      <a class="on" href="#">话题</a>
+      <a href="#">文章</a>
+      <a href="#">问答</a>
+      <a href="#">公告</a>
+      <a href="#">热榜</a>
+    </nav>
+    <div class="a-top-r">
+      <label class="a-search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="11" cy="11" r="7"></circle><path d="M20 20l-3.5-3.5"></path>
+        </svg>
+        <input type="text" placeholder="搜索话题、文章、用户">
+      </label>
+      <div class="a-bell" title="消息">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M6 8a6 6 0 1 1 12 0c0 5 2 6 2 6H4s2-1 2-6"></path>
+          <path d="M10 20a2 2 0 0 0 4 0"></path>
+        </svg>
+        <i>5</i>
+      </div>
+      <div class="a-avatar" title="林一">LY</div>
+    </div>
+  </div>
+</header>
+
+<!-- ==================== 分类筛选条 ==================== -->
+<div class="a-filters">
+  <div class="a-wrap a-filters-in">
+    <a class="on" href="#">全部</a>
+    <a href="#">数学</a>
+    <a href="#">语文</a>
+    <a href="#">英语</a>
+    <a href="#">物理</a>
+    <a href="#">化学</a>
+    <a href="#">答疑</a>
+    <a href="#">公告</a>
+    <span class="a-count">1284 Topics / 326 Members</span>
+  </div>
+</div>
+
+<!-- ==================== 主体 ==================== -->
+<main class="a-main">
+  <div class="a-wrap">
+
+    <!-- 页头 -->
+    <div class="a-head">
+      <div class="a-head-l">
+        <div class="a-kicker">Section 01 — Community</div>
+        <h1 class="a-title">把问题问清楚，<br>把答案<em>留下来</em>。</h1>
+        <p class="a-sub">一个以文字为主的校园社区。话题、文章、答疑、公告都在这里，按时间与热度排布。</p>
+      </div>
+      <div class="a-head-r">
+        <div class="a-stats">
+          <div class="a-stat"><b class="a-tnum">1,284</b><span>Topics</span></div>
+          <div class="a-stat"><b class="a-tnum">326</b><span>Members</span></div>
+          <div class="a-stat"><b class="a-tnum">18</b><span>Today</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 列表 + 侧栏 -->
+    <div class="a-body">
+      <section>
+        <div class="a-listhead">
+          <h2>Latest</h2>
+          <div class="a-sort">
+            <span class="on">最新</span>
+            <span>热门</span>
+            <span>未回复</span>
+          </div>
+        </div>
+
+        <article class="a-item">
+          <div class="a-no">01</div>
+          <div class="a-item-c">
+            <span class="a-type">QA</span>
+            <a class="a-item-t" href="#">二次函数图像怎么快速判断开口方向？有没有口诀</a>
+            <p class="a-item-d">老师上课讲的是看 a 的正负，但我做题时经常把顶点和开口搞混。想问问大家有没有更直观的记法，或者有没有推荐的练习。</p>
+          </div>
+          <div class="a-item-m">
+            <div class="a-author"><span class="a-dot">LY</span>林一</div>
+            <div class="a-nums"><span><b>128</b> VIEW</span><span><b>24</b> REPLY</span><span>2H</span></div>
+          </div>
+        </article>
+
+        <article class="a-item">
+          <div class="a-no">02</div>
+          <div class="a-item-c">
+            <span class="a-type">Article</span>
+            <a class="a-item-t" href="#">高三数学一轮复习：函数与导数的 12 个易错点整理</a>
+            <p class="a-item-d">整理了近三年模拟卷里反复出现的 12 个坑，每个都配了原始题目和我自己的错因分析，希望对一轮复习的同学有用。</p>
+          </div>
+          <div class="a-item-m">
+            <div class="a-author"><span class="a-dot">ZZ</span>周舟</div>
+            <div class="a-nums"><span><b>842</b> VIEW</span><span><b>36</b> REPLY</span><span>5H</span></div>
+          </div>
+        </article>
+
+        <article class="a-item">
+          <div class="a-no">03</div>
+          <div class="a-item-c">
+            <span class="a-type">Moment</span>
+            <a class="a-item-t" href="#">今天物理实验课的电路图，有人拍到了吗</a>
+            <p class="a-item-d">第三节做的是串并联那块，老师说最后那张图会考。我坐后排没拍清楚，有的同学麻烦发一下。</p>
+          </div>
+          <div class="a-item-m">
+            <div class="a-author"><span class="a-dot">XM</span>小满</div>
+            <div class="a-nums"><span><b>96</b> VIEW</span><span><b>12</b> REPLY</span><span>8H</span></div>
+          </div>
+        </article>
+
+        <article class="a-item">
+          <div class="a-no">04</div>
+          <div class="a-item-c">
+            <span class="a-type">QA</span>
+            <a class="a-item-t" href="#">英语阅读理解总是做不完，想请教下大家的做题顺序</a>
+            <p class="a-item-d">每次都是先把文章通读一遍再做题，结果时间不够。是应该先看题干再看文章吗？还是按题型分优先级？</p>
+          </div>
+          <div class="a-item-m">
+            <div class="a-author"><span class="a-dot">CM</span>陈默</div>
+            <div class="a-nums"><span><b>240</b> VIEW</span><span><b>31</b> REPLY</span><span>1D</span></div>
+          </div>
+        </article>
+
+        <article class="a-item">
+          <div class="a-no">05</div>
+          <div class="a-item-c">
+            <span class="a-type">Moment</span>
+            <a class="a-item-t" href="#">图书馆四楼靠窗的位置真的太好用了</a>
+            <p class="a-item-d">下午三点以后阳光会斜过来，正好照在桌面上，不刺眼。而且那一片特别安静，推荐给需要长时间自习的同学。</p>
+          </div>
+          <div class="a-item-m">
+            <div class="a-author"><span class="a-dot">AL</span>阿岚</div>
+            <div class="a-nums"><span><b>512</b> VIEW</span><span><b>45</b> REPLY</span><span>1D</span></div>
+          </div>
+        </article>
+
+        <article class="a-item">
+          <div class="a-no">06</div>
+          <div class="a-item-c">
+            <span class="a-type">Article</span>
+            <a class="a-item-t" href="#">从 60 分到 92 分：我的化学提分笔记（附错题本模板）</a>
+            <p class="a-item-d">花了两个月把必修二的错题重做了一遍，核心就三件事：分类、归因、限时重做。文末给了我用 Excel 做的错题本模板。</p>
+          </div>
+          <div class="a-item-m">
+            <div class="a-author"><span class="a-dot">SW</span>苏晚</div>
+            <div class="a-nums"><span><b>1.2K</b> VIEW</span><span><b>88</b> REPLY</span><span>2D</span></div>
+          </div>
+        </article>
+
+        <!-- 空态小样 -->
+        <div class="a-empty">
+          <div class="a-empty-mark">—</div>
+          <div>
+            <h3>这里还没有内容</h3>
+            <p>成为第一个发布的人，一条清晰的开场会带来更多回复。</p>
+          </div>
+          <button class="a-btn sm">发布第一条</button>
+        </div>
+
+        <!-- 分页 -->
+        <nav class="a-pager">
+          <a href="#" class="on">1</a>
+          <a href="#">2</a>
+          <a href="#">3</a>
+          <a href="#">…</a>
+          <a href="#">43</a>
+          <span class="a-pager-info">1–20 / 1,284</span>
+        </nav>
+      </section>
+
+      <!-- 侧栏 -->
+      <aside class="a-aside">
+        <div class="a-about">
+          <div class="a-box-h">Overview</div>
+          <dl>
+            <dt>话题</dt><dd class="a-tnum">1,284</dd>
+            <dt>成员</dt><dd class="a-tnum">326</dd>
+            <dt>今日新增</dt><dd class="a-tnum">18</dd>
+            <dt>在线</dt><dd class="a-tnum">42</dd>
+          </dl>
+        </div>
+
+        <div class="a-users">
+          <div class="a-box-h">Active</div>
+          <div class="a-user"><span class="a-dot">LY</span><span class="a-u-n">林一</span><span class="a-u-c">24</span></div>
+          <div class="a-user"><span class="a-dot">ZZ</span><span class="a-u-n">周舟</span><span class="a-u-c">19</span></div>
+          <div class="a-user"><span class="a-dot">XM</span><span class="a-u-n">小满</span><span class="a-u-c">16</span></div>
+          <div class="a-user"><span class="a-dot">CM</span><span class="a-u-n">陈默</span><span class="a-u-c">12</span></div>
+          <div class="a-user"><span class="a-dot">SW</span><span class="a-u-n">苏晚</span><span class="a-u-c">9</span></div>
+        </div>
+
+        <div class="a-notice">
+          <div class="a-box-h">Notice</div>
+          <a href="#">关于期中考试期间社区发帖规则的说明<time>10-18</time></a>
+          <a href="#">新版本上线：支持 Markdown 公式与附件预览<time>10-15</time></a>
+        </div>
+      </aside>
+    </div>
+
+    <!-- 组件样本 -->
+    <section class="a-kit">
+      <div class="a-kit-h">
+        <h2>Components</h2>
+        <span>button / tag / input / type</span>
+      </div>
+      <div class="a-kit-grid">
+        <div class="a-kit-cell">
+          <h3>Button · 40</h3>
+          <div class="a-kit-row">
+            <button class="a-btn">发布话题</button>
+            <button class="a-btn ghost">取消</button>
+          </div>
+        </div>
+        <div class="a-kit-cell">
+          <h3>Button · 32</h3>
+          <div class="a-kit-row">
+            <button class="a-btn sm">关注</button>
+            <button class="a-btn sm ghost">举报</button>
+            <button class="a-btn sm accent">采纳</button>
+          </div>
+        </div>
+        <div class="a-kit-cell">
+          <h3>Text Button</h3>
+          <div class="a-kit-row">
+            <button class="a-btn text">查看更多</button>
+            <button class="a-btn text">全部标为已读</button>
+          </div>
+        </div>
+        <div class="a-kit-cell">
+          <h3>Tag</h3>
+          <div class="a-kit-row">
+            <span class="a-tag on">数学</span>
+            <span class="a-tag">函数</span>
+            <span class="a-tag">高三</span>
+          </div>
+        </div>
+        <div class="a-kit-cell">
+          <h3>Input · 36</h3>
+          <input class="a-input" type="text" placeholder="输入标题">
+        </div>
+        <div class="a-kit-cell">
+          <h3>Type Mark</h3>
+          <div class="a-kit-row" style="flex-direction:column;align-items:flex-start;gap:8px">
+            <span class="a-type">Topic</span>
+            <span class="a-type">QA</span>
+            <span class="a-type">Article</span>
+          </div>
+        </div>
+        <div class="a-kit-cell">
+          <h3>Emphasis</h3>
+          <div class="a-kit-row" style="gap:14px">
+            <span style="font-size:28px;font-weight:700;letter-spacing:-0.02em">Aa</span>
+            <span style="font-size:16px;color:#6B6B6B">正文 16 / 1.7</span>
+          </div>
+        </div>
+        <div class="a-kit-cell">
+          <h3>Accent</h3>
+          <div class="a-kit-row" style="gap:0">
+            <span style="width:28px;height:28px;background:#FF3B00;display:inline-block"></span>
+            <span style="width:28px;height:28px;background:#111111;display:inline-block;margin-left:4px"></span>
+            <span style="width:28px;height:28px;background:#E3E3E3;display:inline-block;margin-left:4px"></span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- ==================== 页脚 ==================== -->
+<footer class="a-foot">
+  <div class="a-wrap">
+    <div class="a-foot-in">
+      <div>
+        <h4>Community</h4>
+        <ul>
+          <li><a href="#">话题</a></li>
+          <li><a href="#">文章</a></li>
+          <li><a href="#">问答</a></li>
+          <li><a href="#">热榜</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Sections</h4>
+        <ul>
+          <li><a href="#">数学</a></li>
+          <li><a href="#">语文</a></li>
+          <li><a href="#">英语</a></li>
+          <li><a href="#">物理</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>About</h4>
+        <ul>
+          <li><a href="#">关于本站</a></li>
+          <li><a href="#">社区规范</a></li>
+          <li><a href="#">联系方式</a></li>
+        </ul>
+      </div>
+      <div>
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="#">隐私政策</a></li>
+          <li><a href="#">服务条款</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="a-foot-btm">
+      <span>BBS-GO V2 — DIRECTION A / SWISS GRID</span>
+      <span>© 2026</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

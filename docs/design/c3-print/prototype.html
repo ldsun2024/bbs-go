@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>C3 · 打印样式</title>
+    <link rel="stylesheet" href="../assets/design.css" />
+    <style>
+      .cmp {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        align-items: start;
+      }
+      .cmp-label {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        font-size: 12px;
+        color: var(--text-2);
+        margin-bottom: 10px;
+      }
+      .cmp-label .doc-tag {
+        background: var(--bg-subtle);
+        color: var(--text-2);
+      }
+      /* 屏幕版 */
+      .screen-mock {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: var(--surface);
+      }
+      .sm-nav {
+        height: 40px;
+        background: var(--bg-subtle);
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        align-items: center;
+        padding: 0 12px;
+        gap: 10px;
+        font-size: 10.5px;
+        color: var(--muted);
+      }
+      .sm-body {
+        display: grid;
+        grid-template-columns: 1fr 108px;
+        gap: 12px;
+        padding: 14px;
+      }
+      .sm-side {
+        border-left: 1px solid var(--line);
+        padding-left: 10px;
+        font-size: 9.5px;
+        color: var(--muted);
+        line-height: 1.9;
+      }
+      .sm-comment {
+        margin: 0 14px 12px;
+        padding-top: 10px;
+        border-top: 1px solid var(--line);
+        font-size: 9.5px;
+        color: var(--muted);
+      }
+      /* 打印版 */
+      .paper {
+        background: #fff;
+        border: 1px solid var(--line-strong);
+        border-radius: var(--radius-sm);
+        padding: 26px 24px 30px;
+        box-shadow: 0 10px 24px -14px rgba(28, 26, 23, 0.4);
+        position: relative;
+      }
+      .paper::before {
+        content: "A4 · 18mm / 16mm 页边距";
+        position: absolute;
+        top: -9px;
+        left: 12px;
+        background: var(--bg);
+        padding: 0 6px;
+        font-family: var(--font-mono);
+        font-size: 9.5px;
+        color: var(--muted);
+      }
+      .paper h2 {
+        font-family: var(--font-serif);
+        font-size: 15pt;
+        font-weight: 600;
+        line-height: 1.4;
+        margin-bottom: 6px;
+        color: #000;
+      }
+      .paper .meta {
+        font-size: 9pt;
+        color: #666;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #ddd;
+        margin-bottom: 12px;
+      }
+      .paper p {
+        font-size: 11.5pt;
+        line-height: 1.75;
+        color: #000;
+        margin-bottom: 0.9em;
+      }
+      .paper .url {
+        font-size: 8.5pt;
+        color: #666;
+        font-family: var(--font-mono);
+      }
+      .paper .stamp {
+        margin-top: 18px;
+        padding-top: 10px;
+        border-top: 1px solid #ddd;
+        font-size: 8.5pt;
+        color: #888;
+        font-family: var(--font-mono);
+      }
+      .paper-notes {
+        margin-top: 12px;
+        font-size: 11px;
+        color: var(--muted);
+        line-height: 1.8;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="doc">
+      <header class="doc-head">
+        <div>
+          <h1>打印样式</h1>
+          <div class="sub">打印时只留正文：去导航、去侧栏、去评论，链接补 URL，标题不被分页切断。</div>
+        </div>
+        <span class="doc-tag">C3</span>
+      </header>
+
+      <section class="doc-section">
+        <h2>屏幕 vs 打印 <span>同一篇文章</span></h2>
+
+        <div class="cmp">
+          <div>
+            <div class="cmp-label"><span class="doc-tag">现状</span> 直接 Ctrl+P 的结果</div>
+            <div class="screen-mock">
+              <div class="sm-nav">
+                <span style="font-family: var(--font-serif)">禅龙诀</span>
+                <span>话题</span><span>文章</span><span>公告</span>
+                <span style="margin-left: auto">搜索</span><span>头像</span>
+              </div>
+              <div style="padding: 10px 14px 0; font-size: 9.5px; color: var(--muted)">
+                全部 · 默认节点 · 数学 · 心理
+              </div>
+              <div class="sm-body">
+                <div>
+                  <h2 style="font-family: var(--font-serif); font-size: 14px; margin-bottom: 6px">
+                    二次函数图像与性质
+                  </h2>
+                  <p style="font-size: 10px; line-height: 1.75; color: var(--text-2)">
+                    二次函数是初中数学的重点，也是高中函数思想的基础。它的图像是一条抛物线，形状完全由解析式中的三个系数决定。
+                  </p>
+                  <p style="font-size: 10px; line-height: 1.75; color: var(--text-2)">
+                    一般式写作 y = ax² + bx + c，其中 a 决定开口方向与开口大小。
+                  </p>
+                  <p style="font-size: 9.5px; color: var(--brand)">
+                    参考：https://example.com/math/quadratic
+                  </p>
+                </div>
+                <div class="sm-side">
+                  <div style="font-weight: 600; color: var(--text-2)">关于作者</div>
+                  小满 · Lv.6<br />话题 32 · 获赞 486<br /><br />
+                  <div style="font-weight: 600; color: var(--text-2)">相关问题</div>
+                  顶点式怎么配方<br />抛物线与 x 轴交点
+                </div>
+              </div>
+              <div class="sm-comment">96 条评论 · 按热度 · 周舟：三种形式里的 a 都是同一个数……</div>
+            </div>
+            <div class="note note--bad" style="margin-top: 12px; font-size: 11.5px">
+              打印出来带导航、分类条、侧栏、评论区；背景色块在部分浏览器会打成深灰；链接只剩蓝字，纸上不知道指向哪。
+            </div>
+          </div>
+
+          <div>
+            <div class="cmp-label"><span class="doc-tag">新方案</span> @media print</div>
+            <div class="paper">
+              <h2>二次函数图像与性质</h2>
+              <div class="meta">小满 · 2026-10-19 · 禅龙诀</div>
+              <p>
+                二次函数是初中数学的重点，也是高中函数思想的基础。它的图像是一条抛物线，形状完全由解析式中的三个系数决定。理解这三者的作用，比记住结论更重要。
+              </p>
+              <p>
+                一般式写作 y = ax² + bx + c，其中 a 决定开口方向与开口大小，b 与 a 共同决定对称轴位置，c 是与 y 轴交点的纵坐标。
+              </p>
+              <p>
+                参考文献：
+                <span class="url">(https://example.com/math/quadratic)</span>
+              </p>
+              <div class="stamp">
+                本文打印于 2026-10-20 · 来源 bbs.example.com · 仅供个人学习使用
+              </div>
+            </div>
+            <div class="paper-notes">
+              · 正文 11.5pt / 行高 1.75，纸张阅读比屏幕更适合小字号<br />
+              · 页边距 18mm / 16mm，二级标题 <code>break-after: avoid</code><br />
+              · 外部链接自动补 <code>(URL)</code>，图片与代码块 <code>break-inside: avoid</code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>规则摘要</h2>
+        <div class="grid2">
+          <div class="note note--good">
+            <strong>隐藏</strong><br />
+            顶栏、页脚、侧栏、分类条、评论区、底部导航、返回顶部、Toast
+          </div>
+          <div class="note note--good">
+            <strong>保留并放大</strong><br />
+            标题、元信息、正文、图注、表格、代码块<br />
+            正文 15px → 11.5pt，行高 1.75，颜色纯黑
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

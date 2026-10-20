@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>A1 · 正文排版</title>
+    <link rel="stylesheet" href="../assets/design.css" />
+    <style>
+      /* 仅用于复刻「现状」的旧规格 */
+      .prose-old {
+        max-width: 720px;
+        font-size: 16px;
+        line-height: 1.6;
+        color: var(--text);
+      }
+      .prose-old p {
+        margin: 1rem 0;
+        line-height: 1.7;
+      }
+      .prose-old h2 {
+        margin: 1.5rem 0 0.75rem;
+        font-size: 20px;
+        font-weight: 600;
+        line-height: 1.25;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 0.3em;
+      }
+      .prose-old img {
+        margin: 1rem 0;
+        max-width: 100%;
+      }
+      .prose-old blockquote {
+        margin: 1rem 0;
+        padding-left: 12px;
+        border-left: 3px solid var(--line-strong);
+        font-style: italic;
+        color: var(--text-2);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="doc">
+      <header class="doc-head">
+        <div>
+          <h1>正文排版</h1>
+          <div class="sub">同一篇文章，两种规格。重点看行距、标题层级和四个破版元素。</div>
+        </div>
+        <span class="doc-tag">A1</span>
+      </header>
+
+      <section class="doc-section">
+        <h2>现状 <span>16px / 1.6 · 标题带下划线 · 引用走伪斜体</span></h2>
+        <div class="card" style="padding: 30px 34px">
+          <div class="prose-old">
+            <h2>二次函数图像与性质</h2>
+            <p>
+              二次函数是初中数学的重点，也是高中函数思想的基础。它的图像是一条抛物线，形状完全由解析式中的三个系数决定。理解这三者的作用，比记住结论更重要。
+            </p>
+            <p>
+              一般式写作 y = ax² + bx + c，其中 a 决定开口方向与开口大小，b 与 a 共同决定对称轴位置，c 是与 y 轴交点的纵坐标。
+            </p>
+            <blockquote>判断对称轴位置时，容易只看 b 的符号而忽略 a，导致「左同右异」用反。</blockquote>
+            <img src="../../prototype/assets/covers/c2.jpg" alt="抛物线示意图" />
+            <p>
+              顶点式 y = a(x − h)² + k 可以直接读出顶点坐标 (h, k)，在求最值问题时最方便。交点式则适合已知与 x 轴两个交点的情况。
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>新方案 <span>15px / 1.9 · 标题无下划线 · 图片圆角 + 图注</span></h2>
+        <div class="card" style="padding: 34px 40px">
+          <div class="prose">
+            <h2>二次函数图像与性质</h2>
+            <p>
+              二次函数是初中数学的重点，也是高中函数思想的基础。它的图像是一条抛物线，形状完全由解析式中的三个系数决定。理解这三者的作用，比记住结论更重要。
+            </p>
+            <p>
+              一般式写作 <code>y = ax² + bx + c</code>，其中 a 决定开口方向与开口大小，b 与 a
+              共同决定对称轴位置，c 是与 y 轴交点的纵坐标。
+            </p>
+
+            <h3>三种表达式的适用场景</h3>
+            <ul>
+              <li>一般式：已知三点求解析式</li>
+              <li>顶点式：已知顶点与另一点</li>
+              <li>交点式：已知与 x 轴的两个交点</li>
+            </ul>
+
+            <blockquote>
+              判断对称轴位置时，容易只看 b 的符号而忽略 a，导致「左同右异」用反。记法：a、b
+              同号则轴在 y 轴左侧。
+            </blockquote>
+
+            <figure>
+              <img src="../../prototype/assets/covers/c2.jpg" alt="抛物线示意图" />
+              <figcaption>图 1 · a &gt; 0 时抛物线开口向上，顶点为最小值点</figcaption>
+            </figure>
+
+            <h3>代码示例</h3>
+            <pre><code>// 求顶点坐标
+function vertex(a, b, c) {
+  const h = -b / (2 * a)
+  const k = (4 * a * c - b * b) / (4 * a)
+  return { h, k }
+}</code></pre>
+
+            <h3>参数对照</h3>
+            <table>
+              <thead>
+                <tr>
+                  <th>参数</th>
+                  <th>作用</th>
+                  <th>判断方法</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><code>a</code></td>
+                  <td>开口方向与大小</td>
+                  <td>a &gt; 0 向上，|a| 越大越窄</td>
+                </tr>
+                <tr>
+                  <td><code>b</code></td>
+                  <td>与 a 共同定对称轴</td>
+                  <td>左同右异</td>
+                </tr>
+                <tr>
+                  <td><code>c</code></td>
+                  <td>与 y 轴交点</td>
+                  <td>令 x = 0 求 y</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <hr />
+
+            <p>以上三节覆盖了二次函数在初中阶段的全部考点。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>规格差异</h2>
+        <div class="grid2">
+          <div class="note note--bad">
+            <strong>现状</strong><br />
+            字号 16 / 行高 1.6 / 段距 1rem<br />
+            h2 带 1px 下边框<br />
+            引用是浏览器默认斜体（中文伪斜体）<br />
+            图片无圆角、无图注、无容器<br />
+            代码块无独立样式，长行撑破版心<br />
+            表格无边框，密集内容糊成一片
+          </div>
+          <div class="note note--good">
+            <strong>新方案</strong><br />
+            字号 15 / 行高 1.9 / 段距 1.15em<br />
+            标题靠字号 + 字重 + 1.9em 上间距分层<br />
+            引用：3px 墨绿竖条 + 浅绿底 + 正体<br />
+            图片：全宽 + 6px 圆角 + 8px 图注<br />
+            代码块：独立容器 + 横向滚动<br />
+            表格：表头浅底 + 行分隔线 + 无外框
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

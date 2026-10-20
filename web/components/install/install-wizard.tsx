@@ -99,6 +99,7 @@ export function InstallWizard({
     password: "",
     passwordConfirm: "",
   })
+  const [setupToken, setSetupToken] = React.useState("")
   const [avatar, setAvatar] = React.useState(randomAvatar)
   const [dbError, setDbError] = React.useState("")
   const [dbSuccess, setDbSuccess] = React.useState("")
@@ -135,7 +136,8 @@ export function InstallWizard({
       adminInfo.username && adminInfo.password && adminInfo.passwordConfirm
     ) &&
     isPasswordValid(adminInfo.password) &&
-    adminInfo.password === adminInfo.passwordConfirm
+    adminInfo.password === adminInfo.passwordConfirm &&
+    Boolean(setupToken.trim())
 
   function updateDbConfig(values: Partial<typeof dbConfig>) {
     if (dockerBuiltinDb) return
@@ -215,6 +217,10 @@ export function InstallWizard({
     }
     if (adminInfo.password !== adminInfo.passwordConfirm) {
       setAdminError(t("pages.install.admin.passwordMismatchError"))
+      return false
+    }
+    if (!setupToken.trim()) {
+      setAdminError(t("pages.install.admin.setupTokenError"))
       return false
     }
     setAdminError("")
@@ -312,6 +318,7 @@ export function InstallWizard({
           password: adminInfo.password,
           avatar,
           language,
+          setupToken: setupToken.trim(),
         }),
       })
       const data = (await response.json()) as {
@@ -712,6 +719,21 @@ export function InstallWizard({
                   setAdminError("")
                 }}
               />
+              <FormField
+                required
+                id="admin-setup-token"
+                label={t("pages.install.admin.setupToken")}
+                value={setupToken}
+                placeholder={t(
+                  "pages.install.admin.setupTokenPlaceholder"
+                )}
+                help={t("pages.install.admin.setupTokenHelp")}
+                onBlur={validateAdminForm}
+                onChange={(value) => {
+                  setSetupToken(value)
+                  setAdminError("")
+                }}
+              />
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <Label className="text-sm font-medium">
@@ -820,6 +842,24 @@ export function InstallWizard({
                   </AlertDescription>
                 </div>
               </Alert>
+              {installFailed ? (
+                <div className="flex justify-center">
+                  <Button
+                    type="button"
+                    variant="outline"
+                    size="lg"
+                    onClick={() => {
+                      setInstallFailed(false)
+                      setInstallProgress(0)
+                      setAdminError("")
+                      setStep("admin")
+                    }}
+                  >
+                    <ChevronLeft className="mr-2 h-4 w-4" />
+                    {t("pages.install.buttons.previous")}
+                  </Button>
+                </div>
+              ) : null}
             </div>
           ) : null}
 

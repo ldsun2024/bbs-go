@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>分类管理 · 后台</title>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/ui.css">
+</head>
+<body>
+
+<div class="a-admin-shell">
+
+  <aside class="a-admin-nav">
+    <div class="a-admin-group">
+      <h3>概览</h3>
+      <a href="dashboard.html">数据看板</a>
+      <a href="content.html">内容概览</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>内容</h3>
+      <a href="topics.html">话题管理</a>
+      <a href="articles.html">文章管理</a>
+      <a class="on" href="categories.html">分类管理</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>用户</h3>
+      <a href="users.html">用户管理</a>
+      <a href="roles.html">角色权限</a>
+      <a href="levels.html">等级管理</a>
+      <a href="badges.html">徽章管理</a>
+      <a href="user-badges.html">用户徽章</a>
+      <a href="user-exp-logs.html">经验日志</a>
+      <a href="user-reports.html">用户举报</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>运营</h3>
+      <a href="tasks.html">任务管理</a>
+      <a href="user-task-logs.html">任务日志</a>
+      <a href="links.html">友链管理</a>
+      <a href="forbidden-words.html">敏感词</a>
+    </div>
+    <div class="a-admin-group">
+      <h3>系统</h3>
+      <a href="settings.html">系统设置</a>
+      <a href="email-logs.html">邮件日志</a>
+    </div>
+  </aside>
+
+  <main class="a-admin-main">
+    <header class="a-admin-top">
+      <a class="a-logo" href="../content/home.html"><span class="a-logo-mark"></span>BBS</a>
+      <span class="a-kicker">Admin / Categories</span>
+      <span class="a-spacer"></span>
+      <label class="a-search">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input type="text" placeholder="搜索分类名称">
+      </label>
+      <a class="a-btn sm ghost" href="../content/home.html">返回前台</a>
+      <span class="a-avatar" title="管理员">管</span>
+    </header>
+
+    <div class="a-admin-body">
+
+      <div class="a-admin-head">
+        <div>
+          <div class="a-kicker">Categories</div>
+          <h1>分类管理</h1>
+          <p>共 12 个分类，其中 8 个一级、4 个二级。排序值越小越靠前。</p>
+        </div>
+        <span class="a-spacer"></span>
+        <button class="a-btn sm ghost" type="button">导出</button>
+        <button class="a-btn sm accent" type="button">新建分类</button>
+      </div>
+
+      <div class="a-table-wrap">
+        <table class="a-table">
+          <thead>
+            <tr>
+              <th class="col-num">ID</th>
+              <th>名称</th>
+              <th>别名</th>
+              <th>父级</th>
+              <th class="col-num">话题</th>
+              <th class="col-num">文章</th>
+              <th class="col-num">排序</th>
+              <th>状态</th>
+              <th class="col-actions">操作</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="col-num">1</td>
+              <td>数学</td>
+              <td>math</td>
+              <td>—</td>
+              <td class="col-num">842</td>
+              <td class="col-num">28</td>
+              <td class="col-num">10</td>
+              <td><span class="a-tag on">显示</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">2</td>
+              <td>英语</td>
+              <td>english</td>
+              <td>—</td>
+              <td class="col-num">640</td>
+              <td class="col-num">16</td>
+              <td class="col-num">20</td>
+              <td><span class="a-tag on">显示</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">3</td>
+              <td>物理</td>
+              <td>physics</td>
+              <td>—</td>
+              <td class="col-num">476</td>
+              <td class="col-num">9</td>
+              <td class="col-num">30</td>
+              <td><span class="a-tag on">显示</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">4</td>
+              <td>语文</td>
+              <td>chinese</td>
+              <td>—</td>
+              <td class="col-num">208</td>
+              <td class="col-num">12</td>
+              <td class="col-num">40</td>
+              <td><span class="a-tag on">显示</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">5</td>
+              <td>化学</td>
+              <td>chemistry</td>
+              <td>—</td>
+              <td class="col-num">164</td>
+              <td class="col-num">6</td>
+              <td class="col-num">50</td>
+              <td><span class="a-tag on">显示</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">6</td>
+              <td>答疑互助</td>
+              <td>qa</td>
+              <td>—</td>
+              <td class="col-num">318</td>
+              <td class="col-num">4</td>
+              <td class="col-num">60</td>
+              <td><span class="a-tag on">显示</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">7</td>
+              <td>函数与导数</td>
+              <td>function</td>
+              <td>数学</td>
+              <td class="col-num">386</td>
+              <td class="col-num">14</td>
+              <td class="col-num">11</td>
+              <td><span class="a-tag on">显示</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">删除</button>
+              </td>
+            </tr>
+            <tr>
+              <td class="col-num">8</td>
+              <td>学习方法</td>
+              <td>method</td>
+              <td>—</td>
+              <td class="col-num">0</td>
+              <td class="col-num">32</td>
+              <td class="col-num">70</td>
+              <td><span class="a-tag">隐藏</span></td>
+              <td class="col-actions">
+                <button class="a-btn text" type="button">编辑</button>
+                <button class="a-btn text" type="button">删除</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="a-note a-mt-4">
+        删除分类前需要先把该分类下的内容迁移到其他分类，否则会被阻止。隐藏的分类不在前台导航显示，但内容仍可访问。
+      </div>
+
+    </div>
+  </main>
+
+</div>
+
+</body>
+</html>

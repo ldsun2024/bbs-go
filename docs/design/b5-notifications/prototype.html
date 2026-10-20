@@ -1,0 +1,333 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>B5 · 通知与未读</title>
+    <link rel="stylesheet" href="../assets/design.css" />
+    <style>
+      .top-demo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 16px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        margin-bottom: 18px;
+      }
+      .bell {
+        position: relative;
+        width: 34px;
+        height: 34px;
+        display: grid;
+        place-items: center;
+        border-radius: var(--radius-sm);
+        color: var(--text-2);
+      }
+      .bell-dot {
+        position: absolute;
+        top: 2px;
+        right: 0;
+        min-width: 16px;
+        height: 16px;
+        padding: 0 4px;
+        border-radius: 999px;
+        background: var(--danger);
+        color: #fff;
+        font-size: 11px;
+        font-weight: 600;
+        display: grid;
+        place-items: center;
+        border: 2px solid var(--surface);
+        font-family: var(--font-mono);
+      }
+      .msg-layout {
+        display: grid;
+        grid-template-columns: 180px minmax(0, 1fr);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+        background: var(--surface);
+      }
+      .msg-nav {
+        border-right: 1px solid var(--line);
+        padding: 12px 8px;
+        background: var(--bg-subtle);
+      }
+      .msg-nav-i {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 36px;
+        padding: 0 10px;
+        border-radius: var(--radius-sm);
+        font-size: 13px;
+        color: var(--text-2);
+        cursor: pointer;
+      }
+      .msg-nav-i:hover {
+        background: var(--surface);
+      }
+      .msg-nav-i.is-on {
+        background: var(--brand-soft);
+        color: var(--brand);
+        font-weight: 600;
+      }
+      .msg-nav-i b {
+        font-family: var(--font-mono);
+        font-size: 12px;
+        font-weight: 500;
+        color: var(--muted);
+      }
+      .msg-nav-i.is-on b {
+        color: var(--brand);
+      }
+      .msg-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 14px 20px;
+        border-bottom: 1px solid var(--line);
+      }
+      .msg-head h3 {
+        font-size: 15px;
+        font-weight: 600;
+      }
+      .grp {
+        padding: 18px 20px 6px;
+        font-size: 12px;
+        color: var(--muted);
+        letter-spacing: 0.3px;
+      }
+      .msg {
+        position: relative;
+        display: flex;
+        gap: 12px;
+        padding: 16px 20px 16px 24px;
+        border-bottom: 1px solid var(--line);
+        cursor: pointer;
+        transition: background 120ms ease;
+      }
+      .msg:hover {
+        background: var(--surface-hover);
+      }
+      .msg.unread {
+        background: color-mix(in srgb, var(--brand-soft) 42%, var(--surface));
+      }
+      .msg.unread::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 14px;
+        bottom: 14px;
+        width: 3px;
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+        background: var(--brand);
+      }
+      .msg-av {
+        position: relative;
+        flex-shrink: 0;
+      }
+      .msg-av .avatar {
+        width: 32px;
+        height: 32px;
+        font-size: 13px;
+      }
+      .msg-type {
+        position: absolute;
+        right: -3px;
+        bottom: -3px;
+        width: 18px;
+        height: 18px;
+        border-radius: 999px;
+        background: var(--surface);
+        border: 1px solid var(--line);
+        display: grid;
+        place-items: center;
+        font-size: 11px;
+        color: var(--text-2);
+      }
+      .msg-body {
+        flex: 1;
+        min-width: 0;
+      }
+      .msg-t {
+        font-size: 13px;
+        line-height: 1.6;
+        color: var(--text-2);
+      }
+      .msg.unread .msg-t {
+        color: var(--text);
+        font-weight: 600;
+      }
+      .msg-t b {
+        font-weight: 600;
+      }
+      .msg-c {
+        margin-top: 3px;
+        font-size: 13px;
+        color: var(--muted);
+        line-height: 1.6;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .msg-time {
+        font-size: 12px;
+        color: var(--muted);
+        flex-shrink: 0;
+        font-family: var(--font-mono);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="doc">
+      <header class="doc-head">
+        <div>
+          <h1>通知与未读</h1>
+          <div class="sub">未读靠左侧色条 + 浅底 + 加粗三重信号，配合类型导航与时间分组。</div>
+        </div>
+        <span class="doc-tag">B5</span>
+      </header>
+
+      <section class="doc-section">
+        <h2>顶栏角标 <span>8px 红点 + 数字 · 超过 99 显示 99+</span></h2>
+        <div class="top-demo">
+          <div style="font-family: var(--font-serif); font-weight: 600">禅龙诀</div>
+          <div style="display: flex; align-items: center; gap: 10px">
+            <div class="bell">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round">
+                <path d="M18 9a6 6 0 1 0-12 0c0 6-2 7-2 7h16s-2-1-2-7" />
+                <path d="M10.5 20a2 2 0 0 0 3 0" />
+              </svg>
+              <span class="bell-dot">12</span>
+            </div>
+            <div class="avatar" style="width: 30px; height: 30px; font-size: 12px">龙</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>消息中心 <span>左导航 180 + 时间分组 + 未读条</span></h2>
+
+        <div class="msg-layout">
+          <aside class="msg-nav">
+            <div class="msg-nav-i is-on">全部 <b>12</b></div>
+            <div class="msg-nav-i">回复 <b>8</b></div>
+            <div class="msg-nav-i">赞与收藏 <b>3</b></div>
+            <div class="msg-nav-i">关注 <b>1</b></div>
+            <div class="msg-nav-i">系统通知 <b></b></div>
+          </aside>
+
+          <div>
+            <div class="msg-head">
+              <h3>全部消息</h3>
+              <button class="btn btn--ghost" style="height: 26px; font-size: 11px">全部标为已读</button>
+            </div>
+
+            <div class="grp">今天</div>
+
+            <div class="msg unread">
+              <div class="msg-av">
+                <div class="avatar">满</div>
+                <span class="msg-type">回</span>
+              </div>
+              <div class="msg-body">
+                <div class="msg-t"><b>小满</b> 回复了你的话题《二次函数图像怎么快速判断开口方向》</div>
+                <div class="msg-c">「三种形式里的 a 都是同一个数，不用化简。顶点式直接读 a……」</div>
+              </div>
+              <div class="msg-time">14:20</div>
+            </div>
+
+            <div class="msg unread">
+              <div class="msg-av">
+                <div class="avatar" style="background: var(--warm-soft); color: var(--warm)">舟</div>
+                <span class="msg-type">赞</span>
+              </div>
+              <div class="msg-body">
+                <div class="msg-t"><b>周舟</b> 赞了你的回答</div>
+                <div class="msg-c">在《每天跑步 5 公里，膝盖开始疼了该怎么办》中</div>
+              </div>
+              <div class="msg-time">11:06</div>
+            </div>
+
+            <div class="msg">
+              <div class="msg-av">
+                <div class="avatar" style="background: var(--bg-subtle); color: var(--muted)">系</div>
+                <span class="msg-type">系</span>
+              </div>
+              <div class="msg-body">
+                <div class="msg-t">你的邮箱已验证</div>
+                <div class="msg-c">现在可以发布话题与文章，也可以接收邮件通知</div>
+              </div>
+              <div class="msg-time">09:12</div>
+            </div>
+
+            <div class="grp">昨天</div>
+
+            <div class="msg unread">
+              <div class="msg-av">
+                <div class="avatar" style="background: var(--slate-soft); color: var(--slate)">一</div>
+                <span class="msg-type">关</span>
+              </div>
+              <div class="msg-body">
+                <div class="msg-t"><b>林一</b> 关注了你</div>
+                <div class="msg-c">你们都在「数学」节点下有内容</div>
+              </div>
+              <div class="msg-time">昨天</div>
+            </div>
+
+            <div class="msg">
+              <div class="msg-av">
+                <div class="avatar" style="background: var(--success-soft); color: var(--success)">清</div>
+                <span class="msg-type">@</span>
+              </div>
+              <div class="msg-body">
+                <div class="msg-t"><b>清和</b> 在《古诗词意象分类整理》中提到了你</div>
+                <div class="msg-c">「@小满 你上次整理的那份分类表能发一下吗」</div>
+              </div>
+              <div class="msg-time">昨天</div>
+            </div>
+
+            <div class="grp">更早</div>
+
+            <div class="msg">
+              <div class="msg-av">
+                <div class="avatar" style="background: var(--bg-subtle); color: var(--muted)">系</div>
+                <span class="msg-type">系</span>
+              </div>
+              <div class="msg-body">
+                <div class="msg-t">你的回答被采纳</div>
+                <div class="msg-c">获得悬赏 50 积分与「答疑先锋」徽章进度 +1</div>
+              </div>
+              <div class="msg-time">10-17</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="doc-section">
+        <h2>规格</h2>
+        <div class="grid2">
+          <div class="note note--bad">
+            <strong>现状</strong><br />
+            未读只有数字角标，导航上一堆数字<br />
+            消息中心无类型导航，四类通知混流<br />
+            已读/未读仅靠字重区分，扫视难辨<br />
+            无时间分组，100 条平铺<br />
+            空态直接空白，像加载失败
+          </div>
+          <div class="note note--good">
+            <strong>新方案</strong><br />
+            未读三重信号：左 3px 墨绿条 + 浅绿底 + 标题 600<br />
+            左导航 180，五类分组，未读数右对齐<br />
+            时间分组「今天 / 昨天 / 更早」<br />
+            头像右下角 16px 类型角标（回/赞/关/@/系）<br />
+            角标 &gt; 99 显示 99+，归零后整个消失
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

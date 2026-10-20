@@ -104,7 +104,10 @@ export function TopicListItem({
         : ""
 
     return (
-      <li className="px-3 py-3 sm:px-4">
+      <li
+        className="topic-type-mark px-3 py-3 pl-4 sm:px-4 sm:pl-5"
+        data-topic-type={topic.type}
+      >
         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
           <div className="flex min-w-0 items-center gap-3">
             <UserAvatar
@@ -193,7 +196,7 @@ export function TopicListItem({
   }
 
   return (
-    <li className="px-4 py-3">
+    <li className="topic-type-mark px-4 py-3 pl-5" data-topic-type={topic.type}>
       <div className="flex items-center justify-between gap-3">
         <div className="flex min-w-0 items-center gap-2">
           <UserAvatar user={topic.user} size={24} className="shrink-0" />

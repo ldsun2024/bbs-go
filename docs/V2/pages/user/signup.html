@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>注册</title>
+<link rel="stylesheet" href="../../assets/tokens.css">
+<link rel="stylesheet" href="../../assets/ui.css">
+</head>
+<body>
+
+<header class="a-topbar">
+  <div class="a-wrap a-topbar-in">
+    <a class="a-logo" href="../content/home.html"><span class="a-logo-mark"></span>BBS</a>
+    <nav class="a-nav">
+      <a href="../content/home.html">话题</a>
+      <a href="../content/articles.html">文章</a>
+      <a href="../content/search.html">问答</a>
+    </nav>
+    <div class="a-topbar-r">
+      <a class="a-btn sm ghost" href="signin.html">登录</a>
+    </div>
+  </div>
+</header>
+
+<main class="a-wrap">
+
+  <div class="a-auth">
+    <div class="a-auth-l">
+      <div class="a-kicker">Join the community</div>
+      <h2 class="a-mt-4">注册一个账号，<br>开始提问。</h2>
+      <p>只需要一个邮箱。注册后可以发帖、回复、收藏，也可以给自己设一个昵称。</p>
+      <ul>
+        <li>发帖无数量限制</li>
+        <li>回答被采纳可获得积分</li>
+        <li>支持导出自己的全部内容</li>
+      </ul>
+    </div>
+
+    <div class="a-auth-r">
+      <div class="a-seg">
+        <a href="signin.html">登录</a>
+        <a class="on" href="signup.html">注册</a>
+      </div>
+
+      <div class="a-form-row">
+        <label class="a-form-label" for="email">邮箱</label>
+        <input class="a-input" id="email" type="email" placeholder="you@example.com">
+        <div class="a-setting-desc">用于接收验证邮件与回复提醒，不会公开。</div>
+      </div>
+
+      <div class="a-form-row">
+        <label class="a-form-label" for="nick">昵称</label>
+        <input class="a-input" id="nick" type="text" placeholder="2–16 个字符">
+        <div class="a-field-error">昵称已被占用</div>
+      </div>
+
+      <div class="a-form-row">
+        <label class="a-form-label" for="pwd">密码</label>
+        <input class="a-input" id="pwd" type="password" placeholder="至少 8 位，含字母和数字">
+      </div>
+
+      <div class="a-form-row">
+        <label class="a-form-label" for="pwd2">确认密码</label>
+        <input class="a-input" id="pwd2" type="password" placeholder="再输入一次">
+      </div>
+
+      <div class="a-form-between">
+        <label class="a-check"><input type="checkbox"> 我已阅读并同意社区规范</label>
+      </div>
+
+      <button class="a-btn block" type="button">创建账号</button>
+
+      <div class="a-hr-text">或</div>
+
+      <div class="a-social">
+        <button class="a-btn ghost" type="button">微信注册</button>
+        <button class="a-btn ghost" type="button">GitHub</button>
+      </div>
+
+      <p class="a-note a-mt-6">
+        注册后会收到一封验证邮件，24 小时内有效。没有收到可以
+        <a class="a-link-u" href="signup.html">重新发送</a>。
+      </p>
+    </div>
+  </div>
+
+</main>
+
+<footer class="a-footer">
+  <div class="a-wrap">
+    <div class="a-footer-btm">
+      <span>BBS-GO V2 — SWISS GRID</span>
+      <span>© 2026</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

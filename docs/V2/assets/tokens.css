@@ -1,0 +1,124 @@
+/* ============================================================
+   BBS-GO V2 · Direction A / Swiss Grid
+   tokens.css — 唯一变量来源
+   与 spec/01-tokens.md 完全一致，页面不得写出表中未列的值
+   ============================================================ */
+
+:root {
+  /* ---------- 纸面与线 ---------- */
+  --a-bg: #FFFFFF;
+  --a-surface-hover: #FAFAFA;
+  --a-skeleton: #F2F2F2;
+
+  /* ---------- 文字 ---------- */
+  --a-ink: #111111;
+  --a-ink-2: #6B6B6B;
+  --a-ink-3: #9B9B9B;   /* 仅 ≥11px 非关键信息 */
+  --a-ink-4: #C9C9C9;   /* 装饰与禁用 */
+
+  /* ---------- 线 ---------- */
+  --a-line: #E3E3E3;
+  --a-line-hard: #111111;
+
+  /* ---------- 强调 ---------- */
+  --a-accent: #FF3B00;
+  --a-accent-ink: #FFFFFF;
+
+  /* ---------- 语义 ---------- */
+  --a-success: #0A7D3F;
+  --a-success-soft: #EAF4EE;
+  --a-warning: #B37400;
+  --a-warning-soft: #FDF4E3;
+  --a-danger: #0A0A0A;          /* 危险不用红，靠删除线 */
+  --a-danger-soft: #F5F0F0;
+  --a-mask: rgba(17, 17, 17, 0.55);
+
+  /* ---------- 字号阶：9 档 ---------- */
+  --a-fs-display: 56px;
+  --a-fs-h1: 40px;
+  --a-fs-h2: 28px;
+  --a-fs-h3: 22px;
+  --a-fs-h4: 18px;
+  --a-fs-body: 16px;
+  --a-fs-ui: 14px;
+  --a-fs-sm: 12px;
+  --a-fs-micro: 11px;
+
+  /* 展示级：仅错误页编号使用，不进组件字号阶 */
+  --a-fs-error: 120px;
+
+  /* ---------- 行高 ---------- */
+  --a-lh-display: 1.02;
+  --a-lh-h1: 1.15;
+  --a-lh-h2: 1.25;
+  --a-lh-h3: 1.35;
+  --a-lh-h4: 1.5;
+  --a-lh-body: 1.7;
+  --a-lh-ui: 1.6;
+  --a-lh-sm: 1.5;
+  --a-lh-micro: 1.4;
+
+  /* ---------- 字距 ---------- */
+  --a-ls-display: -0.035em;
+  --a-ls-h1: -0.02em;
+  --a-ls-h2: -0.015em;
+  --a-ls-h3: -0.01em;
+  --a-ls-none: 0;
+  --a-ls-caps: 0.14em;
+
+  /* ---------- 间距阶：9 档 ---------- */
+  --a-sp-1: 4px;
+  --a-sp-2: 8px;
+  --a-sp-3: 12px;
+  --a-sp-4: 16px;
+  --a-sp-5: 24px;
+  --a-sp-6: 32px;
+  --a-sp-7: 48px;
+  --a-sp-8: 64px;
+  --a-sp-9: 96px;
+
+  /* ---------- 线宽：3 档 ---------- */
+  --a-lw-hair: 1px;
+  --a-lw-strong: 2px;
+  --a-lw-mark: 3px;
+
+  /* ---------- 圆角：唯一 0 ---------- */
+  --a-radius: 0;
+  --a-radius-round: 999px;   /* 仅 ≤8px 的圆点 */
+
+  /* ---------- 阴影：只有硬偏移 ---------- */
+  --a-shadow-none: none;
+  --a-shadow-pop: 8px 8px 0 rgba(17, 17, 17, 0.08);
+  --a-shadow-lift: 4px 4px 0 rgba(17, 17, 17, 0.06);
+
+  /* ---------- 动效 ---------- */
+  --a-dur-fast: 120ms;
+  --a-dur-base: 180ms;
+  --a-dur-slow: 260ms;
+  --a-ease: cubic-bezier(0.2, 0.7, 0.3, 1);
+
+  /* ---------- 层级 ---------- */
+  --a-z-base: 0;
+  --a-z-sticky: 10;
+  --a-z-topbar: 20;
+  --a-z-dropdown: 30;
+  --a-z-mask: 40;
+  --a-z-modal: 50;
+  --a-z-toast: 60;
+
+  /* ---------- 布局 ---------- */
+  --a-w: 1200px;
+  --a-w-admin: 1440px;
+  --a-side: 280px;
+  --a-nav-admin: 216px;
+  --a-reading: 760px;
+  --a-form: 760px;
+  --a-top-h: 64px;
+  --a-gap: 24px;
+
+  /* ---------- 字族 ---------- */
+  --a-font: "Helvetica Neue", "Helvetica", "Inter", "PingFang SC",
+    "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Arial, sans-serif;
+  --a-mono: "SFMono-Regular", "JetBrains Mono", "Roboto Mono", Consolas,
+    "PingFang SC", monospace;
+}
