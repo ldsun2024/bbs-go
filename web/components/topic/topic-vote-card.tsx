@@ -140,11 +140,11 @@ function TopicVoteCardContent({ vote, className }: { vote: TopicVote; className?
     const left = options[0]
     const right = options[1]
     return (
-      <section className={cn("rounded-lg bg-[#f6f9ff] p-5 text-[#16181f] dark:bg-card dark:text-card-foreground", className)}>
-        <h2 className="mb-4 flex items-center text-base leading-none font-medium">
+      <section className={cn("border border-border p-5 text-foreground", className)}>
+        <h2 className="mb-4 flex items-center text-base leading-none font-semibold">
           <span>{currentVote.title}</span>
         </h2>
-        <div className="relative flex min-h-24 overflow-hidden rounded bg-background">
+        <div className="relative flex min-h-24 overflow-hidden border border-border">
           {[left, right].filter(Boolean).map((option, index) => {
             const width = getPercent(currentVote, option.voteCount, true)
             const displayPercent = getPercent(currentVote, option.voteCount, false)
@@ -156,9 +156,11 @@ function TopicVoteCardContent({ vote, className }: { vote: TopicVote; className?
                 className={cn(
                   "flex min-h-24 flex-col justify-center px-4 text-sm transition-colors disabled:cursor-default",
                   index === 0
-                    ? "items-start bg-[#fceeed] text-[#f15c5b] dark:bg-red-950/40 dark:text-red-200"
-                    : "items-end bg-[#deedff] text-[#1050e7] dark:bg-blue-950/40 dark:text-blue-200",
-                  option.voted && !currentVote.expired && (index === 0 ? "bg-[#ff4b24] text-white" : "bg-[#3b64fc] text-white")
+                    ? "items-start border-r border-border bg-muted text-foreground"
+                    : "items-end bg-background text-foreground",
+                  option.voted &&
+                    !currentVote.expired &&
+                    "bg-foreground text-background"
                 )}
                 style={{ width: `${width}%` }}
                 title={option.content}
@@ -180,13 +182,13 @@ function TopicVoteCardContent({ vote, className }: { vote: TopicVote; className?
   }
 
   return (
-    <section className={cn("rounded-lg bg-[#f6f9ff] px-5 py-6 text-[#16181f] dark:bg-card dark:text-card-foreground", className)}>
-      <div className="mb-5 flex flex-wrap items-center gap-1 text-base leading-none font-medium">
-        <span className="rounded-sm bg-gradient-to-r from-[#ff603d] to-[#ff881a] px-1.5 py-0.5 text-xs text-white">
-          {t("pages.topic.detail.vote.tag")}
+    <section className={cn("border border-border px-5 py-6 text-foreground", className)}>
+      <div className="mb-5 flex flex-wrap items-baseline gap-x-3 gap-y-1">
+        <span className="ui-type">{t("pages.topic.detail.vote.tag")}</span>
+        <h2 className="text-base leading-tight font-semibold">{currentVote.title}</h2>
+        <span className="text-xs text-muted-foreground">
+          {t("pages.topic.detail.vote.titleMeta", { optionCount: options.length, voteNum: maxNum })}
         </span>
-        <h2>{currentVote.title}</h2>
-        <span>{t("pages.topic.detail.vote.titleMeta", { optionCount: options.length, voteNum: maxNum })}</span>
       </div>
       <ul className="space-y-3">
         {visibleOptions.map((option) => (
@@ -196,25 +198,24 @@ function TopicVoteCardContent({ vote, className }: { vote: TopicVote; className?
               disabled={!canVote}
               title={option.content}
               className={cn(
-                "relative min-h-9 w-full max-w-[470px] overflow-hidden rounded border border-white bg-white px-1.5 py-1.5 text-left text-sm text-[#737782] disabled:cursor-default dark:border-border dark:bg-background dark:text-muted-foreground",
-                canVote && "cursor-pointer hover:text-[#ff7827] dark:hover:text-orange-300",
-                canVote && isChecked(checkedIds, option.id) && "border-[#ff7827] text-[#ff7827]",
-                canVote && isChecked(checkedIds, option.id) && "dark:border-orange-400 dark:text-orange-300",
-                option.voted && "text-[#ff7827] dark:text-orange-300",
-                !option.voted && currentVote.expired && "text-[#8b8f99] dark:text-muted-foreground/70"
+                "relative min-h-9 w-full max-w-[470px] overflow-hidden border border-border bg-background px-2 py-1.5 text-left text-sm text-muted-foreground disabled:cursor-default",
+                canVote && "cursor-pointer hover:border-foreground hover:text-foreground",
+                canVote && isChecked(checkedIds, option.id) && "border-foreground text-foreground",
+                option.voted && "text-foreground",
+                !option.voted && currentVote.expired && "text-muted-foreground/70"
               )}
               onClick={() => toggleOption(option.id)}
             >
               <span
                 className={cn(
-                  "absolute inset-y-[-1px] left-[-1px] bg-[#e5eeff] dark:bg-primary/20",
-                  option.voted && "bg-[#ffe9dd] dark:bg-orange-500/20"
+                  "absolute inset-y-0 left-0 bg-muted",
+                  option.voted && "bg-muted-foreground/20"
                 )}
                 style={{ width: `${getPercent(currentVote, option.voteCount)}%` }}
               />
               <span className="relative z-10 break-all">{option.content}</span>
               {!canVote ? (
-                <span className="relative z-10 float-right ml-3 text-[#737782] dark:text-muted-foreground">{option.voteCount || 0}</span>
+                <span className="relative z-10 float-right ml-3 font-mono text-xs tabular-nums text-muted-foreground">{option.voteCount || 0}</span>
               ) : null}
             </button>
           </li>
@@ -223,14 +224,14 @@ function TopicVoteCardContent({ vote, className }: { vote: TopicVote; className?
       {options.length > OPTION_LIMIT ? (
         <button
           type="button"
-          className="mt-3 h-9 w-full max-w-[470px] rounded bg-white text-sm hover:bg-[#fff0ef] dark:bg-background dark:hover:bg-accent"
+          className="mt-3 h-9 w-full max-w-[470px] border border-border text-sm text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
           onClick={() => setShowMore((current) => !current)}
         >
           {showMore ? t("pages.topic.detail.vote.collapseOptions") : t("pages.topic.detail.vote.expandOptions")}
         </button>
       ) : null}
       <VoteStatus vote={currentVote} t={t} />
-      <Button className="mt-6 h-10 w-[188px] bg-gradient-to-r from-[#ff420e] to-[#ff7827] text-white" disabled={disabledSubmit} onClick={() => submitVote()}>
+      <Button className="mt-6 w-[188px]" disabled={disabledSubmit} onClick={() => submitVote()}>
         {currentVote.voted
           ? t("pages.topic.detail.vote.voted")
           : currentVote.expired
@@ -243,7 +244,7 @@ function TopicVoteCardContent({ vote, className }: { vote: TopicVote; className?
 
 function VoteStatus({ vote, t }: { vote: TopicVote; t: ReturnType<typeof useI18n>["t"] }) {
   return (
-    <div className="mt-3 text-sm leading-none text-[#737782] dark:text-muted-foreground">
+    <div className="mt-3 font-mono text-xs tabular-nums text-muted-foreground">
       {t("pages.topic.detail.vote.participants", { count: vote.voteCount || 0 })}
       {vote.expired ? (
         <span className="ml-3">{t("pages.topic.detail.vote.expired")}</span>

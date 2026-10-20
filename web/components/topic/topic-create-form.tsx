@@ -174,7 +174,7 @@ function TopicAttachmentField({
   }
 
   return (
-    <div className="rounded-md border border-dashed bg-muted/20 p-3">
+    <div className="border border-border p-3">
       <div className="flex flex-wrap items-center gap-2">
         <span className="text-sm text-muted-foreground">
           {t("pages.topic.create.attachment.label")}
@@ -216,7 +216,7 @@ function TopicAttachmentField({
           {value.map((attachment, index) => (
             <li
               key={attachment.id || index}
-              className="flex flex-col gap-2 rounded border bg-background p-2 sm:flex-row sm:items-center"
+              className="flex flex-col gap-2 border border-border p-2 sm:flex-row sm:items-center"
             >
               <div className="min-w-0 flex-1">
                 <span className="block truncate font-medium">
@@ -385,7 +385,7 @@ function SimpleTopicEditor({
             {currentImages.map((image, index) => (
               <div
                 key={`${image.url || image.preview || index}`}
-                className="group relative h-[60px] w-[60px] overflow-hidden rounded bg-background"
+                className="group relative h-[60px] w-[60px] overflow-hidden border border-border bg-muted"
               >
                 <PreviewableImage
                   src={imageSrc(image)}
@@ -396,7 +396,7 @@ function SimpleTopicEditor({
                 />
                 <button
                   type="button"
-                  className="absolute top-1 right-1 hidden rounded bg-black/50 p-0.5 text-white group-hover:block"
+                  className="absolute top-1 right-1 hidden bg-foreground/70 p-0.5 text-background group-hover:block"
                   onClick={() =>
                     onImageListChange(
                       imageList.filter((_, imageIndex) => imageIndex !== index)
@@ -410,7 +410,7 @@ function SimpleTopicEditor({
             {!imageUploading ? (
               <button
                 type="button"
-                className="flex h-[60px] w-[60px] items-center justify-center rounded border border-dashed border-border bg-background text-muted-foreground hover:border-primary hover:text-primary"
+                className="flex h-[60px] w-[60px] items-center justify-center border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
                 disabled={disabled}
                 onClick={openImagePicker}
               >
@@ -494,7 +494,7 @@ function VoteEditor({
   const dateValue = new Date(vote.expiredAt).toISOString().slice(0, 16)
 
   return (
-    <div className="mt-2 space-y-3 rounded-md border bg-background p-3">
+    <div className="space-y-3 border border-border p-3">
       <Input
         value={vote.title}
         placeholder={t("pages.topic.create.vote.titlePlaceholder")}
@@ -632,9 +632,9 @@ function VoteEditorModal({
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
-      <div className="flex max-h-[85vh] w-full max-w-2xl flex-col overflow-hidden rounded-lg border bg-background shadow-lg">
-        <div className="border-b px-4 py-3 text-lg font-semibold">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-foreground/40 px-4">
+      <div className="flex max-h-[85vh] w-full max-w-2xl flex-col overflow-hidden border border-border bg-background shadow-hard">
+        <div className="border-b-2 border-foreground px-4 py-3 text-h4 font-semibold">
           {editing
             ? t("pages.topic.create.vote.editTitle")
             : t("pages.topic.create.vote.addTitle")}
@@ -642,7 +642,7 @@ function VoteEditorModal({
         <div className="min-h-0 flex-1 overflow-y-auto p-4">
           <VoteEditor vote={vote} onChange={onChange} />
         </div>
-        <div className="flex justify-end gap-2 border-t px-4 py-3">
+        <div className="flex justify-end gap-2 border-t border-border px-4 py-3">
           <Button
             type="button"
             variant="outline"
@@ -954,6 +954,7 @@ export function TopicCreateForm({
             <Input
               value={form.title}
               placeholder={t("pages.topic.create.titlePlaceholder")}
+              className="h-auto rounded-none border-0 border-b border-border px-0 py-2 text-h3 font-semibold shadow-none focus-visible:border-foreground focus-visible:ring-0"
               onChange={(event) =>
                 updateForm({ title: event.currentTarget.value })
               }
@@ -1010,7 +1011,7 @@ export function TopicCreateForm({
         </div>
 
         {form.type === 2 && config?.enableQaBounty ? (
-          <div className="field rounded-md border border-dashed bg-muted/20 p-3">
+          <div className="field border border-border p-3">
             <div className="flex flex-wrap items-center gap-2">
               <span className="text-sm text-muted-foreground">
                 {t("pages.topic.create.bountyLabel")}
@@ -1045,7 +1046,7 @@ export function TopicCreateForm({
         ) : null}
 
         {form.type !== 2 ? (
-          <div className="field rounded-md border border-dashed bg-muted/20 p-3">
+          <div className="field border border-border p-3">
             <div className="flex flex-wrap items-center gap-2">
               {!form.vote ? (
                 <Button
@@ -1058,7 +1059,7 @@ export function TopicCreateForm({
                 </Button>
               ) : (
                 <>
-                  <span className="inline-flex items-center rounded-full border border-emerald-300 bg-emerald-50 px-2 py-0.5 text-xs text-emerald-700">
+                  <span className="inline-flex items-center border-b border-foreground pb-0.5 font-mono text-micro tracking-[0.08em] text-foreground uppercase">
                     {t("pages.topic.create.vote.added")}
                   </span>
                   <Button
@@ -1081,7 +1082,7 @@ export function TopicCreateForm({
               )}
             </div>
             {form.vote ? (
-              <div className="mt-2 rounded-md border bg-background px-2 py-2 text-xs text-muted-foreground">
+              <div className="mt-3 border border-border px-3 py-2 text-xs text-muted-foreground">
                 <div>{form.vote.title}</div>
                 <div className="mt-1">
                   {form.vote.type === 1

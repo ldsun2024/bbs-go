@@ -1,11 +1,11 @@
 @layer components {
-  /* 正文排版（A1）：720 版心内 15px / 1.9，标题衬线、去除下划线 */
+  /* 正文排版（V2 A 方向）：16px / 1.7，标题同族无衬线，层级靠字号与间距建立 */
   .bbs-content {
     min-width: 0;
     overflow-wrap: break-word;
     color: var(--foreground);
-    font-size: 15px;
-    line-height: 1.9;
+    font-size: 16px;
+    line-height: 1.7;
   }
 
   .bbs-content h1,
@@ -16,35 +16,35 @@
   .bbs-content h6 {
     margin: 1.9em 0 0.75em;
     color: var(--foreground);
-    font-family: var(--font-serif);
+    font-family: var(--font-sans);
     font-weight: 600;
-    line-height: 1.45;
-    letter-spacing: 0.2px;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
     scroll-margin-top: 5rem;
   }
 
   /* 关键：移除旧版 h1/h2 的下划线，层级靠字号与间距建立 */
   .bbs-content h1 {
-    font-size: 25px;
+    font-size: var(--text-h2);
   }
 
   .bbs-content h2 {
-    font-size: 20px;
+    font-size: var(--text-h3);
   }
 
   .bbs-content h3 {
-    font-size: 16px;
+    font-size: var(--text-h4);
   }
 
   .bbs-content h4,
   .bbs-content h5,
   .bbs-content h6 {
-    font-size: 15px;
+    font-size: 16px;
   }
 
   .bbs-content p {
     margin: 0 0 1.15em;
-    line-height: 1.9;
+    line-height: 1.7;
   }
 
   .bbs-content a {
@@ -76,7 +76,7 @@
 
   .bbs-content li {
     margin: 0.45em 0;
-    line-height: 1.85;
+    line-height: 1.7;
   }
 
   .bbs-content li::marker {
@@ -111,34 +111,33 @@
     background: var(--muted);
     padding: 16px;
     font-family: var(--font-mono);
-    font-size: 12.5px;
+    font-size: 12px;
     line-height: 1.7;
   }
 
   .bbs-content code {
-    border-radius: var(--radius-sm);
+    border: 1px solid var(--border);
     background: var(--muted);
-    padding: 0.15em 0.4em;
+    padding: 0.1em 0.35em;
     font-family: var(--font-mono);
     font-size: 0.9em;
   }
 
   .bbs-content pre code {
+    border: 0;
     background: transparent;
     padding: 0;
     color: inherit;
     font-size: inherit;
   }
 
-  /* 引用：墨绿竖条 + 浅绿底，正体（中文伪斜体很难看） */
+  /* 引用：墨黑 3px 竖条 + 浅灰底，正体（中文伪斜体很难看） */
   .bbs-content blockquote {
     margin: 1.5em 0;
-    border-left: 3px solid var(--primary);
-    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
-    background: color-mix(in oklch, var(--primary) 8%, var(--background));
-    padding: 12px 16px;
+    border-left: 3px solid var(--foreground);
+    background: var(--muted);
+    padding: 16px 24px;
     color: var(--muted-foreground);
-    font-size: 14px;
     font-style: normal;
   }
 

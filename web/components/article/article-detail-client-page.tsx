@@ -98,16 +98,16 @@ export function ArticleDetailClientPage({
       containerClassName="side-size-360"
       asideClassName="!h-auto self-stretch"
     >
-      <div className="space-y-4">
+      <div className="space-y-6">
         {article.status === 2 ? (
-          <div className="rounded-md border bg-muted px-3 py-2 text-sm text-muted-foreground">
+          <div className="border border-border bg-muted px-3 py-2 text-sm text-muted-foreground">
             {t("pages.article.detail.pending")}
           </div>
         ) : null}
-        <article className="rounded-lg bg-background p-3">
-          <header className="border-b py-2.5">
-            <div className="flex">
-              <h1 className="w-full overflow-hidden text-lg leading-[30px] font-normal break-all text-ellipsis text-foreground">
+        <article>
+          <header className="border-b border-border pb-4">
+            <div className="flex items-start gap-3">
+              <h1 className="w-full text-h2 leading-tight font-semibold break-all text-foreground md:text-h1 md:leading-[1.15]">
                 {article.title}
               </h1>
               <div className="min-w-max">
@@ -117,20 +117,50 @@ export function ArticleDetailClientPage({
                 />
               </div>
             </div>
-            <div className="mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
+            <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-1 text-xs text-muted-foreground">
               {article.user ? (
-                <Link href={`/user/${article.user.id}`}>
+                <Link
+                  href={`/user/${article.user.id}`}
+                  className="font-medium text-foreground transition-colors hover:text-primary"
+                >
                   {article.user.nickname}
                 </Link>
               ) : null}
               {article.createTime ? (
-                <span>{prettyDate(article.createTime, t)}</span>
+                <time
+                  dateTime={new Date(article.createTime).toISOString()}
+                  className="font-mono tabular-nums"
+                >
+                  {prettyDate(article.createTime, t)}
+                </time>
+              ) : null}
+              {article.tags?.length ? (
+                <span className="flex flex-wrap items-center gap-2">
+                  {article.tags.map((tag) => (
+                    <Link
+                      key={tag.id}
+                      href={`/articles/tag/${tag.id}`}
+                      className="font-mono text-micro tracking-[0.04em] uppercase underline-offset-4 hover:text-foreground hover:underline"
+                    >
+                      #{tag.name}
+                    </Link>
+                  ))}
+                </span>
               ) : null}
             </div>
           </header>
+
+          {article.cover?.url ? (
+            <img
+              src={article.cover.url}
+              alt={article.title}
+              className="mt-6 w-full border border-border object-cover"
+            />
+          ) : null}
+
           <HtmlImagePreview
             html={article.content || ""}
-            className="bbs-content max-w-none py-4 break-words [&_h2]:scroll-mt-20 [&_h3]:scroll-mt-20 [&_h4]:scroll-mt-20 [&_img]:cursor-zoom-in"
+            className="bbs-content max-w-none py-6 break-words [&_h2]:scroll-mt-20 [&_h3]:scroll-mt-20 [&_h4]:scroll-mt-20 [&_img]:cursor-zoom-in"
           />
         </article>
         <ArticleComments

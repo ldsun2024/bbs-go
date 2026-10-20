@@ -41,7 +41,12 @@ export default function ArticlesRoute() {
 
   return (
     <MainShell aside={<HomeAside />}>
-      <div className="overflow-hidden rounded-lg bg-background">
+      <div className="mb-6 border-b-2 border-foreground pb-3">
+        <h1 className="text-h2 font-semibold text-foreground">
+          {t("pages.articles.title")}
+        </h1>
+      </div>
+      <div>
         <LoadMore<Article>
           initialItems={articles.results}
           initialCursor={articles.cursor || ""}

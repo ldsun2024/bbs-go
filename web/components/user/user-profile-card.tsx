@@ -46,7 +46,7 @@ export function UserProfileCard({
         <BackgroundUploadButton onUploaded={setBackgroundImage} />
       ) : null}
       <div className="profile-avatar">
-        <UserAvatar user={user} size={100} />
+        <UserAvatar user={user} size={88} />
       </div>
       <div className="profile-info">
         <div className="metas">

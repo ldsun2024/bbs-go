@@ -85,7 +85,7 @@ export function UserCenterOperations({
   return (
     <>
       <WidgetCard title={t("component.userCenterSidebar.operations")}>
-        <ul className="list-none space-y-2 text-sm [&_li]:hover:cursor-pointer [&_li]:hover:bg-amber-50 [&_li]:hover:text-amber-800">
+        <ul className="list-none space-y-2 text-sm [&_li]:hover:cursor-pointer [&_li]:hover:bg-muted [&_li]:hover:text-foreground">
           {forbidden ? (
             <li className="flex items-center gap-2">
               <CircleCheck className="shrink-0" size={14} aria-hidden="true" />

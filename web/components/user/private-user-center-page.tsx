@@ -46,7 +46,7 @@ function TitleIcon({ kind }: { kind: PrivateUserCenterKind }) {
   if (kind === "messages") {
     return <Bell size={18} />
   }
-  return <Trophy className="h-4 w-4 shrink-0 text-emerald-500/90" />
+  return <Trophy className="h-4 w-4 shrink-0 text-muted-foreground" />
 }
 
 function renderList(

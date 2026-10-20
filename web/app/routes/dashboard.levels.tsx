@@ -133,7 +133,15 @@ export default function DashboardLevelsRoute() {
 
   return (
     <div className="flex flex-1 flex-col gap-4 p-4 pt-4 md:p-6">
-      <section className="rounded-lg border bg-[var(--dashboard-panel)] p-3 text-card-foreground shadow-xs">
+      <div className="ui-page-head">
+        <div className="ui-page-head-body">
+          <h1 className="ui-page-title ui-page-title--sm">
+            {t("dashboard.nav.levels")}
+          </h1>
+        </div>
+      </div>
+
+      <section className="border-b border-border pb-3">
         <div className="flex flex-wrap justify-end gap-3">
           <div className="flex gap-2">
             <Button
@@ -161,16 +169,16 @@ export default function DashboardLevelsRoute() {
         </div>
 
         {error ? (
-          <div className="mt-3 rounded-md border border-destructive/25 bg-destructive/10 px-3 py-2 text-sm text-destructive">
+          <div className="mt-3 border-l-2 border-destructive px-3 py-2 text-sm text-destructive">
             {error}
           </div>
         ) : null}
       </section>
 
-      <section className="overflow-hidden rounded-lg border bg-[var(--dashboard-panel)] shadow-xs">
+      <section className="overflow-hidden border border-border bg-[var(--dashboard-panel)]">
         <div className="overflow-x-auto">
           <table className="w-full min-w-[720px] text-sm">
-            <thead className="bg-[var(--dashboard-panel-muted)] text-muted-foreground">
+            <thead className="bg-background text-muted-foreground [&_th]:border-b-2 [&_th]:border-foreground">
               <tr>
                 <th className="h-10 px-3 text-left text-xs font-semibold tracking-wide uppercase">
                   {t("dashboard.fields.level")}

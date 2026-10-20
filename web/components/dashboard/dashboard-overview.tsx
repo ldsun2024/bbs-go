@@ -279,18 +279,18 @@ export function DashboardOverview() {
         <div className="rounded-lg border bg-[var(--dashboard-panel)] p-5 text-card-foreground shadow-xs md:p-6">
           <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">
             <div className="min-w-0 space-y-2">
-              <p className="text-xs font-medium tracking-wide text-primary uppercase">
+              <p className="font-mono text-micro tracking-[0.12em] text-muted-foreground uppercase">
                 {t("dashboard.overview.hero.eyebrow")}
               </p>
-              <h1 className="text-2xl font-semibold tracking-tight md:text-3xl">
+              <h1 className="text-h2 leading-tight font-semibold tracking-tight md:text-h1 md:leading-[1.15]">
                 {t("dashboard.overview.hero.title", { name: adminName })}
               </h1>
-              <p className="max-w-2xl text-sm leading-6 text-muted-foreground">
+              <p className="max-w-2xl text-sm leading-[1.7] text-muted-foreground">
                 {t("dashboard.overview.hero.description")}
               </p>
             </div>
             <a
-              className="inline-flex h-9 shrink-0 items-center gap-2 rounded-md border bg-background px-3 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground"
+              className="inline-flex h-[34px] shrink-0 items-center gap-2 border border-border bg-background px-3 text-sm font-medium text-foreground transition-colors hover:border-foreground"
               href="/"
               target="_blank"
               rel="noreferrer"
@@ -309,7 +309,7 @@ export function DashboardOverview() {
                   </p>
                   <Icon className="size-4 text-muted-foreground" />
                 </div>
-                <p className="mt-2 text-2xl font-semibold tracking-tight">
+                <p className="mt-2 text-h1 font-bold tracking-tight tabular-nums">
                   {formatNumber(overview?.metrics?.[key])}
                 </p>
               </div>
@@ -335,7 +335,7 @@ export function DashboardOverview() {
           {topPending ? (
             <a
               href={topPending.href}
-              className="mt-5 flex items-center justify-between gap-3 rounded-lg border border-primary/25 bg-primary/8 p-4 transition-colors hover:bg-primary/12"
+              className="mt-5 flex items-center justify-between gap-3 border border-border border-l-2 border-l-primary p-4 transition-colors hover:bg-muted"
             >
               <span className="flex min-w-0 items-center gap-3">
                 <span className="rounded-md bg-primary/10 p-2 text-primary">
@@ -352,7 +352,7 @@ export function DashboardOverview() {
                   </span>
                 </span>
               </span>
-              <span className="text-2xl font-semibold">
+              <span className="text-h2 font-bold tabular-nums">
                 {formatNumber(topPending.count)}
               </span>
             </a>
@@ -379,7 +379,7 @@ export function DashboardOverview() {
                   <Icon className="size-3.5" />
                   {t(`dashboard.overview.metrics.${key}`)}
                 </div>
-                <p className="mt-2 text-xl font-semibold">
+                <p className="mt-2 text-h2 font-bold tabular-nums">
                   {formatNumber(overview?.metrics?.[key])}
                 </p>
               </div>

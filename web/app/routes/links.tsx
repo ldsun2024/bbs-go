@@ -1,7 +1,6 @@
 import { useLoaderData } from "react-router"
 
 import { EmptyState } from "@/components/common/empty-state"
-import { WidgetCard } from "@/components/common/widget-card"
 import { apiFetch } from "@/lib/api/client"
 import type { FriendLink } from "@/lib/api/misc"
 import { useI18n } from "@/lib/i18n/provider"
@@ -46,31 +45,39 @@ export default function LinksRoute() {
 
   return (
     <section className="main">
-      <div className="container">
-        <WidgetCard title={t("pages.links.title")}>
-          {links.length ? (
-            <ul className="links px-[15px] py-2.5">
-              {links.map((link) => (
-                <li key={link.id} className="link">
-                  <a
-                    href={link.url || "#"}
-                    target="_blank"
-                    rel="noreferrer"
-                    className="link-title"
-                    title={link.title}
-                  >
-                    {link.title}
-                  </a>
-                  {link.summary ? (
-                    <p className="link-summary">{link.summary}</p>
-                  ) : null}
-                </li>
-              ))}
-            </ul>
-          ) : (
-            <EmptyState title={t("common.noData")} />
-          )}
-        </WidgetCard>
+      <div className="container mx-auto max-w-[1000px]">
+        <div className="mb-6 flex items-baseline justify-between gap-4 border-b-2 border-foreground pb-3">
+          <h1 className="text-h2 font-semibold text-foreground">
+            {t("pages.links.title")}
+          </h1>
+        </div>
+        {links.length ? (
+          <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {links.map((link) => (
+              <li
+                key={link.id}
+                className="border border-border p-4 transition-colors hover:border-foreground"
+              >
+                <a
+                  href={link.url || "#"}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="block text-base font-semibold break-all text-foreground transition-colors hover:text-primary"
+                  title={link.title}
+                >
+                  {link.title}
+                </a>
+                {link.summary ? (
+                  <p className="mt-2 line-clamp-2 text-xs leading-[1.7] break-all text-muted-foreground">
+                    {link.summary}
+                  </p>
+                ) : null}
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <EmptyState title={t("common.noData")} />
+        )}
       </div>
     </section>
   )

@@ -24,7 +24,9 @@ export function DashboardDataFilterControl({
 }) {
   return (
     <div className="grid min-w-44 gap-1.5">
-      <Label className="text-xs text-muted-foreground">{filter.label}</Label>
+      <Label className="font-mono text-micro tracking-[0.08em] text-muted-foreground uppercase">
+        {filter.label}
+      </Label>
       {filter.type === "select" ? (
         <DashboardSelect
           value={value}

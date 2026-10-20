@@ -43,17 +43,17 @@ export default function AboutRoute() {
 
   return (
     <section className="main">
-      <div className="container">
-        <div className="rounded-md bg-card px-8 py-3">
-          {html ? (
-            <div
-              className="bbs-content"
-              dangerouslySetInnerHTML={{ __html: html }}
-            />
-          ) : (
-            <EmptyState title={t("common.noData")} />
-          )}
+      <div className="container mx-auto max-w-[760px]">
+        <div className="mb-6 border-b-2 border-foreground pb-3">
+          <h1 className="text-h2 font-semibold text-foreground">
+            {t("pages.about.title")}
+          </h1>
         </div>
+        {html ? (
+          <div className="bbs-content" dangerouslySetInnerHTML={{ __html: html }} />
+        ) : (
+          <EmptyState title={t("common.noData")} />
+        )}
       </div>
     </section>
   )

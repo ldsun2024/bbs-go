@@ -94,7 +94,7 @@ export function NavMain({ items }: { items: NavMainItem[] }) {
                   asChild
                   tooltip={item.title}
                   isActive={active}
-                  className="relative rounded-md data-[active=true]:bg-[var(--dashboard-accent-soft)] data-[active=true]:text-foreground data-[active=true]:shadow-xs data-[active=true]:before:absolute data-[active=true]:before:top-1.5 data-[active=true]:before:left-0 data-[active=true]:before:h-5 data-[active=true]:before:w-0.5 data-[active=true]:before:rounded-full data-[active=true]:before:bg-[var(--dashboard-accent)]"
+                  className="relative data-[active=true]:bg-transparent data-[active=true]:font-semibold data-[active=true]:text-foreground data-[active=true]:before:absolute data-[active=true]:before:inset-y-1 data-[active=true]:before:left-0 data-[active=true]:before:w-0.5 data-[active=true]:before:bg-[var(--dashboard-accent)]"
                 >
                   <Link to={item.url}>
                     {Icon ? <Icon /> : null}
@@ -118,7 +118,7 @@ export function NavMain({ items }: { items: NavMainItem[] }) {
                   <SidebarMenuButton
                     tooltip={item.title}
                     isActive={active}
-                    className="relative rounded-md data-[active=true]:bg-[var(--dashboard-accent-soft)] data-[active=true]:text-foreground data-[active=true]:shadow-xs data-[active=true]:before:absolute data-[active=true]:before:top-1.5 data-[active=true]:before:left-0 data-[active=true]:before:h-5 data-[active=true]:before:w-0.5 data-[active=true]:before:rounded-full data-[active=true]:before:bg-[var(--dashboard-accent)]"
+                    className="relative data-[active=true]:bg-transparent data-[active=true]:font-semibold data-[active=true]:text-foreground data-[active=true]:before:absolute data-[active=true]:before:inset-y-1 data-[active=true]:before:left-0 data-[active=true]:before:w-0.5 data-[active=true]:before:bg-[var(--dashboard-accent)]"
                   >
                     {Icon ? <Icon /> : null}
                     <span>{item.title}</span>
@@ -132,7 +132,7 @@ export function NavMain({ items }: { items: NavMainItem[] }) {
                         <SidebarMenuSubButton
                           asChild
                           isActive={isActiveUrl(subItem.url)}
-                          className="rounded-md data-[active=true]:bg-[var(--dashboard-accent-soft)] data-[active=true]:text-foreground"
+                          className="data-[active=true]:bg-transparent data-[active=true]:font-semibold data-[active=true]:text-foreground"
                         >
                           <Link to={subItem.url}>
                             <span>{subItem.title}</span>

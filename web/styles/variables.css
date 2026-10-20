@@ -1,6 +1,6 @@
 :root {
-  /* 页面底色用纸面 --bg；--background 已是组件面（surface），不能拿来铺 body */
-  --body-background: var(--bg);
+  /* 页面底色 = 组件面，A 方向不区分纸面/卡面 */
+  --body-background: var(--background);
   --topics-nav-color1: color-mix(
     in srgb,
     var(--sidebar-primary) 7%,
@@ -11,11 +11,12 @@
     var(--sidebar-primary) 11%,
     var(--background)
   );
-  --topics-nav-active-foreground: var(--sidebar-primary);
+  /* A 方向：当前项用墨字 + 左侧橙红条，不用彩色文字 */
+  --topics-nav-active-foreground: var(--foreground);
 }
 
 .dark {
-  --body-background: var(--bg);
+  --body-background: var(--background);
   --topics-nav-color1: color-mix(
     in srgb,
     var(--sidebar-primary) 18%,
@@ -26,5 +27,6 @@
     var(--sidebar-primary) 24%,
     var(--background)
   );
-  --topics-nav-active-foreground: var(--sidebar-primary);
+  /* A 方向：当前项用墨字 + 左侧橙红条，不用彩色文字 */
+  --topics-nav-active-foreground: var(--foreground);
 }

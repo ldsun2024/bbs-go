@@ -124,19 +124,13 @@ export function UserProfileClientPage({
       t={t}
     >
       <WidgetCard>
-        <nav className="mb-2 inline-flex h-9 items-center justify-center rounded-lg bg-muted p-[3px] text-muted-foreground">
-          <Link
-            href={`/user/${user.id}`}
-            className="inline-flex h-full items-center justify-center gap-1.5 rounded-md bg-background px-3 py-1 text-sm font-medium text-foreground shadow-sm"
-          >
-            <MessageSquare className="h-3.5 w-3.5" aria-hidden="true" />
+        <nav className="ui-tabs mb-4">
+          <Link href={`/user/${user.id}`} className="on">
+            <MessageSquare className="mr-1.5 inline h-3.5 w-3.5" aria-hidden="true" />
             <span>{t("pages.user.topics")}</span>
           </Link>
-          <Link
-            href={`/user/${user.id}/articles`}
-            className="inline-flex h-full items-center justify-center gap-1.5 rounded-md px-3 py-1 text-sm font-medium text-foreground/60 hover:text-foreground"
-          >
-            <FileText className="h-3.5 w-3.5" aria-hidden="true" />
+          <Link href={`/user/${user.id}/articles`}>
+            <FileText className="mr-1.5 inline h-3.5 w-3.5" aria-hidden="true" />
             <span>{t("pages.user.articles")}</span>
           </Link>
         </nav>
@@ -153,7 +147,7 @@ export function UserProfileClientPage({
             })
           }
           renderItems={(items) => (
-            <ul className="divide-y divide-border">
+            <ul className="[counter-reset:topic]">
               {items.map((topic) => (
                 <TopicListItem key={topic.id} topic={topic} t={t} />
               ))}
@@ -202,19 +196,13 @@ export function UserArticlesClientPage() {
       t={t}
     >
       <WidgetCard>
-        <nav className="mb-2 inline-flex h-9 items-center justify-center rounded-lg bg-muted p-[3px] text-muted-foreground">
-          <Link
-            href={`/user/${user.id}`}
-            className="inline-flex h-full items-center justify-center gap-1.5 rounded-md px-3 py-1 text-sm font-medium text-foreground/60 hover:text-foreground"
-          >
-            <MessageSquare className="h-3.5 w-3.5" aria-hidden="true" />
+        <nav className="ui-tabs mb-4">
+          <Link href={`/user/${user.id}`}>
+            <MessageSquare className="mr-1.5 inline h-3.5 w-3.5" aria-hidden="true" />
             <span>{t("pages.user.topics")}</span>
           </Link>
-          <Link
-            href={`/user/${user.id}/articles`}
-            className="inline-flex h-full items-center justify-center gap-1.5 rounded-md bg-background px-3 py-1 text-sm font-medium text-foreground shadow-sm"
-          >
-            <FileText className="h-3.5 w-3.5" aria-hidden="true" />
+          <Link href={`/user/${user.id}/articles`} className="on">
+            <FileText className="mr-1.5 inline h-3.5 w-3.5" aria-hidden="true" />
             <span>{t("pages.user.articles")}</span>
           </Link>
         </nav>
@@ -260,22 +248,22 @@ export function UserBadgesClientPage() {
       t={t}
     >
       <WidgetCard>
-        <div className="mb-4">
-          <p className="text-lg font-semibold text-slate-900 dark:text-slate-50">
+        <div className="mb-6 border-b-2 border-foreground pb-3">
+          <h1 className="text-h3 font-semibold text-foreground">
             {t("pages.user.badgesTitle")}
-          </p>
-          <p className="text-sm text-slate-500 dark:text-slate-400">
+          </h1>
+          <p className="mt-1 text-sm text-muted-foreground">
             {t("pages.user.badgesSubtitle")}
           </p>
         </div>
-        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4">
           {badges.map((badge) => (
             <div
               key={badge.id}
               className={
                 badge.owned
-                  ? "flex flex-col items-center gap-2 rounded-xl border border-amber-200/80 bg-amber-50/50 p-4 transition dark:border-amber-800/60 dark:bg-amber-900/20"
-                  : "flex flex-col items-center gap-2 rounded-xl border border-slate-200 bg-slate-50/50 p-4 opacity-70 transition dark:border-slate-700 dark:bg-slate-900/40"
+                  ? "flex flex-col items-center gap-2 border border-border p-4"
+                  : "flex flex-col items-center gap-2 border border-border p-4 opacity-60"
               }
             >
               <div className="relative">
@@ -293,15 +281,15 @@ export function UserBadgesClientPage() {
                   <div
                     className={
                       badge.owned
-                        ? "flex h-14 w-14 items-center justify-center rounded-full bg-slate-200 dark:bg-slate-700"
-                        : "flex h-14 w-14 items-center justify-center rounded-full bg-slate-200 opacity-40 dark:bg-slate-700"
+                        ? "flex h-14 w-14 items-center justify-center bg-muted"
+                        : "flex h-14 w-14 items-center justify-center bg-muted opacity-40"
                     }
                   >
-                    <Medal className="h-8 w-8 text-slate-600 dark:text-slate-300" />
+                    <Medal className="h-8 w-8 text-muted-foreground" />
                   </div>
                 )}
                 {badge.worn ? (
-                  <span className="absolute -top-1 -right-4 rounded-full bg-amber-500 px-1.5 py-0.5 text-[10px] font-bold text-white">
+                  <span className="absolute -top-1 -right-3 bg-primary px-1.5 py-0.5 font-mono text-micro font-semibold text-primary-foreground">
                     {t("component.userBadges.worn")}
                   </span>
                 ) : null}
@@ -309,19 +297,19 @@ export function UserBadgesClientPage() {
               <span
                 className={
                   badge.owned
-                    ? "line-clamp-2 text-center text-sm font-medium text-slate-800 dark:text-slate-100"
-                    : "line-clamp-2 text-center text-sm font-medium text-slate-500 dark:text-slate-400"
+                    ? "line-clamp-2 text-center text-sm font-medium text-foreground"
+                    : "line-clamp-2 text-center text-sm font-medium text-muted-foreground"
                 }
               >
                 {badge.title}
               </span>
               {badge.owned && badge.obtainTime ? (
-                <span className="text-[11px] text-slate-500 dark:text-slate-400">
+                <span className="ui-mono text-micro text-muted-foreground">
                   {t("component.userBadges.obtainedAt")}{" "}
                   {formatDate(badge.obtainTime, "yyyy-MM-dd")}
                 </span>
               ) : !badge.owned ? (
-                <span className="text-[11px] text-slate-400 dark:text-slate-500">
+                <span className="text-micro text-muted-foreground">
                   {t("component.userBadges.notObtained")}
                 </span>
               ) : null}
@@ -377,27 +365,19 @@ function UserFollowClientPage({ kind }: { kind: "fans" | "followed" }) {
       t={t}
     >
       <WidgetCard>
-        <nav className="mb-2 inline-flex h-9 items-center justify-center rounded-lg bg-muted p-[3px] text-muted-foreground">
+        <nav className="ui-tabs mb-4">
           <Link
             href={`/user/${user.id}/fans`}
-            className={
-              kind === "fans"
-                ? "inline-flex h-full items-center justify-center gap-1.5 rounded-md bg-background px-3 py-1 text-sm font-medium text-foreground shadow-sm"
-                : "inline-flex h-full items-center justify-center gap-1.5 rounded-md px-3 py-1 text-sm font-medium text-foreground/60 hover:text-foreground"
-            }
+            className={kind === "fans" ? "on" : undefined}
           >
-            <Users className="h-3.5 w-3.5" />
+            <Users className="mr-1.5 inline h-3.5 w-3.5" />
             <span>{t("pages.user.fans")}</span>
           </Link>
           <Link
             href={`/user/${user.id}/followed`}
-            className={
-              kind === "followed"
-                ? "inline-flex h-full items-center justify-center gap-1.5 rounded-md bg-background px-3 py-1 text-sm font-medium text-foreground shadow-sm"
-                : "inline-flex h-full items-center justify-center gap-1.5 rounded-md px-3 py-1 text-sm font-medium text-foreground/60 hover:text-foreground"
-            }
+            className={kind === "followed" ? "on" : undefined}
           >
-            <UserPlus className="h-3.5 w-3.5" />
+            <UserPlus className="mr-1.5 inline h-3.5 w-3.5" />
             <span>{t("pages.user.followed")}</span>
           </Link>
         </nav>

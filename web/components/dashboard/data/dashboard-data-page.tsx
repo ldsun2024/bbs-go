@@ -65,6 +65,15 @@ export function DashboardDataPage({
 
   return (
     <div className="flex flex-1 flex-col gap-4 p-4 pt-4 md:p-6">
+      <div className="ui-page-head">
+        <div className="ui-page-head-body">
+          <h1 className="ui-page-title ui-page-title--sm">{visibleConfig.title}</h1>
+          {visibleConfig.description ? (
+            <p className="ui-page-sub">{visibleConfig.description}</p>
+          ) : null}
+        </div>
+      </div>
+
       <DashboardDataToolbar
         filters={visibleConfig.filters}
         values={state.filters}

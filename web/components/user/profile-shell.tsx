@@ -35,13 +35,13 @@ export function ProfileShell({
         key={tab.key}
         href={tab.href}
         className={cn(
-          "flex items-center gap-1.5 rounded-md transition-all duration-300 ease-in-out",
+          "flex items-center gap-1.5 border-l-2 border-transparent transition-colors",
           mobile
             ? "justify-center px-1 py-2 text-center text-xs font-medium"
-            : "p-2.5",
+            : "h-9 px-3 text-sm",
           active === tab.key
-            ? "bg-primary font-semibold text-primary-foreground shadow-md"
-            : "text-foreground hover:bg-accent hover:text-primary"
+            ? "border-primary bg-transparent font-semibold text-foreground"
+            : "text-muted-foreground hover:bg-muted hover:text-foreground"
         )}
       >
         <Icon className="h-4 w-4" />
@@ -54,12 +54,12 @@ export function ProfileShell({
     <section className="main">
       <div className="main-container right-main container">
         <div className="left-container">
-          <div className="profile-edit-tabs-pc space-y-2 rounded-lg bg-background p-2.5">
+          <div className="profile-edit-tabs-pc space-y-1">
             {tabs.map((tab) => tabLink(tab))}
           </div>
         </div>
         <div className="right-container">
-          <div className="profile-edit-tabs-mobile mb-2.5 hidden rounded-lg bg-background p-1 shadow-sm">
+          <div className="profile-edit-tabs-mobile mb-4 hidden border border-border p-1">
             <ul className="flex gap-1">
               {tabs.map((tab) => (
                 <li key={tab.key} className="flex-1">

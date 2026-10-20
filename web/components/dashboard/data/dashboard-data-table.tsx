@@ -104,11 +104,11 @@ export function DashboardDataTable({
   const colSpan = config.columns.length + (hasActions ? 1 : 0)
 
   return (
-    <div className="overflow-hidden rounded-lg border bg-[var(--dashboard-panel)] shadow-xs">
+    <div className="overflow-hidden border bg-[var(--dashboard-panel)]">
       {/* B2：吸顶表头需要可纵向滚动的祖先，这里给容器封顶高度 */}
       <div className="max-h-[calc(100vh-15rem)] overflow-auto">
         <table className="w-full min-w-[980px] text-sm">
-          <thead className="sticky top-0 z-10 bg-[var(--dashboard-panel-muted)] text-muted-foreground">
+          <thead className="sticky top-0 z-10 bg-background text-muted-foreground [&_th]:border-b-2 [&_th]:border-foreground">
             <tr>
               {config.columns.map((column) => (
                 <th
@@ -151,7 +151,7 @@ export function DashboardDataTable({
                     setDragOverIndex(null)
                   }}
                   className={cn(
-                    "border-t transition-colors hover:bg-[var(--dashboard-accent-soft)]/45",
+                    "border-t transition-colors hover:bg-muted/70",
                     draggingIndex === index && "opacity-50",
                     dragOverIndex === index &&
                       draggingIndex !== index &&

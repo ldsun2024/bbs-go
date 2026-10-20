@@ -57,8 +57,8 @@ function commentContent(comment: Comment, size: "normal" | "small" = "normal") {
   const className = cn(
     "content mb-0 whitespace-pre-wrap text-foreground",
     size === "normal"
-      ? "mt-2.5 text-[15px] leading-7"
-      : "mt-1.5 text-sm leading-6"
+      ? "mt-2 text-base leading-[1.7]"
+      : "mt-1.5 text-sm leading-[1.6]"
   )
 
   if (comment.contentType === "text") {
@@ -424,13 +424,7 @@ function CommentSubList({
                 {commentContent(comment, "small")}
                 <CommentImages images={comment.imageList} size="small" />
                 {comment.quote ? (
-                  <div className="relative my-1.5 box-border rounded border border-border bg-muted px-3 py-1 text-muted-foreground">
-                    <span
-                      aria-hidden="true"
-                      className="pointer-events-none absolute -top-2 right-0.5 text-3xl leading-none font-bold text-muted-foreground"
-                    >
-                      ”
-                    </span>
+                  <div className="relative my-2 box-border border-l-2 border-border bg-muted px-3 py-2 text-muted-foreground">
                     <HtmlImagePreview
                       className="content my-1 text-muted-foreground"
                       html={comment.quote.content || ""}
@@ -517,7 +511,7 @@ function CommentSubList({
           <div className="my-2.5 ml-[30px]">
             <button
               type="button"
-              className="flex items-center text-[13px] text-foreground hover:text-primary"
+              className="flex items-center text-xs text-foreground hover:text-primary"
               disabled={loadingMore}
               onClick={() => void loadMore()}
             >
@@ -698,40 +692,38 @@ function CommentItem({
     <>
       <div
         className={cn(
-          "flex py-2.5",
+          "flex gap-3 py-4",
           isAccepted
-            ? "mb-2 rounded-lg border border-primary/20 bg-primary/[0.06] p-3"
+            ? "mb-2 border-l-[3px] border-primary pl-3"
             : "border-b border-border last:border-b-0"
         )}
       >
         <div>
-          <UserAvatar user={comment.user} size={30} />
+          <UserAvatar user={comment.user} size={32} />
         </div>
-        <div className="ml-2.5 min-w-0 flex-1">
+        <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center justify-between gap-2">
             <div className="flex min-w-0 items-center gap-2">
               <Link
                 href={`/user/${comment.user.id}`}
-                className="truncate text-[15px] text-foreground hover:text-primary"
+                className="truncate text-sm font-medium text-foreground hover:text-primary"
               >
                 {comment.user.nickname ||
                   comment.user.username ||
                   comment.user.id}
               </Link>
               {isAccepted ? (
-                <span className="shrink-0 rounded-full bg-muted px-2 py-0.5 text-xs text-primary">
+                <span className="shrink-0 font-mono text-micro tracking-[0.08em] text-primary uppercase">
                   {t("component.comment.list.acceptedAnswer")}
                 </span>
               ) : null}
             </div>
-            <div className="flex flex-wrap items-center gap-x-2.5">
+            <div className="flex flex-wrap items-center gap-x-3 font-mono text-xs tabular-nums text-muted-foreground">
               {comment.createTime ? (
-                <time className="text-[13px] text-muted-foreground">
-                  {prettyDate(comment.createTime, t)}
-                </time>
+                <time>{prettyDate(comment.createTime, t)}</time>
               ) : null}
               {comment.ipLocation ? (
-                <span className="text-[13px] text-muted-foreground">
+                <span>
                   {t("component.comment.list.ipLocation")}
                   {comment.ipLocation}
                 </span>
@@ -746,7 +738,7 @@ function CommentItem({
             <button
               type="button"
               className={cn(
-                "flex items-center gap-1 text-[13px] text-muted-foreground select-none hover:text-primary",
+                "flex items-center gap-1 text-xs text-muted-foreground select-none hover:text-primary",
                 comment.liked && "font-medium text-primary"
               )}
               onClick={() => void toggleLike()}
@@ -764,7 +756,7 @@ function CommentItem({
             <button
               type="button"
               className={cn(
-                "flex items-center gap-1 text-[13px] text-muted-foreground select-none hover:text-primary",
+                "flex items-center gap-1 text-xs text-muted-foreground select-none hover:text-primary",
                 replyCommentId === comment.id && "font-medium text-primary"
               )}
               onClick={switchShowReply}
@@ -779,7 +771,7 @@ function CommentItem({
             {allowAcceptAnswer && entityType === "topic" ? (
               <button
                 type="button"
-                className="flex items-center gap-1 text-[13px] text-muted-foreground select-none hover:text-primary"
+                className="flex items-center gap-1 text-xs text-muted-foreground select-none hover:text-primary"
                 onClick={() =>
                   isAccepted ? void unacceptAnswer() : void acceptAnswer()
                 }
@@ -794,7 +786,7 @@ function CommentItem({
             {canDeleteComment ? (
               <button
                 type="button"
-                className="flex items-center gap-1 text-[13px] text-muted-foreground select-none hover:text-destructive"
+                className="flex items-center gap-1 text-xs text-muted-foreground select-none hover:text-destructive"
                 onClick={confirmDeleteComment}
               >
                 <Trash2 className="h-3.5 w-3.5" />
@@ -804,7 +796,7 @@ function CommentItem({
             {currentUser?.id !== comment.user.id ? (
               <button
                 type="button"
-                className="flex items-center gap-1 text-[13px] text-muted-foreground select-none hover:text-destructive"
+                className="flex items-center gap-1 text-xs text-muted-foreground select-none hover:text-destructive"
                 onClick={showReport}
               >
                 <Flag className="h-3.5 w-3.5" />
@@ -970,18 +962,22 @@ export function CommentSection({
   }
 
   return (
-    <section id="JComment" className="rounded-lg bg-background p-4">
-      <div className="flex text-base font-medium text-foreground">
-        <span>{title || t("component.comment.title")}</span>
-        {commentCount && commentCount > 0 ? (
-          <span>&nbsp;{commentCount}</span>
-        ) : null}
+    <section id="JComment" className="pt-6">
+      <div className="mb-4 flex items-baseline justify-between gap-3 border-b border-border pb-3">
+        <h2 className="font-mono text-xs font-semibold tracking-[0.12em] text-foreground uppercase">
+          {title || t("component.comment.title")}
+          {commentCount && commentCount > 0 ? (
+            <span className="ml-2 font-normal text-muted-foreground">
+              / {commentCount}
+            </span>
+          ) : null}
+        </h2>
       </div>
 
       {currentUser ? (
         isNeedEmailVerify ? (
-          <div className="relative my-2.5 box-border overflow-hidden rounded-[3px] border border-border p-2.5">
-            <div className="rounded-[3px] px-2.5 text-muted-foreground">
+          <div className="relative my-2.5 box-border overflow-hidden border border-border p-2.5">
+            <div className="px-2.5 text-muted-foreground">
               {t("component.comment.emailVerifyPrompt")}
               <Link
                 href="/user/profile/account"
@@ -1002,9 +998,9 @@ export function CommentSection({
       ) : (
         <Link
           href={buildSigninHref(pathname || "/")}
-          className="my-3 flex cursor-pointer items-center gap-2 rounded-lg border border-primary/40 bg-primary/[0.1] px-3 py-3 transition-colors hover:bg-primary/[0.15]"
+          className="my-3 flex cursor-pointer items-center gap-2 border border-border bg-muted px-3 py-3 transition-colors hover:border-foreground"
         >
-          <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
+          <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center bg-foreground text-background">
             <LogIn className="h-3.5 w-3.5" />
           </span>
           <div className="min-w-0 flex-1">
@@ -1015,7 +1011,7 @@ export function CommentSection({
         </Link>
       )}
 
-      <div className="text-[15px]">
+      <div>
         {pageData.results?.length ? (
           pageData.results.map((comment) => (
             <CommentItem

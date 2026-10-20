@@ -75,7 +75,7 @@ export function UserBadgesWidget({
       }
     >
       {!owned.length ? (
-        <div className="text-sm text-slate-500 dark:text-slate-400">
+        <div className="text-sm text-muted-foreground">
           {t("component.userBadges.noBadges")}
         </div>
       ) : (
@@ -85,7 +85,7 @@ export function UserBadgesWidget({
               <Link
                 key={badge.id}
                 href={badgesLink}
-                className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden rounded-lg border border-amber-200/80 bg-amber-50/50 dark:border-amber-800/60 dark:bg-amber-900/20"
+                className="flex h-10 w-10 shrink-0 items-center justify-center overflow-hidden border border-border"
                 title={badge.title}
               >
                 {badge.icon ? (
@@ -206,7 +206,7 @@ export function UserCenterSidebar({
   t: TFunction
 }) {
   return (
-    <div className="left-container space-y-4">
+    <div className="left-container space-y-8">
       <UserCountsCard user={user} t={t} />
       <UserBadgesWidget user={user} badges={badges} t={t} />
       <MyProfileCard user={user} currentUser={currentUser} t={t} />

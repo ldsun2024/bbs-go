@@ -75,7 +75,7 @@ export function ProfileForm({ user: initialUser }: { user?: UserSummary }) {
   }
 
   return (
-    <form action={action} className="m-4 space-y-6">
+    <form action={action} className="max-w-[560px] space-y-6">
       <input type="hidden" name="userId" value={user.id} />
       <input type="hidden" name="avatar" value={avatar} />
       <div className="space-y-2">
@@ -121,7 +121,7 @@ export function ProfileForm({ user: initialUser }: { user?: UserSummary }) {
           placeholder={t("user.profile.homepagePlaceholder")}
         />
       </div>
-      <div className="flex justify-end pt-4">
+      <div className="flex justify-end border-t-2 border-foreground pt-4">
         <Button type="submit" disabled={pending}>
           {t("user.profile.save")}
         </Button>

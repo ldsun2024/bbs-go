@@ -9,7 +9,7 @@ export function TopicList({ topics, showSticky, t }: { topics: Topic[]; showStic
   }
 
   return (
-    <ul className="divide-y divide-border">
+    <ul className="divide-y divide-border [counter-reset:topic]">
       {topics.map((topic) => (
         <TopicListItem key={topic.id} topic={topic} showSticky={showSticky} t={t} />
       ))}

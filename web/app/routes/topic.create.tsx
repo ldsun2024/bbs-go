@@ -69,7 +69,7 @@ export default function TopicCreateRoute() {
 
   return (
     <main className="main">
-      <div className="container">
+      <div className="container mx-auto max-w-[760px]">
         <TopicCreateForm
           key={`${type}:${contentType}:${categoryId}`}
           contentType={contentType as "html" | "markdown" | "text"}

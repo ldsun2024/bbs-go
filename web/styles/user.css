@@ -1,12 +1,13 @@
 @layer components {
   /* A2：高度改比例自适应，头像贴头图下沿，信息条渐变改用主题色（修暗色露白） */
+  /* V2：16:5 头图，头像压出下沿 44px，用 margin-bottom 留出空间 */
   .profile {
     display: flex;
     position: relative;
-    height: clamp(184px, 20vw, 240px);
-    margin-bottom: 12px;
-    border-top-left-radius: var(--radius);
-    border-top-right-radius: var(--radius);
+    aspect-ratio: 16 / 5;
+    max-height: 240px;
+    min-height: 168px;
+    margin-bottom: 56px;
     background-color: var(--muted);
     background-position: 50%;
     background-size: cover;
@@ -14,7 +15,7 @@
 
   .profile .profile-avatar {
     position: absolute;
-    bottom: 10px;
+    bottom: -44px;
     left: 20px;
   }
 
@@ -36,12 +37,7 @@
     width: 100%;
     margin-top: auto;
     padding: 12px 20px 12px 132px;
-    background-image: linear-gradient(
-      90deg,
-      color-mix(in oklch, var(--card) 94%, transparent) 0%,
-      color-mix(in oklch, var(--card) 62%, transparent) 55%,
-      transparent 100%
-    );
+    background: var(--background);
   }
 
   .profile .metas {
@@ -60,22 +56,26 @@
   }
 
   .profile .nickname {
-    font-family: var(--font-serif);
-    font-size: 20px;
+    font-family: var(--font-sans);
+    font-size: var(--text-h3);
     font-weight: 600;
-    line-height: 1.4;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
   }
 
   .profile .level-badge {
     display: inline-flex;
     align-items: center;
-    gap: 5px;
-    padding: 1px 8px;
-    border-radius: var(--radius);
-    background: #fef3c7;
-    color: #92400e;
-    font-size: 12px;
+    gap: 4px;
+    padding-bottom: 2px;
+    border-bottom: 1px solid var(--border);
+    background: transparent;
+    color: var(--muted-foreground);
+    font-family: var(--font-mono);
+    font-size: 11px;
     font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
   }
 
   .profile .level-label {
@@ -108,13 +108,16 @@
 
   ul.extra-info li span {
     color: var(--muted-foreground);
-    font-size: 13px;
+    font-size: 12px;
     font-weight: 400;
   }
 
   ul.extra-info li a,
   ul.extra-info li b {
     color: var(--foreground);
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+    font-size: 16px;
   }
 
   .stable .str {
@@ -187,10 +190,15 @@
 
   .favorite-title a {
     overflow: hidden;
-    color: var(--muted-foreground);
+    color: var(--foreground);
     text-overflow: ellipsis;
     font-size: 18px;
-    line-height: 30px;
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .favorite-title a:hover {
+    color: var(--primary);
   }
 
   .favorite-summary {
@@ -233,9 +241,10 @@
   }
 
   .settings .settings-item-title {
-    width: 100px;
+    width: 120px;
     color: var(--foreground);
-    font-size: 15px;
+    font-size: 14px;
+    font-weight: 600;
   }
 
   .settings .settings-item-input {
@@ -326,7 +335,7 @@
       transform: rotate(-15deg);
     }
     50% {
-      color: #ef4444;
+      color: var(--primary);
     }
     60% {
       transform: rotate(10deg);

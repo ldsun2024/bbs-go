@@ -2,7 +2,7 @@
 
 import * as React from "react"
 import Link from "@/components/common/link"
-import { ArrowRight, Medal, Sparkles, Target, Zap } from "lucide-react"
+import { ArrowRight, Medal, Target, Zap } from "lucide-react"
 
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { apiFetch } from "@/lib/api/client"
@@ -91,23 +91,23 @@ export function TasksPageContent({
   }, [])
 
   return (
-    <section className="rounded-md bg-background">
+    <section>
       <Tabs
         value={activeGroup}
         onValueChange={setActiveGroup}
         className="gap-0"
       >
-        <div className="flex flex-col gap-3 border-b border-border px-4 py-3 lg:flex-row lg:items-center lg:justify-between">
+        <div className="flex flex-col gap-3 border-b border-border pb-3 lg:flex-row lg:items-baseline lg:justify-between">
           <div className="min-w-0">
-            <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-              <h1 className="text-base font-semibold text-foreground">
+            <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+              <h1 className="text-h3 font-semibold text-foreground">
                 {t("user.tasks.title")}
               </h1>
-              <span className="inline-flex items-center rounded-md border border-border bg-muted/40 px-2 py-0.5 text-xs font-medium text-muted-foreground">
+              <span className="font-mono text-xs tabular-nums text-muted-foreground">
                 {stats.completed} / {stats.total}
               </span>
             </div>
-            <p className="mt-0.5 text-xs text-muted-foreground">
+            <p className="mt-1 text-xs text-muted-foreground">
               {t("user.tasks.subtitle")}
             </p>
           </div>
@@ -122,7 +122,7 @@ export function TasksPageContent({
           </div>
         </div>
 
-        <div className="px-4 py-3">
+        <div className="pt-2">
           {displayGroups.map((group) => (
             <TabsContent key={group.key} value={group.key}>
               <TaskList tasks={tasksForGroup(currentTasks, group.key)} />
@@ -139,13 +139,12 @@ function TaskList({ tasks }: { tasks: TaskInfo[] }) {
 
   if (!tasks.length) {
     return (
-      <div className="rounded-md border border-dashed border-border bg-muted/30 p-8 text-center text-muted-foreground">
-        <Sparkles className="mx-auto mb-2 h-5 w-5" />
-        <div className="mb-2 text-sm font-semibold text-foreground">
+      <div className="border-t-2 border-foreground py-10">
+        <div className="mb-3 text-h4 font-semibold text-foreground">
           {t("user.tasks.emptyTitle")}
         </div>
         <Link
-          className="inline-flex items-center rounded-md bg-primary px-3 py-1.5 text-xs font-medium text-primary-foreground transition hover:opacity-90"
+          className="inline-flex items-center border border-border px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:border-foreground"
           href="/"
         >
           {t("user.tasks.emptyAction")}
@@ -203,7 +202,7 @@ function TaskCard({ task }: { task: TaskInfo }) {
   const action = task.actionUrl ? (
     user ? (
       <Link
-        className="inline-flex h-8 items-center gap-1.5 rounded-md bg-primary px-3 text-xs font-medium text-primary-foreground transition hover:opacity-90"
+        className="inline-flex h-8 items-center gap-1.5 bg-foreground px-3 text-xs font-medium text-background transition-opacity hover:opacity-90"
         href={task.actionUrl}
       >
         <ArrowRight className="h-3.5 w-3.5" />
@@ -212,7 +211,7 @@ function TaskCard({ task }: { task: TaskInfo }) {
     ) : (
       <button
         type="button"
-        className="inline-flex h-8 items-center gap-1.5 rounded-md bg-primary px-3 text-xs font-medium text-primary-foreground transition hover:opacity-90"
+        className="inline-flex h-8 items-center gap-1.5 bg-foreground px-3 text-xs font-medium text-background transition-opacity hover:opacity-90"
         onClick={() => msgSignIn()}
       >
         <ArrowRight className="h-3.5 w-3.5" />
@@ -230,7 +229,7 @@ function TaskCard({ task }: { task: TaskInfo }) {
   )
 
   return (
-    <div className="px-3 py-2.5 transition hover:bg-muted/30">
+    <div className="border-b border-border py-4 transition-colors last:border-b-0">
       <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
         <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
@@ -239,12 +238,10 @@ function TaskCard({ task }: { task: TaskInfo }) {
             </h3>
             <span
               className={cn(
-                "inline-flex items-center rounded-md px-1.5 py-0.5 text-[11px] font-medium",
-                kind === "done" &&
-                  "bg-emerald-50 text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-300",
-                kind === "progress" &&
-                  "bg-sky-50 text-sky-700 dark:bg-sky-950/40 dark:text-sky-300",
-                kind === "idle" && "bg-muted/40 text-muted-foreground"
+                "inline-flex items-center border-b pb-0.5 font-mono text-micro tracking-[0.08em] uppercase",
+                kind === "done" && "border-border text-muted-foreground",
+                kind === "progress" && "border-primary text-primary",
+                kind === "idle" && "border-transparent text-muted-foreground"
               )}
             >
               {statusLabel()}
@@ -279,11 +276,11 @@ function TaskCard({ task }: { task: TaskInfo }) {
               {progressPercent(task)}%
             </span>
           </div>
-          <div className="h-1.5 w-full overflow-hidden rounded-full bg-muted">
+          <div className="h-1 w-full overflow-hidden bg-muted">
             <div
               className={cn(
-                "h-full rounded-full",
-                kind === "done" ? "bg-emerald-500" : "bg-primary"
+                "h-full",
+                kind === "done" ? "bg-foreground" : "bg-primary"
               )}
               style={{ width: `${progressPercent(task)}%` }}
             />

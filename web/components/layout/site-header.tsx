@@ -186,6 +186,20 @@ function MsgNotice({ count }: { count: number }) {
 }
 
 function DesktopNav({ navs }: { navs: SiteNav[] }) {
+  const pathname = usePathname()
+  const isActive = (url?: string) => {
+    if (!url || url === "#") return false
+    if (url === "/") return pathname === "/"
+    return pathname === url || pathname.startsWith(`${url}/`)
+  }
+  const itemClass = (url?: string) =>
+    cn(
+      buttonVariants({ variant: "ghost", size: "default" }),
+      "relative bg-transparent hover:bg-transparent hover:text-foreground",
+      isActive(url) &&
+        "after:absolute after:inset-x-3 after:bottom-0 after:h-[2px] after:bg-primary font-semibold text-foreground"
+    )
+
   return (
     <nav className="hidden items-center md:flex" aria-label="Main">
       <div className="group/navigation-menu relative flex max-w-max flex-1 items-center justify-center">
@@ -196,10 +210,7 @@ function DesktopNav({ navs }: { navs: SiteNav[] }) {
                 <DropdownMenuTrigger asChild>
                   <button
                     type="button"
-                    className={cn(
-                      buttonVariants({ variant: "ghost", size: "default" }),
-                      "bg-transparent"
-                    )}
+                    className={itemClass(nav.url)}
                   >
                     {nav.title}
                     <ChevronDown
@@ -231,10 +242,7 @@ function DesktopNav({ navs }: { navs: SiteNav[] }) {
                 href={nav.url}
                 target={targetFor(nav.openInNewWindow)}
                 rel={relFor(nav.openInNewWindow)}
-                className={cn(
-                  buttonVariants({ variant: "ghost", size: "default" }),
-                  "bg-transparent"
-                )}
+                className={itemClass(nav.url)}
               >
                 {nav.title}
               </Link>
@@ -600,9 +608,9 @@ export function SiteHeader() {
   const showColorModeToggle = true
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-background">
       <div className="container mx-auto px-4">
-        <div className="flex h-14 items-center justify-between">
+        <div className="flex h-16 items-center justify-between">
           <div className="flex items-center space-x-8">
             <Link href="/" className="flex items-center space-x-2">
               {logo ? (

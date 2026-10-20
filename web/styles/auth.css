@@ -1,6 +1,10 @@
 @layer components {
-  /* A3：内边距 32 起，之前 4px / 12px 导致内容贴边 */
+  /* A3：内边距 32 起，之前 4px / 12px 导致内容贴边。
+     V2：卡片宽 420，双栏时撑满右列，单栏时居中 */
   .signin-card {
+    width: 100%;
+    max-width: 420px;
+    margin-inline: auto;
     border: 1px solid var(--border);
     border-radius: var(--radius-lg);
     background: var(--card);
@@ -184,5 +188,29 @@
     line-height: 1 !important;
     display: inline-flex !important;
     align-items: center !important;
+  }
+
+  /* V2 认证双栏：左品牌 + 右表单，总宽 900 */
+  .auth-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    max-width: 900px;
+    margin: 0 auto;
+  }
+
+  .auth-split-aside {
+    display: none;
+  }
+
+  @media (min-width: 900px) {
+    .auth-split {
+      grid-template-columns: minmax(0, 1fr) 420px;
+    }
+
+    .auth-split-aside {
+      display: block;
+      padding: 48px 40px;
+      border-right: 1px solid var(--border);
+    }
   }
 }

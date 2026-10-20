@@ -30,7 +30,7 @@ export default function ArticleCreateRoute() {
   const { config } = useAppState()
   return (
     <main className="main">
-      <div className="container">
+      <div className="container mx-auto max-w-[760px]">
         <ArticleForm mode="create" config={config} />
       </div>
     </main>

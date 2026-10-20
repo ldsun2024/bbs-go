@@ -59,7 +59,17 @@ export function TopicTagClientPage({
       <div className="topics-wrapper">
         <TopicsNavContent initialCategories={initialData?.categories || []} />
         <div className="topics-main">
-          <div className="rounded-lg bg-background">
+          {currentTag?.name ? (
+            <div className="mb-6 border-b-2 border-foreground px-4 pb-4 md:px-6">
+              <div className="font-mono text-micro tracking-[0.12em] text-muted-foreground uppercase">
+                TAG / {t("pages.topics.title")}
+              </div>
+              <h1 className="mt-2 text-h2 font-semibold text-foreground md:text-h1">
+                #{currentTag.name}
+              </h1>
+            </div>
+          ) : null}
+          <div>
             {loading ? <PageLoading /> : null}
             <LoadMore<Topic>
               initialItems={initialData?.topics?.results || []}
@@ -75,7 +85,7 @@ export function TopicTagClientPage({
                 })
               }
               renderItems={(items) => (
-                <ul className="divide-y divide-border">
+                <ul className="[counter-reset:topic]">
                   {items.map((topic) => (
                     <TopicListItem key={topic.id} topic={topic} t={t} />
                   ))}
@@ -84,7 +94,6 @@ export function TopicTagClientPage({
               renderEmpty={() => <EmptyState title={t("common.noData")} />}
             />
           </div>
-          {currentTag?.name ? <span className="sr-only">{currentTag.name}</span> : null}
         </div>
       </div>
     </MainShell>
@@ -192,29 +201,29 @@ export function NodeTopicClientPage({
         />
         <div className="topics-main">
           {currentNode?.name ? (
-            <div className="mb-2 rounded-lg bg-background px-4 py-4">
+            <div className="mb-6 border-b border-border px-4 pb-5 md:px-6">
               <div className="flex items-start gap-3">
                 {currentNode.logo ? (
                   <img
                     src={currentNode.logo}
                     alt={currentNode.name || ""}
-                    className="h-10 w-10 rounded-md object-cover"
+                    className="h-10 w-10 object-cover"
                   />
                 ) : null}
                 <div className="min-w-0 flex-1">
-                  <div className="text-[16px] leading-snug font-semibold text-foreground">
+                  <h1 className="text-h2 font-semibold text-foreground">
                     {currentNode.name}
-                  </div>
+                  </h1>
                   {currentNode.description ? (
-                    <div className="mt-1 line-clamp-2 text-[14px] leading-snug text-muted-foreground">
+                    <p className="mt-2 line-clamp-2 text-sm leading-[1.7] text-muted-foreground">
                       {currentNode.description}
-                    </div>
+                    </p>
                   ) : null}
                 </div>
               </div>
             </div>
           ) : null}
-          <div className="rounded-lg bg-background">
+          <div>
             {categoryId <= 0 ? (
               <TopicFeedTabs currentCategoryId={categoryId} />
             ) : null}
@@ -224,11 +233,11 @@ export function NodeTopicClientPage({
               currentCategoryId={categoryId}
             />
             {currentFilters.length > 0 ? (
-              <div className="flex justify-between border-b border-border px-4 py-3">
-                <div className="text-base font-bold">
+              <div className="flex items-baseline justify-between gap-4 border-b border-border px-4 pb-3 md:px-6">
+                <h2 className="font-mono text-xs font-semibold tracking-[0.12em] text-foreground uppercase">
                   {currentFilterLabel}
-                </div>
-                <div className="inline-flex flex-wrap items-center gap-1 rounded-lg bg-muted p-1">
+                </h2>
+                <div className="flex items-center gap-4 text-xs text-muted-foreground">
                   {currentFilters.map((item) => {
                     const selected = item.value === currentFilterValue
                     return (
@@ -236,10 +245,10 @@ export function NodeTopicClientPage({
                         key={item.value || "all"}
                         type="button"
                         className={cn(
-                          "inline-flex h-5 items-center rounded-md px-3 text-sm font-medium transition-colors",
+                          "transition-colors",
                           selected
-                            ? "bg-background text-foreground shadow-sm"
-                            : "text-muted-foreground hover:text-foreground"
+                            ? "font-semibold text-foreground"
+                            : "text-muted-foreground/60 hover:text-muted-foreground"
                         )}
                         aria-pressed={selected}
                         onClick={() => switchFilter(item.value)}
@@ -270,7 +279,7 @@ export function NodeTopicClientPage({
                 })
               }
               renderItems={(items) => (
-                <ul className="divide-y divide-border">
+                <ul className="[counter-reset:topic]">
                   {items.map((topic) => (
                     <TopicListItem
                       key={topic.id}

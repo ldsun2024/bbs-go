@@ -35,11 +35,16 @@ export function ArticleTagClientPage({
 
   return (
     <MainShell aside={<HomeAside />}>
-      <div className="rounded-lg bg-background">
+      <div>
         {loading ? <PageLoading /> : null}
         {currentTag?.name ? (
-          <div className="border-b px-4 py-3 text-base font-semibold">
-            {currentTag.name}
+          <div className="mb-6 border-b-2 border-foreground pb-4">
+            <div className="font-mono text-micro tracking-[0.12em] text-muted-foreground uppercase">
+              TAG / {t("pages.articles.title")}
+            </div>
+            <h1 className="mt-2 text-h2 font-semibold text-foreground md:text-h1">
+              #{currentTag.name}
+            </h1>
           </div>
         ) : null}
         <LoadMore<Article>

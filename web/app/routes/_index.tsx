@@ -42,7 +42,7 @@ export function TopicListRoute({ title }: { title?: string }) {
       <div className="topics-wrapper">
         <TopicsNavContent initialCategories={categories} currentCategoryId={0} />
         <div className="topics-main">
-          <div className="rounded-lg bg-background">
+          <div>
             <TopicFeedTabs currentCategoryId={0} />
             <LoadMore<Topic>
               initialItems={topics.results}
@@ -61,7 +61,7 @@ export function TopicListRoute({ title }: { title?: string }) {
                 })
               }
               renderItems={(items) => (
-                <ul className="divide-y divide-border">
+                <ul className="[counter-reset:topic]">
                   {items.map((topic) => (
                     <TopicListItem
                       key={topic.id}

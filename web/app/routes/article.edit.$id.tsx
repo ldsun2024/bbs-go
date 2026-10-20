@@ -51,7 +51,7 @@ export default function ArticleEditRoute() {
 
   return (
     <main className="main">
-      <div className="container">
+      <div className="container mx-auto max-w-[760px]">
         <ArticleForm mode="edit" config={config} initialArticle={article} />
       </div>
     </main>

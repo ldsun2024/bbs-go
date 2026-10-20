@@ -34,7 +34,18 @@ export default function SigninRoute() {
         </div>
       ) : null}
       <div className="container">
-        <div className="main-body no-bg">
+        <div className="main-body no-bg auth-split">
+          <aside className="auth-split-aside">
+            <div className="font-mono text-micro font-semibold tracking-[0.14em] text-muted-foreground uppercase">
+              Sign in
+            </div>
+            <h2 className="mt-4 font-heading text-h2 leading-tight font-bold">
+              {config?.siteTitle || "BBS-GO"}
+            </h2>
+            <p className="mt-5 text-sm leading-7 text-muted-foreground">
+              {config?.siteDescription || ""}
+            </p>
+          </aside>
           <SigninForm
             redirect={searchParams.get("redirect") || undefined}
             config={config}

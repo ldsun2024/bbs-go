@@ -55,7 +55,7 @@
 
   .main-container {
     width: 100%;
-    max-width: 1180px;
+    max-width: 1200px;
   }
 
   .main-container.left-main {
@@ -71,15 +71,15 @@
     padding: 0;
   }
 
+  /* 侧栏 280，栏间距 24（V2 03-layout） */
   .main-container.left-main .left-container {
-    width: calc(100% - 260px - 10px);
-    transition: width 0.2s;
+    width: calc(100% - 280px - 24px);
   }
 
   .main-container.left-main .right-container {
-    margin-left: 10px;
-    min-width: 260px;
-    max-width: 260px;
+    margin-left: 24px;
+    min-width: 280px;
+    max-width: 280px;
     padding: 0;
   }
 
@@ -88,19 +88,18 @@
   }
 
   .main-container.right-main .left-container {
-    margin-right: 10px;
-    min-width: 260px;
-    max-width: 260px;
+    margin-right: 24px;
+    min-width: 280px;
+    max-width: 280px;
     padding: 0;
   }
 
   .main-container.right-main .right-container {
-    width: calc(100% - 260px - 10px);
-    transition: width 0.2s;
+    width: calc(100% - 280px - 24px);
   }
 
   .main-container.left-main.side-size-320 .left-container {
-    width: calc(100% - 320px - 10px);
+    width: calc(100% - 320px - 24px);
   }
 
   .main-container.left-main.side-size-320 .right-container {
@@ -109,7 +108,7 @@
   }
 
   .main-container.left-main.side-size-360 .left-container {
-    width: calc(100% - 360px - 10px);
+    width: calc(100% - 360px - 24px);
   }
 
   .main-container.left-main.side-size-360 .right-container {
@@ -123,20 +122,21 @@
   }
 
   .main-container.right-main.side-size-360 .right-container {
-    width: calc(100% - 360px - 10px);
+    width: calc(100% - 360px - 24px);
   }
 
   .footer {
     display: flex;
     flex-direction: column;
-    gap: 6px;
-    margin: 0 10px;
+    gap: 8px;
+    margin: 0;
+    padding: 24px 0;
+    border-top: 2px solid var(--foreground);
     background: none;
-    padding: 20px 0;
     color: var(--muted-foreground);
     text-align: left;
-    font-size: 14px;
-    line-height: 21px;
+    font-size: 12px;
+    line-height: 18px;
   }
 
   .footer a {
@@ -152,8 +152,8 @@
   }
 
   .footer .light {
-    color: #eb5424;
-    font-weight: 700;
+    color: var(--primary);
+    font-weight: 600;
   }
 
   /* UI设计规范 4.8 三档断点：1080 / 860（不再用 1279 / 1024 / 768） */
@@ -208,11 +208,6 @@
       max-width: none;
       margin: 16px 0 0 !important;
       padding: 0;
-    }
-
-    .topics-nav,
-    .topics-wrapper .topics-nav {
-      display: none;
     }
   }
 }
