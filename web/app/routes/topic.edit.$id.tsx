@@ -55,7 +55,7 @@ export default function TopicEditRoute() {
 
   return (
     <main className="main">
-      <div className="container mx-auto max-w-[760px]">
+      <div className="container">
         <TopicEditForm topic={data.topic} config={config} categories={data.categories} />
       </div>
     </main>

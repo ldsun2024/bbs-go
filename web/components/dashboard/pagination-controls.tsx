@@ -41,7 +41,7 @@ export function DashboardPagination({
 
   return (
     <div className="flex flex-wrap items-center justify-between gap-3 border-t px-4 py-3 text-sm">
-      <span className="font-mono text-xs tabular-nums text-muted-foreground">
+      <span className="text-muted-foreground">
         {t("dashboard.pagination.total", { total })}
       </span>
       <div className="flex flex-wrap items-center gap-2">
@@ -63,7 +63,7 @@ export function DashboardPagination({
         >
           {t("dashboard.pagination.previous")}
         </Button>
-        <span className="min-w-20 font-mono text-center tabular-nums">
+        <span className="min-w-20 text-center">
           {page} / {pageCount}
         </span>
         <Button
@@ -76,7 +76,7 @@ export function DashboardPagination({
         </Button>
         <form className="flex items-center gap-1" onSubmit={submitJump}>
           <Input
-            className="h-[30px] w-16"
+            className="h-8 w-16"
             type="number"
             min={1}
             max={pageCount}

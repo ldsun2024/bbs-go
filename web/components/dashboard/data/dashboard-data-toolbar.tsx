@@ -39,7 +39,7 @@ export function DashboardDataToolbar({
   onCreate: () => void
 }) {
   return (
-    <div className="border-b border-border pb-3">
+    <div className="rounded-lg border bg-[var(--dashboard-panel)] p-3 text-card-foreground shadow-xs">
       <div className="flex flex-wrap items-end gap-2">
         {filters?.map((filter) => (
           <DashboardDataFilterControl
@@ -70,7 +70,7 @@ export function DashboardDataToolbar({
       </div>
 
       {error ? (
-        <div className="mt-3 border-l-2 border-destructive px-3 py-2 text-sm text-destructive">
+        <div className="mt-3 rounded-md border border-destructive/25 bg-destructive/10 px-3 py-2 text-sm text-destructive">
           {error}
         </div>
       ) : null}

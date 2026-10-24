@@ -268,15 +268,7 @@ export default function DashboardTopicsRoute() {
 
   return (
     <div className="flex flex-1 flex-col gap-4 p-4 pt-4 md:p-6">
-      <div className="ui-page-head">
-        <div className="ui-page-head-body">
-          <h1 className="ui-page-title ui-page-title--sm">
-            {t("dashboard.nav.topics")}
-          </h1>
-        </div>
-      </div>
-
-      <section className="flex flex-col gap-3 border-b border-border pb-3">
+      <section className="flex flex-col gap-3 rounded-lg border bg-[var(--dashboard-panel)] p-3 text-card-foreground shadow-xs">
         <div className="flex flex-wrap items-end gap-2">
           <FilterInput
             label={t("dashboard.fields.id")}
@@ -368,7 +360,7 @@ export default function DashboardTopicsRoute() {
       </section>
 
       <section
-        className="border border-border bg-[var(--dashboard-panel)]"
+        className="rounded-lg border bg-[var(--dashboard-panel)] shadow-xs"
         aria-busy={loading}
       >
         <div className="divide-y">
@@ -514,7 +506,7 @@ function TopicFeedItem({
           <TopicTag
             className={cn(
               topic.status === 1 && "border-destructive/30 text-destructive",
-              topic.status === 2 && "border-foreground/60 text-foreground"
+              topic.status === 2 && "border-amber-400/40 text-amber-700"
             )}
           >
             {topicStatusLabel(t, topic.status)}
@@ -734,7 +726,7 @@ function TopicTag({
   return (
     <span
       className={cn(
-        "inline-flex items-center border border-border px-2 py-0.5 font-mono text-micro tracking-[0.04em] uppercase",
+        "inline-flex items-center rounded-md border px-2 py-0.5 text-xs font-medium",
         className
       )}
     >
@@ -754,9 +746,7 @@ function FilterInput({
 }) {
   return (
     <div className="grid min-w-44 gap-1.5">
-      <Label className="font-mono text-micro tracking-[0.08em] text-muted-foreground uppercase">
-        {label}
-      </Label>
+      <Label className="text-xs text-muted-foreground">{label}</Label>
       <Input
         value={value === undefined || value === null ? "" : String(value)}
         placeholder={label}
@@ -779,9 +769,7 @@ function FilterSelect({
 }) {
   return (
     <div className="grid min-w-44 gap-1.5">
-      <Label className="font-mono text-micro tracking-[0.08em] text-muted-foreground uppercase">
-        {label}
-      </Label>
+      <Label className="text-xs text-muted-foreground">{label}</Label>
       <DashboardSelect
         value={value}
         options={options}

@@ -27,18 +27,16 @@ function WidgetCard({
   children: React.ReactNode
 }) {
   return (
-    <section>
+    <section className="rounded-md bg-background px-3 py-1">
       {title || actions ? (
-        <div className="mb-4 flex items-baseline justify-between gap-3 border-b-2 border-foreground pb-2">
-          <h2 className="font-mono text-micro font-semibold tracking-[0.12em] text-muted-foreground uppercase">
-            {title}
-          </h2>
+        <div className="flex items-center justify-between border-b py-2 text-base font-medium">
+          <span>{title}</span>
           {actions ? (
-            <div className="shrink-0 text-xs font-normal">{actions}</div>
+            <div className="shrink-0 text-sm font-normal">{actions}</div>
           ) : null}
         </div>
       ) : null}
-      <div className="break-all">{children}</div>
+      <div className="py-2 break-all">{children}</div>
     </section>
   )
 }
@@ -77,26 +75,28 @@ function ScoreRank({
         {users.slice(0, 10).map((user) => (
           <li
             key={user.id}
-            className="flex list-none items-center gap-2 border-b border-border py-2 last:border-b-0"
+            className="flex list-none items-center border-b py-2.5 text-[13px] last:border-b-0"
           >
-            <UserAvatar user={user} size={24} />
-            <div className="min-w-0 flex-1">
+            <UserAvatar user={user} size={35} />
+            <div className="ml-[9px] w-full text-xs leading-[1.4]">
               <Link
                 href={`/user/${user.id}`}
-                className="block truncate text-sm text-foreground transition-colors hover:text-primary"
+                className="block text-sm leading-5 text-foreground hover:text-sky-500/80"
               >
                 {displayName(user)}
               </Link>
-              <p className="block font-mono text-micro text-muted-foreground">
+              <p className="block text-[11px] leading-5 text-muted-foreground">
                 {user.topicCount ?? 0} {t("component.scoreRank.topic")}{" "}
-                <span>·</span> {user.commentCount ?? 0}{" "}
+                <span>•</span> {user.commentCount ?? 0}{" "}
                 {t("component.scoreRank.comment")}
               </p>
             </div>
-            <span className="ml-auto inline-flex shrink-0 items-center gap-1 font-mono text-xs font-semibold tabular-nums text-foreground">
-              <Trophy className="size-3 text-muted-foreground" />
-              {user.score ?? 0}
-            </span>
+            <div className="w-[120px]">
+              <span className="float-right inline-flex h-[21px] items-center rounded-xl bg-muted px-1.5 text-xs leading-[21px] text-muted-foreground [text-shadow:0_0_1px_#fff]">
+                <Trophy className="mr-[3px] size-3" />
+                <span>{user.score ?? 0}</span>
+              </span>
+            </div>
           </li>
         ))}
       </ul>

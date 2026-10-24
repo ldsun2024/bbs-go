@@ -16,18 +16,16 @@ export function WidgetCard({
   bodyClassName?: string
 }) {
   return (
-    <section className={cn("bg-card", className)}>
+    <section className={cn("rounded-lg bg-background px-3 py-2", className)}>
       {title || actions ? (
-        <div className="mb-4 flex items-baseline justify-between gap-3 border-b-2 border-foreground pb-2">
-          <h2 className="min-w-0 font-mono text-micro font-semibold tracking-[0.12em] text-muted-foreground uppercase">
-            {title}
-          </h2>
+        <div className="flex min-h-8 items-center justify-between gap-3 border-b border-border pb-2 text-sm font-medium">
+          <div className="min-w-0">{title}</div>
           {actions ? (
-            <div className="shrink-0 text-xs">{actions}</div>
+            <div className="shrink-0 text-xs text-primary">{actions}</div>
           ) : null}
         </div>
       ) : null}
-      <div className={cn(bodyClassName)}>
+      <div className={cn(title || actions ? "pt-2" : undefined, bodyClassName)}>
         {children}
       </div>
     </section>

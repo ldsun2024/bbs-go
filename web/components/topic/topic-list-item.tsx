@@ -104,26 +104,29 @@ export function TopicListItem({
         : ""
 
     return (
-      <li
-        className="topic-type-mark px-3 py-3 pl-4 sm:px-4 sm:pl-5"
-        data-topic-type={topic.type}
-      >
+      <li className="px-3 py-3 sm:px-4">
         <div className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3">
           <div className="flex min-w-0 items-center gap-3">
             <UserAvatar
               user={topic.user}
-              size={32}
-              className="shrink-0 bg-muted text-sm"
+              size={34}
+              className="shrink-0 rounded-lg bg-muted text-sm"
             />
             <div className="min-w-0 flex-1">
               <div className="flex min-w-0 items-center gap-1.5 leading-5">
                 {showSticky && topic.sticky ? (
-                  <span className="ui-type shrink-0">
+                  <span className="inline-flex shrink-0 items-center rounded-sm bg-orange-100 px-1.5 py-0.5 text-[11px] leading-none text-orange-700">
                     {t("component.topicList.sticky")}
                   </span>
                 ) : null}
                 {topic.type === 2 ? (
-                  <span className="ui-type ui-type--muted shrink-0">
+                  <span
+                    className={`inline-flex shrink-0 items-center rounded-full px-1.5 py-0.5 text-[11px] leading-none font-medium ring-1 ${
+                      topic.qaStatus === "solved"
+                        ? "bg-emerald-50 text-emerald-700 ring-emerald-200"
+                        : "bg-amber-50 text-amber-700 ring-amber-200"
+                    }`}
+                  >
                     {topic.qaStatus === "solved" ? (
                       <CheckCircle2 className="mr-1 h-3 w-3" />
                     ) : (
@@ -151,7 +154,7 @@ export function TopicListItem({
                       href={`/topics/category/${topic.category.id}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="ui-tag-mono max-w-32 shrink-0 truncate hover:text-foreground"
+                      className="inline-flex max-w-32 shrink-0 items-center truncate rounded-sm bg-muted px-1.5 py-0.5 text-[11px] leading-none text-muted-foreground hover:text-foreground"
                     >
                       <span className="truncate">{topic.category.name}</span>
                     </Link>
@@ -179,7 +182,7 @@ export function TopicListItem({
             </div>
           </div>
           <span
-            className="ui-mono inline-flex h-7 min-w-9 items-center justify-center border border-border px-2 text-sm leading-none font-semibold text-muted-foreground"
+            className="inline-flex h-7 min-w-9 items-center justify-center rounded-full bg-muted px-2 text-sm leading-none font-medium text-muted-foreground"
             aria-label="views"
           >
             {formatCompactTopicViewCount(topic.viewCount)}
@@ -190,50 +193,65 @@ export function TopicListItem({
   }
 
   return (
-    <li
-      className="topic-type-mark group relative grid grid-cols-[32px_minmax(0,1fr)] items-start gap-x-3 border-b border-border px-4 py-5 transition-colors last:border-b-0 hover:bg-muted md:grid-cols-[40px_minmax(0,1fr)_176px] md:gap-x-4 md:px-6 md:py-6"
-      data-topic-type={topic.type}
-    >
-      <span className="topic-index" aria-hidden="true" />
-
-      <div className="min-w-0">
-        {showSticky || topic.type === 2 ? (
-          <div className="mb-2 flex flex-wrap items-center gap-2">
-            {showSticky && topic.sticky ? (
-              <span className="font-mono text-micro tracking-[0.08em] text-primary uppercase">
-                {t("component.topicList.sticky")}
-              </span>
-            ) : null}
-            {topic.type === 2 ? (
-              <span className="inline-flex items-center gap-1 border-b border-foreground pb-0.5 font-mono text-micro tracking-[0.08em] text-foreground uppercase">
-                {topic.qaStatus === "solved" ? (
-                  <CheckCircle2 className="h-3 w-3" />
-                ) : (
-                  <CircleHelp className="h-3 w-3" />
-                )}
-                {topic.qaStatus === "solved"
-                  ? t("component.topicList.qaSolved")
-                  : t("component.topicList.qaUnsolved")}
-              </span>
-            ) : null}
-            {topic.type === 2 && topic.bountyScore ? (
-              <span className="font-mono text-micro tracking-[0.08em] text-muted-foreground uppercase">
-                {t("pages.topic.detail.bountyLabel", {
-                  score: topic.bountyScore,
-                })}
-              </span>
-            ) : null}
+    <li className="px-4 py-3">
+      <div className="flex items-center justify-between gap-3">
+        <div className="flex min-w-0 items-center gap-2">
+          <UserAvatar user={topic.user} size={24} className="shrink-0" />
+          <div className="flex min-w-0 items-center gap-1 text-xs md:text-sm">
+            <Link
+              href={`/user/${topic.user.id}`}
+              target="_blank"
+              className="max-w-32 truncate text-muted-foreground hover:underline"
+            >
+              {displayName}
+            </Link>
+            <span className="text-muted-foreground">·</span>
+            <span className="truncate text-muted-foreground">
+              {prettyDate(topic.createTime, t)}
+            </span>
           </div>
+        </div>
+        {showSticky && topic.sticky ? (
+          <span className="inline-flex items-center rounded-sm bg-orange-100 px-1.5 py-0.5 text-[11px] text-orange-700">
+            {t("component.topicList.sticky")}
+          </span>
         ) : null}
+      </div>
 
+      <div className="mt-2 space-y-2">
         {topic.type !== 1 ? (
           <>
             <Link
               href={topicHref}
               target="_blank"
               rel="noopener noreferrer"
-              className="block text-h4 leading-snug font-semibold break-all text-foreground transition-colors group-hover:text-primary"
+              className="block text-[15px] leading-6 font-semibold break-all text-foreground sm:text-base"
             >
+              {topic.type === 2 ? (
+                <span
+                  className={`relative -top-px mr-1 inline-flex h-5 items-center align-middle whitespace-nowrap rounded-md px-2 text-[11px] leading-none font-medium ring-1 ${
+                    topic.qaStatus === "solved"
+                      ? "bg-emerald-50 text-emerald-700 ring-emerald-200"
+                      : "bg-amber-50 text-amber-700 ring-amber-200"
+                  }`}
+                >
+                  {topic.qaStatus === "solved" ? (
+                    <CheckCircle2 className="mr-1 h-3 w-3" />
+                  ) : (
+                    <CircleHelp className="mr-1 h-3 w-3" />
+                  )}
+                  {topic.qaStatus === "solved"
+                    ? t("component.topicList.qaSolved")
+                    : t("component.topicList.qaUnsolved")}
+                </span>
+              ) : null}
+              {topic.type === 2 && topic.bountyScore ? (
+                <span className="relative -top-px mr-1 inline-flex h-5 items-center align-middle whitespace-nowrap rounded-md bg-amber-100 px-2 text-[11px] leading-none font-medium text-amber-800 ring-1 ring-amber-200">
+                  {t("pages.topic.detail.bountyLabel", {
+                    score: topic.bountyScore,
+                  })}
+                </span>
+              ) : null}
               {topic.title}
             </Link>
             {topic.summary ? (
@@ -241,7 +259,7 @@ export function TopicListItem({
                 href={topicHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 line-clamp-2 block text-base leading-[1.7] break-all text-muted-foreground hover:text-foreground"
+                className="line-clamp-3 block text-[15px] leading-6 break-all text-muted-foreground hover:text-foreground/80 sm:text-sm sm:leading-normal"
               >
                 {topic.summary}
               </Link>
@@ -254,13 +272,13 @@ export function TopicListItem({
                 href={topicHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="line-clamp-2 block text-base leading-[1.7] break-all whitespace-pre-line text-foreground"
+                className="line-clamp-3 block text-[15px] leading-6 break-all whitespace-pre-line text-foreground sm:text-sm sm:leading-normal"
               >
                 {topic.content}
               </Link>
             ) : null}
             {topic.imageList?.length ? (
-              <ul className="mt-3 flex flex-wrap gap-2">
+              <ul className="mt-1 flex flex-wrap gap-2">
                 {topic.imageList.slice(0, 9).map((image, index) => (
                   <li
                     key={`${image.preview || image.url || "image"}-${index}`}
@@ -270,12 +288,12 @@ export function TopicListItem({
                       href={topicHref}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="block h-full w-full overflow-hidden bg-muted"
+                      className="block h-full w-full overflow-hidden rounded-sm bg-muted"
                     >
                       <img
                         src={image.preview || image.url}
                         alt=""
-                        className="h-full w-full object-cover"
+                        className="h-full w-full object-cover transition-transform duration-300 hover:scale-105"
                       />
                     </Link>
                   </li>
@@ -284,63 +302,47 @@ export function TopicListItem({
             ) : null}
           </>
         )}
-
-        {topic.vote ? (
-          <TopicVoteCard className="mt-3 mb-2" vote={topic.vote} />
-        ) : null}
       </div>
 
-      <div className="col-start-2 row-start-2 mt-3 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs text-muted-foreground md:col-start-3 md:row-start-1 md:mt-0 md:flex-col md:items-start md:justify-between md:border-l md:border-border md:pl-4">
-        <div className="flex min-w-0 items-center gap-2">
-          <UserAvatar user={topic.user} size={24} className="shrink-0" />
-          <Link
-            href={`/user/${topic.user.id}`}
-            target="_blank"
-            className="max-w-32 truncate hover:text-foreground"
-          >
-            {displayName}
-          </Link>
-        </div>
+      {topic.vote ? (
+        <TopicVoteCard className="mt-2 mb-2" vote={topic.vote} />
+      ) : null}
 
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono tabular-nums">
-          {topic.viewCount ? (
-            <span>
-              <b className="font-semibold text-foreground">{topic.viewCount}</b>{" "}
-              VIEW
-            </span>
-          ) : null}
-          <Link
-            href={topicHref}
-            className="transition-colors hover:text-primary"
-          >
-            <b className="font-semibold text-foreground">
-              {topic.commentCount || 0}
-            </b>{" "}
-            REPLY
-          </Link>
-          <span>{prettyDate(topic.createTime, t)}</span>
-        </div>
-
-        <div className="flex flex-wrap items-center gap-x-3 gap-y-1">
-          <TopicLikeButton
-            topicId={topic.id}
-            initialLiked={topic.liked}
-            initialLikeCount={topic.likeCount}
-          />
+      <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
+        <div className="min-w-0">
           {topic.category ? (
             <Link
               href={`/topics/category/${topic.category.id}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="max-w-full truncate font-mono text-micro tracking-[0.04em] text-muted-foreground uppercase transition-colors hover:text-foreground"
+              className="inline-flex max-w-full items-center gap-1 rounded-full bg-accent px-2.5 py-1 text-xs text-muted-foreground hover:text-foreground"
             >
-              {topic.category.name}
+              {topic.category.logo ? (
+                <img
+                  src={topic.category.logo}
+                  alt=""
+                  className="h-4 w-4 rounded-full object-cover"
+                />
+              ) : null}
+              <span className="truncate">{topic.category.name}</span>
             </Link>
           ) : null}
-          <span className="inline-flex items-center gap-1 md:hidden">
-            <MessageCircle className="h-3.5 w-3.5" />
-            {topic.commentCount || 0}
-          </span>
+        </div>
+        <div className="ml-auto flex items-center gap-4 text-xs text-muted-foreground">
+          <TopicLikeButton
+            topicId={topic.id}
+            initialLiked={topic.liked}
+            initialLikeCount={topic.likeCount}
+          />
+          <Link
+            href={topicHref}
+            className="inline-flex min-h-8 items-center gap-1.5 transition-colors hover:text-primary"
+          >
+            <MessageCircle className="h-4 w-4" />
+            <span className="min-w-[1ch] text-sm leading-none">
+              {topic.commentCount || ""}
+            </span>
+          </Link>
         </div>
       </div>
     </li>

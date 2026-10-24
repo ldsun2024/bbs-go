@@ -145,11 +145,11 @@ export function TopicDetailClientPage({
     >
       <div className="main-content no-padding no-bg space-y-4">
         {topic.status === 2 ? (
-          <div className="my-5 w-full border-l-2 border-primary bg-muted px-4 py-3 text-sm text-foreground">
+          <div className="my-5 w-full rounded-md border border-amber-300 bg-amber-100 px-4 py-3 text-amber-800">
             {t("pages.topic.detail.pending")}
           </div>
         ) : null}
-        <article className="mb-5">
+        <article className="mb-5 rounded-lg bg-background">
           <TopicActionProvider
             topicId={topic.id}
             liked={topic.liked}
@@ -158,9 +158,9 @@ export function TopicDetailClientPage({
             commentCount={topic.commentCount}
           >
             <TopicSideActionBar />
-            <div className="mb-4 px-4 pt-1">
+            <div className="mb-4 border-b px-4 py-3">
               {topic.title ? (
-                <h1 className="text-h2 leading-tight font-semibold wrap-break-word text-foreground md:text-h1 md:leading-[1.15]">
+                <h1 className="text-[26px] leading-9 font-bold wrap-break-word text-foreground">
                   {topic.title}
                 </h1>
               ) : null}

@@ -22,12 +22,12 @@ function CommentItem({
     <div
       className={`flex py-2.5 ${
         isAccepted
-          ? "mb-2 border-l-[3px] border-primary px-3 py-2"
+          ? "mb-2 rounded-lg border border-primary/20 bg-primary/[0.06] p-3"
           : "border-b border-border last:border-b-0"
       }`}
     >
       <div>
-        <UserAvatar user={comment.user} size={32} />
+        <UserAvatar user={comment.user} size={30} />
       </div>
       <div className="ml-2.5 min-w-0 flex-1">
         <div className="flex flex-wrap items-center justify-between gap-2">
@@ -41,7 +41,7 @@ function CommentItem({
                 comment.user.id}
             </Link>
             {isAccepted ? (
-              <span className="shrink-0 border border-foreground bg-foreground px-2 py-0.5 text-xs text-background">
+              <span className="shrink-0 rounded-full bg-muted px-2 py-0.5 text-xs text-primary">
                 {t("component.comment.list.acceptedAnswer")}
               </span>
             ) : null}
@@ -62,7 +62,7 @@ function CommentItem({
         </div>
         {comment.content ? (
           comment.contentType === "text" ? (
-            <div className="mt-2.5 mb-0 text-sm leading-7 whitespace-pre-wrap text-foreground">
+            <div className="mt-2.5 mb-0 whitespace-pre-wrap text-foreground">
               {comment.content}
             </div>
           ) : (
@@ -147,8 +147,8 @@ export function CommentList({
   }
 
   return (
-    <section id="JComment" className="bg-card p-4">
-      <div className="flex font-heading text-h4 font-semibold text-foreground">
+    <section id="JComment" className="rounded-lg bg-background p-4">
+      <div className="flex text-base font-medium text-foreground">
         <span>{title || t("component.comment.title")}</span>
         {commentCount && commentCount > 0 ? (
           <span>&nbsp;{commentCount}</span>
@@ -157,9 +157,9 @@ export function CommentList({
       {isLogin ? null : (
         <Link
           href="/user/signin"
-          className="my-3 flex cursor-pointer items-center gap-2 border border-border bg-muted px-3 py-3 transition-colors hover:bg-secondary"
+          className="my-3 flex cursor-pointer items-center gap-2 rounded-lg border border-primary/40 bg-primary/[0.1] px-3 py-3 transition-colors hover:bg-primary/[0.15]"
         >
-          <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center bg-primary text-primary-foreground">
+          <span className="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
             <LogIn className="h-3.5 w-3.5" />
           </span>
           <div className="min-w-0 flex-1">

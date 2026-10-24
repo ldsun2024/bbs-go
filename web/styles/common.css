@@ -6,11 +6,7 @@
   body {
     min-height: 100%;
     overflow-y: scroll;
-
-    /* 暖白底 + 细颗粒（UI设计规范 4.7）：简写无法携带 blend-mode，故拆成三层 */
-    background-color: var(--body-background);
-    background-image: var(--paper-grain);
-    background-blend-mode: multiply;
+    background: var(--body-background);
   }
 
   body[data-scroll-locked] {
@@ -34,8 +30,7 @@
 @layer components {
   .main {
     width: 100%;
-    /* UI设计规范 4.8：≥1080 时 上 32 / 左右 24 / 下 64 */
-    padding: 32px 24px 64px;
+    padding: 1rem 1rem;
   }
 
   .main .container {
@@ -44,8 +39,8 @@
 
   .main-body,
   .main-aside {
-    background: var(--card);
-    padding: 16px;
+    background: var(--background);
+    padding: 10px;
   }
 
   .main-body.no-bg,
@@ -55,7 +50,7 @@
 
   .main-container {
     width: 100%;
-    max-width: 1200px;
+    max-width: 1280px;
   }
 
   .main-container.left-main {
@@ -71,15 +66,15 @@
     padding: 0;
   }
 
-  /* 侧栏 280，栏间距 24（V2 03-layout） */
   .main-container.left-main .left-container {
-    width: calc(100% - 280px - 24px);
+    width: calc(100% - 260px - 10px);
+    transition: width 0.2s;
   }
 
   .main-container.left-main .right-container {
-    margin-left: 24px;
-    min-width: 280px;
-    max-width: 280px;
+    margin-left: 10px;
+    min-width: 260px;
+    max-width: 260px;
     padding: 0;
   }
 
@@ -88,18 +83,19 @@
   }
 
   .main-container.right-main .left-container {
-    margin-right: 24px;
-    min-width: 280px;
-    max-width: 280px;
+    margin-right: 10px;
+    min-width: 260px;
+    max-width: 260px;
     padding: 0;
   }
 
   .main-container.right-main .right-container {
-    width: calc(100% - 280px - 24px);
+    width: calc(100% - 260px - 10px);
+    transition: width 0.2s;
   }
 
   .main-container.left-main.side-size-320 .left-container {
-    width: calc(100% - 320px - 24px);
+    width: calc(100% - 320px - 10px);
   }
 
   .main-container.left-main.side-size-320 .right-container {
@@ -108,7 +104,7 @@
   }
 
   .main-container.left-main.side-size-360 .left-container {
-    width: calc(100% - 360px - 24px);
+    width: calc(100% - 360px - 10px);
   }
 
   .main-container.left-main.side-size-360 .right-container {
@@ -122,21 +118,20 @@
   }
 
   .main-container.right-main.side-size-360 .right-container {
-    width: calc(100% - 360px - 24px);
+    width: calc(100% - 360px - 10px);
   }
 
   .footer {
     display: flex;
     flex-direction: column;
-    gap: 8px;
-    margin: 0;
-    padding: 24px 0;
-    border-top: 2px solid var(--foreground);
+    gap: 6px;
+    margin: 0 10px;
     background: none;
+    padding: 20px 0;
     color: var(--muted-foreground);
     text-align: left;
-    font-size: 12px;
-    line-height: 18px;
+    font-size: 14px;
+    line-height: 21px;
   }
 
   .footer a {
@@ -152,25 +147,37 @@
   }
 
   .footer .light {
-    color: var(--primary);
-    font-weight: 600;
+    color: #eb5424;
+    font-weight: 700;
   }
 
-  /* UI设计规范 4.8 三档断点：1080 / 860（不再用 1279 / 1024 / 768） */
-  @media screen and (max-width: 1079px) {
+  @media screen and (max-width: 1279px) {
+    .main-container.left-main .left-container {
+      width: 100% !important;
+      margin-right: 0 !important;
+    }
+
+    .main-container.left-main .right-container {
+      display: none;
+    }
+
+    .main-container.right-main .right-container {
+      width: 100% !important;
+      margin-left: 0 !important;
+    }
+
+    .main-container.right-main .left-container {
+      display: none;
+    }
+  }
+
+  @media screen and (max-width: 1024px) {
     .main {
-      padding: 24px 20px 48px !important;
+      padding: 1rem 0.5rem 0 !important;
     }
 
     .main .container {
-      max-width: 100%;
-    }
-
-    /* 860~1079：主区 + 260 侧栏，gap 24，仍是双栏 */
-    .main-container.left-main .right-container,
-    .main-container.right-main .left-container {
-      min-width: 260px;
-      max-width: 260px;
+      max-width: 1024px;
     }
 
     .profile-edit-tabs-mobile {
@@ -182,32 +189,14 @@
     }
   }
 
-  /* < 860：单栏，侧栏下沉到内容下方而不是隐藏 */
-  @media screen and (max-width: 859px) {
+  @media screen and (max-width: 768px) {
     .main {
-      padding: 20px 16px 40px !important;
+      padding: 0.5rem 0.5rem 0 !important;
     }
 
-    .main-container.left-main,
-    .main-container.right-main {
-      flex-direction: column;
-    }
-
-    .main-container.left-main .left-container,
-    .main-container.right-main .right-container {
-      width: 100% !important;
-      margin-right: 0 !important;
-      margin-left: 0 !important;
-    }
-
-    .main-container.left-main .right-container,
-    .main-container.right-main .left-container {
-      display: block;
-      width: 100%;
-      min-width: 0;
-      max-width: none;
-      margin: 16px 0 0 !important;
-      padding: 0;
+    .topics-nav,
+    .topics-wrapper .topics-nav {
+      display: none;
     }
   }
 }

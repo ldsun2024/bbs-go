@@ -27,7 +27,7 @@ export function MainShell({
       >
         <div className="left-container">{children}</div>
         {aside ? (
-          <aside className={cn("right-container space-y-8", asideClassName)}>
+          <aside className={cn("right-container space-y-4", asideClassName)}>
             {aside}
           </aside>
         ) : null}

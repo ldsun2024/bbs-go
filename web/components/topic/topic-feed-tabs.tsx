@@ -33,11 +33,9 @@ export function TopicFeedTabs({
     feedTabs.find((item) => item.id === currentCategoryId) || feedTabs[0]
 
   return (
-    <div className="flex items-baseline justify-between gap-4 border-b border-border px-4 pb-3 md:px-6">
-      <h2 className="font-mono text-xs font-semibold tracking-[0.12em] text-foreground uppercase">
-        {t(currentTab.labelKey)}
-      </h2>
-      <div className="flex items-center gap-4 text-xs text-muted-foreground">
+    <div className="flex justify-between border-b border-border px-4 py-3">
+      <div className="text-base font-bold">{t(currentTab.labelKey)}</div>
+      <div className="inline-flex flex-wrap items-center gap-1 rounded-lg bg-muted p-1">
         {feedTabs.map((item) => {
           const selected = currentCategoryId === item.id
           return (
@@ -45,10 +43,10 @@ export function TopicFeedTabs({
               key={item.id}
               href={item.href}
               className={cn(
-                "transition-colors",
+                "inline-flex h-5 items-center rounded-md px-3 text-sm font-medium transition-colors",
                 selected
-                  ? "font-semibold text-foreground"
-                  : "text-muted-foreground/60 hover:text-muted-foreground"
+                  ? "bg-background text-foreground shadow-sm"
+                  : "text-muted-foreground hover:text-foreground"
               )}
               aria-current={selected ? "page" : undefined}
             >

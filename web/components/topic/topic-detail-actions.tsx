@@ -7,7 +7,7 @@ import type { Topic } from "@/lib/api/types"
 import { cn } from "@/lib/utils"
 
 function countLabel(value?: number) {
-  return value && value > 0 ? value : ""
+  return value && value > 0 ? `(${value})` : ""
 }
 
 export function TopicDetailActions({
@@ -33,43 +33,61 @@ export function TopicDetailActions({
   } = useTopicActions()
 
   return (
-    <div className="mx-4 mb-6 flex flex-wrap items-center gap-2 border-t-2 border-foreground pt-3">
-      <span className="inline-flex items-center gap-1.5 px-2 py-1 font-mono text-xs tabular-nums text-muted-foreground">
-        <Eye className="size-4" />
-        {labels.view}
-        {countLabel(topic.viewCount)}
-      </span>
+    <div className="mb-4 flex items-center justify-between border-t border-border px-4 py-2.5">
+      <div className="flex flex-1 cursor-not-allowed items-center justify-center text-sm text-muted-foreground">
+        <Eye className="size-[18px] stroke-2 text-muted-foreground" />
+        <div className="ml-[5px] text-foreground">
+          <span>{labels.view}</span>
+          <span>{countLabel(topic.viewCount)}</span>
+        </div>
+      </div>
       <button
         type="button"
-        className="inline-flex items-center gap-1.5 border border-border px-2.5 py-1 font-mono text-xs tabular-nums text-foreground transition-colors hover:border-foreground"
+        className="group flex flex-1 items-center justify-center text-sm text-muted-foreground hover:text-primary"
         onClick={() => void toggleLike("detail")}
       >
         <Heart
-          className={cn("size-4", liked ? "text-primary" : "text-foreground")}
+          className={cn(
+            "size-[18px] stroke-2 transition-all duration-200 group-hover:text-primary",
+            liked
+              ? "text-destructive group-hover:text-destructive"
+              : "text-muted-foreground"
+          )}
           fill={liked ? "currentColor" : "none"}
         />
-        {labels.like}
-        {countLabel(likeCount)}
+        <div className="ml-[5px] text-foreground">
+          <span>{labels.like}</span>
+          <span>{countLabel(likeCount)}</span>
+        </div>
       </button>
       <button
         type="button"
-        className="inline-flex items-center gap-1.5 border border-border px-2.5 py-1 font-mono text-xs tabular-nums text-foreground transition-colors hover:border-foreground"
+        className="group flex flex-1 items-center justify-center text-sm text-muted-foreground hover:text-primary"
         onClick={scrollToComment}
       >
-        <MessageCircle className="size-4" />
-        {labels.comment}
-        {countLabel(commentCount)}
+        <MessageCircle className="size-[18px] stroke-2 text-muted-foreground transition-all duration-200 group-hover:text-primary" />
+        <div className="ml-[5px] text-foreground">
+          <span>{labels.comment}</span>
+          <span>{countLabel(commentCount)}</span>
+        </div>
       </button>
       <button
         type="button"
-        className="inline-flex items-center gap-1.5 border border-border px-2.5 py-1 font-mono text-xs tabular-nums text-foreground transition-colors hover:border-foreground"
+        className="group flex flex-1 items-center justify-center text-sm text-muted-foreground hover:text-primary"
         onClick={() => void toggleFavorite("detail")}
       >
         <Star
-          className={cn("size-4", favorited ? "text-primary" : "text-foreground")}
+          className={cn(
+            "size-[18px] stroke-2 transition-all duration-200 group-hover:text-primary",
+            favorited
+              ? "text-destructive group-hover:text-destructive"
+              : "text-muted-foreground"
+          )}
           fill={favorited ? "currentColor" : "none"}
         />
-        {labels.favorite}
+        <div className="ml-[5px] text-foreground">
+          <span>{labels.favorite}</span>
+        </div>
       </button>
     </div>
   )

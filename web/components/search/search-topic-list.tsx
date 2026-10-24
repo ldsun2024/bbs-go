@@ -16,14 +16,14 @@ export function SearchTopicList({ results }: { results: Topic[] }) {
   }
 
   return (
-    <div>
+    <div className="divide-y divide-border/70">
       {results.map((item) => (
         <article
           key={item.id}
-          className="group border-b border-border py-5 transition-colors last:border-b-0 hover:bg-muted"
+          className="group px-4 py-5 transition-colors hover:bg-muted/25 sm:px-5"
         >
           <div className="min-w-0">
-            <h3 className="text-h4 leading-snug font-semibold text-foreground md:text-h3 md:leading-[1.35]">
+            <h3 className="text-base leading-6 font-semibold text-foreground sm:text-[17px]">
               <Link
                 href={`/topic/${item.id}`}
                 target="_blank"
@@ -31,7 +31,7 @@ export function SearchTopicList({ results }: { results: Topic[] }) {
                 className="transition-colors group-hover:text-primary"
               >
                 <span
-                  className="[&_em]:bg-muted-foreground/20 [&_em]:px-0.5 [&_em]:not-italic [&_em]:underline [&_em]:decoration-primary [&_em]:decoration-2 [&_em]:underline-offset-4"
+                  className="[&_em]:rounded-sm [&_em]:bg-yellow-200/80 [&_em]:px-0.5 [&_em]:not-italic dark:[&_em]:bg-yellow-500/30"
                   dangerouslySetInnerHTML={{ __html: item.title || "" }}
                 />
               </Link>
@@ -40,36 +40,38 @@ export function SearchTopicList({ results }: { results: Topic[] }) {
               href={`/topic/${item.id}`}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-2 block text-sm leading-[1.7] text-muted-foreground transition-colors hover:text-foreground"
+              className="mt-2 block text-sm leading-6 text-muted-foreground transition-colors hover:text-foreground"
             >
               <span
-                className="[display:-webkit-box] overflow-hidden [-webkit-box-orient:vertical] [-webkit-line-clamp:2] [&_em]:bg-muted-foreground/15 [&_em]:px-0.5 [&_em]:not-italic"
+                className="[display:-webkit-box] overflow-hidden [-webkit-box-orient:vertical] [-webkit-line-clamp:2] [&_em]:rounded-sm [&_em]:bg-yellow-200/70 [&_em]:px-0.5 [&_em]:not-italic dark:[&_em]:bg-yellow-500/25"
                 dangerouslySetInnerHTML={{ __html: item.summary || "" }}
               />
             </Link>
-            <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs text-muted-foreground">
+            <div className="mt-3 flex flex-wrap items-center gap-x-2.5 gap-y-1.5 text-xs text-muted-foreground/90">
               {item.user ? (
-                <span className="inline-flex items-center gap-2">
-                  <UserAvatar user={item.user} size={20} className="shrink-0" />
-                  <Link
-                    href={`/user/${item.user.id}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="transition-colors hover:text-foreground"
-                  >
-                    {item.user.nickname || item.user.username || item.user.id}
-                  </Link>
-                </span>
+                <UserAvatar
+                  user={item.user}
+                  size={20}
+                  className="[&_a]:opacity-70 hover:[&_a]:opacity-100"
+                />
               ) : null}
-              <span className="font-mono tabular-nums">
-                {formatDate(item.createTime)}
-              </span>
+              {item.user ? (
+                <Link
+                  href={`/user/${item.user.id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-foreground"
+                >
+                  {item.user.nickname || item.user.username || item.user.id}
+                </Link>
+              ) : null}
+              <span>{formatDate(item.createTime)}</span>
               {item.category ? (
                 <Link
                   href={`/topics/category/${item.category.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-micro tracking-[0.04em] uppercase transition-colors hover:text-foreground"
+                  className="rounded-full border border-border/80 bg-background px-2 py-0.5 text-[11px] text-muted-foreground transition-colors hover:bg-accent hover:text-foreground"
                 >
                   {item.category.name}
                 </Link>

@@ -31,7 +31,7 @@ export function TasksUserCard({
   badges?: Badge[]
 }) {
   return (
-    <React.Suspense fallback={<div className="min-h-24" />}>
+    <React.Suspense fallback={<div className="rounded-md bg-background p-4" />}>
       <TasksUserCardContent user={user} badges={badges} />
     </React.Suspense>
   )
@@ -84,22 +84,23 @@ function TasksUserCardContent({
         href={buildSigninHref(
           pathname?.startsWith("/user/signin") ? "/" : fullPath
         )}
-        className="flex w-full flex-col gap-3 border border-border bg-muted p-4 text-left"
+        className="relative flex w-full flex-col gap-3 overflow-hidden rounded-2xl border border-slate-200/70 bg-white p-4 text-left shadow-sm dark:border-slate-800/80 dark:bg-slate-900"
       >
-        <div className="flex items-center gap-3">
-          <div className="flex h-10 w-10 items-center justify-center bg-background text-base font-semibold text-muted-foreground">
+        <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-indigo-50/80 via-white/70 to-emerald-50/80 dark:from-indigo-900/30 dark:via-slate-900/60 dark:to-emerald-900/20" />
+        <div className="relative flex items-center gap-3">
+          <div className="flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 text-base font-semibold text-slate-400 dark:bg-slate-800">
             ?
           </div>
           <div className="min-w-0 flex-1">
-            <div className="text-sm font-semibold text-foreground">
+            <div className="text-sm font-semibold text-slate-700 dark:text-slate-200">
               {t("user.tasks.userCard.guestTitle")}
             </div>
-            <p className="mt-1 text-xs text-muted-foreground">
+            <p className="mt-1 text-xs text-slate-500 dark:text-slate-400">
               {t("user.tasks.userCard.guestHint")}
             </p>
           </div>
         </div>
-        <span className="inline-flex items-center justify-center gap-2 bg-foreground px-3 py-2 text-micro font-semibold text-background transition-opacity hover:opacity-90">
+        <span className="relative inline-flex items-center justify-center rounded-lg bg-indigo-600 px-3 py-2 text-[11px] font-semibold text-white shadow-sm transition hover:bg-indigo-500">
           {t("user.tasks.userCard.signInAction")}
           <ArrowRight className="h-3.5 w-3.5" />
         </span>
@@ -108,26 +109,26 @@ function TasksUserCardContent({
   }
 
   return (
-    <div>
+    <div className="rounded-md bg-background p-4">
       <div className="flex items-center gap-3">
-        <UserAvatar user={effectiveUser} size={44} className="shrink-0" />
+        <UserAvatar user={effectiveUser} size={56} />
         <div className="min-w-0 flex-1">
           <Link
             href={`/user/${effectiveUser.id}`}
-            className="block truncate text-base font-semibold text-foreground hover:text-primary"
+            className="block truncate text-base font-semibold text-slate-900 hover:text-indigo-600 dark:text-slate-50"
           >
             {displayName(effectiveUser)}
           </Link>
-          <p className="mt-1 line-clamp-2 text-xs text-muted-foreground">
+          <p className="mt-1 line-clamp-2 text-xs text-slate-500 dark:text-slate-400">
             {effectiveUser.description ||
               t("user.tasks.userCard.noDescription")}
           </p>
         </div>
       </div>
       {effectiveUser.levelTitle || ownedBadges.length > 0 ? (
-        <div className="mt-3 flex flex-wrap items-center justify-between gap-2">
+        <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
           {effectiveUser.levelTitle ? (
-            <span className="inline-flex items-center border-b border-border pb-0.5 font-mono text-micro tracking-[0.08em] text-muted-foreground uppercase">
+            <span className="inline-flex items-center rounded-full bg-amber-50 px-2 py-0.5 text-[11px] font-semibold text-amber-700 dark:bg-amber-900/40 dark:text-amber-100">
               {effectiveUser.levelTitle}
             </span>
           ) : null}
@@ -145,29 +146,29 @@ function TasksUserCardContent({
                       className="h-5 w-5 object-contain"
                     />
                   ) : (
-                    <Medal className="h-3.5 w-3.5 text-muted-foreground" />
+                    <Medal className="h-3.5 w-3.5 text-amber-600 dark:text-amber-400" />
                   )}
                 </span>
               ))}
-              <ChevronRight className="h-4 w-4 shrink-0 text-muted-foreground" />
+              <ChevronRight className="h-4 w-4 shrink-0 text-slate-400 dark:text-slate-500" />
             </Link>
           ) : null}
         </div>
       ) : null}
 
       {effectiveUser.expProgress ? (
-        <div className="mt-4">
-          <div className="flex items-center justify-between font-mono text-micro tabular-nums text-muted-foreground">
+        <div className="relative mt-4">
+          <div className="flex items-center justify-between text-[11px] text-slate-500 dark:text-slate-400">
             <span>{t("user.tasks.userCard.expProgress")}</span>
-            <span className="text-foreground">
+            <span className="font-semibold text-slate-700 dark:text-slate-200">
               {effectiveUser.expProgress.isMaxLevel
                 ? t("user.tasks.userCard.expProgressMaxLevel")
                 : `${effectiveUser.expProgress.expInCurrentLevel || 0} / ${effectiveUser.expProgress.expNeedForNextLevel || 0}`}
             </span>
           </div>
-          <div className="mt-2 h-1 w-full overflow-hidden bg-muted">
+          <div className="mt-2 h-2 w-full overflow-hidden rounded-full bg-slate-200/70 dark:bg-slate-800">
             <div
-              className="h-full bg-foreground"
+              className="h-full rounded-full bg-gradient-to-r from-indigo-500 via-indigo-500/80 to-emerald-400"
               style={{
                 width: `${effectiveUser.expProgress.expProgressPercent || 0}%`,
               }}
@@ -176,7 +177,7 @@ function TasksUserCardContent({
         </div>
       ) : null}
 
-      <div className="mt-4 grid grid-cols-4 gap-2 border-t border-border pt-3 text-center">
+      <div className="relative mt-4 grid grid-cols-4 gap-2 text-center">
         <TaskUserStat
           label={t("component.userInfo.score")}
           value={effectiveUser.score || 0}
@@ -200,9 +201,11 @@ function TasksUserCardContent({
 
 function TaskUserStat({ label, value }: { label: string; value: number }) {
   return (
-    <div>
-      <div className="text-micro text-muted-foreground">{label}</div>
-      <div className="mt-0.5 font-mono text-sm font-semibold tabular-nums text-foreground">
+    <div className="rounded-xl bg-white/70 px-2 py-2 text-xs shadow-sm ring-1 ring-slate-100/80 dark:bg-slate-900/70 dark:ring-slate-800">
+      <div className="text-[11px] text-slate-500 dark:text-slate-400">
+        {label}
+      </div>
+      <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">
         {value}
       </div>
     </div>
@@ -268,15 +271,15 @@ export function CheckInCard({
   }, [])
 
   return (
-    <div>
+    <div className="rounded-md bg-background p-4">
       <div className="flex flex-col gap-3">
         <div className="flex min-w-0 items-start gap-3">
           <div className="min-w-0">
-            <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-2">
+            <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:gap-2">
               <span className="text-sm font-semibold text-foreground">
                 {t("component.checkIn.headline")}
               </span>
-              <span className="w-fit font-mono text-micro tracking-[0.08em] text-muted-foreground uppercase">
+              <span className="w-fit rounded-full border border-border/60 bg-background/70 px-2 py-0.5 text-[11px] font-medium text-muted-foreground">
                 {isCheckedIn
                   ? t("component.checkIn.statusCheckedIn")
                   : t("component.checkIn.statusNotCheckedIn")}
@@ -293,7 +296,7 @@ export function CheckInCard({
           <div className="min-h-9">
             {!isCheckedIn ? (
               <button
-                className="inline-flex w-full items-center justify-center gap-2 bg-foreground px-4 py-2 text-micro font-semibold text-background transition-opacity hover:opacity-90 focus-visible:ring-2 focus-visible:ring-foreground/40 focus-visible:outline-none disabled:opacity-60"
+                className="inline-flex w-full items-center justify-center gap-2 rounded-md bg-indigo-600 px-4 py-2 text-xs font-semibold text-white shadow-sm transition hover:bg-indigo-500 focus-visible:ring-2 focus-visible:ring-indigo-300/60 focus-visible:outline-none disabled:opacity-60"
                 type="button"
                 disabled={pending}
                 onClick={() => void doCheckIn()}
@@ -302,9 +305,11 @@ export function CheckInCard({
                 {t("component.checkIn.checkInNow")}
               </button>
             ) : (
-              <div className="flex w-full items-center gap-3 border border-border bg-muted px-4 py-2.5 text-sm">
-                <CircleCheck className="h-4 w-4 shrink-0 text-foreground" />
-                <p className="min-w-0 text-foreground">
+              <div className="flex w-full items-center gap-3 rounded-lg border border-emerald-200/80 bg-gradient-to-r from-emerald-50/90 to-teal-50/80 px-4 py-3 text-sm dark:border-emerald-800/50 dark:from-emerald-950/40 dark:to-teal-950/30">
+                <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-900/50">
+                  <CircleCheck className="h-5 w-5 text-emerald-600 dark:text-emerald-400" />
+                </div>
+                <p className="min-w-0 text-slate-600 dark:text-slate-300">
                   {t("component.checkIn.consecutiveDays", {
                     days: checkIn?.consecutiveDays || 0,
                   })}
@@ -315,27 +320,27 @@ export function CheckInCard({
         </div>
       </div>
       {rank.length ? (
-        <div className="mt-4">
-          <div className="font-mono text-micro tracking-[0.12em] text-muted-foreground uppercase">
+        <div className="relative mt-4">
+          <div className="text-sm font-semibold text-slate-900 dark:text-slate-50">
             {t("component.checkIn.todayRanking")}
           </div>
-          <ul className="mt-2">
+          <ul className="mt-3 space-y-2">
             {rank.map((item) =>
               item.user ? (
                 <li
                   key={item.id || `${item.user.id}-${item.updateTime || ""}`}
-                  className="flex items-center gap-3 border-b border-border py-2 text-sm last:border-b-0"
+                  className="flex items-center gap-3 rounded-lg border border-slate-200/70 bg-white/70 px-3 py-2 text-sm transition hover:bg-white dark:border-slate-800/80 dark:bg-slate-900/70 dark:hover:bg-slate-900"
                 >
-                  <UserAvatar user={item.user} size={24} />
+                  <UserAvatar user={item.user} size={30} />
                   <div className="min-w-0 flex-1">
                     <Link
-                      className="truncate font-medium text-foreground hover:text-primary"
+                      className="truncate font-semibold text-slate-900 hover:text-indigo-600 dark:text-slate-50"
                       href={`/user/${item.user.id}`}
                     >
                       {displayName(item.user)}
                     </Link>
                     {item.updateTime ? (
-                      <p className="font-mono text-micro text-muted-foreground">
+                      <p className="text-xs text-slate-500 dark:text-slate-400">
                         @{prettyDate(item.updateTime, t)}
                       </p>
                     ) : null}

@@ -134,39 +134,45 @@ export default function SearchRoute() {
 
   return (
     <MainShell aside={<HomeAside />}>
-      <section className="mb-6 w-full border-b-2 border-foreground pb-4">
+      <section
+        className="mx-auto mb-4 w-full rounded-lg border border-border/70 bg-background/95 p-4 shadow-sm sm:p-5"
+        style={{ maxWidth: "calc(100vw - 1rem)" }}
+      >
         <div className="mb-4">
-          <h1 className="text-h2 font-semibold text-foreground">
+          <h1 className="text-xl font-semibold tracking-normal text-foreground">
             {t("pages.search.heading")}
           </h1>
-          <p className="mt-2 text-sm leading-[1.7] text-muted-foreground">
+          <p className="mt-1 text-sm leading-6 text-muted-foreground">
             {t("pages.search.description")}
           </p>
         </div>
         <form onSubmit={submitSearch}>
           <div className="flex flex-col gap-2 sm:flex-row">
-            <div className="flex h-[38px] min-w-0 flex-1 items-center border border-border bg-background px-3 transition-colors focus-within:border-foreground">
+            <div className="flex h-11 min-w-0 flex-1 items-center rounded-lg border border-input bg-muted/30 px-3 transition-colors focus-within:border-ring focus-within:bg-background focus-within:ring-3 focus-within:ring-ring/20">
               <Search className="mr-2 size-4 shrink-0 text-muted-foreground" />
               <Input
                 value={searchKeyword}
                 type="text"
                 maxLength={50}
                 placeholder={t("pages.search.placeholder")}
-                className="h-auto border-none bg-transparent px-0 shadow-none focus-visible:ring-0 focus-visible:ring-offset-0"
+                className="h-auto border-none bg-transparent px-0 text-base shadow-none focus-visible:ring-0 focus-visible:ring-offset-0 md:text-sm"
                 autoComplete="off"
                 onChange={(event) => setSearchKeyword(event.currentTarget.value)}
               />
             </div>
-            <Button type="submit" className="sm:min-w-24">
+            <Button type="submit" className="h-11 rounded-lg px-6 sm:min-w-24">
               {t("pages.search.submit")}
             </Button>
           </div>
         </form>
       </section>
 
-      <section className="w-full">
-        <div className="border-b border-border pb-3">
-          <div className="flex flex-col gap-3 md:flex-row md:items-baseline md:justify-between">
+      <section
+        className="mx-auto w-full overflow-hidden rounded-lg border border-border/70 bg-background/95 shadow-sm"
+        style={{ maxWidth: "calc(100vw - 1rem)" }}
+      >
+        <div className="border-b border-border/70 px-4 py-3 sm:px-5">
+          <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
             <Tabs value={type} onValueChange={setType} className="w-full md:w-auto">
               <TabsList className="grid w-full grid-cols-3 sm:inline-flex sm:w-fit">
               {searchTypes.map((item) => (

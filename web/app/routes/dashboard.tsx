@@ -203,7 +203,7 @@ export default function DashboardLayout() {
       >
         <AppSidebar />
         <SidebarInset className="min-h-0 overflow-hidden bg-[var(--dashboard-surface)]">
-          <header className="flex h-16 shrink-0 items-center gap-2 border-b border-border bg-[var(--dashboard-panel)] transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
+          <header className="flex h-16 shrink-0 items-center gap-2 border-b bg-[var(--dashboard-panel)]/95 shadow-[0_1px_0_rgba(15,23,42,0.03)] backdrop-blur transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
             <div className="flex min-w-0 items-center gap-2 px-4">
               <SidebarTrigger className="-ml-1" />
               <Separator

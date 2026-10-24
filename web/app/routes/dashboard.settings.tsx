@@ -544,14 +544,6 @@ export default function DashboardSettingsRoute() {
   return (
     <TooltipProvider>
       <div className="flex flex-1 flex-col gap-4 p-4 pt-4 md:p-6">
-        <div className="ui-page-head">
-          <div className="ui-page-head-body">
-            <h1 className="ui-page-title ui-page-title--sm">
-              {t("dashboard.nav.siteSettings")}
-            </h1>
-          </div>
-        </div>
-
         {error ? (
           <Alert variant="destructive">
             <AlertDescription>{error}</AlertDescription>
@@ -559,8 +551,8 @@ export default function DashboardSettingsRoute() {
         ) : null}
 
         <Tabs defaultValue="common" className="w-full">
-          <div className="sticky top-0 z-10 mb-4 overflow-x-auto border-b border-border bg-background">
-            <TabsList className="h-auto min-w-max justify-start rounded-none bg-transparent p-0">
+          <div className="sticky top-0 z-10 mb-4 overflow-x-auto rounded-lg border bg-[var(--dashboard-panel)]/95 p-2 shadow-xs backdrop-blur supports-[backdrop-filter]:bg-[var(--dashboard-panel)]/85">
+            <TabsList className="h-auto min-w-max justify-start bg-transparent p-0">
               {tabKeys.map((key) => (
                 <TabsTrigger key={key} value={key}>
                   {s(`${key}.title`)}

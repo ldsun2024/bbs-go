@@ -15,7 +15,6 @@ import {
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { apiFetch } from "@/lib/api/client"
 import type { Category } from "@/lib/api/types"
-import { CategoryIcon } from "@/lib/category-icon"
 import { useI18n } from "@/lib/i18n/provider"
 import { cn } from "@/lib/utils"
 
@@ -122,18 +121,13 @@ export function TopicsNavContent({
               <li className={cn(active && "active")} data-node-id={node.id}>
                 <Link href={nodeHref(node)}>
                   <i
-                    className={cn(
-                      "node-logo",
-                      !node.logo && "node-logo-placeholder"
-                    )}
+                    className="node-logo"
                     style={
                       node.logo
                         ? { backgroundImage: `url(${node.logo})` }
                         : undefined
                     }
-                  >
-                    {node.logo ? null : <CategoryIcon name={node.name} />}
-                  </i>
+                  />
                   <div className="node-name">{node.name}</div>
                 </Link>
               </li>
@@ -211,9 +205,7 @@ export function TopicsNavContent({
                             style={{ backgroundImage: `url(${node.logo})` }}
                           />
                         ) : (
-                          <span className="node-logo node-logo-placeholder">
-                            <CategoryIcon name={node.name} />
-                          </span>
+                          <span className="node-logo node-logo-placeholder" />
                         )}
                         <span>{node.name}</span>
                       </Link>

@@ -34,20 +34,20 @@ export function ErrorPage({
       ? t("pages.error.notFound")
       : statusCode === 403
         ? t("pages.error.forbidden")
-        : t("pages.error.unknown")
+      : t("pages.error.unknown")
   const titleText =
     statusCode === 404
       ? t("pages.error.title404")
       : statusCode === 403
         ? t("pages.error.title403")
-        : t("pages.error.title500")
+      : t("pages.error.title500")
   const descriptionText =
     message ||
     (statusCode === 404
       ? t("pages.error.desc404")
       : statusCode === 403
         ? t("pages.error.desc403")
-        : t("pages.error.desc500"))
+      : t("pages.error.desc500"))
   const quickLinks = [
     { to: "/", label: t("pages.error.quickHome") },
     { to: "/topics", label: t("pages.error.quickTopics") },
@@ -65,12 +65,11 @@ export function ErrorPage({
         <WidgetCard bodyClassName="p-0">
           <div className="grid items-center gap-8 px-3 py-8 md:grid-cols-[minmax(0,0.92fr)_minmax(0,1.08fr)] md:px-6 md:py-12">
             <div className="order-2 md:order-1">
-              <div className="mb-4 inline-flex items-center gap-2 border border-border px-3 py-1 text-xs font-medium text-muted-foreground">
+              <div className="mb-4 inline-flex items-center gap-2 rounded-full border border-border bg-muted/50 px-3 py-1 text-xs font-medium text-muted-foreground">
                 {statusText}
               </div>
 
-              <h1 className="text-h3 leading-tight font-bold text-foreground sm:text-h2">
-
+              <h1 className="text-2xl leading-tight font-semibold text-foreground sm:text-3xl">
                 {titleText}
               </h1>
               <p className="mt-3 max-w-xl text-sm leading-7 text-muted-foreground">
@@ -82,7 +81,7 @@ export function ErrorPage({
                   className="mt-6 flex flex-col gap-2 sm:flex-row"
                   onSubmit={submitSearch}
                 >
-                  <div className="flex h-[38px] min-w-0 flex-1 items-center rounded-md border border-input bg-background px-3">
+                  <div className="flex h-10 min-w-0 flex-1 items-center rounded-md border border-input bg-background px-3 shadow-xs">
                     <Search className="mr-2 size-4 shrink-0 text-muted-foreground" />
                     <Input
                       value={searchKeyword}
@@ -94,7 +93,7 @@ export function ErrorPage({
                       onChange={(event) => setSearchKeyword(event.currentTarget.value)}
                     />
                   </div>
-                  <Button type="submit" className="sm:min-w-24">
+                  <Button type="submit" className="h-10 sm:min-w-24">
                     {t("component.searchInput.searchBtn")}
                   </Button>
                 </form>
@@ -132,9 +131,9 @@ export function ErrorPage({
               <div className="relative p-2 md:p-4">
                 <div className="flex items-center justify-between border-b border-border pb-4">
                   <div className="flex items-center gap-2">
-                    <div className="size-2.5 rounded-full bg-muted-foreground/40" />
-                    <div className="size-2.5 rounded-full bg-muted-foreground/25" />
-                    <div className="size-2.5 rounded-full bg-muted-foreground/15" />
+                    <div className="size-2.5 rounded-full bg-destructive/70" />
+                    <div className="size-2.5 rounded-full bg-amber-500/70" />
+                    <div className="size-2.5 rounded-full bg-emerald-500/70" />
                   </div>
                   <span className="text-xs font-medium text-muted-foreground">
                     {t("pages.error.header")}
@@ -142,7 +141,7 @@ export function ErrorPage({
                 </div>
 
                 <div className="py-8 text-center">
-                  <p className="font-mono text-[96px] leading-none font-bold tracking-tighter text-muted-foreground/20 sm:text-[120px]">
+                  <p className="text-[72px] leading-none font-black text-muted-foreground/15 sm:text-[112px]">
                     {statusCode}
                   </p>
                 </div>

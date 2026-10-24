@@ -1597,11 +1597,6 @@ const zhCN = {
         passwordTooLongError: "管理员密码长度不能超过 1024 个字符。",
         confirmPasswordError: "请确认管理员密码。",
         passwordMismatchError: "两次输入的密码不一致。",
-        setupToken: "安装令牌",
-        setupTokenPlaceholder: "请输入 setup-token.txt 中的令牌",
-        setupTokenHelp:
-          "由服务端在未安装状态启动时生成，保存在配置文件同目录的 setup-token.txt 中。",
-        setupTokenError: "请输入安装令牌。",
       },
       install: {
         preparing: "准备安装...",
@@ -1771,9 +1766,6 @@ const zhCN = {
     messages: {
       title: "消息",
       viewDetails: "查看详情",
-      today: "今天",
-      yesterday: "昨天",
-      earlier: "更早",
     },
     scores: {
       title: "积分记录",

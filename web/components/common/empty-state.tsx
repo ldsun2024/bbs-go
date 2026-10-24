@@ -12,15 +12,11 @@ export function EmptyState({
   return (
     <div
       className={cn(
-        "flex flex-col items-start justify-center px-1 py-10 text-left",
+        "mb-[0.67rem] flex flex-col items-center justify-center rounded-b-[0.2rem] px-4 py-7.5 text-center text-[15px] font-normal",
         className,
       )}
     >
-      <svg
-        viewBox="0 0 120 100"
-        aria-hidden="true"
-        className="h-24 w-24 text-muted-foreground/45"
-      >
+      <svg viewBox="0 0 120 100" aria-hidden="true" className="h-23 text-muted-foreground">
         <defs>
           <linearGradient id="emptyFill" x1="0%" x2="100%" y1="0%" y2="100%">
             <stop offset="0%" stopColor="currentColor" stopOpacity="0.12" />
@@ -46,12 +42,8 @@ export function EmptyState({
           <circle cx="84" cy="10" r="1.8" fill="currentColor" fillOpacity="0.22" />
         </g>
       </svg>
-      <p className="mt-4 font-serif text-xl font-semibold text-foreground">{title}</p>
-      {description ? (
-        <p className="mt-2 max-w-sm text-[13px] leading-7 text-muted-foreground">
-          {description}
-        </p>
-      ) : null}
+      <p className="mt-4 text-sm font-normal text-muted-foreground">{title}</p>
+      {description ? <p className="mt-1 max-w-sm text-sm text-muted-foreground">{description}</p> : null}
     </div>
   )
 }

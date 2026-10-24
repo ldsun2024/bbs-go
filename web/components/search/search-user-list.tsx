@@ -15,7 +15,7 @@ export function SearchUserList({ results }: { results: SearchUser[] }) {
   }
 
   return (
-    <div>
+    <div className="divide-y divide-border/70">
       {results.map((item) => {
         const user = item.user
         if (!user) return null
@@ -24,29 +24,29 @@ export function SearchUserList({ results }: { results: SearchUser[] }) {
         return (
           <article
             key={user.id}
-            className="group border-b border-border py-5 transition-colors last:border-b-0 hover:bg-muted"
+            className="group px-4 py-5 transition-colors hover:bg-muted/25 sm:px-5"
           >
-            <div className="flex gap-4">
+            <div className="flex gap-3.5">
               <UserAvatar user={user} size={48} className="shrink-0" />
               <div className="min-w-0 flex-1">
                 <Link
                   href={`/user/${user.id}`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-h4 leading-snug font-semibold text-foreground transition-colors group-hover:text-primary"
+                  className="text-base leading-6 font-semibold text-foreground transition-colors group-hover:text-primary sm:text-[17px]"
                 >
                   <span
-                    className="[&_em]:bg-muted-foreground/20 [&_em]:px-0.5 [&_em]:not-italic [&_em]:underline [&_em]:decoration-primary [&_em]:decoration-2 [&_em]:underline-offset-4"
+                    className="[&_em]:rounded-sm [&_em]:bg-yellow-200/80 [&_em]:px-0.5 [&_em]:not-italic dark:[&_em]:bg-yellow-500/30"
                     dangerouslySetInnerHTML={{ __html: name }}
                   />
                 </Link>
                 {description ? (
                   <p
-                    className="mt-1.5 line-clamp-2 text-sm leading-[1.7] text-muted-foreground [&_em]:bg-muted-foreground/15 [&_em]:px-0.5 [&_em]:not-italic"
+                    className="mt-1.5 line-clamp-2 text-sm leading-6 text-muted-foreground [&_em]:rounded-sm [&_em]:bg-yellow-200/70 [&_em]:px-0.5 [&_em]:not-italic dark:[&_em]:bg-yellow-500/25"
                     dangerouslySetInnerHTML={{ __html: description }}
                   />
                 ) : null}
-                <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1.5 font-mono text-xs tabular-nums text-muted-foreground">
+                <div className="mt-3 flex flex-wrap items-center gap-x-3 gap-y-1.5 text-xs text-muted-foreground/90">
                   {user.levelTitle ? <span>{user.levelTitle}</span> : null}
                   {typeof user.topicCount === "number" ? (
                     <span>

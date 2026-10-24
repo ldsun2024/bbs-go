@@ -112,7 +112,7 @@ function SigninFormContent({
       : t("user.signin.passwordLogin")
 
   return (
-    <div className="signin-card">
+    <div className="signin-card mx-auto max-w-[600px]">
       <div className="py-2 break-all">
         {accountMethods.length === 1 ? (
           <div className="login-title">

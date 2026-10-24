@@ -1,11 +1,10 @@
 @layer components {
-  /* 正文排版（V2 A 方向）：16px / 1.7，标题同族无衬线，层级靠字号与间距建立 */
   .bbs-content {
     min-width: 0;
     overflow-wrap: break-word;
     color: var(--foreground);
     font-size: 16px;
-    line-height: 1.7;
+    line-height: 1.6;
   }
 
   .bbs-content h1,
@@ -14,56 +13,33 @@
   .bbs-content h4,
   .bbs-content h5,
   .bbs-content h6 {
-    margin: 1.9em 0 0.75em;
+    margin: 1.5rem 0 0.75rem;
     color: var(--foreground);
-    font-family: var(--font-sans);
     font-weight: 600;
-    line-height: 1.35;
-    letter-spacing: -0.01em;
+    line-height: 1.25;
     scroll-margin-top: 5rem;
   }
 
-  /* 关键：移除旧版 h1/h2 的下划线，层级靠字号与间距建立 */
-  .bbs-content h1 {
-    font-size: var(--text-h2);
-  }
-
+  .bbs-content h1,
   .bbs-content h2 {
-    font-size: var(--text-h3);
-  }
-
-  .bbs-content h3 {
-    font-size: var(--text-h4);
-  }
-
-  .bbs-content h4,
-  .bbs-content h5,
-  .bbs-content h6 {
-    font-size: 16px;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.3em;
   }
 
   .bbs-content p {
-    margin: 0 0 1.15em;
+    margin: 1rem 0;
     line-height: 1.7;
   }
 
   .bbs-content a {
     color: var(--primary);
     font-weight: 500;
-    text-decoration: underline;
-    text-underline-offset: 2px;
-    text-decoration-thickness: 1px;
-    text-decoration-color: color-mix(in oklch, var(--primary) 40%, transparent);
-  }
-
-  .bbs-content a:hover {
-    text-decoration-color: var(--primary);
   }
 
   .bbs-content ul,
   .bbs-content ol {
-    margin: 0 0 1.15em;
-    padding-left: 1.4em;
+    margin: 1rem 0;
+    padding-left: 1.5rem;
   }
 
   .bbs-content ul {
@@ -75,107 +51,61 @@
   }
 
   .bbs-content li {
-    margin: 0.45em 0;
+    margin: 0.5rem 0;
     line-height: 1.7;
   }
 
-  .bbs-content li::marker {
-    color: var(--muted-foreground);
-  }
-
   .bbs-content img {
-    margin: 1.6em 0;
+    margin: 1rem 0;
     max-width: 100%;
     height: auto;
-    border-radius: var(--radius);
-    display: block;
-  }
-
-  .bbs-content figure {
-    margin: 1.6em 0;
-  }
-
-  .bbs-content figcaption {
-    margin-top: 8px;
-    color: var(--muted-foreground);
-    font-size: 12px;
-    line-height: 1.6;
-    text-align: center;
+    border-radius: 6px;
   }
 
   .bbs-content pre {
-    margin: 1.5em 0;
+    margin: 1rem 0;
     overflow-x: auto;
-    border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: 6px;
     background: var(--muted);
-    padding: 16px;
-    font-family: var(--font-mono);
-    font-size: 12px;
+    padding: 1rem;
+    font-size: 14px;
     line-height: 1.7;
   }
 
   .bbs-content code {
-    border: 1px solid var(--border);
+    border-radius: 3px;
     background: var(--muted);
-    padding: 0.1em 0.35em;
-    font-family: var(--font-mono);
+    padding: 0.2em 0.4em;
     font-size: 0.9em;
   }
 
   .bbs-content pre code {
-    border: 0;
     background: transparent;
     padding: 0;
     color: inherit;
     font-size: inherit;
   }
 
-  /* 引用：墨黑 3px 竖条 + 浅灰底，正体（中文伪斜体很难看） */
   .bbs-content blockquote {
-    margin: 1.5em 0;
-    border-left: 3px solid var(--foreground);
+    margin: 1rem 0;
+    border-left: 4px solid var(--border);
+    border-radius: 0 6px 6px 0;
     background: var(--muted);
-    padding: 16px 24px;
+    padding: 0.25rem 1rem;
     color: var(--muted-foreground);
-    font-style: normal;
-  }
-
-  .bbs-content blockquote > :last-child {
-    margin-bottom: 0;
   }
 
   .bbs-content table {
     width: 100%;
-    margin: 1.5em 0;
+    margin: 1rem 0;
     border-collapse: collapse;
-    border: 0;
-    font-size: 13px;
+    border: 1px solid var(--border);
   }
 
-  .bbs-content th {
-    background: var(--muted);
-    color: var(--muted-foreground);
-    font-size: 12px;
-    font-weight: 600;
-    text-align: left;
-    padding: 9px 12px;
-    border-bottom: 1px solid var(--border);
-  }
-
+  .bbs-content th,
   .bbs-content td {
-    padding: 10px 12px;
     border-bottom: 1px solid var(--border);
+    padding: 0.75rem 1rem;
     text-align: left;
-  }
-
-  .bbs-content tr:last-child td {
-    border-bottom: 0;
-  }
-
-  .bbs-content hr {
-    margin: 2em 0;
-    border: 0;
-    border-top: 1px solid var(--border);
   }
 }

@@ -75,8 +75,7 @@ function CoverUpload({
   return (
     <div className="flex flex-wrap gap-2.5">
       {value.map((image, index) => (
-        <div key={`${image.url || image.preview || index}`} className="group relative h-[120px] w-[120px] overflow-hidden border border-border">
-          <img src={image.url || image.preview} alt="" className="h-full w-full object-cover" />
+        <div key={`${image.url || image.preview || index}`} className="group relative h-[120px] w-[120px] overflow-hidden rounded-sm border">          <img src={image.url || image.preview} alt="" className="h-full w-full object-cover" />
           <button
             type="button"
             className="absolute bottom-0 left-0 hidden h-5 w-full items-center justify-center bg-black/30 text-white group-hover:flex"
@@ -89,7 +88,7 @@ function CoverUpload({
       {value.length < 1 ? (
         <button
           type="button"
-          className="flex h-[120px] w-[120px] flex-col items-center justify-center border border-border text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+          className="flex h-[120px] w-[120px] flex-col items-center justify-center rounded-sm border text-muted-foreground"
           disabled={uploading}
           onClick={() => inputRef.current?.click()}
         >
@@ -176,20 +175,19 @@ export function ArticleForm({
   const submitKey = mode === "create" ? "pages.article.create.publishBtn" : "pages.article.edit.submitBtn"
 
   return (
-    <div className="publish-form">
-      <div className="mb-6 flex items-baseline justify-between gap-4 border-b-2 border-foreground pb-3">
-        <h1 className="text-h3 font-semibold text-foreground">{t(titleKey)}</h1>
+    <div className="publish-form rounded-lg bg-background p-4">
+      <div className="mb-4 border-b pb-2">
+        <div className="text-xl font-semibold">{t(titleKey)}</div>
       </div>
-      <div className="mb-6">
+      <div className="mb-4">
         <Input
           value={form.title}
           type="text"
           placeholder={t(titlePlaceholderKey)}
-          className="h-auto rounded-none border-0 border-b border-border px-0 py-2 text-h3 font-semibold shadow-none focus-visible:border-foreground focus-visible:ring-0"
           onChange={(event) => updateForm({ title: event.currentTarget.value })}
         />
       </div>
-      <div className="mb-6">
+      <div className="mb-4">
         <ContentEditor
           contentType="markdown"
           value={form.content}
@@ -198,7 +196,7 @@ export function ArticleForm({
           onChange={(content) => updateForm({ content })}
         />
       </div>
-      <div className="mb-6">
+      <div className="mb-4">
         <TagInput
           value={form.tags}
           recommendTags={config?.recommendTags}
@@ -211,11 +209,11 @@ export function ArticleForm({
         />
       </div>
       {mode === "create" ? (
-        <div className="mb-6">
+        <div className="mb-4">
           <CoverUpload value={form.cover} label={t("pages.article.create.cover")} onChange={(cover) => updateForm({ cover })} />
         </div>
       ) : null}
-      <div className="flex justify-end border-t-2 border-foreground pt-4">
+      <div className="pt-2">
         <Button type="button" disabled={publishing} onClick={submit}>
           {publishing && mode === "create" ? t("pages.article.create.publishing") : t(submitKey)}
         </Button>

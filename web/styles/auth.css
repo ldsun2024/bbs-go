@@ -1,20 +1,8 @@
 @layer components {
-  /* A3：内边距 32 起，之前 4px / 12px 导致内容贴边。
-     V2：卡片宽 420，双栏时撑满右列，单栏时居中 */
   .signin-card {
-    width: 100%;
-    max-width: 420px;
-    margin-inline: auto;
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    background: var(--card);
-    padding: 32px;
-  }
-
-  @media (max-width: 640px) {
-    .signin-card {
-      padding: 20px;
-    }
+    border-radius: var(--radius-md);
+    background: var(--background);
+    padding: 0.25rem 0.75rem;
   }
 
   .login-tabs-list {
@@ -34,15 +22,14 @@
     flex-shrink: 0;
   }
 
-  /* A3：去掉标题下划线，避免与卡片边框形成双线 */
   .login-title {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    margin-bottom: 24px;
-    padding-bottom: 0;
-    border-bottom: 0;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
   }
 
   .login-title h2 {
@@ -188,29 +175,5 @@
     line-height: 1 !important;
     display: inline-flex !important;
     align-items: center !important;
-  }
-
-  /* V2 认证双栏：左品牌 + 右表单，总宽 900 */
-  .auth-split {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    max-width: 900px;
-    margin: 0 auto;
-  }
-
-  .auth-split-aside {
-    display: none;
-  }
-
-  @media (min-width: 900px) {
-    .auth-split {
-      grid-template-columns: minmax(0, 1fr) 420px;
-    }
-
-    .auth-split-aside {
-      display: block;
-      padding: 48px 40px;
-      border-right: 1px solid var(--border);
-    }
   }
 }
