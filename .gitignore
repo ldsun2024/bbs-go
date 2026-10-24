@@ -64,6 +64,8 @@ AGENTS.md
 docs/V2/baseline/
 
 # ===== AI 工具临时产物（不入库） =====
+# CodeBuddy 会话记忆与计划（本地工作数据，不入库）
+.codebuddy/
 # Playwright MCP 生成的页面快照、控制台日志
 .playwright-mcp/
 # 调试截图（可随时重截）
